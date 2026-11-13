@@ -1,0 +1,13 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/private/tmp/register-calendar-build/frameworks/Release/iphoneos/Release-iphoneos/package_info_plus/package_info_plus.framework/package_info_plus'
+relocations:
+  - { offset: 0x6545F, size: 0x8, addend: 0x0, symName: _package_info_plusVersionString, symObjAddr: 0x0, symBinAddr: 0x4E68, symSize: 0x0 }
+  - { offset: 0x65494, size: 0x8, addend: 0x0, symName: _package_info_plusVersionNumber, symObjAddr: 0x30, symBinAddr: 0x4E98, symSize: 0x0 }
+  - { offset: 0x654D1, size: 0x8, addend: 0x0, symName: '+[FPPPackageInfoPlusPlugin registerWithRegistrar:]', symObjAddr: 0x0, symBinAddr: 0x4000, symSize: 0xA0 }
+  - { offset: 0x654F7, size: 0x8, addend: 0x0, symName: '+[FPPPackageInfoPlusPlugin registerWithRegistrar:]', symObjAddr: 0x0, symBinAddr: 0x4000, symSize: 0xA0 }
+  - { offset: 0x65556, size: 0x8, addend: 0x0, symName: '-[FPPPackageInfoPlusPlugin handleMethodCall:result:]', symObjAddr: 0xA0, symBinAddr: 0x40A0, symSize: 0x50C }
+  - { offset: 0x6561E, size: 0x8, addend: 0x0, symName: '-[FPPPackageInfoPlusPlugin getInstallDate]', symObjAddr: 0x5AC, symBinAddr: 0x45AC, symSize: 0x110 }
+  - { offset: 0x65681, size: 0x8, addend: 0x0, symName: '-[FPPPackageInfoPlusPlugin getUpdateDate]', symObjAddr: 0x6BC, symBinAddr: 0x46BC, symSize: 0xE0 }
+  - { offset: 0x656E4, size: 0x8, addend: 0x0, symName: '-[FPPPackageInfoPlusPlugin getTimeMillisStringFromDate:]', symObjAddr: 0x79C, symBinAddr: 0x479C, symSize: 0x74 }
+...

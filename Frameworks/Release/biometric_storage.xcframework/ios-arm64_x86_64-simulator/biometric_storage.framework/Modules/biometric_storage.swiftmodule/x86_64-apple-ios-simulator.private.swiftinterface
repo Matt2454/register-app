@@ -1,0 +1,18 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.4.2 effective-5.10 (swiftlang-6.4.2.1.9 clang-2100.4.1.1)
+// swift-module-flags: -target x86_64-apple-ios15.0-simulator -enable-objc-interop -enable-library-evolution -language-mode 5 -Onone -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name biometric_storage
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.4.2
+import Flutter
+import Foundation
+import LocalAuthentication
+import Swift
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+@_exported import biometric_storage
+@objc @_inheritsConvenienceInitializers public class SwiftBiometricStoragePlugin : ObjectiveC::NSObject, Flutter::FlutterPlugin {
+  @objc public static func register(with registrar: any Flutter::FlutterPluginRegistrar)
+  @objc public func handle(_ call: Flutter::FlutterMethodCall, result: @escaping Flutter::FlutterResult)
+  @objc override dynamic public init()
+  @objc deinit
+}

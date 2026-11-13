@@ -1,0 +1,52 @@
+name: Verify iOS
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths-ignore:
+      - 'rust/**'
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'rust/**'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ios-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ios:
+    runs-on: macos-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.47.5'
+          channel: stable
+          cache: true
+      - run: flutter pub get
+      - run: dart run build_runner build --delete-conflicting-outputs
+      - run: dart analyze --no-fatal-warnings lib test integration_test
+      - run: flutter test
+      - name: Compile for simulator
+        run: flutter build ios --simulator --debug
+      - name: Test native login, Keychain, and navigation
+        run: |
+          SIM_ID=$(xcrun simctl create RegisterSmoke com.apple.CoreSimulator.SimDeviceType.iPhone-16e)
+          trap 'xcrun simctl shutdown "$SIM_ID"' EXIT
+          xcrun simctl boot "$SIM_ID"
+          xcrun simctl bootstatus "$SIM_ID" -b
+          flutter test integration_test/ios_smoke_test.dart -d "$SIM_ID"
+      - name: Compile for iPhone and iPad
+        run: flutter build ios --release --no-codesign
+      - name: Package unsigned device app
+        run: ditto -c -k --keepParent build/ios/iphoneos/Runner.app Register-iOS-unsigned.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Register-iOS-unsigned
+          path: Register-iOS-unsigned.zip
+          if-no-files-found: error

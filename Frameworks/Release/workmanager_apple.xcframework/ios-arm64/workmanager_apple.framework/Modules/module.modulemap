@@ -1,0 +1,10 @@
+framework module workmanager_apple {
+  umbrella header "workmanager_apple-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module workmanager_apple.Swift {
+  header "workmanager_apple-Swift.h"
+}

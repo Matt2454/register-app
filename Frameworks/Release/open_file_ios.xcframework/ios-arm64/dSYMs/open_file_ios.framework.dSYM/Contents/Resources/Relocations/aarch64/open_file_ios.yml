@@ -1,0 +1,24 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/private/tmp/register-calendar-build/frameworks/Release/iphoneos/Release-iphoneos/open_file_ios/open_file_ios.framework/open_file_ios'
+relocations:
+  - { offset: 0x3EDE, size: 0x8, addend: 0x0, symName: _open_file_iosVersionString, symObjAddr: 0x0, symBinAddr: 0x59D8, symSize: 0x0 }
+  - { offset: 0x3F12, size: 0x8, addend: 0x0, symName: _open_file_iosVersionNumber, symObjAddr: 0x30, symBinAddr: 0x5A08, symSize: 0x0 }
+  - { offset: 0x3F4E, size: 0x8, addend: 0x0, symName: '+[OpenFilePlugin registerWithRegistrar:]', symObjAddr: 0x0, symBinAddr: 0x4000, symSize: 0xA0 }
+  - { offset: 0x4090, size: 0x8, addend: 0x0, symName: '+[OpenFilePlugin registerWithRegistrar:]', symObjAddr: 0x0, symBinAddr: 0x4000, symSize: 0xA0 }
+  - { offset: 0x40E9, size: 0x8, addend: 0x0, symName: '-[OpenFilePlugin handleMethodCall:result:]', symObjAddr: 0xA0, symBinAddr: 0x40A0, symSize: 0x3A0 }
+  - { offset: 0x42F8, size: 0x8, addend: 0x0, symName: _RootViewController, symObjAddr: 0x440, symBinAddr: 0x4440, symSize: 0x224 }
+  - { offset: 0x437A, size: 0x8, addend: 0x0, symName: '-[OpenFilePlugin openFileWithUIActivityViewController:vc:]', symObjAddr: 0x664, symBinAddr: 0x4664, symSize: 0x278 }
+  - { offset: 0x4465, size: 0x8, addend: 0x0, symName: '___58-[OpenFilePlugin openFileWithUIActivityViewController:vc:]_block_invoke', symObjAddr: 0x8DC, symBinAddr: 0x48DC, symSize: 0x8 }
+  - { offset: 0x44A1, size: 0x8, addend: 0x0, symName: ___copy_helper_block_e8_32s, symObjAddr: 0x8E4, symBinAddr: 0x48E4, symSize: 0x8 }
+  - { offset: 0x44C5, size: 0x8, addend: 0x0, symName: ___destroy_helper_block_e8_32s, symObjAddr: 0x8EC, symBinAddr: 0x48EC, symSize: 0x8 }
+  - { offset: 0x44E2, size: 0x8, addend: 0x0, symName: '-[OpenFilePlugin documentInteractionControllerDidEndPreview:]', symObjAddr: 0x8F4, symBinAddr: 0x48F4, symSize: 0x4 }
+  - { offset: 0x451B, size: 0x8, addend: 0x0, symName: '-[OpenFilePlugin documentInteractionControllerDidDismissOpenInMenu:]', symObjAddr: 0x8F8, symBinAddr: 0x48F8, symSize: 0x4 }
+  - { offset: 0x4554, size: 0x8, addend: 0x0, symName: '-[OpenFilePlugin documentInteractionControllerViewControllerForPreview:]', symObjAddr: 0x8FC, symBinAddr: 0x48FC, symSize: 0x4 }
+  - { offset: 0x4592, size: 0x8, addend: 0x0, symName: '-[OpenFilePlugin documentInteractionControllerViewControllerForPreview:]', symObjAddr: 0x8FC, symBinAddr: 0x48FC, symSize: 0x4 }
+  - { offset: 0x459C, size: 0x8, addend: 0x0, symName: '-[OpenFilePlugin isBlankString:]', symObjAddr: 0x900, symBinAddr: 0x4900, symSize: 0xAC }
+  - { offset: 0x45DB, size: 0x8, addend: 0x0, symName: '-[OpenFilePlugin getJson:type:]', symObjAddr: 0x9AC, symBinAddr: 0x49AC, symSize: 0x124 }
+  - { offset: 0x4656, size: 0x8, addend: 0x0, symName: '-[OpenFilePlugin doneEnd]', symObjAddr: 0xAD0, symBinAddr: 0x4AD0, symSize: 0x50 }
+  - { offset: 0x46A7, size: 0x8, addend: 0x0, symName: '-[OpenFilePlugin setControllerUTI:]', symObjAddr: 0xB20, symBinAddr: 0x4B20, symSize: 0x464 }
+  - { offset: 0x471E, size: 0x8, addend: 0x0, symName: '-[OpenFilePlugin .cxx_destruct]', symObjAddr: 0xF84, symBinAddr: 0x4F84, symSize: 0x3C }
+...

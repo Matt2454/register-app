@@ -1,0 +1,1 @@
+Prebuilt with Flutter 3.47.5 and Xcode 27.2. Debug and Release contain App, Flutter, and all 11 production plugin XCFrameworks. The simulator slices use Flutter debug mode. No Flutter SDK or CocoaPods is needed to build or run Register.xcodeproj.

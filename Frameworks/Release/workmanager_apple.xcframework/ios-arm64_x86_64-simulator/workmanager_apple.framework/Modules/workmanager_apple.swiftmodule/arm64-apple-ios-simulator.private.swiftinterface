@@ -1,0 +1,80 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.4.2 effective-5.10 (swiftlang-6.4.2.1.9 clang-2100.4.1.1)
+// swift-module-flags: -target arm64-apple-ios15.0-simulator -enable-objc-interop -enable-library-evolution -language-mode 5 -Onone -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name workmanager_apple
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.4.2
+import BackgroundTasks
+import Flutter
+import Foundation
+import Swift
+import UIKit
+import UserNotifications
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+import os
+@_exported import workmanager_apple
+extension workmanager_apple::WorkmanagerPlugin {
+  @objc public static func registerBGContinuedProcessingTask(withIdentifier identifier: Swift::String)
+}
+extension UIKit::UIBackgroundFetchResult : Swift::CustomDebugStringConvertible {
+  public var debugDescription: Swift::String {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @available(iOS 14.0, *)
+public class LoggingDebugHandler : workmanager_apple::WorkmanagerDebug {
+  public init()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class NotificationDebugHandler : workmanager_apple::WorkmanagerDebug {
+  public init(categoryIdentifier: Swift::String? = nil, threadIdentifier: Swift::String? = nil)
+  @objc deinit
+}
+public struct TaskDebugInfo {
+  public let taskName: Swift::String
+  public let uniqueName: Swift::String?
+  public let inputData: [Swift::String : Any]?
+  public let startTime: Foundation::TimeInterval
+  public let callbackHandle: Swift::Int64?
+  public let callbackInfo: Swift::String?
+  public let isPeriodic: Swift::Bool?
+  public init(taskName: Swift::String, uniqueName: Swift::String? = nil, inputData: [Swift::String : Any]? = nil, startTime: Foundation::TimeInterval, callbackHandle: Swift::Int64? = nil, callbackInfo: Swift::String? = nil, isPeriodic: Swift::Bool? = nil)
+}
+public struct TaskResult {
+  public let success: Swift::Bool
+  public let duration: Swift::Int64
+  public let error: Swift::String?
+  public init(success: Swift::Bool, duration: Swift::Int64, error: Swift::String? = nil)
+}
+@_hasMissingDesignatedInitializers public class WorkmanagerDebug {
+  public static func setCurrent(_ handler: workmanager_apple::WorkmanagerDebug)
+  public static func getCurrent() -> workmanager_apple::WorkmanagerDebug
+  @objc deinit
+}
+public typealias WorkmanagerPluginBase = Flutter::FlutterPluginAppLifeCycleDelegate
+@objc @_inheritsConvenienceInitializers public class WorkmanagerPlugin : workmanager_apple::WorkmanagerPluginBase, Flutter::FlutterPlugin {
+  @objc public static func setPluginRegistrantCallback(_ callback: Flutter::FlutterPluginRegistrantCallback)
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension workmanager_apple::WorkmanagerPlugin {
+  @available(iOS 13.0, *)
+  public static func handlePeriodicTask(identifier: Swift::String, task: BackgroundTasks::BGAppRefreshTask, earliestBeginInSeconds: Foundation::NSNumber?, inputData: [Swift::String : Any]?)
+  @available(iOS 13.0, *)
+  public static func startOneOffTask(identifier: Swift::String, taskIdentifier: UIKit::UIBackgroundTaskIdentifier, inputData: [Swift::String : Any]?, delaySeconds: Swift::Int64)
+  @objc public static func registerPeriodicTask(withIdentifier identifier: Swift::String, earliestBeginInSeconds: Foundation::NSNumber? = nil)
+  @available(*, deprecated, message: "Use registerPeriodicTask(withIdentifier:earliestBeginInSeconds:) instead")
+  @objc public static func registerPeriodicTask(withIdentifier identifier: Swift::String, frequency: Foundation::NSNumber?)
+  @objc public static func registerBGProcessingTask(withIdentifier identifier: Swift::String)
+  @objc public static func registerBGHealthResearchTask(withIdentifier identifier: Swift::String)
+  @objc public static func registerLaunchHandlers()
+}
+extension workmanager_apple::WorkmanagerPlugin {
+  @objc public static func register(with registrar: any Flutter::FlutterPluginRegistrar)
+}
+extension workmanager_apple::WorkmanagerPlugin : Flutter::FlutterSceneLifeCycleDelegate {
+}
+extension workmanager_apple::WorkmanagerPlugin {
+  @objc override dynamic public func application(_ application: UIKit::UIApplication, didFinishLaunchingWithOptions launchOptions: [Swift::AnyHashable : Any]? = nil) -> Swift::Bool
+  @objc override dynamic public func application(_ application: UIKit::UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIKit::UIBackgroundFetchResult) -> Swift::Void) -> Swift::Bool
+}

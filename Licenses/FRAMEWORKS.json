@@ -1,0 +1,51 @@
+{
+  "flutter": "3.47.5",
+  "dart": "3.13.4",
+  "xcode": "27.2",
+  "plugins": [
+    {
+      "name": "app_links",
+      "source": "pub.dev; exact version and SHA-256 in Source/Flutter/pubspec.lock"
+    },
+    {
+      "name": "biometric_storage",
+      "source": "Source/Flutter/packages/biometric_storage"
+    },
+    {
+      "name": "flutter_local_notifications",
+      "source": "pub.dev; exact version and SHA-256 in Source/Flutter/pubspec.lock"
+    },
+    {
+      "name": "flutter_secure_storage",
+      "source": "pub.dev; exact version and SHA-256 in Source/Flutter/pubspec.lock"
+    },
+    {
+      "name": "image_picker_ios",
+      "source": "pub.dev; exact version and SHA-256 in Source/Flutter/pubspec.lock"
+    },
+    {
+      "name": "open_file_ios",
+      "source": "pub.dev; exact version and SHA-256 in Source/Flutter/pubspec.lock"
+    },
+    {
+      "name": "package_info_plus",
+      "source": "pub.dev; exact version and SHA-256 in Source/Flutter/pubspec.lock"
+    },
+    {
+      "name": "path_provider_foundation",
+      "source": "pub.dev; exact version and SHA-256 in Source/Flutter/pubspec.lock"
+    },
+    {
+      "name": "shared_preferences_foundation",
+      "source": "pub.dev; exact version and SHA-256 in Source/Flutter/pubspec.lock"
+    },
+    {
+      "name": "url_launcher_ios",
+      "source": "pub.dev; exact version and SHA-256 in Source/Flutter/pubspec.lock"
+    },
+    {
+      "name": "workmanager_apple",
+      "source": "pub.dev; exact version and SHA-256 in Source/Flutter/pubspec.lock"
+    }
+  ]
+}

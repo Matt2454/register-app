@@ -1,0 +1,46 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.4.2 effective-5.10 (swiftlang-6.4.2.1.9 clang-2100.4.1.1)
+// swift-module-flags: -target x86_64-apple-ios15.0-simulator -enable-objc-interop -enable-library-evolution -language-mode 5 -Onone -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name app_links
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.4.2
+import Flutter
+import Swift
+import UIKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+@_exported import app_links
+@_hasMissingDesignatedInitializers public class AppLinks {
+  public static let shared: app_links::AppLinksIosPlugin
+  @objc deinit
+}
+public typealias UrlHandledCallBack = (_ url: Foundation::URL) -> Swift::Bool
+public enum UrlHandled {
+  case never
+  case availability
+  public static func == (a: app_links::UrlHandled, b: app_links::UrlHandled) -> Swift::Bool
+  public func hash(into hasher: inout Swift::Hasher)
+  public var hashValue: Swift::Int {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers final public class AppLinksIosPlugin : ObjectiveC::NSObject, Flutter::FlutterPlugin, Flutter::FlutterStreamHandler, Flutter::FlutterSceneLifeCycleDelegate {
+  final public var enabled: Swift::Bool
+  final public var defaultUrlHandling: app_links::UrlHandled
+  final public var urlHandledCallBack: app_links::UrlHandledCallBack?
+  @objc public static func register(with registrar: any Flutter::FlutterPluginRegistrar)
+  @objc final public func handle(_ call: Flutter::FlutterMethodCall, result: @escaping Flutter::FlutterResult)
+  @available(*, deprecated, message: "You should migrate to UISceneDelegate")
+  final public func getLink(launchOptions: [Swift::AnyHashable : Any]?) -> Foundation::URL?
+  @objc final public func application(_ application: UIKit::UIApplication, continue userActivity: Foundation::NSUserActivity, restorationHandler: @escaping ([Any]) -> Swift::Void) -> Swift::Bool
+  @objc final public func application(_ application: UIKit::UIApplication, open url: Foundation::URL, options: [UIKit::UIApplication.UIKit::OpenURLOptionsKey : Any] = [:]) -> Swift::Bool
+  @objc final public func scene(_ scene: UIKit::UIScene, willConnectTo session: UIKit::UISceneSession, options connectionOptions: UIKit::UIScene.UIKit::ConnectionOptions?) -> Swift::Bool
+  @objc final public func scene(_ scene: UIKit::UIScene, openURLContexts URLContexts: Swift::Set<UIKit::UIOpenURLContext>) -> Swift::Bool
+  @objc final public func scene(_ scene: UIKit::UIScene, continue userActivity: Foundation::NSUserActivity) -> Swift::Bool
+  @objc final public func onListen(withArguments arguments: Any?, eventSink events: @escaping Flutter::FlutterEventSink) -> Flutter::FlutterError?
+  @objc final public func onCancel(withArguments arguments: Any?) -> Flutter::FlutterError?
+  final public func handleLink(url: Foundation::URL)
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension app_links::UrlHandled : Swift::Equatable {}
+extension app_links::UrlHandled : Swift::Hashable {}

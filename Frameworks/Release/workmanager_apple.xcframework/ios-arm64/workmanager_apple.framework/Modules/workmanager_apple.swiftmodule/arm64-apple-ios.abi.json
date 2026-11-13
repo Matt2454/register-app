@@ -1,0 +1,2419 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "workmanager_apple",
+    "printedName": "workmanager_apple",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "workmanager_apple",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Flutter",
+        "printedName": "Flutter",
+        "declKind": "Import",
+        "moduleName": "workmanager_apple"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "workmanager_apple",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Flutter",
+        "printedName": "Flutter",
+        "declKind": "Import",
+        "moduleName": "workmanager_apple"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "workmanager_apple"
+      },
+      {
+        "kind": "Import",
+        "name": "BackgroundTasks",
+        "printedName": "BackgroundTasks",
+        "declKind": "Import",
+        "moduleName": "workmanager_apple"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "workmanager_apple",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "workmanager_apple"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "workmanager_apple"
+      },
+      {
+        "kind": "Import",
+        "name": "os",
+        "printedName": "os",
+        "declKind": "Import",
+        "moduleName": "workmanager_apple"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "LoggingDebugHandler",
+        "printedName": "LoggingDebugHandler",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "LoggingDebugHandler",
+                "printedName": "workmanager_apple.LoggingDebugHandler",
+                "usr": "s:17workmanager_apple19LoggingDebugHandlerC"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:17workmanager_apple19LoggingDebugHandlerCACycfc",
+            "mangledName": "$s17workmanager_apple19LoggingDebugHandlerCACycfc",
+            "moduleName": "workmanager_apple",
+            "overriding": true,
+            "declAttributes": [
+              "Override",
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:17workmanager_apple19LoggingDebugHandlerC",
+        "mangledName": "$s17workmanager_apple19LoggingDebugHandlerC",
+        "moduleName": "workmanager_apple",
+        "intro_iOS": "14.0",
+        "declAttributes": [
+          "AccessControl",
+          "Available",
+          "RawDocComment"
+        ],
+        "superclassUsr": "s:17workmanager_apple16WorkmanagerDebugC",
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "workmanager_apple.WorkmanagerDebug"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "workmanager_apple"
+      },
+      {
+        "kind": "Import",
+        "name": "UserNotifications",
+        "printedName": "UserNotifications",
+        "declKind": "Import",
+        "moduleName": "workmanager_apple"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "NotificationDebugHandler",
+        "printedName": "NotificationDebugHandler",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(categoryIdentifier:threadIdentifier:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "NotificationDebugHandler",
+                "printedName": "workmanager_apple.NotificationDebugHandler",
+                "usr": "s:17workmanager_apple24NotificationDebugHandlerC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:17workmanager_apple24NotificationDebugHandlerC18categoryIdentifier06threadG0ACSSSg_AFtcfc",
+            "mangledName": "$s17workmanager_apple24NotificationDebugHandlerC18categoryIdentifier06threadG0ACSSSg_AFtcfc",
+            "moduleName": "workmanager_apple",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:17workmanager_apple24NotificationDebugHandlerC",
+        "mangledName": "$s17workmanager_apple24NotificationDebugHandlerC",
+        "moduleName": "workmanager_apple",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "superclassUsr": "s:17workmanager_apple16WorkmanagerDebugC",
+        "hasMissingDesignatedInitializers": true,
+        "superclassNames": [
+          "workmanager_apple.WorkmanagerDebug"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "workmanager_apple",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "os",
+        "printedName": "os",
+        "declKind": "Import",
+        "moduleName": "workmanager_apple"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "workmanager_apple",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "UserNotifications",
+        "printedName": "UserNotifications",
+        "declKind": "Import",
+        "moduleName": "workmanager_apple"
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "workmanager_apple"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "workmanager_apple",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "workmanager_apple",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Flutter",
+        "printedName": "Flutter",
+        "declKind": "Import",
+        "moduleName": "workmanager_apple"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "workmanager_apple"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "workmanager_apple",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Flutter",
+        "printedName": "Flutter",
+        "declKind": "Import",
+        "moduleName": "workmanager_apple"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "workmanager_apple"
+      },
+      {
+        "kind": "Import",
+        "name": "os",
+        "printedName": "os",
+        "declKind": "Import",
+        "moduleName": "workmanager_apple"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "TaskDebugInfo",
+        "printedName": "TaskDebugInfo",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "taskName",
+            "printedName": "taskName",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:17workmanager_apple13TaskDebugInfoV8taskNameSSvp",
+            "mangledName": "$s17workmanager_apple13TaskDebugInfoV8taskNameSSvp",
+            "moduleName": "workmanager_apple",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:17workmanager_apple13TaskDebugInfoV8taskNameSSvg",
+                "mangledName": "$s17workmanager_apple13TaskDebugInfoV8taskNameSSvg",
+                "moduleName": "workmanager_apple",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "uniqueName",
+            "printedName": "uniqueName",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:17workmanager_apple13TaskDebugInfoV10uniqueNameSSSgvp",
+            "mangledName": "$s17workmanager_apple13TaskDebugInfoV10uniqueNameSSSgvp",
+            "moduleName": "workmanager_apple",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:17workmanager_apple13TaskDebugInfoV10uniqueNameSSSgvg",
+                "mangledName": "$s17workmanager_apple13TaskDebugInfoV10uniqueNameSSSgvg",
+                "moduleName": "workmanager_apple",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "inputData",
+            "printedName": "inputData",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[Swift.String : Any]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Swift.String : Any]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:17workmanager_apple13TaskDebugInfoV9inputDataSDySSypGSgvp",
+            "mangledName": "$s17workmanager_apple13TaskDebugInfoV9inputDataSDySSypGSgvp",
+            "moduleName": "workmanager_apple",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "[Swift.String : Any]?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Dictionary",
+                        "printedName": "[Swift.String : Any]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "ProtocolComposition",
+                            "printedName": "Any"
+                          }
+                        ],
+                        "usr": "s:SD"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:17workmanager_apple13TaskDebugInfoV9inputDataSDySSypGSgvg",
+                "mangledName": "$s17workmanager_apple13TaskDebugInfoV9inputDataSDySSypGSgvg",
+                "moduleName": "workmanager_apple",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "startTime",
+            "printedName": "startTime",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Double",
+                "printedName": "Swift.Double",
+                "usr": "s:Sd"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:17workmanager_apple13TaskDebugInfoV9startTimeSdvp",
+            "mangledName": "$s17workmanager_apple13TaskDebugInfoV9startTimeSdvp",
+            "moduleName": "workmanager_apple",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Double",
+                    "printedName": "Swift.Double",
+                    "usr": "s:Sd"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:17workmanager_apple13TaskDebugInfoV9startTimeSdvg",
+                "mangledName": "$s17workmanager_apple13TaskDebugInfoV9startTimeSdvg",
+                "moduleName": "workmanager_apple",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "callbackHandle",
+            "printedName": "callbackHandle",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Int64?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int64",
+                    "printedName": "Swift.Int64",
+                    "usr": "s:s5Int64V"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:17workmanager_apple13TaskDebugInfoV14callbackHandles5Int64VSgvp",
+            "mangledName": "$s17workmanager_apple13TaskDebugInfoV14callbackHandles5Int64VSgvp",
+            "moduleName": "workmanager_apple",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.Int64?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Int64",
+                        "printedName": "Swift.Int64",
+                        "usr": "s:s5Int64V"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:17workmanager_apple13TaskDebugInfoV14callbackHandles5Int64VSgvg",
+                "mangledName": "$s17workmanager_apple13TaskDebugInfoV14callbackHandles5Int64VSgvg",
+                "moduleName": "workmanager_apple",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "callbackInfo",
+            "printedName": "callbackInfo",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:17workmanager_apple13TaskDebugInfoV08callbackE0SSSgvp",
+            "mangledName": "$s17workmanager_apple13TaskDebugInfoV08callbackE0SSSgvp",
+            "moduleName": "workmanager_apple",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:17workmanager_apple13TaskDebugInfoV08callbackE0SSSgvg",
+                "mangledName": "$s17workmanager_apple13TaskDebugInfoV08callbackE0SSSgvg",
+                "moduleName": "workmanager_apple",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "isPeriodic",
+            "printedName": "isPeriodic",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Bool?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:17workmanager_apple13TaskDebugInfoV10isPeriodicSbSgvp",
+            "mangledName": "$s17workmanager_apple13TaskDebugInfoV10isPeriodicSbSgvp",
+            "moduleName": "workmanager_apple",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.Bool?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Bool",
+                        "printedName": "Swift.Bool",
+                        "usr": "s:Sb"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:17workmanager_apple13TaskDebugInfoV10isPeriodicSbSgvg",
+                "mangledName": "$s17workmanager_apple13TaskDebugInfoV10isPeriodicSbSgvg",
+                "moduleName": "workmanager_apple",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(taskName:uniqueName:inputData:startTime:callbackHandle:callbackInfo:isPeriodic:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TaskDebugInfo",
+                "printedName": "workmanager_apple.TaskDebugInfo",
+                "usr": "s:17workmanager_apple13TaskDebugInfoV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[Swift.String : Any]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Swift.String : Any]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Double",
+                "printedName": "Swift.Double",
+                "usr": "s:Sd"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Int64?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int64",
+                    "printedName": "Swift.Int64",
+                    "usr": "s:s5Int64V"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Bool?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:17workmanager_apple13TaskDebugInfoV8taskName06uniqueG09inputData9startTime14callbackHandle0mE010isPeriodicACSS_SSSgSDySSypGSgSds5Int64VSgAKSbSgtcfc",
+            "mangledName": "$s17workmanager_apple13TaskDebugInfoV8taskName06uniqueG09inputData9startTime14callbackHandle0mE010isPeriodicACSS_SSSgSDySSypGSgSds5Int64VSgAKSbSgtcfc",
+            "moduleName": "workmanager_apple",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:17workmanager_apple13TaskDebugInfoV",
+        "mangledName": "$s17workmanager_apple13TaskDebugInfoV",
+        "moduleName": "workmanager_apple",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "TaskResult",
+        "printedName": "TaskResult",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "success",
+            "printedName": "success",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:17workmanager_apple10TaskResultV7successSbvp",
+            "mangledName": "$s17workmanager_apple10TaskResultV7successSbvp",
+            "moduleName": "workmanager_apple",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:17workmanager_apple10TaskResultV7successSbvg",
+                "mangledName": "$s17workmanager_apple10TaskResultV7successSbvg",
+                "moduleName": "workmanager_apple",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "duration",
+            "printedName": "duration",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int64",
+                "printedName": "Swift.Int64",
+                "usr": "s:s5Int64V"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:17workmanager_apple10TaskResultV8durations5Int64Vvp",
+            "mangledName": "$s17workmanager_apple10TaskResultV8durations5Int64Vvp",
+            "moduleName": "workmanager_apple",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int64",
+                    "printedName": "Swift.Int64",
+                    "usr": "s:s5Int64V"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:17workmanager_apple10TaskResultV8durations5Int64Vvg",
+                "mangledName": "$s17workmanager_apple10TaskResultV8durations5Int64Vvg",
+                "moduleName": "workmanager_apple",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "error",
+            "printedName": "error",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:17workmanager_apple10TaskResultV5errorSSSgvp",
+            "mangledName": "$s17workmanager_apple10TaskResultV5errorSSSgvp",
+            "moduleName": "workmanager_apple",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:17workmanager_apple10TaskResultV5errorSSSgvg",
+                "mangledName": "$s17workmanager_apple10TaskResultV5errorSSSgvg",
+                "moduleName": "workmanager_apple",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(success:duration:error:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TaskResult",
+                "printedName": "workmanager_apple.TaskResult",
+                "usr": "s:17workmanager_apple10TaskResultV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int64",
+                "printedName": "Swift.Int64",
+                "usr": "s:s5Int64V"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:17workmanager_apple10TaskResultV7success8duration5errorACSb_s5Int64VSSSgtcfc",
+            "mangledName": "$s17workmanager_apple10TaskResultV7success8duration5errorACSb_s5Int64VSSSgtcfc",
+            "moduleName": "workmanager_apple",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:17workmanager_apple10TaskResultV",
+        "mangledName": "$s17workmanager_apple10TaskResultV",
+        "moduleName": "workmanager_apple",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "WorkmanagerDebug",
+        "printedName": "WorkmanagerDebug",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "setCurrent",
+            "printedName": "setCurrent(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "WorkmanagerDebug",
+                "printedName": "workmanager_apple.WorkmanagerDebug",
+                "usr": "s:17workmanager_apple16WorkmanagerDebugC"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:17workmanager_apple16WorkmanagerDebugC10setCurrentyyACFZ",
+            "mangledName": "$s17workmanager_apple16WorkmanagerDebugC10setCurrentyyACFZ",
+            "moduleName": "workmanager_apple",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "getCurrent",
+            "printedName": "getCurrent()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "WorkmanagerDebug",
+                "printedName": "workmanager_apple.WorkmanagerDebug",
+                "usr": "s:17workmanager_apple16WorkmanagerDebugC"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:17workmanager_apple16WorkmanagerDebugC10getCurrentACyFZ",
+            "mangledName": "$s17workmanager_apple16WorkmanagerDebugC10getCurrentACyFZ",
+            "moduleName": "workmanager_apple",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:17workmanager_apple16WorkmanagerDebugC",
+        "mangledName": "$s17workmanager_apple16WorkmanagerDebugC",
+        "moduleName": "workmanager_apple",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "hasMissingDesignatedInitializers": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "workmanager_apple"
+      },
+      {
+        "kind": "Import",
+        "name": "os",
+        "printedName": "os",
+        "declKind": "Import",
+        "moduleName": "workmanager_apple"
+      },
+      {
+        "kind": "Import",
+        "name": "BackgroundTasks",
+        "printedName": "BackgroundTasks",
+        "declKind": "Import",
+        "moduleName": "workmanager_apple"
+      },
+      {
+        "kind": "Import",
+        "name": "Flutter",
+        "printedName": "Flutter",
+        "declKind": "Import",
+        "moduleName": "workmanager_apple"
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "workmanager_apple"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "WorkmanagerPlugin",
+        "printedName": "WorkmanagerPlugin",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "setPluginRegistrantCallback",
+            "printedName": "setPluginRegistrantCallback(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(any Flutter.FlutterPluginRegistry) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "FlutterPluginRegistry",
+                    "printedName": "any Flutter.FlutterPluginRegistry",
+                    "usr": "c:objc(pl)FlutterPluginRegistry"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@workmanager_apple@objc(cs)WorkmanagerPlugin(cm)setPluginRegistrantCallback:",
+            "mangledName": "$s17workmanager_apple17WorkmanagerPluginC03setD18RegistrantCallbackyyySo07FlutterD8Registry_pXCFZ",
+            "moduleName": "workmanager_apple",
+            "static": true,
+            "objc_name": "setPluginRegistrantCallback:",
+            "declAttributes": [
+              "Final",
+              "ObjC",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "WorkmanagerPlugin",
+                "printedName": "workmanager_apple.WorkmanagerPlugin",
+                "usr": "c:@M@workmanager_apple@objc(cs)WorkmanagerPlugin"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@workmanager_apple@objc(cs)WorkmanagerPlugin(im)init",
+            "mangledName": "$s17workmanager_apple17WorkmanagerPluginCACycfc",
+            "moduleName": "workmanager_apple",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "registerBGContinuedProcessingTask",
+            "printedName": "registerBGContinuedProcessingTask(withIdentifier:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@workmanager_apple@objc(cs)WorkmanagerPlugin(cm)registerBGContinuedProcessingTaskWithIdentifier:",
+            "mangledName": "$s17workmanager_apple17WorkmanagerPluginC33registerBGContinuedProcessingTask14withIdentifierySS_tFZ",
+            "moduleName": "workmanager_apple",
+            "static": true,
+            "objc_name": "registerBGContinuedProcessingTaskWithIdentifier:",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "handlePeriodicTask",
+            "printedName": "handlePeriodicTask(identifier:task:earliestBeginInSeconds:inputData:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "BGAppRefreshTask",
+                "printedName": "BackgroundTasks.BGAppRefreshTask",
+                "usr": "c:objc(cs)BGAppRefreshTask"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.NSNumber?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NSNumber",
+                    "printedName": "Foundation.NSNumber",
+                    "usr": "c:objc(cs)NSNumber"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[Swift.String : Any]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Swift.String : Any]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:17workmanager_apple17WorkmanagerPluginC18handlePeriodicTask10identifier4task22earliestBeginInSeconds9inputDataySS_So012BGAppRefreshG0CSo8NSNumberCSgSDySSypGSgtFZ",
+            "mangledName": "$s17workmanager_apple17WorkmanagerPluginC18handlePeriodicTask10identifier4task22earliestBeginInSeconds9inputDataySS_So012BGAppRefreshG0CSo8NSNumberCSgSDySSypGSgtFZ",
+            "moduleName": "workmanager_apple",
+            "static": true,
+            "intro_iOS": "13.0",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "Available",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "startOneOffTask",
+            "printedName": "startOneOffTask(identifier:taskIdentifier:inputData:delaySeconds:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIBackgroundTaskIdentifier",
+                "printedName": "UIKit.UIBackgroundTaskIdentifier",
+                "usr": "c:@T@UIBackgroundTaskIdentifier"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[Swift.String : Any]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Swift.String : Any]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int64",
+                "printedName": "Swift.Int64",
+                "usr": "s:s5Int64V"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:17workmanager_apple17WorkmanagerPluginC15startOneOffTask10identifier14taskIdentifier9inputData12delaySecondsySS_So012UIBackgroundhK0aSDySSypGSgs5Int64VtFZ",
+            "mangledName": "$s17workmanager_apple17WorkmanagerPluginC15startOneOffTask10identifier14taskIdentifier9inputData12delaySecondsySS_So012UIBackgroundhK0aSDySSypGSgs5Int64VtFZ",
+            "moduleName": "workmanager_apple",
+            "static": true,
+            "intro_iOS": "13.0",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "Available",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "registerPeriodicTask",
+            "printedName": "registerPeriodicTask(withIdentifier:earliestBeginInSeconds:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.NSNumber?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NSNumber",
+                    "printedName": "Foundation.NSNumber",
+                    "usr": "c:objc(cs)NSNumber"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@workmanager_apple@objc(cs)WorkmanagerPlugin(cm)registerPeriodicTaskWithIdentifier:earliestBeginInSeconds:",
+            "mangledName": "$s17workmanager_apple17WorkmanagerPluginC20registerPeriodicTask14withIdentifier22earliestBeginInSecondsySS_So8NSNumberCSgtFZ",
+            "moduleName": "workmanager_apple",
+            "static": true,
+            "objc_name": "registerPeriodicTaskWithIdentifier:earliestBeginInSeconds:",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "registerPeriodicTask",
+            "printedName": "registerPeriodicTask(withIdentifier:frequency:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.NSNumber?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NSNumber",
+                    "printedName": "Foundation.NSNumber",
+                    "usr": "c:objc(cs)NSNumber"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@workmanager_apple@objc(cs)WorkmanagerPlugin(cm)registerPeriodicTaskWithIdentifier:frequency:",
+            "mangledName": "$s17workmanager_apple17WorkmanagerPluginC20registerPeriodicTask14withIdentifier9frequencyySS_So8NSNumberCSgtFZ",
+            "moduleName": "workmanager_apple",
+            "static": true,
+            "deprecated": true,
+            "objc_name": "registerPeriodicTaskWithIdentifier:frequency:",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "ObjC",
+              "Available",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "registerBGProcessingTask",
+            "printedName": "registerBGProcessingTask(withIdentifier:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@workmanager_apple@objc(cs)WorkmanagerPlugin(cm)registerBGProcessingTaskWithIdentifier:",
+            "mangledName": "$s17workmanager_apple17WorkmanagerPluginC24registerBGProcessingTask14withIdentifierySS_tFZ",
+            "moduleName": "workmanager_apple",
+            "static": true,
+            "objc_name": "registerBGProcessingTaskWithIdentifier:",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "registerBGHealthResearchTask",
+            "printedName": "registerBGHealthResearchTask(withIdentifier:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@workmanager_apple@objc(cs)WorkmanagerPlugin(cm)registerBGHealthResearchTaskWithIdentifier:",
+            "mangledName": "$s17workmanager_apple17WorkmanagerPluginC28registerBGHealthResearchTask14withIdentifierySS_tFZ",
+            "moduleName": "workmanager_apple",
+            "static": true,
+            "objc_name": "registerBGHealthResearchTaskWithIdentifier:",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "registerLaunchHandlers",
+            "printedName": "registerLaunchHandlers()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@workmanager_apple@objc(cs)WorkmanagerPlugin(cm)registerLaunchHandlers",
+            "mangledName": "$s17workmanager_apple17WorkmanagerPluginC22registerLaunchHandlersyyFZ",
+            "moduleName": "workmanager_apple",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "register",
+            "printedName": "register(with:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "FlutterPluginRegistrar",
+                "printedName": "any Flutter.FlutterPluginRegistrar",
+                "usr": "c:objc(pl)FlutterPluginRegistrar"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@workmanager_apple@objc(cs)WorkmanagerPlugin(cm)registerWithRegistrar:",
+            "mangledName": "$s17workmanager_apple17WorkmanagerPluginC8register4withySo07FlutterD9Registrar_p_tFZ",
+            "moduleName": "workmanager_apple",
+            "static": true,
+            "objc_name": "registerWithRegistrar:",
+            "declAttributes": [
+              "Final",
+              "ObjC",
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "application",
+            "printedName": "application(_:didFinishLaunchingWithOptions:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIApplication",
+                "printedName": "UIKit.UIApplication",
+                "usr": "c:objc(cs)UIApplication"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[Swift.AnyHashable : Any]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Swift.AnyHashable : Any]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "AnyHashable",
+                        "printedName": "Swift.AnyHashable",
+                        "usr": "s:s11AnyHashableV"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@workmanager_apple@objc(cs)WorkmanagerPlugin(im)application:didFinishLaunchingWithOptions:",
+            "mangledName": "$s17workmanager_apple17WorkmanagerPluginC11application_29didFinishLaunchingWithOptionsSbSo13UIApplicationC_SDys11AnyHashableVypGSgtF",
+            "moduleName": "workmanager_apple",
+            "overriding": true,
+            "objc_name": "application:didFinishLaunchingWithOptions:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "AccessControl",
+              "Override"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "application",
+            "printedName": "application(_:performFetchWithCompletionHandler:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIApplication",
+                "printedName": "UIKit.UIApplication",
+                "usr": "c:objc(cs)UIApplication"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(UIKit.UIBackgroundFetchResult) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIBackgroundFetchResult",
+                    "printedName": "UIKit.UIBackgroundFetchResult",
+                    "usr": "c:@E@UIBackgroundFetchResult"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@workmanager_apple@objc(cs)WorkmanagerPlugin(im)application:performFetchWithCompletionHandler:",
+            "mangledName": "$s17workmanager_apple17WorkmanagerPluginC11application_33performFetchWithCompletionHandlerSbSo13UIApplicationC_ySo012UIBackgroundG6ResultVctF",
+            "moduleName": "workmanager_apple",
+            "overriding": true,
+            "objc_name": "application:performFetchWithCompletionHandler:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "AccessControl",
+              "Override"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@workmanager_apple@objc(cs)WorkmanagerPlugin",
+        "mangledName": "$s17workmanager_apple17WorkmanagerPluginC",
+        "moduleName": "workmanager_apple",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)FlutterPluginAppLifeCycleDelegate",
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "Flutter.FlutterPluginAppLifeCycleDelegate",
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "workmanager_apple",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "UIBackgroundFetchResult",
+        "printedName": "UIBackgroundFetchResult",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "debugDescription",
+            "printedName": "debugDescription",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:So23UIBackgroundFetchResultV17workmanager_appleE16debugDescriptionSSvp",
+            "mangledName": "$sSo23UIBackgroundFetchResultV17workmanager_appleE16debugDescriptionSSvp",
+            "moduleName": "workmanager_apple",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So23UIBackgroundFetchResultV17workmanager_appleE16debugDescriptionSSvg",
+                "mangledName": "$sSo23UIBackgroundFetchResultV17workmanager_appleE16debugDescriptionSSvg",
+                "moduleName": "workmanager_apple",
+                "isFromExtension": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "c:@E@UIBackgroundFetchResult",
+        "moduleName": "UIKit",
+        "intro_iOS": "7.0",
+        "objc_name": "UIBackgroundFetchResult",
+        "declAttributes": [
+          "Available",
+          "SynthesizedProtocol",
+          "ObjC",
+          "SynthesizedProtocol",
+          "NonSendable",
+          "Dynamic"
+        ],
+        "enumRawTypeName": "UInt",
+        "isExternal": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "RawRepresentable",
+            "printedName": "RawRepresentable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "RawValue",
+                "printedName": "RawValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UInt",
+                    "printedName": "Swift.UInt",
+                    "usr": "s:Su"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:SY",
+            "mangledName": "$sSY"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/BackgroundWorker.swift",
+      "kind": "StringLiteral",
+      "offset": 3657,
+      "length": 65,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/BackgroundWorker.swift",
+      "kind": "StringLiteral",
+      "offset": 3689,
+      "length": 1,
+      "value": "\"\/background_channel_work_manager\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/BackgroundWorker.swift",
+      "kind": "StringLiteral",
+      "offset": 3756,
+      "length": 30,
+      "value": "\"backgroundChannelInitialized\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/BackgroundWorker.swift",
+      "kind": "StringLiteral",
+      "offset": 3828,
+      "length": 14,
+      "value": "\"onResultSend\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/LoggingDebugHandler.swift",
+      "kind": "StringLiteral",
+      "offset": 395,
+      "length": 34,
+      "value": "\"dev.fluttercommunity.workmanager\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/LoggingDebugHandler.swift",
+      "kind": "StringLiteral",
+      "offset": 441,
+      "length": 7,
+      "value": "\"debug\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/NotificationDebugHandler.swift",
+      "kind": "StringLiteral",
+      "offset": 488,
+      "length": 8,
+      "value": "\"▶️\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/NotificationDebugHandler.swift",
+      "kind": "StringLiteral",
+      "offset": 526,
+      "length": 6,
+      "value": "\"🔄\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/NotificationDebugHandler.swift",
+      "kind": "StringLiteral",
+      "offset": 564,
+      "length": 5,
+      "value": "\"✅\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/NotificationDebugHandler.swift",
+      "kind": "StringLiteral",
+      "offset": 601,
+      "length": 5,
+      "value": "\"❌\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/NotificationDebugHandler.swift",
+      "kind": "StringLiteral",
+      "offset": 635,
+      "length": 8,
+      "value": "\"⏹️\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/UserDefaultsHelper.swift",
+      "kind": "StringLiteral",
+      "offset": 1597,
+      "length": 46,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/UserDefaultsHelper.swift",
+      "kind": "StringLiteral",
+      "offset": 1629,
+      "length": 1,
+      "value": "\".userDefaults\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/pigeon\/WorkmanagerApi.g.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5343,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/pigeon\/WorkmanagerApi.g.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5395,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/pigeon\/WorkmanagerApi.g.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5450,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/pigeon\/WorkmanagerApi.g.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5486,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/pigeon\/WorkmanagerApi.g.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5532,
+      "length": 1,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/pigeon\/WorkmanagerApi.g.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5580,
+      "length": 1,
+      "value": "5"
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/pigeon\/WorkmanagerApi.g.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5650,
+      "length": 1,
+      "value": "6"
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/pigeon\/WorkmanagerApi.g.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6072,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/pigeon\/WorkmanagerApi.g.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6153,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/pigeon\/WorkmanagerApi.g.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6238,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/pigeon\/WorkmanagerApi.g.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6326,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/pigeon\/WorkmanagerApi.g.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6412,
+      "length": 1,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/pigeon\/WorkmanagerApi.g.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6615,
+      "length": 1,
+      "value": "5"
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/pigeon\/WorkmanagerApi.g.swift",
+      "kind": "IntegerLiteral",
+      "offset": 7075,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/pigeon\/WorkmanagerApi.g.swift",
+      "kind": "IntegerLiteral",
+      "offset": 7175,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/pigeon\/WorkmanagerApi.g.swift",
+      "kind": "IntegerLiteral",
+      "offset": 7707,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/pigeon\/WorkmanagerApi.g.swift",
+      "kind": "IntegerLiteral",
+      "offset": 7897,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/pigeon\/WorkmanagerApi.g.swift",
+      "kind": "IntegerLiteral",
+      "offset": 8082,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/pigeon\/WorkmanagerApi.g.swift",
+      "kind": "IntegerLiteral",
+      "offset": 8299,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/pigeon\/WorkmanagerApi.g.swift",
+      "kind": "IntegerLiteral",
+      "offset": 9357,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/pigeon\/WorkmanagerApi.g.swift",
+      "kind": "IntegerLiteral",
+      "offset": 9641,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/pigeon\/WorkmanagerApi.g.swift",
+      "kind": "IntegerLiteral",
+      "offset": 10035,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/pigeon\/WorkmanagerApi.g.swift",
+      "kind": "IntegerLiteral",
+      "offset": 10367,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/pigeon\/WorkmanagerApi.g.swift",
+      "kind": "IntegerLiteral",
+      "offset": 10536,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/pigeon\/WorkmanagerApi.g.swift",
+      "kind": "IntegerLiteral",
+      "offset": 11022,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/pigeon\/WorkmanagerApi.g.swift",
+      "kind": "IntegerLiteral",
+      "offset": 11080,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/pigeon\/WorkmanagerApi.g.swift",
+      "kind": "IntegerLiteral",
+      "offset": 11139,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/pigeon\/WorkmanagerApi.g.swift",
+      "kind": "IntegerLiteral",
+      "offset": 11192,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/pigeon\/WorkmanagerApi.g.swift",
+      "kind": "IntegerLiteral",
+      "offset": 11260,
+      "length": 1,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/pigeon\/WorkmanagerApi.g.swift",
+      "kind": "IntegerLiteral",
+      "offset": 11751,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/pigeon\/WorkmanagerApi.g.swift",
+      "kind": "IntegerLiteral",
+      "offset": 11899,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/pigeon\/WorkmanagerApi.g.swift",
+      "kind": "StringLiteral",
+      "offset": 49427,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/pigeon\/WorkmanagerApi.g.swift",
+      "kind": "StringLiteral",
+      "offset": 63848,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/WorkmanagerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 996,
+      "length": 34,
+      "value": "\"dev.fluttercommunity.workmanager\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/workmanager_apple-0.9.11\/ios\/workmanager_apple\/Sources\/workmanager_apple\/WorkmanagerPlugin.swift",
+      "kind": "Array",
+      "offset": 20265,
+      "length": 2,
+      "value": "[]"
+    }
+  ]
+}

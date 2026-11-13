@@ -1,100 +1,68 @@
-<p align="center">
-  <img src="assets/icon/register_icon.png" width="140" alt="Register">
-</p>
+# Register — open and run in Xcode
 
-<h1 align="center">Register</h1>
+1. Open **Register.xcodeproj**.
+2. Select the **Register** scheme and your **iPhone, iPad, or simulator**.
+3. Press **⌘R**.
 
-<p align="center">
-  Eine moderne, inoffizielle App für das <b>Digitale Register</b> –<br>
-  Noten, Hausaufgaben, Stundenplan und Absenzen an einem Ort.
-</p>
+No Flutter installation, CocoaPods installation, package download, or terminal
+setup is required. The app, Flutter runtime, native plugins, fonts, and assets
+are bundled locally. Keep the complete folder together; the project references
+its `Frameworks`, `App`, and `Debugging` folders by relative paths.
 
-<p align="center">
-  <a href="https://github.com/kererleon/register-app/releases/latest"><b>⬇️ Neueste Version herunterladen</b></a>
-</p>
+For a physical iPhone, select **Register → Signing & Capabilities → Team** and
+choose your Apple development team, then select the connected iPhone and Run.
+The app now uses the unique identifier `app.register.personal.r9457c4543606d986`.
+Xcode has created its development profile and signed a Release device build with
+your selected team. **Run uses Release by default**, without a debugger. After
+installing it once with Xcode, open the app directly from the phone's home screen;
+the Mac and Xcode are not needed to launch it. Use **Product → Archive** for
+distribution builds.
 
----
+Demo: school **Vinzentinum**, username **demo-user-6540**, any password.
 
-## Funktionen
+## Apple Calendar export
 
-- **Heute** – laufende Stunde mit Restzeit, was heute und morgen fällig ist, nächste Tests auf einen Blick
-- **Noten** – Durchschnitt pro Fach und gesamt, dazu die **Noten-Prognose**: welche Note du im nächsten Test brauchst, um auf 6, 7 oder 8 zu kommen
-- **Test-Countdown & Lernplan** – Tests mit Countdown; ein Klick verteilt Lerneinheiten als Erinnerungen ins Register
-- **Absenzen** – im Voraus melden, entschuldigen und löschen, mit **Fehlstunden-Ampel** bis zur 25-%-Grenze, dazu hochgerechnet aufs ganze Schuljahr: wie viele Stunden du bis Schulende noch fehlen darfst
-- **Aufgaben verschieben** – auch Aufgaben von Lehrpersonen, als Erinnerung sichtbar auf allen Geräten und der Webseite
-- **Kalender** – Wochenansicht mit Markierung der laufenden Stunde und Profilbildern der Lehrpersonen
-- **Mitteilungen** – bei neuen Noten, Aufgaben, Benachrichtigungen und Supplenzen
-- **Zwei Designs** – *Holo* (futuristisch, clean) und *Brainrot* (laut, bunt, Meme-Style), umschaltbar in den Einstellungen
-- **Widgets für macOS** – Stundenplan, Tests & Aufgaben, Notendurchschnitt
+Open **Kalender**, select a week, and tap the export icon at the top right.
+Choose lessons, tests, and/or tasks, then choose the destination calendar in
+Apple's calendar picker. Allow Calendar access when prompted. On iOS 17 or later
+the app requests permission to add events, without reading existing events.
 
-## Zwei Versionen
+Lesson times retain the school's Europe/Rome time zone and actual teaching
+breaks. Tests and tasks are exported as all-day deadlines. Completed tasks and
+entries without usable lesson times are excluded. Duplicate prevention remembers
+items exported by this installation; turn it off to explicitly export them again.
+This is a one-time copy, not an automatically updated calendar subscription.
 
-| | **Register** (Flutter) | **Register Rust** |
-|---|---|---|
-| Download | [Neueste Version](https://github.com/kererleon/register-app/releases/latest) | [Releases „Register Rust“](https://github.com/kererleon/register-app/releases?q=rust-build) |
-| Plattformen | Android, Windows, iPhone, Mac | Android, Windows, Mac |
-| Funktionen | alle | Heute, Aufgaben, Noten mit Prognose, Kalender, Absenzen mit Jahres-Hochrechnung, Mitteilungen |
-| Designs | Holo, Brainrot, Israel, Clean, Liquid Glass | Holo (dunkel), Clean (hell, eigene Akzentfarbe) |
-| Download-Größe (Mac) | ca. 60 MB | ca. 14 MB |
-| Arbeitsspeicher | ca. 140 MB | ca. 95 MB |
+## Clone from GitHub
 
-Die Rust-Version ist eine eigenständige Neuentwicklung (Ordner [`rust/`](rust)): kleiner, sparsamer und lädt alle Bereiche gleichzeitig. Beide Versionen können nebeneinander installiert werden.
+Clone this repository normally, then open `Register.xcodeproj`. The runtime
+frameworks are included as ordinary Git files: no Git LFS, Flutter, or CocoaPods
+setup is needed to run the app. Optional large Flutter crash-symbol files are
+compressed in `DeveloperTools/Symbols/`; they are not needed to build or run.
 
-## Installation
+The project targets iOS 15 or later and was verified with Xcode 27.2. Xcode must
+have an iOS simulator runtime installed to run a simulator. Device signing
+credentials are intentionally not included.
 
-### Android
-1. [**Register-Android.apk**](https://github.com/kererleon/register-app/releases/latest) auf dem Handy herunterladen
-2. Datei öffnen und erlauben, dass der Browser **Apps aus unbekannten Quellen** installieren darf
-3. Installieren – Updates werden einfach über die alte Version installiert
+## Source and changes
 
-### Windows
-1. [**Register-Setup.exe**](https://github.com/kererleon/register-app/releases/latest) herunterladen und starten
-2. Falls SmartScreen warnt: *Weitere Informationen → Trotzdem ausführen*
-3. Den Schritten folgen – Register landet im Startmenü (auf Wunsch auch auf dem Desktop), Administratorrechte sind nicht nötig
-4. Deinstallieren über *Einstellungen → Apps*
+The native launch code is in `App/`. The original Flutter application source,
+including the iOS fixes and offline fonts, is in `Source/Flutter/`.
 
-Ohne Installation: **Register-Windows.zip** entpacken und `Register.exe` starten.
+The Flutter UI is supplied as precompiled XCFrameworks so the app can run from
+Xcode without installing Flutter. Swift/Objective-C launch-code changes build
+directly in Xcode. After changing Dart source, developers with Flutter 3.47.5
+and CocoaPods can run `bash DeveloperTools/RebuildFrameworks.sh` to update the
+bundled application frameworks, then return to Xcode. Adding native plugin
+dependencies also requires updating the project's framework references.
 
-### iPhone & Mac
-Für iOS und macOS gibt es keinen fertigen Download – Apple erlaubt das nur über den App Store.
-Du kannst die App aber selbst mit Xcode bauen (siehe unten) und mit einer kostenlosen Apple-ID
-auf deine eigenen Geräte installieren.
+Third-party licenses are in `Licenses/`, `Source/Flutter/LICENSE.txt`, the font
+asset directory, and the app's bundled notices. The app remains GPL-3.0.
 
-## Ohne Konto ausprobieren
+## Launch test
 
-Im **Demo-Modus** zeigt die App Beispieldaten:
-Schule `Vinzentinum`, Benutzer `demo-user-6540`, beliebiges Passwort.
-
-## Datenschutz
-
-- Die App spricht nur mit dem Server deiner Schule (`*.digitalesregister.it`) und lädt Profilbilder von der öffentlichen Webseite der Schule.
-- Zugangsdaten werden – wenn du „Angemeldet bleiben“ wählst – **nur verschlüsselt auf deinem Gerät** gespeichert.
-- Es gibt keine Werbung, kein Tracking und keinen eigenen Server.
-
-## Selbst bauen
-
-Voraussetzungen: [Flutter](https://flutter.dev) (stable), für iOS/macOS zusätzlich Xcode, für Android das Android SDK.
-
-```bash
-flutter pub get
-dart run build_runner build --delete-conflicting-outputs
-flutter run
-```
-
-Für iOS und macOS trägst du dein Apple-Entwicklerteam in eine lokale Datei ein, die nicht im Repository landet:
-
-```bash
-echo "DEVELOPMENT_TEAM = DEINE_TEAM_ID" > ios/Flutter/Team.xcconfig
-cp ios/Flutter/Team.xcconfig macos/Runner/Configs/Team.xcconfig
-```
-
-Android-APK und Windows-Version baut GitHub Actions automatisch bei jedem Push auf `main` und veröffentlicht sie als Release.
-
-## Herkunft & Lizenz
-
-Register basiert auf der App [**digitales_register**](https://github.com/miDeb/digitales_register) von
-Michael Debertol, die seit 2023 nicht mehr weiterentwickelt wird. Danke für die großartige Grundlage!
-
-Diese App ist **kein offizielles Produkt** des Digitalen Registers und steht in keiner Verbindung zu dessen Betreiber.
-
-Lizenziert unter der [GNU General Public License v3.0](LICENSE.txt).
+Press **⌘U** to run the Xcode UI tests. They check application launch and, on a
+simulator, demo Calendar export and duplicate prevention. Use a disposable
+simulator: the export test writes demo events to its calendar. The app also
+passed all 47 Flutter unit/widget tests. See `VERIFICATION.md` for checks and
+remaining physical-device limits.

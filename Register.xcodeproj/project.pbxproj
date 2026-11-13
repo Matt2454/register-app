@@ -1,0 +1,611 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0709287F66950F9C3FD9C4CC /* url_launcher_ios.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B1BC8632D74FD61CFB01F1F6 /* url_launcher_ios.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		09010AE36638E4941E4C52CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E05EE530F7E81843995D64EA /* Assets.xcassets */; };
+		0EFDF91A311C4D331A252544 /* shared_preferences_foundation.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AE48D329716F5EBE8EBCD50 /* shared_preferences_foundation.xcframework */; };
+		1A1DB97E5292A35C3353F663 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC234E74DC808F67088AA62 /* GeneratedPluginRegistrant.m */; };
+		1F43ECBB398E6D55A1CD11DE /* Flutter.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D5101A9F753BF13AACABB19 /* Flutter.xcframework */; };
+		288AA53D128D7A4EB4B7F809 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D7B2F764B90F0F4E1243BF3 /* LaunchScreen.storyboard */; };
+		31AAC531E7E67D58481EE3B9 /* flutter_secure_storage.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CAAF608EFA56639A74F8CAC /* flutter_secure_storage.xcframework */; };
+		3D940A6DF5DAEE03CA2E0F6A /* path_provider_foundation.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9A533FE65E8A7D4EABFB4770 /* path_provider_foundation.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4BD84080760D4BADC2C4363C /* CalendarExport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC838693D8768E14B46CFEF9 /* CalendarExport.swift */; };
+		4FB8EB69B5E53F9E13E424CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C34A5CC2AB70B21661DFD16E /* Main.storyboard */; };
+		5DB25583D1ABC8071723DA20 /* path_provider_foundation.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A533FE65E8A7D4EABFB4770 /* path_provider_foundation.xcframework */; };
+		5F231ABD77E1606AB08D0006 /* image_picker_ios.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E34851100E92519BF110194 /* image_picker_ios.xcframework */; };
+		65FD523E95D1D2CF2C1F1F2A /* open_file_ios.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE9F2F12E8D245B9D5C32BF9 /* open_file_ios.xcframework */; };
+		6AC447540BD28D85D4F1D7D5 /* package_info_plus.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 400A2F358B8DE4B608AA4495 /* package_info_plus.xcframework */; };
+		71E10BB2CE2D76490DD9D0C8 /* image_picker_ios.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5E34851100E92519BF110194 /* image_picker_ios.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8B612E43AA87405821CC4A90 /* flutter_secure_storage.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6CAAF608EFA56639A74F8CAC /* flutter_secure_storage.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8C32AE13726B3466CF9EB7F2 /* workmanager_apple.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CB14E2B0BBB6BAAC5CEF7C1 /* workmanager_apple.xcframework */; };
+		9094101E82F88B158568667E /* biometric_storage.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5331770DEC44C6141DD85D34 /* biometric_storage.xcframework */; };
+		918CE967BB4F4BBCF2D2B44D /* App.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44963EF4EC0F4ED85C6335FE /* App.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9C79B7A98B612D113FDB4D81 /* url_launcher_ios.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1BC8632D74FD61CFB01F1F6 /* url_launcher_ios.xcframework */; };
+		A12BC493217A70777D684534 /* LaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A13AD6F8F497B9ED7737B9 /* LaunchTests.swift */; };
+		A38A6F280D55B320CD073FDB /* package_info_plus.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 400A2F358B8DE4B608AA4495 /* package_info_plus.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A45988B33EB1F1C485A95416 /* workmanager_apple.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1CB14E2B0BBB6BAAC5CEF7C1 /* workmanager_apple.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AB2CD49BED22723DDB3AF7EB /* app_links.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1FD43180AE2E3D7C302DCEE /* app_links.xcframework */; };
+		ADADC54FE1A13ABD6D946366 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91947FEF87573F6B890D09E /* AppDelegate.swift */; };
+		B775A66E701827DDC1145020 /* open_file_ios.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AE9F2F12E8D245B9D5C32BF9 /* open_file_ios.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BF2B1D2E1B91C200D9294926 /* app_links.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B1FD43180AE2E3D7C302DCEE /* app_links.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C280EF31FC878210F221C816 /* flutter_local_notifications.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A338EF6156B7B1348E6FE4A /* flutter_local_notifications.xcframework */; };
+		C2B69DD78B7C991FA74EE39A /* shared_preferences_foundation.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4AE48D329716F5EBE8EBCD50 /* shared_preferences_foundation.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C5A1FC24220D14961AD38610 /* biometric_storage.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5331770DEC44C6141DD85D34 /* biometric_storage.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C82EADEA749BEDE95799FB8B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC9F9C3B7CD7453121193C4 /* Foundation.framework */; };
+		D0866AF906CA9673E5240CAD /* Flutter.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D5101A9F753BF13AACABB19 /* Flutter.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D34D50FA86CE4E7E6538737D /* App.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44963EF4EC0F4ED85C6335FE /* App.xcframework */; };
+		DC2C70F1460B5BF02F52CB2F /* flutter_local_notifications.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A338EF6156B7B1348E6FE4A /* flutter_local_notifications.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DFB474E5AD2083C82E25246D /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = F3901E38519ECA7C71268391 /* PrivacyInfo.xcprivacy */; };
+		E96F11C79B5E7571A39C43EE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC9F9C3B7CD7453121193C4 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8C842140E90E4E158876EFD3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C92252DB1B00D025CC937556 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AF9422E33C2BFA439C3B58CD;
+			remoteInfo = Register;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9DE482743FDFF7D4781562A4 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				918CE967BB4F4BBCF2D2B44D /* App.xcframework in Embed Frameworks */,
+				D0866AF906CA9673E5240CAD /* Flutter.xcframework in Embed Frameworks */,
+				BF2B1D2E1B91C200D9294926 /* app_links.xcframework in Embed Frameworks */,
+				C5A1FC24220D14961AD38610 /* biometric_storage.xcframework in Embed Frameworks */,
+				DC2C70F1460B5BF02F52CB2F /* flutter_local_notifications.xcframework in Embed Frameworks */,
+				8B612E43AA87405821CC4A90 /* flutter_secure_storage.xcframework in Embed Frameworks */,
+				71E10BB2CE2D76490DD9D0C8 /* image_picker_ios.xcframework in Embed Frameworks */,
+				B775A66E701827DDC1145020 /* open_file_ios.xcframework in Embed Frameworks */,
+				A38A6F280D55B320CD073FDB /* package_info_plus.xcframework in Embed Frameworks */,
+				3D940A6DF5DAEE03CA2E0F6A /* path_provider_foundation.xcframework in Embed Frameworks */,
+				C2B69DD78B7C991FA74EE39A /* shared_preferences_foundation.xcframework in Embed Frameworks */,
+				0709287F66950F9C3FD9C4CC /* url_launcher_ios.xcframework in Embed Frameworks */,
+				A45988B33EB1F1C485A95416 /* workmanager_apple.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		19A13AD6F8F497B9ED7737B9 /* LaunchTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LaunchTests.swift; sourceTree = "<group>"; };
+		1CB14E2B0BBB6BAAC5CEF7C1 /* workmanager_apple.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = workmanager_apple.xcframework; path = "Frameworks/$(CONFIGURATION)/workmanager_apple.xcframework"; sourceTree = "<group>"; };
+		1D5101A9F753BF13AACABB19 /* Flutter.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = Flutter.xcframework; path = "Frameworks/$(CONFIGURATION)/Flutter.xcframework"; sourceTree = "<group>"; };
+		400A2F358B8DE4B608AA4495 /* package_info_plus.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = package_info_plus.xcframework; path = "Frameworks/$(CONFIGURATION)/package_info_plus.xcframework"; sourceTree = "<group>"; };
+		44963EF4EC0F4ED85C6335FE /* App.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = App.xcframework; path = "Frameworks/$(CONFIGURATION)/App.xcframework"; sourceTree = "<group>"; };
+		4AE48D329716F5EBE8EBCD50 /* shared_preferences_foundation.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = shared_preferences_foundation.xcframework; path = "Frameworks/$(CONFIGURATION)/shared_preferences_foundation.xcframework"; sourceTree = "<group>"; };
+		4BC234E74DC808F67088AA62 /* GeneratedPluginRegistrant.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = GeneratedPluginRegistrant.m; sourceTree = "<group>"; };
+		5331770DEC44C6141DD85D34 /* biometric_storage.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = biometric_storage.xcframework; path = "Frameworks/$(CONFIGURATION)/biometric_storage.xcframework"; sourceTree = "<group>"; };
+		5E34851100E92519BF110194 /* image_picker_ios.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = image_picker_ios.xcframework; path = "Frameworks/$(CONFIGURATION)/image_picker_ios.xcframework"; sourceTree = "<group>"; };
+		65A3149473C5BD3A98C9F49D /* Register.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Register.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AD416F273B816C5FEB6D979 /* RegisterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RegisterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CAAF608EFA56639A74F8CAC /* flutter_secure_storage.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = flutter_secure_storage.xcframework; path = "Frameworks/$(CONFIGURATION)/flutter_secure_storage.xcframework"; sourceTree = "<group>"; };
+		7A338EF6156B7B1348E6FE4A /* flutter_local_notifications.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = flutter_local_notifications.xcframework; path = "Frameworks/$(CONFIGURATION)/flutter_local_notifications.xcframework"; sourceTree = "<group>"; };
+		7D7B2F764B90F0F4E1243BF3 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7FB078715EA09DACAAA2099A /* GeneratedPluginRegistrant.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GeneratedPluginRegistrant.h; sourceTree = "<group>"; };
+		8BC9F9C3B7CD7453121193C4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		9A533FE65E8A7D4EABFB4770 /* path_provider_foundation.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = path_provider_foundation.xcframework; path = "Frameworks/$(CONFIGURATION)/path_provider_foundation.xcframework"; sourceTree = "<group>"; };
+		AE9F2F12E8D245B9D5C32BF9 /* open_file_ios.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = open_file_ios.xcframework; path = "Frameworks/$(CONFIGURATION)/open_file_ios.xcframework"; sourceTree = "<group>"; };
+		B1BC8632D74FD61CFB01F1F6 /* url_launcher_ios.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = url_launcher_ios.xcframework; path = "Frameworks/$(CONFIGURATION)/url_launcher_ios.xcframework"; sourceTree = "<group>"; };
+		B1FD43180AE2E3D7C302DCEE /* app_links.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = app_links.xcframework; path = "Frameworks/$(CONFIGURATION)/app_links.xcframework"; sourceTree = "<group>"; };
+		C34A5CC2AB70B21661DFD16E /* Main.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C3B7F5B2EEEAF8938D856972 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C91947FEF87573F6B890D09E /* AppDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D0A3B8C2D8044D2C744BB6EE /* Runner-Bridging-Header.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Runner-Bridging-Header.h"; sourceTree = "<group>"; };
+		E05EE530F7E81843995D64EA /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F3901E38519ECA7C71268391 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		FC838693D8768E14B46CFEF9 /* CalendarExport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CalendarExport.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B227296AB2AC2338D3518D47 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C82EADEA749BEDE95799FB8B /* Foundation.framework in Frameworks */,
+				D34D50FA86CE4E7E6538737D /* App.xcframework in Frameworks */,
+				1F43ECBB398E6D55A1CD11DE /* Flutter.xcframework in Frameworks */,
+				AB2CD49BED22723DDB3AF7EB /* app_links.xcframework in Frameworks */,
+				9094101E82F88B158568667E /* biometric_storage.xcframework in Frameworks */,
+				C280EF31FC878210F221C816 /* flutter_local_notifications.xcframework in Frameworks */,
+				31AAC531E7E67D58481EE3B9 /* flutter_secure_storage.xcframework in Frameworks */,
+				5F231ABD77E1606AB08D0006 /* image_picker_ios.xcframework in Frameworks */,
+				65FD523E95D1D2CF2C1F1F2A /* open_file_ios.xcframework in Frameworks */,
+				6AC447540BD28D85D4F1D7D5 /* package_info_plus.xcframework in Frameworks */,
+				5DB25583D1ABC8071723DA20 /* path_provider_foundation.xcframework in Frameworks */,
+				0EFDF91A311C4D331A252544 /* shared_preferences_foundation.xcframework in Frameworks */,
+				9C79B7A98B612D113FDB4D81 /* url_launcher_ios.xcframework in Frameworks */,
+				8C32AE13726B3466CF9EB7F2 /* workmanager_apple.xcframework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAB9565F67E7A834CEF23C3A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E96F11C79B5E7571A39C43EE /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3707378FBDEE4ECE64C62D0A /* UITests */ = {
+			isa = PBXGroup;
+			children = (
+				19A13AD6F8F497B9ED7737B9 /* LaunchTests.swift */,
+			);
+			path = UITests;
+			sourceTree = "<group>";
+		};
+		773A77FA5375949CE5C62DDE /* Bundled Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				44963EF4EC0F4ED85C6335FE /* App.xcframework */,
+				1D5101A9F753BF13AACABB19 /* Flutter.xcframework */,
+				B1FD43180AE2E3D7C302DCEE /* app_links.xcframework */,
+				5331770DEC44C6141DD85D34 /* biometric_storage.xcframework */,
+				7A338EF6156B7B1348E6FE4A /* flutter_local_notifications.xcframework */,
+				6CAAF608EFA56639A74F8CAC /* flutter_secure_storage.xcframework */,
+				5E34851100E92519BF110194 /* image_picker_ios.xcframework */,
+				AE9F2F12E8D245B9D5C32BF9 /* open_file_ios.xcframework */,
+				400A2F358B8DE4B608AA4495 /* package_info_plus.xcframework */,
+				9A533FE65E8A7D4EABFB4770 /* path_provider_foundation.xcframework */,
+				4AE48D329716F5EBE8EBCD50 /* shared_preferences_foundation.xcframework */,
+				B1BC8632D74FD61CFB01F1F6 /* url_launcher_ios.xcframework */,
+				1CB14E2B0BBB6BAAC5CEF7C1 /* workmanager_apple.xcframework */,
+			);
+			name = "Bundled Frameworks";
+			sourceTree = "<group>";
+		};
+		7EB6640A601163BE39EC8615 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				80E06C8A5A84D525367EDCD9 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		80E06C8A5A84D525367EDCD9 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				8BC9F9C3B7CD7453121193C4 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		9F30902DBABE17B10A11F355 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				C91947FEF87573F6B890D09E /* AppDelegate.swift */,
+				4BC234E74DC808F67088AA62 /* GeneratedPluginRegistrant.m */,
+				7FB078715EA09DACAAA2099A /* GeneratedPluginRegistrant.h */,
+				D0A3B8C2D8044D2C744BB6EE /* Runner-Bridging-Header.h */,
+				C3B7F5B2EEEAF8938D856972 /* Info.plist */,
+				E05EE530F7E81843995D64EA /* Assets.xcassets */,
+				C34A5CC2AB70B21661DFD16E /* Main.storyboard */,
+				7D7B2F764B90F0F4E1243BF3 /* LaunchScreen.storyboard */,
+				F3901E38519ECA7C71268391 /* PrivacyInfo.xcprivacy */,
+				FC838693D8768E14B46CFEF9 /* CalendarExport.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		C0F89FCC33501E161882C634 = {
+			isa = PBXGroup;
+			children = (
+				C200AED90D96362864F4866D /* Products */,
+				7EB6640A601163BE39EC8615 /* Frameworks */,
+				9F30902DBABE17B10A11F355 /* App */,
+				773A77FA5375949CE5C62DDE /* Bundled Frameworks */,
+				3707378FBDEE4ECE64C62D0A /* UITests */,
+			);
+			sourceTree = "<group>";
+		};
+		C200AED90D96362864F4866D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				65A3149473C5BD3A98C9F49D /* Register.app */,
+				6AD416F273B816C5FEB6D979 /* RegisterUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5A45E01001417CB7DAB6AAB0 /* RegisterUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F3198E003E9441797A4B64A /* Build configuration list for PBXNativeTarget "RegisterUITests" */;
+			buildPhases = (
+				CCB8F155AA5836532112010D /* Sources */,
+				EAB9565F67E7A834CEF23C3A /* Frameworks */,
+				A28C74008A6CF6960134EFDB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CE56D5DB356933E88CB76FCF /* PBXTargetDependency */,
+			);
+			name = RegisterUITests;
+			productName = RegisterUITests;
+			productReference = 6AD416F273B816C5FEB6D979 /* RegisterUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		AF9422E33C2BFA439C3B58CD /* Register */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0FCA070856A0CE65E0EF8038 /* Build configuration list for PBXNativeTarget "Register" */;
+			buildPhases = (
+				8B2A4661388AFEAB096D5432 /* Sources */,
+				B227296AB2AC2338D3518D47 /* Frameworks */,
+				C4E2FB16F601E8C62DEF001D /* Resources */,
+				9DE482743FDFF7D4781562A4 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Register;
+			productName = Register;
+			productReference = 65A3149473C5BD3A98C9F49D /* Register.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C92252DB1B00D025CC937556 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					5A45E01001417CB7DAB6AAB0 = {
+						CreatedOnToolsVersion = 27.2;
+						TestTargetID = AF9422E33C2BFA439C3B58CD;
+					};
+					AF9422E33C2BFA439C3B58CD = {
+						CreatedOnToolsVersion = 27.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 6BBEE19CE4BA7625E262942E /* Build configuration list for PBXProject "Register" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C0F89FCC33501E161882C634;
+			productRefGroup = C200AED90D96362864F4866D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AF9422E33C2BFA439C3B58CD /* Register */,
+				5A45E01001417CB7DAB6AAB0 /* RegisterUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A28C74008A6CF6960134EFDB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C4E2FB16F601E8C62DEF001D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				09010AE36638E4941E4C52CD /* Assets.xcassets in Resources */,
+				4FB8EB69B5E53F9E13E424CA /* Main.storyboard in Resources */,
+				288AA53D128D7A4EB4B7F809 /* LaunchScreen.storyboard in Resources */,
+				DFB474E5AD2083C82E25246D /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8B2A4661388AFEAB096D5432 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADADC54FE1A13ABD6D946366 /* AppDelegate.swift in Sources */,
+				1A1DB97E5292A35C3353F663 /* GeneratedPluginRegistrant.m in Sources */,
+				4BD84080760D4BADC2C4363C /* CalendarExport.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CCB8F155AA5836532112010D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A12BC493217A70777D684534 /* LaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CE56D5DB356933E88CB76FCF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Register;
+			target = AF9422E33C2BFA439C3B58CD /* Register */;
+			targetProxy = 8C842140E90E4E158876EFD3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		2161BFBB1497ECDF0A47BF5D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		4208781EBEC3252DDCE93FEB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.register.personal.r9457c4543606d986.uitests;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Register;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		51F7D5210BD94244E1B06465 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.register.personal.r9457c4543606d986.uitests;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Register;
+			};
+			name = Debug;
+		};
+		8EE611A5EDA463FC7D9A5876 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		B72FD0B260362BEDD8054956 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 50;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 3LSM7JS8QD;
+				ENABLE_BITCODE = NO;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = App/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 8.2.15;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.register.personal.r9457c4543606d986;
+				PRODUCT_NAME = Register;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "App/Runner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E937C68CD4CE023E0E24D31A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 50;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 3LSM7JS8QD;
+				ENABLE_BITCODE = NO;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = App/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 8.2.15;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.register.personal.r9457c4543606d986;
+				PRODUCT_NAME = Register;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "App/Runner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0FCA070856A0CE65E0EF8038 /* Build configuration list for PBXNativeTarget "Register" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B72FD0B260362BEDD8054956 /* Release */,
+				E937C68CD4CE023E0E24D31A /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1F3198E003E9441797A4B64A /* Build configuration list for PBXNativeTarget "RegisterUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4208781EBEC3252DDCE93FEB /* Release */,
+				51F7D5210BD94244E1B06465 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6BBEE19CE4BA7625E262942E /* Build configuration list for PBXProject "Register" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8EE611A5EDA463FC7D9A5876 /* Debug */,
+				2161BFBB1497ECDF0A47BF5D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C92252DB1B00D025CC937556 /* Project object */;
+}

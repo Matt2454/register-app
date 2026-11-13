@@ -1,0 +1,4 @@
+# Prebuilt frameworks retain exact binary contents. No Git LFS required.
+Frameworks/** -text -diff
+*.zip -text -diff
+*.ttf -text -diff

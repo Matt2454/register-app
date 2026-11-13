@@ -1,0 +1,1357 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "app_links",
+    "printedName": "app_links",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "Flutter",
+        "printedName": "Flutter",
+        "declKind": "Import",
+        "moduleName": "app_links"
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "app_links"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "AppLinks",
+        "printedName": "AppLinks",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "shared",
+            "printedName": "shared",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AppLinksIosPlugin",
+                "printedName": "app_links.AppLinksIosPlugin",
+                "usr": "c:@M@app_links@objc(cs)AppLinksIosPlugin"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9app_links8AppLinksC6sharedAA0cD9IosPluginCvpZ",
+            "mangledName": "$s9app_links8AppLinksC6sharedAA0cD9IosPluginCvpZ",
+            "moduleName": "app_links",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AppLinksIosPlugin",
+                    "printedName": "app_links.AppLinksIosPlugin",
+                    "usr": "c:@M@app_links@objc(cs)AppLinksIosPlugin"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9app_links8AppLinksC6sharedAA0cD9IosPluginCvgZ",
+                "mangledName": "$s9app_links8AppLinksC6sharedAA0cD9IosPluginCvgZ",
+                "moduleName": "app_links",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:9app_links8AppLinksC",
+        "mangledName": "$s9app_links8AppLinksC",
+        "moduleName": "app_links",
+        "isOpen": true,
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "hasMissingDesignatedInitializers": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "UrlHandled",
+        "printedName": "UrlHandled",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "never",
+            "printedName": "never",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(app_links.UrlHandled.Type) -> app_links.UrlHandled",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UrlHandled",
+                    "printedName": "app_links.UrlHandled",
+                    "usr": "s:9app_links10UrlHandledO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "app_links.UrlHandled.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UrlHandled",
+                        "printedName": "app_links.UrlHandled",
+                        "usr": "s:9app_links10UrlHandledO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:9app_links10UrlHandledO5neveryA2CmF",
+            "mangledName": "$s9app_links10UrlHandledO5neveryA2CmF",
+            "moduleName": "app_links",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "availability",
+            "printedName": "availability",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(app_links.UrlHandled.Type) -> app_links.UrlHandled",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UrlHandled",
+                    "printedName": "app_links.UrlHandled",
+                    "usr": "s:9app_links10UrlHandledO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "app_links.UrlHandled.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UrlHandled",
+                        "printedName": "app_links.UrlHandled",
+                        "usr": "s:9app_links10UrlHandledO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:9app_links10UrlHandledO12availabilityyA2CmF",
+            "mangledName": "$s9app_links10UrlHandledO12availabilityyA2CmF",
+            "moduleName": "app_links",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "==",
+            "printedName": "==(_:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UrlHandled",
+                "printedName": "app_links.UrlHandled",
+                "usr": "s:9app_links10UrlHandledO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UrlHandled",
+                "printedName": "app_links.UrlHandled",
+                "usr": "s:9app_links10UrlHandledO"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9app_links10UrlHandledO2eeoiySbAC_ACtFZ",
+            "mangledName": "$s9app_links10UrlHandledO2eeoiySbAC_ACtFZ",
+            "moduleName": "app_links",
+            "static": true,
+            "implicit": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "hashValue",
+            "printedName": "hashValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9app_links10UrlHandledO9hashValueSivp",
+            "mangledName": "$s9app_links10UrlHandledO9hashValueSivp",
+            "moduleName": "app_links",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9app_links10UrlHandledO9hashValueSivg",
+                "mangledName": "$s9app_links10UrlHandledO9hashValueSivg",
+                "moduleName": "app_links",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "hash",
+            "printedName": "hash(into:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Hasher",
+                "printedName": "Swift.Hasher",
+                "paramValueOwnership": "InOut",
+                "usr": "s:s6HasherV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9app_links10UrlHandledO4hash4intoys6HasherVz_tF",
+            "mangledName": "$s9app_links10UrlHandledO4hash4intoys6HasherVz_tF",
+            "moduleName": "app_links",
+            "implicit": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:9app_links10UrlHandledO",
+        "mangledName": "$s9app_links10UrlHandledO",
+        "moduleName": "app_links",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "AppLinksIosPlugin",
+        "printedName": "AppLinksIosPlugin",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "enabled",
+            "printedName": "enabled",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9app_links17AppLinksIosPluginC7enabledSbvp",
+            "mangledName": "$s9app_links17AppLinksIosPluginC7enabledSbvp",
+            "moduleName": "app_links",
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9app_links17AppLinksIosPluginC7enabledSbvg",
+                "mangledName": "$s9app_links17AppLinksIosPluginC7enabledSbvg",
+                "moduleName": "app_links",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9app_links17AppLinksIosPluginC7enabledSbvs",
+                "mangledName": "$s9app_links17AppLinksIosPluginC7enabledSbvs",
+                "moduleName": "app_links",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9app_links17AppLinksIosPluginC7enabledSbvM",
+                "mangledName": "$s9app_links17AppLinksIosPluginC7enabledSbvM",
+                "moduleName": "app_links",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "defaultUrlHandling",
+            "printedName": "defaultUrlHandling",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UrlHandled",
+                "printedName": "app_links.UrlHandled",
+                "usr": "s:9app_links10UrlHandledO"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9app_links17AppLinksIosPluginC18defaultUrlHandlingAA0H7HandledOvp",
+            "mangledName": "$s9app_links17AppLinksIosPluginC18defaultUrlHandlingAA0H7HandledOvp",
+            "moduleName": "app_links",
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UrlHandled",
+                    "printedName": "app_links.UrlHandled",
+                    "usr": "s:9app_links10UrlHandledO"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9app_links17AppLinksIosPluginC18defaultUrlHandlingAA0H7HandledOvg",
+                "mangledName": "$s9app_links17AppLinksIosPluginC18defaultUrlHandlingAA0H7HandledOvg",
+                "moduleName": "app_links",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UrlHandled",
+                    "printedName": "app_links.UrlHandled",
+                    "usr": "s:9app_links10UrlHandledO"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9app_links17AppLinksIosPluginC18defaultUrlHandlingAA0H7HandledOvs",
+                "mangledName": "$s9app_links17AppLinksIosPluginC18defaultUrlHandlingAA0H7HandledOvs",
+                "moduleName": "app_links",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9app_links17AppLinksIosPluginC18defaultUrlHandlingAA0H7HandledOvM",
+                "mangledName": "$s9app_links17AppLinksIosPluginC18defaultUrlHandlingAA0H7HandledOvM",
+                "moduleName": "app_links",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "urlHandledCallBack",
+            "printedName": "urlHandledCallBack",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "((Foundation.URL) -> Swift.Bool)?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Foundation.URL) -> Swift.Bool",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Bool",
+                        "printedName": "Swift.Bool",
+                        "usr": "s:Sb"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "URL",
+                        "printedName": "Foundation.URL",
+                        "usr": "s:10Foundation3URLV"
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9app_links17AppLinksIosPluginC18urlHandledCallBackSb10Foundation3URLVcSgvp",
+            "mangledName": "$s9app_links17AppLinksIosPluginC18urlHandledCallBackSb10Foundation3URLVcSgvp",
+            "moduleName": "app_links",
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "((Foundation.URL) -> Swift.Bool)?",
+                    "children": [
+                      {
+                        "kind": "TypeFunc",
+                        "name": "Function",
+                        "printedName": "(Foundation.URL) -> Swift.Bool",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Bool",
+                            "printedName": "Swift.Bool",
+                            "usr": "s:Sb"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "URL",
+                            "printedName": "Foundation.URL",
+                            "usr": "s:10Foundation3URLV"
+                          }
+                        ]
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9app_links17AppLinksIosPluginC18urlHandledCallBackSb10Foundation3URLVcSgvg",
+                "mangledName": "$s9app_links17AppLinksIosPluginC18urlHandledCallBackSb10Foundation3URLVcSgvg",
+                "moduleName": "app_links",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "((Foundation.URL) -> Swift.Bool)?",
+                    "children": [
+                      {
+                        "kind": "TypeFunc",
+                        "name": "Function",
+                        "printedName": "(Foundation.URL) -> Swift.Bool",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Bool",
+                            "printedName": "Swift.Bool",
+                            "usr": "s:Sb"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "URL",
+                            "printedName": "Foundation.URL",
+                            "usr": "s:10Foundation3URLV"
+                          }
+                        ]
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9app_links17AppLinksIosPluginC18urlHandledCallBackSb10Foundation3URLVcSgvs",
+                "mangledName": "$s9app_links17AppLinksIosPluginC18urlHandledCallBackSb10Foundation3URLVcSgvs",
+                "moduleName": "app_links",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9app_links17AppLinksIosPluginC18urlHandledCallBackSb10Foundation3URLVcSgvM",
+                "mangledName": "$s9app_links17AppLinksIosPluginC18urlHandledCallBackSb10Foundation3URLVcSgvM",
+                "moduleName": "app_links",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "register",
+            "printedName": "register(with:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "FlutterPluginRegistrar",
+                "printedName": "any Flutter.FlutterPluginRegistrar",
+                "usr": "c:objc(pl)FlutterPluginRegistrar"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@app_links@objc(cs)AppLinksIosPlugin(cm)registerWithRegistrar:",
+            "mangledName": "$s9app_links17AppLinksIosPluginC8register4withySo07FlutterF9Registrar_p_tFZ",
+            "moduleName": "app_links",
+            "static": true,
+            "objc_name": "registerWithRegistrar:",
+            "declAttributes": [
+              "Final",
+              "ObjC",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "handle",
+            "printedName": "handle(_:result:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "FlutterMethodCall",
+                "printedName": "Flutter.FlutterMethodCall",
+                "usr": "c:objc(cs)FlutterMethodCall"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Any?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Any?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@app_links@objc(cs)AppLinksIosPlugin(im)handleMethodCall:result:",
+            "mangledName": "$s9app_links17AppLinksIosPluginC6handle_6resultySo17FlutterMethodCallC_yypSgctF",
+            "moduleName": "app_links",
+            "objc_name": "handleMethodCall:result:",
+            "declAttributes": [
+              "Final",
+              "ObjC",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "getLink",
+            "printedName": "getLink(launchOptions:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.URL?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "URL",
+                    "printedName": "Foundation.URL",
+                    "usr": "s:10Foundation3URLV"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[Swift.AnyHashable : Any]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Swift.AnyHashable : Any]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "AnyHashable",
+                        "printedName": "Swift.AnyHashable",
+                        "usr": "s:s11AnyHashableV"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9app_links17AppLinksIosPluginC7getLink13launchOptions10Foundation3URLVSgSDys11AnyHashableVypGSg_tF",
+            "mangledName": "$s9app_links17AppLinksIosPluginC7getLink13launchOptions10Foundation3URLVSgSDys11AnyHashableVypGSg_tF",
+            "moduleName": "app_links",
+            "deprecated": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "Available",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "application",
+            "printedName": "application(_:continue:restorationHandler:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIApplication",
+                "printedName": "UIKit.UIApplication",
+                "usr": "c:objc(cs)UIApplication"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "NSUserActivity",
+                "printedName": "Foundation.NSUserActivity",
+                "usr": "c:objc(cs)NSUserActivity"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "([Any]) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Any]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@app_links@objc(cs)AppLinksIosPlugin(im)application:continueUserActivity:restorationHandler:",
+            "mangledName": "$s9app_links17AppLinksIosPluginC11application_8continue18restorationHandlerSbSo13UIApplicationC_So14NSUserActivityCySayypGctF",
+            "moduleName": "app_links",
+            "objc_name": "application:continueUserActivity:restorationHandler:",
+            "declAttributes": [
+              "Final",
+              "ObjC",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "application",
+            "printedName": "application(_:open:options:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIApplication",
+                "printedName": "UIKit.UIApplication",
+                "usr": "c:objc(cs)UIApplication"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "URL",
+                "printedName": "Foundation.URL",
+                "usr": "s:10Foundation3URLV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[UIKit.UIApplication.OpenURLOptionsKey : Any]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OpenURLOptionsKey",
+                    "printedName": "UIKit.UIApplication.OpenURLOptionsKey",
+                    "usr": "c:@T@UIApplicationOpenURLOptionsKey"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ProtocolComposition",
+                    "printedName": "Any"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:SD"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@app_links@objc(cs)AppLinksIosPlugin(im)application:openURL:options:",
+            "mangledName": "$s9app_links17AppLinksIosPluginC11application_4open7optionsSbSo13UIApplicationC_10Foundation3URLVSDySo0J17OpenURLOptionsKeyaypGtF",
+            "moduleName": "app_links",
+            "objc_name": "application:openURL:options:",
+            "declAttributes": [
+              "Final",
+              "ObjC",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "scene",
+            "printedName": "scene(_:willConnectTo:options:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIScene",
+                "printedName": "UIKit.UIScene",
+                "usr": "c:objc(cs)UIScene"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UISceneSession",
+                "printedName": "UIKit.UISceneSession",
+                "usr": "c:objc(cs)UISceneSession"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIScene.ConnectionOptions?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ConnectionOptions",
+                    "printedName": "UIKit.UIScene.ConnectionOptions",
+                    "usr": "c:objc(cs)UISceneConnectionOptions"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@app_links@objc(cs)AppLinksIosPlugin(im)scene:willConnectToSession:options:",
+            "mangledName": "$s9app_links17AppLinksIosPluginC5scene_13willConnectTo7optionsSbSo7UISceneC_So0L7SessionCSo0L17ConnectionOptionsCSgtF",
+            "moduleName": "app_links",
+            "objc_name": "scene:willConnectToSession:options:",
+            "declAttributes": [
+              "Final",
+              "ObjC",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "scene",
+            "printedName": "scene(_:openURLContexts:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIScene",
+                "printedName": "UIKit.UIScene",
+                "usr": "c:objc(cs)UIScene"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Set",
+                "printedName": "Swift.Set<UIKit.UIOpenURLContext>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIOpenURLContext",
+                    "printedName": "UIKit.UIOpenURLContext",
+                    "usr": "c:objc(cs)UIOpenURLContext"
+                  }
+                ],
+                "usr": "s:Sh"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@app_links@objc(cs)AppLinksIosPlugin(im)scene:openURLContexts:",
+            "mangledName": "$s9app_links17AppLinksIosPluginC5scene_15openURLContextsSbSo7UISceneC_ShySo16UIOpenURLContextCGtF",
+            "moduleName": "app_links",
+            "objc_name": "scene:openURLContexts:",
+            "declAttributes": [
+              "Final",
+              "ObjC",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "scene",
+            "printedName": "scene(_:continue:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIScene",
+                "printedName": "UIKit.UIScene",
+                "usr": "c:objc(cs)UIScene"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "NSUserActivity",
+                "printedName": "Foundation.NSUserActivity",
+                "usr": "c:objc(cs)NSUserActivity"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@app_links@objc(cs)AppLinksIosPlugin(im)scene:continueUserActivity:",
+            "mangledName": "$s9app_links17AppLinksIosPluginC5scene_8continueSbSo7UISceneC_So14NSUserActivityCtF",
+            "moduleName": "app_links",
+            "objc_name": "scene:continueUserActivity:",
+            "declAttributes": [
+              "Final",
+              "ObjC",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "onListen",
+            "printedName": "onListen(withArguments:eventSink:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Flutter.FlutterError?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "FlutterError",
+                    "printedName": "Flutter.FlutterError",
+                    "usr": "c:objc(cs)FlutterError"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Any?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ProtocolComposition",
+                    "printedName": "Any"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Any?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Any?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@app_links@objc(cs)AppLinksIosPlugin(im)onListenWithArguments:eventSink:",
+            "mangledName": "$s9app_links17AppLinksIosPluginC8onListen13withArguments9eventSinkSo12FlutterErrorCSgypSg_yAJctF",
+            "moduleName": "app_links",
+            "objc_name": "onListenWithArguments:eventSink:",
+            "declAttributes": [
+              "Final",
+              "ObjC",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "onCancel",
+            "printedName": "onCancel(withArguments:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Flutter.FlutterError?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "FlutterError",
+                    "printedName": "Flutter.FlutterError",
+                    "usr": "c:objc(cs)FlutterError"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Any?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ProtocolComposition",
+                    "printedName": "Any"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@app_links@objc(cs)AppLinksIosPlugin(im)onCancelWithArguments:",
+            "mangledName": "$s9app_links17AppLinksIosPluginC8onCancel13withArgumentsSo12FlutterErrorCSgypSg_tF",
+            "moduleName": "app_links",
+            "objc_name": "onCancelWithArguments:",
+            "declAttributes": [
+              "Final",
+              "ObjC",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "handleLink",
+            "printedName": "handleLink(url:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "URL",
+                "printedName": "Foundation.URL",
+                "usr": "s:10Foundation3URLV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9app_links17AppLinksIosPluginC10handleLink3urly10Foundation3URLV_tF",
+            "mangledName": "$s9app_links17AppLinksIosPluginC10handleLink3urly10Foundation3URLV_tF",
+            "moduleName": "app_links",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AppLinksIosPlugin",
+                "printedName": "app_links.AppLinksIosPlugin",
+                "usr": "c:@M@app_links@objc(cs)AppLinksIosPlugin"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@app_links@objc(cs)AppLinksIosPlugin(im)init",
+            "mangledName": "$s9app_links17AppLinksIosPluginCACycfc",
+            "moduleName": "app_links",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@app_links@objc(cs)AppLinksIosPlugin",
+        "mangledName": "$s9app_links17AppLinksIosPluginC",
+        "moduleName": "app_links",
+        "declAttributes": [
+          "Final",
+          "AccessControl",
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          }
+        ]
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/app_links-7.2.1\/ios\/app_links\/Sources\/app_links\/AppLinksIosPlugin.swift",
+      "kind": "BooleanLiteral",
+      "offset": 725,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/app_links-7.2.1\/ios\/app_links\/Sources\/app_links\/AppLinksIosPlugin.swift",
+      "kind": "BooleanLiteral",
+      "offset": 883,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/app_links-7.2.1\/ios\/app_links\/Sources\/app_links\/AppLinksIosPlugin.swift",
+      "kind": "Dictionary",
+      "offset": 4280,
+      "length": 3,
+      "value": "[]"
+    }
+  ]
+}
