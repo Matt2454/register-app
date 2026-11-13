@@ -117,7 +117,7 @@ Future<void> _updateDesktopWidget(
     ActionHandler next,
     Action<Map<String, dynamic>> action) async {
   await next(action);
-  await exportWeekForWidget(api.state);
+  if (Platform.isMacOS) await exportWeekForWidget(api.state);
   await notifySubstitutions(
     api.state,
     action.payload.keys.map(UtcDateTime.parse),

@@ -14,7 +14,9 @@
 		1F43ECBB398E6D55A1CD11DE /* Flutter.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D5101A9F753BF13AACABB19 /* Flutter.xcframework */; };
 		288AA53D128D7A4EB4B7F809 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D7B2F764B90F0F4E1243BF3 /* LaunchScreen.storyboard */; };
 		31AAC531E7E67D58481EE3B9 /* flutter_secure_storage.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CAAF608EFA56639A74F8CAC /* flutter_secure_storage.xcframework */; };
+		35F03498FF9531C1ABC2612A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC9F9C3B7CD7453121193C4 /* Foundation.framework */; };
 		3D940A6DF5DAEE03CA2E0F6A /* path_provider_foundation.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9A533FE65E8A7D4EABFB4770 /* path_provider_foundation.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		477E44802502C490A07DD0F1 /* RegisterWidgets.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 95C733E6D93EF45ED3ACFEF2 /* RegisterWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4BD84080760D4BADC2C4363C /* CalendarExport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC838693D8768E14B46CFEF9 /* CalendarExport.swift */; };
 		4FB8EB69B5E53F9E13E424CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C34A5CC2AB70B21661DFD16E /* Main.storyboard */; };
 		5DB25583D1ABC8071723DA20 /* path_provider_foundation.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A533FE65E8A7D4EABFB4770 /* path_provider_foundation.xcframework */; };
@@ -22,6 +24,7 @@
 		65FD523E95D1D2CF2C1F1F2A /* open_file_ios.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE9F2F12E8D245B9D5C32BF9 /* open_file_ios.xcframework */; };
 		6AC447540BD28D85D4F1D7D5 /* package_info_plus.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 400A2F358B8DE4B608AA4495 /* package_info_plus.xcframework */; };
 		71E10BB2CE2D76490DD9D0C8 /* image_picker_ios.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5E34851100E92519BF110194 /* image_picker_ios.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8AEA22BFB04D9443B7DD8DA7 /* WidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA3EBE4BBC1B282F156E435 /* WidgetSnapshot.swift */; };
 		8B612E43AA87405821CC4A90 /* flutter_secure_storage.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6CAAF608EFA56639A74F8CAC /* flutter_secure_storage.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8C32AE13726B3466CF9EB7F2 /* workmanager_apple.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CB14E2B0BBB6BAAC5CEF7C1 /* workmanager_apple.xcframework */; };
 		9094101E82F88B158568667E /* biometric_storage.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5331770DEC44C6141DD85D34 /* biometric_storage.xcframework */; };
@@ -30,22 +33,34 @@
 		A12BC493217A70777D684534 /* LaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A13AD6F8F497B9ED7737B9 /* LaunchTests.swift */; };
 		A38A6F280D55B320CD073FDB /* package_info_plus.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 400A2F358B8DE4B608AA4495 /* package_info_plus.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A45988B33EB1F1C485A95416 /* workmanager_apple.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1CB14E2B0BBB6BAAC5CEF7C1 /* workmanager_apple.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A6689BC0A8A42775CE6B9E8D /* WidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA3EBE4BBC1B282F156E435 /* WidgetSnapshot.swift */; };
 		AB2CD49BED22723DDB3AF7EB /* app_links.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1FD43180AE2E3D7C302DCEE /* app_links.xcframework */; };
 		ADADC54FE1A13ABD6D946366 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91947FEF87573F6B890D09E /* AppDelegate.swift */; };
+		B5811E0D993191E74796A2B6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3F7BE2D7C66255C3216860E2 /* Localizable.strings */; };
 		B775A66E701827DDC1145020 /* open_file_ios.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AE9F2F12E8D245B9D5C32BF9 /* open_file_ios.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BF2B1D2E1B91C200D9294926 /* app_links.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B1FD43180AE2E3D7C302DCEE /* app_links.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C280EF31FC878210F221C816 /* flutter_local_notifications.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A338EF6156B7B1348E6FE4A /* flutter_local_notifications.xcframework */; };
 		C2B69DD78B7C991FA74EE39A /* shared_preferences_foundation.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4AE48D329716F5EBE8EBCD50 /* shared_preferences_foundation.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C5A1FC24220D14961AD38610 /* biometric_storage.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5331770DEC44C6141DD85D34 /* biometric_storage.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C82EADEA749BEDE95799FB8B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC9F9C3B7CD7453121193C4 /* Foundation.framework */; };
+		C9825AEB35AEEBED7B987404 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2B68D17873DF71B64917FE86 /* InfoPlist.strings */; };
+		CA8A5D43DBA57692FFD369E4 /* WidgetBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C767D754452D8F780554B2 /* WidgetBridge.swift */; };
 		D0866AF906CA9673E5240CAD /* Flutter.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D5101A9F753BF13AACABB19 /* Flutter.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D34D50FA86CE4E7E6538737D /* App.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44963EF4EC0F4ED85C6335FE /* App.xcframework */; };
 		DC2C70F1460B5BF02F52CB2F /* flutter_local_notifications.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A338EF6156B7B1348E6FE4A /* flutter_local_notifications.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DFB474E5AD2083C82E25246D /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = F3901E38519ECA7C71268391 /* PrivacyInfo.xcprivacy */; };
 		E96F11C79B5E7571A39C43EE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC9F9C3B7CD7453121193C4 /* Foundation.framework */; };
+		EA99B54C922AB895D61B3B67 /* RegisterWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DF35AB1153A0994786B486 /* RegisterWidgets.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		5C33BEA57A142D2C49E19570 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C92252DB1B00D025CC937556 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 697ACE38C42019D3AEF93868;
+			remoteInfo = RegisterWidgets;
+		};
 		8C842140E90E4E158876EFD3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C92252DB1B00D025CC937556 /* Project object */;
@@ -56,6 +71,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		75003792701E918F7ABD5129 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				477E44802502C490A07DD0F1 /* RegisterWidgets.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9DE482743FDFF7D4781562A4 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -83,35 +109,56 @@
 
 /* Begin PBXFileReference section */
 		19A13AD6F8F497B9ED7737B9 /* LaunchTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LaunchTests.swift; sourceTree = "<group>"; };
-		1CB14E2B0BBB6BAAC5CEF7C1 /* workmanager_apple.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = workmanager_apple.xcframework; path = "Frameworks/$(CONFIGURATION)/workmanager_apple.xcframework"; sourceTree = "<group>"; };
-		1D5101A9F753BF13AACABB19 /* Flutter.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = Flutter.xcframework; path = "Frameworks/$(CONFIGURATION)/Flutter.xcframework"; sourceTree = "<group>"; };
-		400A2F358B8DE4B608AA4495 /* package_info_plus.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = package_info_plus.xcframework; path = "Frameworks/$(CONFIGURATION)/package_info_plus.xcframework"; sourceTree = "<group>"; };
-		44963EF4EC0F4ED85C6335FE /* App.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = App.xcframework; path = "Frameworks/$(CONFIGURATION)/App.xcframework"; sourceTree = "<group>"; };
-		4AE48D329716F5EBE8EBCD50 /* shared_preferences_foundation.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = shared_preferences_foundation.xcframework; path = "Frameworks/$(CONFIGURATION)/shared_preferences_foundation.xcframework"; sourceTree = "<group>"; };
+		1CB14E2B0BBB6BAAC5CEF7C1 /* workmanager_apple.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = workmanager_apple.xcframework; path = "Frameworks/$(REGISTER_FLUTTER_CONFIGURATION)/workmanager_apple.xcframework"; sourceTree = "<group>"; };
+		1D5101A9F753BF13AACABB19 /* Flutter.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = Flutter.xcframework; path = "Frameworks/$(REGISTER_FLUTTER_CONFIGURATION)/Flutter.xcframework"; sourceTree = "<group>"; };
+		349EAFD116CF226883D9DF77 /* en */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		36F242A41653388F89C9AD60 /* de */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		400A2F358B8DE4B608AA4495 /* package_info_plus.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = package_info_plus.xcframework; path = "Frameworks/$(REGISTER_FLUTTER_CONFIGURATION)/package_info_plus.xcframework"; sourceTree = "<group>"; };
+		44963EF4EC0F4ED85C6335FE /* App.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = App.xcframework; path = "Frameworks/$(REGISTER_FLUTTER_CONFIGURATION)/App.xcframework"; sourceTree = "<group>"; };
+		48F7C67416DF020CFA3B6E01 /* en */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4AE48D329716F5EBE8EBCD50 /* shared_preferences_foundation.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = shared_preferences_foundation.xcframework; path = "Frameworks/$(REGISTER_FLUTTER_CONFIGURATION)/shared_preferences_foundation.xcframework"; sourceTree = "<group>"; };
 		4BC234E74DC808F67088AA62 /* GeneratedPluginRegistrant.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = GeneratedPluginRegistrant.m; sourceTree = "<group>"; };
-		5331770DEC44C6141DD85D34 /* biometric_storage.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = biometric_storage.xcframework; path = "Frameworks/$(CONFIGURATION)/biometric_storage.xcframework"; sourceTree = "<group>"; };
-		5E34851100E92519BF110194 /* image_picker_ios.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = image_picker_ios.xcframework; path = "Frameworks/$(CONFIGURATION)/image_picker_ios.xcframework"; sourceTree = "<group>"; };
+		5331770DEC44C6141DD85D34 /* biometric_storage.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = biometric_storage.xcframework; path = "Frameworks/$(REGISTER_FLUTTER_CONFIGURATION)/biometric_storage.xcframework"; sourceTree = "<group>"; };
+		5E34851100E92519BF110194 /* image_picker_ios.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = image_picker_ios.xcframework; path = "Frameworks/$(REGISTER_FLUTTER_CONFIGURATION)/image_picker_ios.xcframework"; sourceTree = "<group>"; };
 		65A3149473C5BD3A98C9F49D /* Register.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Register.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AD416F273B816C5FEB6D979 /* RegisterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RegisterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6CAAF608EFA56639A74F8CAC /* flutter_secure_storage.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = flutter_secure_storage.xcframework; path = "Frameworks/$(CONFIGURATION)/flutter_secure_storage.xcframework"; sourceTree = "<group>"; };
-		7A338EF6156B7B1348E6FE4A /* flutter_local_notifications.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = flutter_local_notifications.xcframework; path = "Frameworks/$(CONFIGURATION)/flutter_local_notifications.xcframework"; sourceTree = "<group>"; };
+		6CAAF608EFA56639A74F8CAC /* flutter_secure_storage.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = flutter_secure_storage.xcframework; path = "Frameworks/$(REGISTER_FLUTTER_CONFIGURATION)/flutter_secure_storage.xcframework"; sourceTree = "<group>"; };
+		7839190EBB801B4599F5A3D7 /* RegisterWidgets.entitlements */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.entitlements; path = RegisterWidgets.entitlements; sourceTree = "<group>"; };
+		7A338EF6156B7B1348E6FE4A /* flutter_local_notifications.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = flutter_local_notifications.xcframework; path = "Frameworks/$(REGISTER_FLUTTER_CONFIGURATION)/flutter_local_notifications.xcframework"; sourceTree = "<group>"; };
 		7D7B2F764B90F0F4E1243BF3 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7FB078715EA09DACAAA2099A /* GeneratedPluginRegistrant.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GeneratedPluginRegistrant.h; sourceTree = "<group>"; };
+		80667931026AFC222FC7344E /* it */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8BC9F9C3B7CD7453121193C4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		9A533FE65E8A7D4EABFB4770 /* path_provider_foundation.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = path_provider_foundation.xcframework; path = "Frameworks/$(CONFIGURATION)/path_provider_foundation.xcframework"; sourceTree = "<group>"; };
-		AE9F2F12E8D245B9D5C32BF9 /* open_file_ios.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = open_file_ios.xcframework; path = "Frameworks/$(CONFIGURATION)/open_file_ios.xcframework"; sourceTree = "<group>"; };
-		B1BC8632D74FD61CFB01F1F6 /* url_launcher_ios.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = url_launcher_ios.xcframework; path = "Frameworks/$(CONFIGURATION)/url_launcher_ios.xcframework"; sourceTree = "<group>"; };
-		B1FD43180AE2E3D7C302DCEE /* app_links.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = app_links.xcframework; path = "Frameworks/$(CONFIGURATION)/app_links.xcframework"; sourceTree = "<group>"; };
+		8D8D3E76C899F9D776DD20A9 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		90C767D754452D8F780554B2 /* WidgetBridge.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WidgetBridge.swift; sourceTree = "<group>"; };
+		95C733E6D93EF45ED3ACFEF2 /* RegisterWidgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RegisterWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A533FE65E8A7D4EABFB4770 /* path_provider_foundation.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = path_provider_foundation.xcframework; path = "Frameworks/$(REGISTER_FLUTTER_CONFIGURATION)/path_provider_foundation.xcframework"; sourceTree = "<group>"; };
+		9DA3EBE4BBC1B282F156E435 /* WidgetSnapshot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WidgetSnapshot.swift; sourceTree = "<group>"; };
+		9E0DC7E1142DB319AF2842AB /* Register.entitlements */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.entitlements; path = Register.entitlements; sourceTree = "<group>"; };
+		AE9F2F12E8D245B9D5C32BF9 /* open_file_ios.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = open_file_ios.xcframework; path = "Frameworks/$(REGISTER_FLUTTER_CONFIGURATION)/open_file_ios.xcframework"; sourceTree = "<group>"; };
+		B1BC8632D74FD61CFB01F1F6 /* url_launcher_ios.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = url_launcher_ios.xcframework; path = "Frameworks/$(REGISTER_FLUTTER_CONFIGURATION)/url_launcher_ios.xcframework"; sourceTree = "<group>"; };
+		B1E18A39074A838404E5C617 /* de */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B1FD43180AE2E3D7C302DCEE /* app_links.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = app_links.xcframework; path = "Frameworks/$(REGISTER_FLUTTER_CONFIGURATION)/app_links.xcframework"; sourceTree = "<group>"; };
 		C34A5CC2AB70B21661DFD16E /* Main.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C3B7F5B2EEEAF8938D856972 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C91947FEF87573F6B890D09E /* AppDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0A3B8C2D8044D2C744BB6EE /* Runner-Bridging-Header.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Runner-Bridging-Header.h"; sourceTree = "<group>"; };
 		E05EE530F7E81843995D64EA /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E7DF35AB1153A0994786B486 /* RegisterWidgets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RegisterWidgets.swift; sourceTree = "<group>"; };
+		EC6E324E4FB3F24A213676C6 /* it */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F3901E38519ECA7C71268391 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		FC838693D8768E14B46CFEF9 /* CalendarExport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CalendarExport.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		ADEBE9B25A5850779568ACCF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35F03498FF9531C1ABC2612A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B227296AB2AC2338D3518D47 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -144,6 +191,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0CE8AC776A6E5D090124A35D /* WidgetExtension */ = {
+			isa = PBXGroup;
+			children = (
+				E7DF35AB1153A0994786B486 /* RegisterWidgets.swift */,
+				8D8D3E76C899F9D776DD20A9 /* Info.plist */,
+				7839190EBB801B4599F5A3D7 /* RegisterWidgets.entitlements */,
+				3F7BE2D7C66255C3216860E2 /* Localizable.strings */,
+			);
+			name = WidgetExtension;
+			path = WidgetExtension;
+			sourceTree = "<group>";
+		};
+		1048073FA752DB6BA04A5941 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				9DA3EBE4BBC1B282F156E435 /* WidgetSnapshot.swift */,
+			);
+			name = Shared;
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		3707378FBDEE4ECE64C62D0A /* UITests */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,6 +269,9 @@
 				7D7B2F764B90F0F4E1243BF3 /* LaunchScreen.storyboard */,
 				F3901E38519ECA7C71268391 /* PrivacyInfo.xcprivacy */,
 				FC838693D8768E14B46CFEF9 /* CalendarExport.swift */,
+				90C767D754452D8F780554B2 /* WidgetBridge.swift */,
+				9E0DC7E1142DB319AF2842AB /* Register.entitlements */,
+				2B68D17873DF71B64917FE86 /* InfoPlist.strings */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -213,6 +284,8 @@
 				9F30902DBABE17B10A11F355 /* App */,
 				773A77FA5375949CE5C62DDE /* Bundled Frameworks */,
 				3707378FBDEE4ECE64C62D0A /* UITests */,
+				1048073FA752DB6BA04A5941 /* Shared */,
+				0CE8AC776A6E5D090124A35D /* WidgetExtension */,
 			);
 			sourceTree = "<group>";
 		};
@@ -221,6 +294,7 @@
 			children = (
 				65A3149473C5BD3A98C9F49D /* Register.app */,
 				6AD416F273B816C5FEB6D979 /* RegisterUITests.xctest */,
+				95C733E6D93EF45ED3ACFEF2 /* RegisterWidgets.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -246,6 +320,23 @@
 			productReference = 6AD416F273B816C5FEB6D979 /* RegisterUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		697ACE38C42019D3AEF93868 /* RegisterWidgets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 59FEE2A96C87AAE239BF907E /* Build configuration list for PBXNativeTarget "RegisterWidgets" */;
+			buildPhases = (
+				D2B7AD5DC65DC2D5F1B7586C /* Sources */,
+				ADEBE9B25A5850779568ACCF /* Frameworks */,
+				0D710BD707A61D530D823CD2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RegisterWidgets;
+			productName = RegisterWidgets;
+			productReference = 95C733E6D93EF45ED3ACFEF2 /* RegisterWidgets.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		AF9422E33C2BFA439C3B58CD /* Register */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0FCA070856A0CE65E0EF8038 /* Build configuration list for PBXNativeTarget "Register" */;
@@ -254,10 +345,12 @@
 				B227296AB2AC2338D3518D47 /* Frameworks */,
 				C4E2FB16F601E8C62DEF001D /* Resources */,
 				9DE482743FDFF7D4781562A4 /* Embed Frameworks */,
+				75003792701E918F7ABD5129 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				777F93434BEFC9707B719BD2 /* PBXTargetDependency */,
 			);
 			name = Register;
 			productName = Register;
@@ -277,9 +370,21 @@
 						CreatedOnToolsVersion = 27.2;
 						TestTargetID = AF9422E33C2BFA439C3B58CD;
 					};
+					697ACE38C42019D3AEF93868 = {
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
 					AF9422E33C2BFA439C3B58CD = {
 						CreatedOnToolsVersion = 27.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -289,6 +394,8 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				it,
+				de,
 				Base,
 			);
 			mainGroup = C0F89FCC33501E161882C634;
@@ -298,11 +405,20 @@
 			targets = (
 				AF9422E33C2BFA439C3B58CD /* Register */,
 				5A45E01001417CB7DAB6AAB0 /* RegisterUITests */,
+				697ACE38C42019D3AEF93868 /* RegisterWidgets */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0D710BD707A61D530D823CD2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5811E0D993191E74796A2B6 /* Localizable.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A28C74008A6CF6960134EFDB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -318,6 +434,7 @@
 				4FB8EB69B5E53F9E13E424CA /* Main.storyboard in Resources */,
 				288AA53D128D7A4EB4B7F809 /* LaunchScreen.storyboard in Resources */,
 				DFB474E5AD2083C82E25246D /* PrivacyInfo.xcprivacy in Resources */,
+				C9825AEB35AEEBED7B987404 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,6 +448,8 @@
 				ADADC54FE1A13ABD6D946366 /* AppDelegate.swift in Sources */,
 				1A1DB97E5292A35C3353F663 /* GeneratedPluginRegistrant.m in Sources */,
 				4BD84080760D4BADC2C4363C /* CalendarExport.swift in Sources */,
+				CA8A5D43DBA57692FFD369E4 /* WidgetBridge.swift in Sources */,
+				A6689BC0A8A42775CE6B9E8D /* WidgetSnapshot.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,9 +461,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D2B7AD5DC65DC2D5F1B7586C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8AEA22BFB04D9443B7DD8DA7 /* WidgetSnapshot.swift in Sources */,
+				EA99B54C922AB895D61B3B67 /* RegisterWidgets.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		777F93434BEFC9707B719BD2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RegisterWidgets;
+			target = 697ACE38C42019D3AEF93868 /* RegisterWidgets */;
+			targetProxy = 5C33BEA57A142D2C49E19570 /* PBXContainerItemProxy */;
+		};
 		CE56D5DB356933E88CB76FCF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Register;
@@ -352,6 +486,29 @@
 			targetProxy = 8C842140E90E4E158876EFD3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2B68D17873DF71B64917FE86 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				349EAFD116CF226883D9DF77 /* en */,
+				EC6E324E4FB3F24A213676C6 /* it */,
+				36F242A41653388F89C9AD60 /* de */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		3F7BE2D7C66255C3216860E2 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				48F7C67416DF020CFA3B6E01 /* en */,
+				80667931026AFC222FC7344E /* it */,
+				B1E18A39074A838404E5C617 /* de */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		2161BFBB1497ECDF0A47BF5D /* Release */ = {
@@ -404,6 +561,9 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUP = group.app.register.personal.r9457c4543606d986;
+				REGISTER_FLUTTER_CONFIGURATION = "$(CONFIGURATION)";
+				"REGISTER_FLUTTER_CONFIGURATION[sdk=iphonesimulator*]" = Debug;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
@@ -438,6 +598,59 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Register;
+			};
+			name = Debug;
+		};
+		5EA0AE495E259E477EEAB3C1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_ENTITLEMENTS = WidgetExtension/RegisterWidgets.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 51;
+				DEVELOPMENT_TEAM = 3LSM7JS8QD;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = WidgetExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 8.3.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.register.personal.r9457c4543606d986.widgets;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		624E74914E84F448E8FC3EAF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_ENTITLEMENTS = WidgetExtension/RegisterWidgets.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 51;
+				DEVELOPMENT_TEAM = 3LSM7JS8QD;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = WidgetExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 8.3.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.register.personal.r9457c4543606d986.widgets;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -498,6 +711,9 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUP = group.app.register.personal.r9457c4543606d986;
+				REGISTER_FLUTTER_CONFIGURATION = "$(CONFIGURATION)";
+				"REGISTER_FLUTTER_CONFIGURATION[sdk=iphonesimulator*]" = Debug;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -510,8 +726,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_ENTITLEMENTS = App/Register.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 50;
+				CURRENT_PROJECT_VERSION = 51;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 3LSM7JS8QD;
 				ENABLE_BITCODE = NO;
@@ -522,7 +739,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 8.2.15;
+				MARKETING_VERSION = 8.3.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -546,8 +763,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_ENTITLEMENTS = App/Register.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 50;
+				CURRENT_PROJECT_VERSION = 51;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 3LSM7JS8QD;
 				ENABLE_BITCODE = NO;
@@ -558,7 +776,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 8.2.15;
+				MARKETING_VERSION = 8.3.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -592,6 +810,15 @@
 			buildConfigurations = (
 				4208781EBEC3252DDCE93FEB /* Release */,
 				51F7D5210BD94244E1B06465 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		59FEE2A96C87AAE239BF907E /* Build configuration list for PBXNativeTarget "RegisterWidgets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5EA0AE495E259E477EEAB3C1 /* Release */,
+				624E74914E84F448E8FC3EAF /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -19,7 +19,7 @@ import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:collection/collection.dart';
-
+import 'package:dr/app_language.dart';
 import 'package:dr/app_state.dart';
 import 'package:dr/utc_date_time.dart';
 import 'package:dr/util.dart';
@@ -54,19 +54,19 @@ abstract class Day implements Built<Day, DayBuilder> {
   static String format(UtcDateTime date) {
     final UtcDateTime today = dateToday();
     final Duration difference = date.difference(today);
-    if (difference.inDays == 0) return "Heute";
-    if (difference.inDays == 1) return "Morgen";
+    if (difference.inDays == 0) return tr("Heute");
+    if (difference.inDays == 1) return tr("Morgen");
     if (difference.inDays == -1) {
-      return "Gestern";
+      return tr("Gestern");
     } else {
       final String? weekday = {
-        1: "Montag",
-        2: "Dienstag",
-        3: "Mittwoch",
-        4: "Donnerstag",
-        5: "Freitag",
-        6: "Samstag",
-        7: "Sonntag",
+        1: tr("Montag"),
+        2: tr("Dienstag"),
+        3: tr("Mittwoch"),
+        4: tr("Donnerstag"),
+        5: tr("Freitag"),
+        6: tr("Samstag"),
+        7: tr("Sonntag"),
       }[date.weekday];
       final String dateString = "${date.day}.${date.month}.";
       return "$weekday, $dateString";
@@ -232,7 +232,7 @@ abstract class Homework implements Built<Homework, HomeworkBuilder> {
 }
 
 String formatGradeFromString(String? grade) {
-  if (grade == null) return "keine Note eingetragen";
+  if (grade == null) return tr("keine Note eingetragen");
   final List<String> split = grade.split(".");
   assert(split.length == 2);
   final int mainGrade = int.parse(split[0]);
@@ -388,7 +388,7 @@ abstract class Subject implements Built<Subject, SubjectBuilder> {
     for (final entry in entries) {
       String type;
       if (entry is Observation) {
-        type = "Beobachtung";
+        type = tr("Beobachtung");
       } else if (entry is GradeDetail) {
         type = entry.type;
       } else {

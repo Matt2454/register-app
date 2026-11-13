@@ -17,6 +17,7 @@
 
 import 'package:badges/badges.dart' as badge;
 import 'package:built_collection/built_collection.dart';
+import 'package:dr/app_language.dart';
 import 'package:dr/container/homework_filter_container.dart';
 import 'package:dr/data.dart';
 import 'package:flutter/material.dart';
@@ -62,7 +63,7 @@ class _HomeworkFilterState extends State<HomeworkFilter>
                   ..add(HomeworkType.grade)
                   ..add(HomeworkType.gradeGroup)),
           ),
-          title: const Text("Noten & Tests"),
+          title: Text(tr("Noten & Tests")),
           value: !widget.vm.currentBlacklist.contains(HomeworkType.grade),
         ),
         CheckboxListTile(
@@ -75,7 +76,7 @@ class _HomeworkFilterState extends State<HomeworkFilter>
                         ..add(HomeworkType.homework)
                         ..add(HomeworkType.lessonHomework)),
                 ),
-            title: const Text("Hausaufgaben & Erinnerungen"),
+            title: Text(tr("Hausaufgaben & Erinnerungen")),
             value: !widget.vm.currentBlacklist.contains(HomeworkType.homework)),
         CheckboxListTile(
           onChanged: (v) => widget.callback(
@@ -85,7 +86,7 @@ class _HomeworkFilterState extends State<HomeworkFilter>
                 : (widget.vm.currentBlacklist.toBuilder()
                   ..add(HomeworkType.observation)),
           ),
-          title: const Text("Beobachtungen"),
+          title: Text(tr("Beobachtungen")),
           value: !widget.vm.currentBlacklist.contains(HomeworkType.observation),
         ),
       ],

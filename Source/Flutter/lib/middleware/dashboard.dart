@@ -37,12 +37,12 @@ Future<void> _loadDays(MiddlewareApi<AppState, AppStateBuilder, AppActions> api,
   await next(action);
   // Keep this and next week up to date even if the calendar is never opened:
   // for the desktop widget and to notice substitutions.
-  final thisWeek = toMonday(UtcDateTime.now());
+  final thisWeek = toMonday(wallClockToday());
   unawaited(api.actions.calendarActions.load(thisWeek));
   unawaited(
     api.actions.calendarActions.load(thisWeek.add(const Duration(days: 7))),
   );
-  if (widgetSupported) {
+  if (Platform.isMacOS) {
     if (!_gradesLoadedForWidget) {
       _gradesLoadedForWidget = true;
       unawaited(api.actions.gradesActions.load(api.state.gradesState.semester));
@@ -89,7 +89,7 @@ Future<void> _addReminder(
     },
   );
   if (result == null && !wrapper.noInternet) {
-    showSnackBar("Beim Speichern ist ein Fehler aufgetreten");
+    showSnackBar(tr("Beim Speichern ist ein Fehler aufgetreten"));
     return;
   }
   await api.actions.dashboardActions.homeworkAdded(
@@ -114,7 +114,7 @@ Future<void> _deleteHomework(
   if (result != null && result["success"] == true) {
     await next(action);
   } else if (!wrapper.noInternet) {
-    showSnackBar("Beim Speichern ist ein Fehler aufgetreten");
+    showSnackBar(tr("Beim Speichern ist ein Fehler aufgetreten"));
   }
 }
 
@@ -148,7 +148,7 @@ Future<void> _toggleDone(
       ),
     );
     if (!wrapper.noInternet) {
-      showSnackBar("Beim Speichern ist ein Fehler aufgetreten");
+      showSnackBar(tr("Beim Speichern ist ein Fehler aufgetreten"));
     }
   }
 }
@@ -214,7 +214,7 @@ Future<void> _moveHomework(
   final createdId = getInt(getMap(created)?["id"]);
   if (created == null || createdId == null) {
     if (!wrapper.noInternet) {
-      showSnackBar("Die Aufgabe konnte nicht verschoben werden");
+      showSnackBar(tr("Die Aufgabe konnte nicht verschoben werden"));
     }
     return;
   }
@@ -238,7 +238,9 @@ Future<void> _moveHomework(
     );
   }
   showSnackBar(
-    "Auf ${DateFormat("EEEE, d. MMMM", "de").format(action.payload.to)} verschoben",
+    tr("Auf {0} verschoben", [
+      DateFormat("EEEE, d. MMMM", appLanguage.value).format(action.payload.to)
+    ]),
   );
   await api.actions.dashboardActions.load(api.state.dashboardState.future);
 }
@@ -249,8 +251,10 @@ String _movedReminderText(Homework hw, UtcDateTime from) {
     hw.title,
     if (!hw.subtitle.isNullOrEmpty) hw.subtitle,
   ];
-  return "Verschoben: ${parts.join(" – ")} "
-      "(eigentlich ${DateFormat("EE dd.MM.", "de").format(from)})";
+  return tr("Verschoben: {0} (eigentlich {1})", [
+    parts.join(" – "),
+    DateFormat("EE dd.MM.", appLanguage.value).format(from)
+  ]);
 }
 
 Future<void> _resetMovedHomework(
@@ -265,12 +269,12 @@ Future<void> _resetMovedHomework(
       args: {"id": reminderId},
     );
     if (result == null && !wrapper.noInternet) {
-      showSnackBar("Die Erinnerung konnte nicht gelöscht werden");
+      showSnackBar(tr("Die Erinnerung konnte nicht gelöscht werden"));
       return;
     }
   }
   await next(action);
-  showSnackBar("Verschiebung zurückgesetzt");
+  showSnackBar(tr("Verschiebung zurückgesetzt"));
   await api.actions.dashboardActions.load(api.state.dashboardState.future);
 }
 

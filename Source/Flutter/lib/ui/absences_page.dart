@@ -17,6 +17,7 @@
 
 import 'package:dr/absence_projection.dart';
 import 'package:dr/actions/absences_actions.dart';
+import 'package:dr/app_language.dart';
 import 'package:dr/app_state.dart';
 import 'package:dr/container/absence_group_container.dart';
 import 'package:dr/data.dart';
@@ -53,8 +54,8 @@ class AbsencesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const ResponsiveAppBar(
-        title: Text("Absenzen"),
+      appBar: ResponsiveAppBar(
+        title: Text(tr("Absenzen")),
       ),
       floatingActionButton: _canEdit
           ? FloatingActionButton.extended(
@@ -66,7 +67,7 @@ class AbsencesPage extends StatelessWidget {
                 if (payload != null) onAddFuture(payload);
               },
               icon: const Icon(Icons.add_rounded),
-              label: const Text("Abwesenheit melden"),
+              label: Text(tr("Abwesenheit melden")),
             )
           : null,
       body: LastFetchedOverlay(
@@ -127,15 +128,15 @@ class AbsencesBody extends StatelessWidget {
                         const SizedBox(height: 12),
                         Text(
                           br(
-                              "Noch keine Absenzen",
-                              "Noch keine Absenzen, absolute Unit 💪",
-                              "Noch keine Absenzen – Mazal tov achi! 🎉"),
+                              tr("Noch keine Absenzen"),
+                              tr("Noch keine Absenzen, absolute Unit 💪"),
+                              tr("Noch keine Absenzen – Mazal tov achi! 🎉")),
                           style: theme.textTheme.titleLarge,
                           textAlign: TextAlign.center,
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          "Wenn du weißt, dass du fehlen wirst, melde es mit „Abwesenheit melden“ im Voraus.",
+                          tr("Wenn du weißt, dass du fehlen wirst, melde es mit „Abwesenheit melden“ im Voraus."),
                           style: theme.textTheme.bodyMedium?.copyWith(
                               color: theme.colorScheme.onSurfaceVariant),
                           textAlign: TextAlign.center,
@@ -144,7 +145,7 @@ class AbsencesBody extends StatelessWidget {
                     ),
                   ),
                 if (state.futureAbsences.isNotEmpty)
-                  const SectionLabel("Im Voraus gemeldet"),
+                  SectionLabel(tr("Im Voraus gemeldet")),
                 for (var i = 0; i < state.futureAbsences.length; i++)
                   FutureAbsenceWidget(
                     absence: state.futureAbsences[i],
@@ -152,7 +153,7 @@ class AbsencesBody extends StatelessWidget {
                         ? null
                         : () => onRemoveFuture!(i),
                   ),
-                if (state.absences.isNotEmpty) const SectionLabel("Absenzen"),
+                if (state.absences.isNotEmpty) SectionLabel(tr("Absenzen")),
                 ...List.generate(
                   state.absences.length,
                   (n) => AbsenceGroupContainer(
@@ -180,16 +181,16 @@ class AbsencesStatisticWidget extends StatelessWidget {
     final muted = theme.textTheme.labelMedium
         ?.copyWith(color: theme.colorScheme.onSurfaceVariant);
     final tiles = <(String, int?, Color?)>[
-      ("Absenzen", stat.counter, null),
-      ("Entschuldigt", stat.justified, AppColors.success),
-      ("Nicht entsch.", stat.notJustified, AppColors.danger),
-      ("Verspätungen", stat.delayed, AppColors.warning),
+      (tr("Absenzen"), stat.counter, null),
+      (tr("Entschuldigt"), stat.justified, AppColors.success),
+      (tr("Nicht entsch."), stat.notJustified, AppColors.danger),
+      (tr("Verspätungen"), stat.delayed, AppColors.warning),
     ];
     return GlowCard(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("ABWESENHEIT", style: muted?.copyWith(letterSpacing: 1.4)),
+          Text(tr("ABWESENHEIT"), style: muted?.copyWith(letterSpacing: 1.4)),
           const SizedBox(height: 4),
           Row(
             crossAxisAlignment: CrossAxisAlignment.end,
@@ -210,7 +211,7 @@ class AbsencesStatisticWidget extends StatelessWidget {
               const SizedBox(width: 8),
               Padding(
                 padding: const EdgeInsets.only(bottom: 8),
-                child: Text("der Unterrichtszeit", style: muted),
+                child: Text(tr("der Unterrichtszeit"), style: muted),
               ),
             ],
           ),
@@ -247,7 +248,7 @@ class AbsencesStatisticWidget extends StatelessWidget {
           if (stat.counterForSchool != null && stat.counterForSchool! > 0) ...[
             const SizedBox(height: 12),
             Text(
-              "${stat.counterForSchool} davon im Auftrag der Schule",
+              tr("{0} davon im Auftrag der Schule", [stat.counterForSchool]),
               style: muted,
             ),
           ],

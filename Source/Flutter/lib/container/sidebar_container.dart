@@ -20,10 +20,10 @@ import 'package:built_value/built_value.dart';
 import 'package:dr/actions/app_actions.dart';
 import 'package:dr/actions/login_actions.dart';
 import 'package:dr/app_state.dart';
+import 'package:dr/localized_store_connection.dart';
 import 'package:dr/middleware/middleware.dart';
 import 'package:dr/ui/sidebar.dart';
 import 'package:flutter/material.dart' hide Builder;
-import 'package:flutter_built_redux/flutter_built_redux.dart';
 
 part 'sidebar_container.g.dart';
 
@@ -31,42 +31,52 @@ class SidebarContainer extends StatelessWidget {
   final bool tabletMode;
   final VoidCallback goHome;
   final Pages currentSelected;
+  final VoidCallback? onNavigate;
 
   const SidebarContainer(
       {super.key,
       required this.tabletMode,
       required this.goHome,
+      this.onNavigate,
       required this.currentSelected});
   @override
   Widget build(BuildContext context) {
     return StoreConnection<AppState, AppActions, SidebarViewModel>(
       builder: (BuildContext context, state, AppActions actions) {
+        VoidCallback navigate(VoidCallback action) => () {
+              onNavigate?.call();
+              action();
+            };
         return Sidebar(
           currentSelected: currentSelected,
           drawerExpanded: state.drawerInitiallyFullyExpanded,
-          goHome: goHome,
+          goHome: navigate(goHome),
           onDrawerExpansionChange:
               actions.settingsActions.drawerExpandedChange.call,
           tabletMode: tabletMode,
           userIcon: state.userIcon,
           username: state.username,
-          showAbsences: actions.routingActions.showAbsences.call,
-          showCalendar: actions.routingActions.showCalendar.call,
-          showToday: actions.routingActions.showToday.call,
-          showCertificate: actions.routingActions.showCertificate.call,
-          showGrades: actions.routingActions.showGrades.call,
-          showMessages: actions.routingActions.showMessages.call,
-          showSettings: actions.routingActions.showSettings.call,
+          showAbsences: navigate(actions.routingActions.showAbsences.call),
+          showCalendar: navigate(actions.routingActions.showCalendar.call),
+          showToday: navigate(actions.routingActions.showToday.call),
+          showCertificate:
+              navigate(actions.routingActions.showCertificate.call),
+          showGrades: navigate(actions.routingActions.showGrades.call),
+          showMessages: navigate(actions.routingActions.showMessages.call),
+          showSettings: navigate(actions.routingActions.showSettings.call),
           otherAccounts: state.otherAccounts.toList(),
-          selectAccount: actions.loginActions.selectAccount.call,
-          addAccount: actions.loginActions.addAccount.call,
-          logout: () => actions.loginActions.logout(
-            LogoutPayload(
-              (b) => b
-                ..hard = true
-                ..forced = false,
-            ),
-          ),
+          selectAccount: (index) {
+            onNavigate?.call();
+            actions.loginActions.selectAccount(index);
+          },
+          addAccount: navigate(actions.loginActions.addAccount.call),
+          logout: navigate(() => actions.loginActions.logout(
+                LogoutPayload(
+                  (b) => b
+                    ..hard = true
+                    ..forced = false,
+                ),
+              )),
           passwordSavingEnabled: state.passwordSavingEnabled,
         );
       },

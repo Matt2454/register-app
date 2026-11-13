@@ -15,6 +15,7 @@
 // You should have received a copy of the GNU General Public License
 // along with digitales_register.  If not, see <http://www.gnu.org/licenses/>.
 
+import 'package:dr/app_language.dart';
 import 'package:dr/container/absence_group_container.dart';
 import 'package:dr/data.dart';
 import 'package:dr/ui/absence_forms.dart';
@@ -26,25 +27,25 @@ StatusPill justifiedPill(AbsenceJustified justified) {
   switch (justified) {
     case AbsenceJustified.justified:
       return StatusPill(
-        label: "Entschuldigt",
+        label: tr("Entschuldigt"),
         color: AppColors.success,
         icon: Icons.check_rounded,
       );
     case AbsenceJustified.forSchool:
       return StatusPill(
-        label: "Im Auftrag der Schule",
+        label: tr("Im Auftrag der Schule"),
         color: AppColors.cyan,
         icon: Icons.school_outlined,
       );
     case AbsenceJustified.notJustified:
       return StatusPill(
-        label: "Nicht entschuldigt",
+        label: tr("Nicht entschuldigt"),
         color: AppColors.danger,
         icon: Icons.close_rounded,
       );
     default:
       return StatusPill(
-        label: "Offen",
+        label: tr("Offen"),
         color: AppColors.warning,
         icon: Icons.schedule_rounded,
       );
@@ -155,7 +156,7 @@ class AbsenceGroupWidget extends StatelessWidget {
                 if (result != null) onJustify(result.$1, result.$2);
               },
               icon: const Icon(Icons.edit_note_rounded, size: 20),
-              label: const Text("Entschuldigen"),
+              label: Text(tr("Entschuldigen")),
             )
           : null,
     );
@@ -163,11 +164,11 @@ class AbsenceGroupWidget extends StatelessWidget {
 }
 
 String formatFutureAbsenceRange(FutureAbsence absence) {
-  final date = DateFormat("EE d.M.yyyy", "de");
+  final date = DateFormat("EE d.M.yyyy", appLanguage.value);
   if (absence.startDate == absence.endDate) {
     final hours = absence.startHour == absence.endHour
-        ? "${absence.startHour}. Stunde"
-        : "${absence.startHour}.–${absence.endHour}. Stunde";
+        ? tr("{0}. Stunde", [absence.startHour])
+        : tr("{0}.–{1}. Stunde", [absence.startHour, absence.endHour]);
     return "${date.format(absence.startDate)}, $hours";
   }
   return "${date.format(absence.startDate)} ${absence.startHour}. h – "
@@ -189,34 +190,35 @@ class FutureAbsenceWidget extends StatelessWidget {
     final range = formatFutureAbsenceRange(absence);
     return _AbsenceCard(
       title: range,
-      subtitle: "Im Voraus gemeldet",
+      subtitle: tr("Im Voraus gemeldet"),
       justified: absence.justified,
       texts: [
         if (absence.reason != null) absence.reason!,
         if (absence.note != null) absence.note!,
       ],
       footer: absence.reasonTimestamp != null && absence.reasonSignature != null
-          ? "${DateFormat("d.M.yyyy, HH:mm", "de").format(absence.reasonTimestamp!)} · ${absence.reasonSignature}"
+          ? "${DateFormat("d.M.yyyy, HH:mm", appLanguage.value).format(absence.reasonTimestamp!)} · ${absence.reasonSignature}"
           : null,
       action: onRemove == null
           ? null
           : IconButton(
-              tooltip: "Abwesenheit löschen",
+              tooltip: tr("Abwesenheit löschen"),
               icon: const Icon(Icons.delete_outline_rounded),
               onPressed: () async {
                 final confirmed = await showDialog<bool>(
                   context: context,
                   builder: (context) => AlertDialog(
-                    title: const Text("Abwesenheit löschen?"),
-                    content: Text("$range wird aus dem Register entfernt."),
+                    title: Text(tr("Abwesenheit löschen?")),
+                    content: Text(
+                        tr("{0} wird aus dem Register entfernt.", [range])),
                     actions: [
                       TextButton(
                         onPressed: () => Navigator.pop(context, false),
-                        child: const Text("Abbrechen"),
+                        child: Text(tr("Abbrechen")),
                       ),
                       FilledButton(
                         onPressed: () => Navigator.pop(context, true),
-                        child: const Text("Löschen"),
+                        child: Text(tr("Löschen")),
                       ),
                     ],
                   ),

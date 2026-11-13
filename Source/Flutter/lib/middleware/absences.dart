@@ -58,10 +58,10 @@ Future<void> _addFutureAbsence(
     },
   );
   if (result == null && !wrapper.noInternet) {
-    showSnackBar("Die Abwesenheit konnte nicht eingetragen werden");
+    showSnackBar(tr("Die Abwesenheit konnte nicht eingetragen werden"));
     return;
   }
-  showSnackBar("Abwesenheit eingetragen");
+  showSnackBar(tr("Abwesenheit eingetragen"));
   await api.actions.absencesActions.load();
 }
 
@@ -87,10 +87,10 @@ Future<void> _removeFutureAbsence(
           args: {"futureAbsence": entry},
         );
   if (result == null && !wrapper.noInternet) {
-    showSnackBar("Die Abwesenheit konnte nicht gelöscht werden");
+    showSnackBar(tr("Die Abwesenheit konnte nicht gelöscht werden"));
     return;
   }
-  showSnackBar("Abwesenheit gelöscht");
+  showSnackBar(tr("Abwesenheit gelöscht"));
   await api.actions.absencesActions.load();
 }
 
@@ -117,9 +117,9 @@ Future<void> _justifyAbsence(
           },
         );
   if (result == null && !wrapper.noInternet) {
-    showSnackBar("Die Absenz konnte nicht entschuldigt werden");
+    showSnackBar(tr("Die Absenz konnte nicht entschuldigt werden"));
     return;
   }
-  showSnackBar("Absenz entschuldigt");
+  showSnackBar(tr("Absenz entschuldigt"));
   await api.actions.absencesActions.load();
 }

@@ -16,9 +16,11 @@
 // along with digitales_register.  If not, see <http://www.gnu.org/licenses/>.
 
 import 'package:collection/collection.dart';
+import 'package:dr/app_language.dart';
 import 'package:dr/container/login_page.dart';
 import 'package:dr/ui/animated_linear_progress_indicator.dart';
 import 'package:dr/ui/autocomplete_options.dart';
+import 'package:dr/ui/language_picker.dart';
 import 'package:dr/ui/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -73,6 +75,19 @@ class _LoginPageContentState extends State<LoginPageContent> {
   late bool safeMode;
   bool newPasswordsMatch = true;
   Tuple2<String, String?>? selectedPresetServer;
+  String _otherSchoolLabel = tr('Andere Schule');
+
+  @override
+  void didUpdateWidget(covariant LoginPageContent oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    final label = tr('Andere Schule');
+    if (_otherSchoolLabel != label &&
+        _schoolController.text == _otherSchoolLabel) {
+      _schoolController.text = label;
+    }
+    _otherSchoolLabel = label;
+  }
+
   @override
   void initState() {
     safeMode = widget.vm.safeMode;
@@ -89,7 +104,7 @@ class _LoginPageContentState extends State<LoginPageContent> {
         selectedPresetServer = Tuple2(school.key, school.value);
         _schoolController.text = school.key;
       } else {
-        _schoolController.text = "Andere Schule";
+        _schoolController.text = tr("Andere Schule");
       }
     }
     _schoolFocusNode.addListener(() {
@@ -114,9 +129,10 @@ class _LoginPageContentState extends State<LoginPageContent> {
       },
       child: Scaffold(
         appBar: AppBar(
+          actions: const [LanguagePicker()],
           backgroundColor: Colors.transparent,
           shape: const Border(),
-          title: widget.vm.changePass ? const Text('Passwort ändern') : null,
+          title: widget.vm.changePass ? Text(tr("Passwort ändern")) : null,
           automaticallyImplyLeading:
               widget.vm.changePass && !widget.vm.mustChangePass,
         ),
@@ -170,13 +186,13 @@ class _LoginPageContentState extends State<LoginPageContent> {
                                   });
                                 },
                                 decoration: InputDecoration(
-                                  labelText: "Schule",
+                                  labelText: tr("Schule"),
                                   errorText: !_schoolFocusNode.hasFocus &&
                                           _schoolController.text !=
-                                              "Andere Schule" &&
+                                              tr("Andere Schule") &&
                                           _schoolController.text.isNotEmpty &&
                                           selectedPresetServer == null
-                                      ? "Schule nicht gefunden"
+                                      ? tr("Schule nicht gefunden")
                                       : null,
                                 ),
                               );
@@ -206,7 +222,7 @@ class _LoginPageContentState extends State<LoginPageContent> {
                                     .search(textEditingValue.text)
                                     .take(15)
                                     .map((e) => e.item),
-                                "Andere Schule",
+                                tr("Andere Schule"),
                               ];
                             },
                             onSelected: (option) {
@@ -216,7 +232,7 @@ class _LoginPageContentState extends State<LoginPageContent> {
                                   option,
                                   widget.vm.servers[option],
                                 );
-                                if (option == "Andere Schule") {
+                                if (option == tr("Andere Schule")) {
                                   selectedPresetServer = null;
                                   _urlController.text = ".digitalesregister.it";
                                   _urlController.selection =
@@ -242,7 +258,7 @@ class _LoginPageContentState extends State<LoginPageContent> {
                             if (!widget.vm.changePass) ...[
                               TextField(
                                 decoration:
-                                    const InputDecoration(labelText: 'Adresse'),
+                                    InputDecoration(labelText: tr("Adresse")),
                                 controller: _urlController,
                                 enabled: !widget.vm.loading,
                                 keyboardType: TextInputType.url,
@@ -254,8 +270,8 @@ class _LoginPageContentState extends State<LoginPageContent> {
                               autofillHints: widget.vm.loading
                                   ? null
                                   : [AutofillHints.username],
-                              decoration: const InputDecoration(
-                                  labelText: 'Benutzername'),
+                              decoration: InputDecoration(
+                                  labelText: tr("Benutzername")),
                               controller: _usernameController,
                               enabled: !widget.vm.loading,
                             ),
@@ -266,8 +282,8 @@ class _LoginPageContentState extends State<LoginPageContent> {
                                   : [AutofillHints.password],
                               decoration: InputDecoration(
                                   labelText: widget.vm.changePass
-                                      ? 'Altes Passwort'
-                                      : 'Passwort'),
+                                      ? tr("Altes Passwort")
+                                      : tr("Passwort")),
                               controller: _passwordController,
                               obscureText: true,
                               enabled: !widget.vm.loading,
@@ -281,8 +297,8 @@ class _LoginPageContentState extends State<LoginPageContent> {
                                       horizontal: 16),
                                 ),
                                 onPressed: () => widget.onRequestPassReset(url),
-                                child: const Text(
-                                  "Passwort vergessen",
+                                child: Text(
+                                  tr("Passwort vergessen"),
                                 ),
                               ),
                             ),
@@ -291,10 +307,10 @@ class _LoginPageContentState extends State<LoginPageContent> {
                                 height: 8,
                               ),
                               if (widget.vm.mustChangePass)
-                                const ListTile(
+                                ListTile(
                                   contentPadding: EdgeInsets.zero,
                                   title: Text(
-                                    "Du musst dein Passwort ändern:",
+                                    tr("Du musst dein Passwort ändern:"),
                                   ),
                                 ),
                               Container(
@@ -306,22 +322,16 @@ class _LoginPageContentState extends State<LoginPageContent> {
                                   ),
                                 ),
                                 padding: const EdgeInsets.all(8),
-                                child: const Text(
-                                  "Das neue Passwort muss:\n"
-                                  "- mindestens 10 Zeichen lang sein\n"
-                                  "- mindestens einen Großbuchstaben enthalten\n"
-                                  "- mindestens einen Kleinbuchstaben enthalten\n"
-                                  "- mindestens eine Zahl enthalten\n"
-                                  "- mindestens ein Sonderzeichen enthalten\n"
-                                  "- nicht mit dem alten Passwort übereinstimmen",
+                                child: Text(
+                                  tr("Das neue Passwort muss:\n- mindestens 10 Zeichen lang sein\n- mindestens einen Großbuchstaben enthalten\n- mindestens einen Kleinbuchstaben enthalten\n- mindestens eine Zahl enthalten\n- mindestens ein Sonderzeichen enthalten\n- nicht mit dem alten Passwort übereinstimmen"),
                                 ),
                               ),
                               TextField(
                                 autofillHints: widget.vm.loading
                                     ? null
                                     : [AutofillHints.newPassword],
-                                decoration: const InputDecoration(
-                                    labelText: 'Neues Passwort'),
+                                decoration: InputDecoration(
+                                    labelText: tr("Neues Passwort")),
                                 controller: _newPassword1Controller,
                                 obscureText: true,
                                 enabled: !widget.vm.loading,
@@ -338,10 +348,11 @@ class _LoginPageContentState extends State<LoginPageContent> {
                                     ? null
                                     : [AutofillHints.newPassword],
                                 decoration: InputDecoration(
-                                  labelText: 'Neues Passwort wiederholen',
+                                  labelText: tr("Neues Passwort wiederholen"),
                                   errorText: newPasswordsMatch
                                       ? null
-                                      : "Die neuen Passwörter stimmen nicht überein",
+                                      : tr(
+                                          "Die neuen Passwörter stimmen nicht überein"),
                                 ),
                                 controller: _newPassword2Controller,
                                 obscureText: true,
@@ -378,8 +389,8 @@ class _LoginPageContentState extends State<LoginPageContent> {
                                     },
                               child: Text(
                                 widget.vm.changePass
-                                    ? 'Passwort ändern'
-                                    : 'Login',
+                                    ? tr("Passwort ändern")
+                                    : tr("Login"),
                               ),
                             ),
                             const SizedBox(height: 12),
@@ -388,9 +399,9 @@ class _LoginPageContentState extends State<LoginPageContent> {
                       ),
                     ),
                     SwitchListTile.adaptive(
-                      title: const Text("Angemeldet bleiben"),
-                      subtitle: const Text(
-                          "Deine Zugangsdaten werden lokal gespeichert"),
+                      title: Text(tr("Angemeldet bleiben")),
+                      subtitle: Text(
+                          tr("Deine Zugangsdaten werden lokal gespeichert")),
                       value: !safeMode,
                       onChanged: widget.vm.loading
                           ? null
@@ -407,7 +418,7 @@ class _LoginPageContentState extends State<LoginPageContent> {
                       ),
                       ListTile(
                         title: Text(
-                          "Andere Accounts",
+                          tr("Andere Accounts"),
                           style: Theme.of(context).textTheme.titleLarge,
                         ),
                       ),
@@ -429,7 +440,9 @@ class _LoginPageContentState extends State<LoginPageContent> {
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
                                 widget.vm.noInternet
-                                    ? 'Keine Verbindung mit "${widget.vm.url}" möglich. Bitte überprüfe deine Internetverbindung.\nWenn du "Andere Schule" ausgewählt hast, musst du eine gültige Adresse eingeben.'
+                                    ? tr(
+                                        "Keine Verbindung mit \"{0}\" möglich. Bitte überprüfe deine Internetverbindung.\nWenn du \"Andere Schule\" ausgewählt hast, musst du eine gültige Adresse eingeben.",
+                                        [widget.vm.url])
                                     : widget.vm.error!,
                                 style: Theme.of(context)
                                     .textTheme
@@ -484,15 +497,15 @@ class _LoginHeader extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           GradientText(
-            "Register",
+            tr("Register"),
             style: theme.textTheme.displaySmall,
           ),
           const SizedBox(height: 6),
           Text(
             br(
-                "Noten, Hausaufgaben und Absenzen an einem Ort",
-                "Noten, Hausaufgaben & Absenzen. No cap. 🧠🔥",
-                "Shalom achi! Noten, Hausaufgaben & Absenzen – yalla 🇮🇱"),
+                tr("Noten, Hausaufgaben und Absenzen an einem Ort"),
+                tr("Noten, Hausaufgaben & Absenzen. No cap. 🧠🔥"),
+                tr("Shalom achi! Noten, Hausaufgaben & Absenzen – yalla 🇮🇱")),
             textAlign: TextAlign.center,
             style: theme.textTheme.bodyMedium
                 ?.copyWith(color: theme.colorScheme.onSurfaceVariant),

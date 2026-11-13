@@ -17,6 +17,7 @@
 
 import 'package:built_collection/built_collection.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:dr/app_language.dart';
 import 'package:dr/app_state.dart';
 import 'package:dr/container/grades_chart_container.dart';
 import 'package:dr/data.dart';
@@ -328,7 +329,7 @@ class SelectionWidget extends StatelessWidget {
                     color: Colors.black,
                   ),
                   child: Text(
-                    DateFormat.MMMMd("de").format(date!),
+                    DateFormat.MMMMd(appLanguage.value).format(date!),
                     style: const TextStyle(color: Colors.white),
                   ),
                 ),
@@ -366,8 +367,8 @@ class SelectionWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(4),
                 color: Colors.grey.shade700,
               ),
-              child: const Text(
-                "Tippe auf das Diagramm, um Details zu sehen",
+              child: Text(
+                tr("Tippe auf das Diagramm, um Details zu sehen"),
                 style: TextStyle(color: Colors.white),
               ),
             ),

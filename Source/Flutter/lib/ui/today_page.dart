@@ -16,7 +16,10 @@
 // along with digitales_register.  If not, see <http://www.gnu.org/licenses/>.
 
 import 'package:dr/absence_projection.dart';
+import 'package:dr/agenda.dart';
+import 'package:dr/app_language.dart';
 import 'package:dr/app_state.dart';
+import 'package:dr/calendar_export.dart' show calendarPlainText;
 import 'package:dr/data.dart';
 import 'package:dr/grade_forecast.dart';
 import 'package:dr/lesson_time.dart';
@@ -30,6 +33,7 @@ import 'package:responsive_scaffold/responsive_scaffold.dart';
 
 /// Everything the "Heute" page shows, taken from the app state.
 class TodayData {
+  final AgendaSnapshot agenda;
   final UtcDateTime today;
   final List<CalendarHour> lessons;
   final bool lessonsLoaded;
@@ -46,6 +50,7 @@ class TodayData {
   final BuiltMapLike subjectNicks;
 
   const TodayData({
+    required this.agenda,
     required this.today,
     required this.lessons,
     required this.lessonsLoaded,
@@ -62,24 +67,12 @@ class TodayData {
 
   static bool isTest(Homework hw) => isTestEntry(hw);
 
-  factory TodayData.from(AppState state) {
-    final today = wallClockToday();
+  factory TodayData.from(AppState state, {UtcDateTime? at}) {
+    final agenda = AgendaSnapshot.from(state, at: at);
+    final today = agenda.today;
     final tomorrow = today.add(const Duration(days: 1));
-    final days = state.dashboardState.allDays ?? const <Day>[];
-    List<Homework> dueOn(UtcDateTime date) => [
-          for (final day in days)
-            if (day.date == date)
-              for (final hw in day.homework)
-                if (hw.type != HomeworkType.grade &&
-                    hw.type != HomeworkType.observation)
-                  hw,
-        ];
     final tests = <UpcomingTest>[
-      for (final day in days)
-        if (!day.date.isBefore(today) &&
-            day.date.difference(today).inDays <= 30)
-          for (final hw in day.homework)
-            if (isTest(hw)) UpcomingTest(hw, day.date),
+      for (final task in agenda.tests) UpcomingTest(task.homework, task.date),
     ]..sort((a, b) => a.date.compareTo(b.date));
     final calendarDay = state.calendarState.days[today];
     final semester = state.gradesState.semester;
@@ -89,11 +82,12 @@ class TodayData {
           if (avg / 100 < passMark) (subject, avg / 100),
     ]..sort((a, b) => a.$2.compareTo(b.$2));
     return TodayData(
+      agenda: agenda,
       today: today,
       lessons: calendarDay?.hours.toList() ?? const [],
       lessonsLoaded: calendarDay != null,
-      dueToday: dueOn(today),
-      dueTomorrow: dueOn(tomorrow),
+      dueToday: agenda.dueOn(today).map((t) => t.homework).toList(),
+      dueTomorrow: agenda.dueOn(tomorrow).map((t) => t.homework).toList(),
       tests: tests,
       testSubjects: {
         for (final test in tests)
@@ -130,20 +124,26 @@ typedef CreateStudyPlanCallback = void Function(
     UpcomingTest test, List<UtcDateTime> days);
 
 class TodayPage extends StatelessWidget {
+  final Widget? navigationDrawer;
   final TodayData data;
   final CreateStudyPlanCallback onCreateStudyPlan;
   final VoidCallback onShowGrades;
   final VoidCallback onShowAbsences;
   final VoidCallback onShowCalendar;
+  final VoidCallback onShowTasks;
+  final Future<void> Function() onRefresh;
   final bool noInternet;
 
   const TodayPage({
     super.key,
+    this.navigationDrawer,
     required this.data,
     required this.onCreateStudyPlan,
     required this.onShowGrades,
     required this.onShowAbsences,
     required this.onShowCalendar,
+    required this.onShowTasks,
+    required this.onRefresh,
     required this.noInternet,
   });
 
@@ -151,8 +151,17 @@ class TodayPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Scaffold(
+      drawer: navigationDrawer,
       appBar: ResponsiveAppBar(
-          title: Text(br("Heute", "Heute, no cap 💀", "Shalom achi! 🇮🇱"))),
+        title: Text(
+            br(tr("Heute"), tr("Heute, no cap 💀"), tr("Shalom achi! 🇮🇱"))),
+        actions: [
+          IconButton(
+              tooltip: tr("Aktualisieren"),
+              onPressed: onRefresh,
+              icon: const Icon(Icons.refresh_rounded))
+        ],
+      ),
       body: ValueListenableBuilder(
         valueListenable: minuteTicker,
         builder: (context, _, __) => LayoutBuilder(
@@ -161,26 +170,49 @@ class TodayPage extends StatelessWidget {
                       constraints.maxWidth, const EdgeInsets.only(bottom: 40)),
                   children: [
                     _NowCard(data: data, onShowCalendar: onShowCalendar),
+                    _AgendaStatus(data: data, noInternet: noInternet),
+                    _TodayActions(
+                        data: data,
+                        onShowTasks: onShowTasks,
+                        onShowCalendar: onShowCalendar),
+                    if (data.agenda.overdue.isNotEmpty) ...[
+                      SectionLabel(tr("Überfällig")),
+                      for (final task in data.agenda.overdue.take(3))
+                        _TaskRow(
+                            homework: task.homework,
+                            when: DateFormat('dd.MM.').format(task.date),
+                            urgent: true),
+                    ],
                     if (isIsrael) const _MemeOfTheDay(),
+                    if (data.agenda.tasksLoaded &&
+                        data.dueToday.isEmpty &&
+                        data.dueTomorrow.isEmpty)
+                      HoloPanel(
+                          child: Text(tr(
+                              'Keine offenen Aufgaben für heute oder morgen.'))),
                     if (data.dueToday.isNotEmpty ||
                         data.dueTomorrow.isNotEmpty) ...[
-                      SectionLabel(
-                          br("Fällig", "Fällig 😬", "Fällig – yalla yalla ⏰")),
-                      for (final hw in data.dueToday)
-                        _TaskRow(homework: hw, when: "Heute", urgent: true),
-                      for (final hw in data.dueTomorrow)
-                        _TaskRow(homework: hw, when: "Morgen"),
+                      SectionLabel(br(tr("Fällig"), tr("Fällig 😬"),
+                          tr("Fällig – yalla yalla ⏰"))),
+                      for (final hw in data.dueToday.take(4))
+                        _TaskRow(homework: hw, when: tr("Heute"), urgent: true),
+                      for (final hw in data.dueTomorrow.take(3))
+                        _TaskRow(homework: hw, when: tr("Morgen")),
                     ],
-                    SectionLabel(br("Tests & Schularbeiten", "Boss-Fights ⚔️",
-                        "Tests – Yalla Balagan 🤯")),
+                    TextButton.icon(
+                        onPressed: onShowTasks,
+                        icon: const Icon(Icons.checklist_rounded),
+                        label: Text(tr("Alle Aufgaben öffnen"))),
+                    SectionLabel(br(tr("Tests & Schularbeiten"),
+                        tr("Boss-Fights ⚔️"), tr("Tests – Yalla Balagan 🤯"))),
                     if (data.tests.isEmpty)
                       HoloPanel(
                         child: Text(
-                          "Keine Tests in den nächsten 30 Tagen eingetragen.",
+                          tr("Keine Tests in den nächsten 30 Tagen eingetragen."),
                           style: theme.textTheme.bodyMedium,
                         ),
                       ),
-                    for (final test in data.tests)
+                    for (final test in data.tests.take(5))
                       _TestCountdown(
                         test: test,
                         subject: data.testSubjects[test],
@@ -190,8 +222,10 @@ class TodayPage extends StatelessWidget {
                         onCreateStudyPlan: onCreateStudyPlan,
                       ),
                     if (data.weakSubjects.isNotEmpty) ...[
-                      SectionLabel(br("Achtung bei den Noten", "Ohio-Zone 🌽",
-                          "Oy vey, Balagan bei den Noten 😵")),
+                      SectionLabel(br(
+                          tr("Achtung bei den Noten"),
+                          tr("Ohio-Zone 🌽"),
+                          tr("Oy vey, Balagan bei den Noten 😵"))),
                       for (final (subject, avg) in data.weakSubjects)
                         HoloPanel(
                           accent: AppColors.danger,
@@ -211,7 +245,7 @@ class TodayPage extends StatelessWidget {
                                     Text(subject.name,
                                         style: theme.textTheme.titleMedium),
                                     Text(
-                                      "Unter 6 – unter Noten siehst du, was du im nächsten Test brauchst.",
+                                      tr("Unter 6 – unter Noten siehst du, was du im nächsten Test brauchst."),
                                       style: theme.textTheme.bodySmall,
                                     ),
                                   ],
@@ -223,15 +257,18 @@ class TodayPage extends StatelessWidget {
                         ),
                     ],
                     if (data.absencePercent != null) ...[
-                      SectionLabel(br("Fehlstunden", "Skip-Statistik 🛌",
-                          "Fehlstunden 🏖️")),
+                      SectionLabel(br(tr("Fehlstunden"),
+                          tr("Skip-Statistik 🛌"), tr("Fehlstunden 🏖️"))),
                       HoloPanel(
                         onTap: onShowAbsences,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "${data.absencePercent!.toStringAsFixed(1).replaceAll(".", ",")} % der Unterrichtszeit",
+                              tr("{0} % der Unterrichtszeit", [
+                                NumberFormat('0.0', appLanguage.value)
+                                    .format(data.absencePercent!)
+                              ]),
                               style: theme.textTheme.titleMedium,
                             ),
                             const SizedBox(height: 10),
@@ -267,92 +304,212 @@ class _NowCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final now = wallClockNow();
-    final lessons = data.lessons;
-    final current = lessons.where((h) => isLessonNow(h, now)).firstOrNull;
-    final next = lessons
-        .where((h) =>
-            h.timeSpans.isNotEmpty && h.timeSpans.first.from.isAfter(now))
-        .firstOrNull;
-    final over = lessons.isNotEmpty &&
-        lessons.last.timeSpans.isNotEmpty &&
-        !now.isBefore(lessons.last.timeSpans.last.to);
-
-    String headline;
-    String detail;
-    if (!data.lessonsLoaded) {
-      headline = "Stundenplan wird geladen";
-      detail = "Sobald die Woche geladen ist, siehst du hier deine Stunden.";
-    } else if (lessons.isEmpty) {
-      headline = br("Heute frei", "Heute frei, W 🏖️",
-          "Heute frei – Sababa, ab zum Strand 🏖️");
-      detail = "Kein Unterricht eingetragen.";
-    } else if (current != null) {
-      final left = current.timeSpans.last.to.difference(now).inMinutes;
-      headline = data.subjectNicks.nick(current.subject);
-      detail =
-          "${br("Läuft gerade", "Lock in 🔒", "Tachles, lock in 🔒")} · noch $left min"
-          "${current.rooms.isEmpty ? "" : " · ${current.rooms.join(", ")}"}";
-    } else if (next != null) {
-      final inMin = next.timeSpans.first.from.difference(now).inMinutes;
-      headline = "Gleich: ${data.subjectNicks.nick(next.subject)}";
-      detail = inMin < 60
-          ? "Beginnt in $inMin min"
-          : "Beginnt um ${_time(next.timeSpans.first.from)}";
-    } else if (over) {
-      headline = br(
-          "Schulschluss", "Schulschluss 🗿", "Schulschluss – Yalla bye! 🏖️");
-      detail = br(
-          "Für heute geschafft.",
-          "Sigma grindset ✔️ Für heute geschafft.",
-          "Yalla bye! Ab an den Strand 🏖️");
-    } else {
-      headline = "Heute";
-      detail = "";
-    }
+    final agenda = data.agenda;
+    final current = agenda.current;
+    final focus = current ?? agenda.next;
+    final now = agenda.now;
+    final label = current != null ? tr("Jetzt") : tr("Nächste Stunde");
+    final headline = focus != null
+        ? data.subjectNicks.nick(focus.lesson.subject)
+        : !data.lessonsLoaded
+            ? tr("Stundenplan wird geladen")
+            : data.lessons.isEmpty
+                ? tr("Heute frei")
+                : tr("Schulschluss");
+    final remaining = focus == null
+        ? null
+        : (current != null ? focus.end : focus.start).difference(now);
+    final minutes = remaining == null ? 0 : (remaining.inSeconds / 60).ceil();
+    final progress = current == null
+        ? null
+        : (now.difference(current.start).inSeconds /
+                current.end.difference(current.start).inSeconds)
+            .clamp(0.0, 1.0);
 
     return GlowCard(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Wrap(
+            spacing: 12,
+            runSpacing: 8,
+            crossAxisAlignment: WrapCrossAlignment.center,
             children: [
-              HudLabel(
-                "${DateFormat("EEEE, d. MMMM", "de").format(data.today)} · ${DateFormat("HH:mm").format(DateTime.now())}",
-              ),
-              const Spacer(),
-              if (current != null)
-                StatusPill(label: "Jetzt", color: AppColors.cyan),
-            ],
-          ),
+              HudLabel(DateFormat('EEEE, d. MMMM', appLanguage.value)
+                  .format(data.today)),
+              if (focus != null)
+                StatusPill(
+                    label: label,
+                    color: current != null ? AppColors.cyan : AppColors.violet),
+            ]),
+        const SizedBox(height: 18),
+        GradientText(headline, style: theme.textTheme.headlineMedium),
+        if (focus != null) ...[
+          const SizedBox(height: 10),
+          Wrap(
+              spacing: 18,
+              runSpacing: 8,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              children: [
+                Row(mainAxisSize: MainAxisSize.min, children: [
+                  const Icon(Icons.schedule_rounded, size: 18),
+                  const SizedBox(width: 6),
+                  Text('${_time(focus.start)}–${_time(focus.end)}',
+                      style: theme.textTheme.titleMedium),
+                ]),
+                if (focus.lesson.rooms.isNotEmpty)
+                  Row(mainAxisSize: MainAxisSize.min, children: [
+                    Icon(Icons.meeting_room_outlined,
+                        size: 18, color: AppColors.cyan),
+                    const SizedBox(width: 6),
+                    Flexible(
+                        child: Text(
+                            tr("Raum {0}", [focus.lesson.rooms.join(", ")]),
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: theme.textTheme.titleMedium)),
+                  ]),
+              ]),
+          const SizedBox(height: 10),
+          Text(
+              current != null
+                  ? tr("Noch {0} min", [minutes])
+                  : focus.start.stripTime() == data.today
+                      ? tr("Beginnt in {0} min", [minutes])
+                      : DateFormat('EEEE, d. MMMM', appLanguage.value)
+                          .format(focus.start),
+              style: theme.textTheme.bodyMedium),
+          if (progress != null) ...[
+            const SizedBox(height: 14),
+            ClipRRect(
+                borderRadius: BorderRadius.circular(5),
+                child: LinearProgressIndicator(
+                    value: progress,
+                    minHeight: 5,
+                    color: AppColors.cyan,
+                    backgroundColor: AppColors.cyan.withValues(alpha: 0.15))),
+          ],
+        ] else ...[
           const SizedBox(height: 8),
-          GradientText(headline, style: theme.textTheme.headlineMedium),
-          if (detail.isNotEmpty) ...[
-            const SizedBox(height: 4),
-            Text(detail, style: theme.textTheme.bodyMedium),
-          ],
-          if (lessons.isNotEmpty) ...[
-            const SizedBox(height: 16),
-            for (final hour in lessons)
-              _LessonLine(
-                hour: hour,
-                nick: data.subjectNicks.nick(hour.subject),
-                isNow: hour == current,
-                isPast: hour.timeSpans.isNotEmpty &&
-                    !now.isBefore(hour.timeSpans.last.to),
-              ),
-          ],
-          Align(
+          Text(
+              !data.lessonsLoaded
+                  ? tr(
+                      "Sobald die Woche geladen ist, siehst du hier deine Stunden.")
+                  : data.lessons.isEmpty
+                      ? tr("Kein Unterricht eingetragen.")
+                      : tr("Für heute geschafft."),
+              style: theme.textTheme.bodyMedium),
+        ],
+        if (data.lessons.isNotEmpty) ...[
+          const SizedBox(height: 12),
+          Theme(
+              data: theme.copyWith(dividerColor: Colors.transparent),
+              child: ExpansionTile(
+                  tilePadding: EdgeInsets.zero,
+                  title: Text(tr("Stundenplan heute"),
+                      style: theme.textTheme.titleSmall),
+                  children: [
+                    for (final hour in data.lessons)
+                      _LessonLine(
+                        hour: hour,
+                        nick: data.subjectNicks.nick(hour.subject),
+                        isNow: current?.lesson == hour,
+                        isPast: hour.timeSpans.isNotEmpty &&
+                            !now.isBefore(hour.timeSpans.last.to),
+                      )
+                  ])),
+        ],
+        Align(
             alignment: Alignment.centerRight,
             child: TextButton.icon(
-              onPressed: onShowCalendar,
-              icon: const Icon(Icons.calendar_month_outlined, size: 18),
-              label: const Text("Kalender"),
-            ),
-          ),
-        ],
-      ),
+                onPressed: onShowCalendar,
+                icon: const Icon(Icons.calendar_month_outlined, size: 18),
+                label: Text(tr("Kalender öffnen")))),
+      ]),
     );
+  }
+}
+
+class _AgendaStatus extends StatelessWidget {
+  final TodayData data;
+  final bool noInternet;
+  const _AgendaStatus({required this.data, required this.noInternet});
+  @override
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        child: Row(children: [
+          Icon(noInternet ? Icons.cloud_off_rounded : Icons.sync_rounded,
+              size: 15, color: Theme.of(context).colorScheme.onSurfaceVariant),
+          const SizedBox(width: 8),
+          Expanded(
+              child: Text(
+                  data.agenda.lastUpdated == null
+                      ? tr("Noch keine gespeicherten Daten")
+                      : tr("{0}Letzte Aktualisierung: {1}", [
+                          noInternet ? tr("Offline · ") : "",
+                          DateFormat("dd.MM. HH:mm")
+                              .format(data.agenda.lastUpdated!)
+                        ]),
+                  style: Theme.of(context).textTheme.bodySmall)),
+        ]),
+      );
+}
+
+class _TodayActions extends StatelessWidget {
+  final TodayData data;
+  final VoidCallback onShowTasks, onShowCalendar;
+  const _TodayActions(
+      {required this.data,
+      required this.onShowTasks,
+      required this.onShowCalendar});
+
+  @override
+  Widget build(BuildContext context) {
+    Widget tile(String label, String count, Color accent, IconData icon,
+            VoidCallback action) =>
+        Expanded(
+            child: HoloPanel(
+          margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 6),
+          padding: const EdgeInsets.all(12),
+          accent: accent,
+          onTap: action,
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Icon(icon, size: 21, color: accent),
+            const SizedBox(height: 10),
+            Text(count, style: Theme.of(context).textTheme.headlineSmall),
+            const SizedBox(height: 4),
+            Text(label,
+                style: Theme.of(context).textTheme.labelMedium,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis),
+          ]),
+        ));
+    return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 12),
+        child: IntrinsicHeight(
+            child:
+                Row(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+          tile(
+              tr("Fällig heute"),
+              data.agenda.tasksLoaded ? '${data.dueToday.length}' : '–',
+              AppColors.cyan,
+              Icons.checklist_rounded,
+              onShowTasks),
+          tile(
+              tr("Überfällig"),
+              data.agenda.tasksLoaded ? '${data.agenda.overdue.length}' : '–',
+              AppColors.warning,
+              Icons.flag_outlined,
+              onShowTasks),
+          tile(
+              tr("Nächster Test"),
+              data.tests.isEmpty
+                  ? '–'
+                  : tr("{0} Tage",
+                      [data.tests.first.date.difference(data.today).inDays]),
+              AppColors.violet,
+              Icons.event_outlined,
+              onShowCalendar),
+        ])));
   }
 }
 
@@ -460,7 +617,7 @@ class _TaskRow extends StatelessWidget {
                 Text(homework.title, style: theme.textTheme.titleMedium),
                 if (homework.subtitle.isNotEmpty)
                   Text(
-                    homework.subtitle,
+                    calendarPlainText(homework.subtitle),
                     style: theme.textTheme.bodySmall,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
@@ -498,9 +655,9 @@ class _TestCountdown extends StatelessWidget {
     final theme = Theme.of(context);
     final days = test.date.difference(today).inDays;
     final countdown = switch (days) {
-      0 => "Heute",
-      1 => "Morgen",
-      _ => "in $days Tagen",
+      0 => tr("Heute"),
+      1 => tr("Morgen"),
+      _ => tr("in {0} Tagen", [days]),
     };
     final color = days <= 1
         ? AppColors.danger
@@ -523,7 +680,7 @@ class _TestCountdown extends StatelessWidget {
                     weight: FontWeight.w700,
                   ),
                 ),
-                HudLabel(days <= 1 ? countdown : "Tage", color: color),
+                HudLabel(days <= 1 ? countdown : tr("Tage"), color: color),
               ],
             ),
           ),
@@ -533,7 +690,7 @@ class _TestCountdown extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 HudLabel(
-                  "${DateFormat("EE dd.MM.", "de").format(test.date)}"
+                  "${DateFormat("EE dd.MM.", appLanguage.value).format(test.date)}"
                   "${test.homework.label != null ? " · ${test.homework.label}" : ""}",
                 ),
                 const SizedBox(height: 4),
@@ -554,7 +711,7 @@ class _TestCountdown extends StatelessWidget {
           ),
           if (days >= 2)
             IconButton(
-              tooltip: "Lernplan erstellen",
+              tooltip: tr("Lernplan erstellen"),
               icon: const Icon(Icons.auto_awesome_rounded),
               color: AppColors.violet,
               onPressed:
@@ -574,17 +731,22 @@ class _TestCountdown extends StatelessWidget {
         builder: (context, setState) {
           final plan = studyDays(test.date, today, sessions);
           return AlertDialog(
-            title: const Text("Lernplan erstellen"),
+            title: Text(tr("Lernplan erstellen")),
             content: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Für „${test.homework.title}“ am ${DateFormat("EEEE, d. MMMM", "de").format(test.date)}. "
-                  "Die Lerntage werden als Erinnerungen im Register eingetragen.",
+                  tr(
+                      "Für „{0}“ am {1}. Die Lerntage werden als Erinnerungen im Register eingetragen.",
+                      [
+                        test.homework.title,
+                        DateFormat("EEEE, d. MMMM", appLanguage.value)
+                            .format(test.date)
+                      ]),
                 ),
                 const SizedBox(height: 16),
-                const HudLabel("Lerneinheiten"),
+                HudLabel(tr("Lerneinheiten")),
                 Slider(
                   value: sessions.toDouble(),
                   min: 1,
@@ -602,7 +764,8 @@ class _TestCountdown extends StatelessWidget {
                     for (final d in plan)
                       Chip(
                         avatar: const Icon(Icons.menu_book_rounded, size: 16),
-                        label: Text(DateFormat("EE dd.MM.", "de").format(d)),
+                        label: Text(DateFormat("EE dd.MM.", appLanguage.value)
+                            .format(d)),
                       ),
                   ],
                 ),
@@ -611,12 +774,12 @@ class _TestCountdown extends StatelessWidget {
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: const Text("Abbrechen"),
+                child: Text(tr("Abbrechen")),
               ),
               FilledButton(
                 onPressed:
                     plan.isEmpty ? null : () => Navigator.pop(context, plan),
-                child: Text("${plan.length} Erinnerungen eintragen"),
+                child: Text(tr("{0} Erinnerungen eintragen", [plan.length])),
               ),
             ],
           );
@@ -654,7 +817,7 @@ class TestTargets extends StatelessWidget {
       runSpacing: 6,
       crossAxisAlignment: WrapCrossAlignment.center,
       children: [
-        HudLabel("Ø jetzt ${formatGradeSteps(current)} · brauchst"),
+        HudLabel(tr("Ø jetzt {0} · brauchst", [formatGradeSteps(current)])),
         for (final target in const [6.0, 7.0, 8.0])
           _TargetChip(
             target: target,
@@ -675,11 +838,11 @@ class _TargetChip extends StatelessWidget {
     final needed = roundUpToQuarter(forecast.required);
     final (text, color) = switch (forecast.kind) {
       ForecastKind.safe => (
-          br("sicher", "safe 🗿", "sababa 😎"),
+          br("sicher", tr("safe 🗿"), tr("sababa 😎")),
           AppColors.success
         ),
       ForecastKind.impossible => (
-          br("unmöglich", "L 💀", "oy vey 😵"),
+          br(tr("unmöglich"), "L 💀", tr("oy vey 😵")),
           AppColors.danger
         ),
       ForecastKind.reachable => (formatGradeSteps(needed), gradeColor(needed)),
@@ -700,31 +863,43 @@ class _MemeOfTheDay extends StatefulWidget {
 }
 
 class _MemeOfTheDayState extends State<_MemeOfTheDay> {
-  static const _memes = [
-    ("🥙", "Hummus > Mathe", "Wissenschaftlich bewiesen, achi."),
+  static final _memes = [
+    ("🥙", tr("Hummus > Mathe"), tr("Wissenschaftlich bewiesen, achi.")),
     (
       "🤯",
-      "Yalla Balagan",
-      "Mein Stundenplan, meine Hausaufgaben, mein Leben."
+      tr("Yalla Balagan"),
+      tr("Mein Stundenplan, meine Hausaufgaben, mein Leben.")
     ),
-    ("😎", "Sababa", "Note 6. Reicht. Tachles."),
-    ("🍳", "Shakshuka Time", "Erst frühstücken, dann lernen. Beseder?"),
-    ("🏖️", "Matkot > Schule", "Pling. Plong. Pling. Plong."),
+    ("😎", tr("Sababa"), tr("Note 6. Reicht. Tachles.")),
+    ("🍳", tr("Shakshuka Time"), tr("Erst frühstücken, dann lernen. Beseder?")),
+    ("🏖️", tr("Matkot > Schule"), tr("Pling. Plong. Pling. Plong.")),
     (
       "👀",
-      "Ma nishma?",
-      "Ich nach dem Test, wenn jemand nach den Lösungen fragt."
+      tr("Ma nishma?"),
+      tr("Ich nach dem Test, wenn jemand nach den Lösungen fragt.")
     ),
-    ("🥜", "Bamba-Pause", "Wichtigster Teil des Schultags."),
-    ("💙", "Kapara alecha", "An alle, die mir die Hausaufgaben schicken."),
-    ("😵", "Oy vey", "Die Schularbeit ist morgen?!"),
-    ("✌️", "Yalla bye", "Letzte Stunde vorbei, ich bin weg."),
-    ("🐪", "Langsam, achi", "Kamel-Tempo am Montagmorgen."),
-    ("🎤", "Eurovision-Energie", "So laut feiere ich jede bestandene Prüfung."),
-    ("☀️", "Tel-Aviv-Mood", "30 Grad im Kopf, 12 Grad im Klassenzimmer."),
-    ("📚", "Achi, lern mal", "– meine Eltern, jeden Tag."),
-    ("🧆", "Falafel-Logik", "Je mehr Lernzettel, desto mehr Snacks."),
-    ("🇮🇱", "Shalom, Test", "Wir sehen uns. Leider."),
+    ("🥜", tr("Bamba-Pause"), tr("Wichtigster Teil des Schultags.")),
+    (
+      "💙",
+      tr("Kapara alecha"),
+      tr("An alle, die mir die Hausaufgaben schicken.")
+    ),
+    ("😵", tr("Oy vey"), tr("Die Schularbeit ist morgen?!")),
+    ("✌️", tr("Yalla bye"), tr("Letzte Stunde vorbei, ich bin weg.")),
+    ("🐪", tr("Langsam, achi"), tr("Kamel-Tempo am Montagmorgen.")),
+    (
+      "🎤",
+      tr("Eurovision-Energie"),
+      tr("So laut feiere ich jede bestandene Prüfung.")
+    ),
+    (
+      "☀️",
+      tr("Tel-Aviv-Mood"),
+      tr("30 Grad im Kopf, 12 Grad im Klassenzimmer.")
+    ),
+    ("📚", tr("Achi, lern mal"), tr("– meine Eltern, jeden Tag.")),
+    ("🧆", tr("Falafel-Logik"), tr("Je mehr Lernzettel, desto mehr Snacks.")),
+    ("🇮🇱", tr("Shalom, Test"), tr("Wir sehen uns. Leider.")),
   ];
 
   late int _index =
@@ -755,7 +930,7 @@ class _MemeOfTheDayState extends State<_MemeOfTheDay> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const HudLabel("Meme des Tages · tippen für mehr"),
+                HudLabel(tr("Meme des Tages · tippen für mehr")),
                 const SizedBox(height: 4),
                 Text(title, style: theme.textTheme.titleLarge),
                 Text(text, style: theme.textTheme.bodyMedium),

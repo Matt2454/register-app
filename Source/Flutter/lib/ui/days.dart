@@ -18,15 +18,16 @@
 import 'dart:async';
 
 import 'package:badges/badges.dart' as badge;
-import 'package:dr/desktop_notifications.dart' show refreshInterval;
 import 'package:built_collection/built_collection.dart';
 import 'package:deleteable_tile/deleteable_tile.dart';
+import 'package:dr/app_language.dart';
 import 'package:dr/app_state.dart';
 import 'package:dr/container/days_container.dart';
 import 'package:dr/container/homework_filter_container.dart';
 import 'package:dr/container/notification_icon_container.dart';
 import 'package:dr/container/sidebar_container.dart';
 import 'package:dr/data.dart';
+import 'package:dr/desktop_notifications.dart' show refreshInterval;
 import 'package:dr/main.dart';
 import 'package:dr/middleware/middleware.dart';
 import 'package:dr/ui/animated_linear_progress_indicator.dart';
@@ -270,7 +271,7 @@ class _DaysWidgetState extends State<DaysWidget> {
         fullScreenBody = Padding(
           padding: const EdgeInsets.all(32),
           child: Text(
-            "Keine Einträge vorhanden",
+            tr("Keine Einträge vorhanden"),
             style: Theme.of(context).textTheme.headlineMedium,
             textAlign: TextAlign.center,
           ),
@@ -389,7 +390,7 @@ class _DaysWidgetState extends State<DaysWidget> {
             FloatingActionButton.extended(
               backgroundColor: AppColors.danger,
               icon: const Icon(Icons.arrow_drop_down),
-              label: const Text("Neue Einträge"),
+              label: Text(tr("Neue Einträge")),
               onPressed: () async {
                 await controller.scrollToIndex(
                   _targets.first,
@@ -400,7 +401,8 @@ class _DaysWidgetState extends State<DaysWidget> {
         ],
       ),
       homeAppBar: ResponsiveAppBar(
-        title: Text(br("Register", "Register 🧠🔥", "Register 🇮🇱 Yalla")),
+        title: Text(
+            br(tr("Register"), tr("Register 🧠🔥"), tr("Register 🇮🇱 Yalla"))),
         actions: <Widget>[
           if (widget.vm.noInternet)
             TextButton(
@@ -409,9 +411,9 @@ class _DaysWidgetState extends State<DaysWidget> {
                 padding: const EdgeInsets.symmetric(horizontal: 16),
               ),
               onPressed: widget.refreshNoInternet,
-              child: const Row(
+              child: Row(
                 children: [
-                  Text("Keine Verbindung"),
+                  Text(tr("Keine Verbindung")),
                   SizedBox(width: 8),
                   Icon(Icons.refresh),
                 ],
@@ -471,8 +473,10 @@ class DashboardHeader extends StatelessWidget {
           child: Center(
             child: HoloToggle(
               labels: [
-                br("Kommend", "Kommt noch 🔜", "Kommt noch – yalla 🔜"),
-                br("Vergangen", "Schon passiert 💀", "Vergangen – Kapara 💙")
+                br(tr("Kommend"), tr("Kommt noch 🔜"),
+                    tr("Kommt noch – yalla 🔜")),
+                br(tr("Vergangen"), tr("Schon passiert 💀"),
+                    tr("Vergangen – Kapara 💙"))
               ],
               selected: future ? 0 : 1,
               onChanged: (_) => onSwitchFuture(),
@@ -530,21 +534,21 @@ class DayWidget extends StatelessWidget {
         String message = "";
         return StatefulBuilder(
           builder: (context, setState) => InfoDialog(
-            title: const Text("Erinnerung"),
+            title: Text(tr("Erinnerung")),
             content: TextField(
               autofocus: true,
               maxLines: null,
               onChanged: (msg) {
                 setState(() => message = msg);
               },
-              decoration: const InputDecoration(hintText: 'zB. Hausaufgabe'),
+              decoration: InputDecoration(hintText: tr("zB. Hausaufgabe")),
             ),
             actions: <Widget>[
               TextButton(
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: const Text("Abbrechen"),
+                child: Text(tr("Abbrechen")),
               ),
               ElevatedButton(
                 onPressed: message.isNullOrEmpty
@@ -552,8 +556,8 @@ class DayWidget extends StatelessWidget {
                     : () {
                         Navigator.pop(context, message);
                       },
-                child: const Text(
-                  "Speichern",
+                child: Text(
+                  tr("Speichern"),
                 ),
               ),
             ],
@@ -590,8 +594,11 @@ class DayWidget extends StatelessWidget {
                     children: [
                       HudLabel(
                         isToday
-                            ? "Heute · ${DateFormat("dd.MM", "de").format(day.date)}"
-                            : DateFormat("EE · dd.MM.yyyy", "de")
+                            ? tr("Heute · {0}", [
+                                DateFormat("dd.MM", appLanguage.value)
+                                    .format(day.date)
+                              ])
+                            : DateFormat("EE · dd.MM.yyyy", appLanguage.value)
                                 .format(day.date),
                         color: isToday ? theme.colorScheme.secondary : null,
                       ),
@@ -603,7 +610,8 @@ class DayWidget extends StatelessWidget {
                       ),
                       if (showLastFetched)
                         Text(
-                          "Zuletzt synchronisiert ${formatTimeAgo(day.lastRequested)}.",
+                          tr("Zuletzt synchronisiert {0}.",
+                              [formatTimeAgo(day.lastRequested)]),
                           style: theme.textTheme.bodySmall,
                         ),
                     ],
@@ -638,7 +646,7 @@ class DayWidget extends StatelessWidget {
                           context: context,
                           builder: (context) {
                             return InfoDialog(
-                              title: const Text("Gelöschte Einträge"),
+                              title: Text(tr("Gelöschte Einträge")),
                               content: SingleChildScrollView(
                                 child: Column(
                                   children: day.deletedHomework
@@ -664,7 +672,7 @@ class DayWidget extends StatelessWidget {
                   ),
                 if (vm.showAddReminder)
                   IconButton(
-                    tooltip: "Erinnerung hinzufügen",
+                    tooltip: tr("Erinnerung hinzufügen"),
                     icon: const Icon(Icons.add_circle_outline_rounded),
                     color: theme.colorScheme.primary,
                     onPressed: vm.noInternet
@@ -814,23 +822,23 @@ class ItemWidget extends StatelessWidget {
         return InfoDialog(
           content: StatefulBuilder(
             builder: (context, setState) => SwitchListTile.adaptive(
-              title: const Text("Nie fragen"),
+              title: Text(tr("Nie fragen")),
               onChanged: (bool value) {
                 setState(() => ask = !value);
               },
               value: !ask,
             ),
           ),
-          title: const Text("Erinnerung löschen?"),
+          title: Text(tr("Erinnerung löschen?")),
           actions: <Widget>[
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: const Text("Abbrechen"),
+              child: Text(tr("Abbrechen")),
             ),
             ElevatedButton(
               onPressed: () => Navigator.pop(context, true),
-              child: const Text(
-                "Löschen",
+              child: Text(
+                tr("Löschen"),
               ),
             )
           ],
@@ -854,7 +862,7 @@ class ItemWidget extends StatelessWidget {
                 Text(formatChanged(historyItem)),
                 if (historyItem.previousVersion != null)
                   ExpansionTile(
-                    title: const Text("Versionen"),
+                    title: Text(tr("Versionen")),
                     children: <Widget>[
                       ItemWidget(
                         item: historyItem,
@@ -913,12 +921,12 @@ class ItemWidget extends StatelessWidget {
     final picked = await showDatePicker(
       context: context,
       helpText: isOwnReminder(item)
-          ? "Erinnerung verschieben"
-          : "Als Erinnerung verschieben",
+          ? tr("Erinnerung verschieben")
+          : tr("Als Erinnerung verschieben"),
       initialDate: movedTo ?? today,
       firstDate: today.subtract(const Duration(days: 365)),
       lastDate: today.add(const Duration(days: 365)),
-      locale: const Locale("de"),
+      locale: Locale(appLanguage.value),
     );
     if (picked == null) return;
     final target = UtcDateTime(picked.year, picked.month, picked.day);
@@ -979,7 +987,7 @@ class ItemWidget extends StatelessWidget {
               children: <Widget>[
                 if (!isHistory && !isDeletedView && item.deleteable)
                   IconButton(
-                    tooltip: "Löschen",
+                    tooltip: tr("Löschen"),
                     visualDensity: VisualDensity.compact,
                     icon: const Icon(Icons.close_rounded, size: 20),
                     onPressed: noInternet
@@ -1007,10 +1015,10 @@ class ItemWidget extends StatelessWidget {
                               label: isHistory && isCurrent
                                   ? "aktuell"
                                   : item.isNew
-                                      ? "neu"
+                                      ? tr("neu")
                                       : item.deleted
-                                          ? "gelöscht"
-                                          : "geändert",
+                                          ? tr("gelöscht")
+                                          : tr("geändert"),
                               color: item.deleted
                                   ? AppColors.danger
                                   : AppColors.cyan,
@@ -1039,12 +1047,15 @@ class ItemWidget extends StatelessWidget {
                           crossAxisAlignment: WrapCrossAlignment.center,
                           children: [
                             StatusPill(
-                              label: "verschoben",
+                              label: tr("verschoben"),
                               color: AppColors.warning,
                               icon: Icons.event_repeat_rounded,
                             ),
                             HudLabel(
-                              "auf ${DateFormat("EE dd.MM.", "de").format(movedTo!)}",
+                              tr("auf {0}", [
+                                DateFormat("EE dd.MM.", appLanguage.value)
+                                    .format(movedTo!)
+                              ]),
                             ),
                             TextButton.icon(
                               style: TextButton.styleFrom(
@@ -1052,7 +1063,7 @@ class ItemWidget extends StatelessWidget {
                               ),
                               onPressed: noInternet ? null : onResetMove,
                               icon: const Icon(Icons.undo_rounded, size: 16),
-                              label: const Text("Zurücksetzen"),
+                              label: Text(tr("Zurücksetzen")),
                             ),
                           ],
                         ),
@@ -1065,7 +1076,7 @@ class ItemWidget extends StatelessWidget {
                   children: <Widget>[
                     if (!isHistory && !isDeletedView && onMove != null)
                       IconButton(
-                        tooltip: "Verschieben",
+                        tooltip: tr("Verschieben"),
                         visualDensity: VisualDensity.compact,
                         icon: const Icon(Icons.event_repeat_rounded, size: 20),
                         onPressed:
@@ -1073,7 +1084,7 @@ class ItemWidget extends StatelessWidget {
                       ),
                     if (!isHistory && item.label != null)
                       IconButton(
-                        tooltip: "Verlauf",
+                        tooltip: tr("Verlauf"),
                         visualDensity: VisualDensity.compact,
                         icon: hasHistory
                             ? badge.Badge(
@@ -1118,7 +1129,7 @@ class ItemWidget extends StatelessWidget {
             ],
             if (item.gradeGroupSubmissions?.isNotEmpty == true) ...[
               const SizedBox(height: 8),
-              const HudLabel("Anhang"),
+              HudLabel(tr("Anhang")),
               for (final attachment in item.gradeGroupSubmissions!)
                 AttachmentWidget(
                   ggs: attachment,
@@ -1162,24 +1173,30 @@ class ItemWidget extends StatelessWidget {
 String formatChanged(Homework hw) {
   String date;
   if (hw.lastNotSeen == null) {
-    date =
-        "Vor ${DateFormat("EEEE, dd.MM, HH:mm,", "de").format(hw.firstSeen)}";
+    date = tr("Vor {0}", [
+      DateFormat("EEEE, dd.MM, HH:mm,", appLanguage.value).format(hw.firstSeen)
+    ]);
   } else if (toDate(hw.firstSeen) == toDate(hw.lastNotSeen!)) {
-    date = "Am ${DateFormat("EEEE, dd.MM,", "de").format(hw.firstSeen)}"
-        " zwischen ${DateFormat("HH:mm", "de").format(hw.lastNotSeen!)} und ${DateFormat("HH:mm", "de").format(hw.firstSeen)}";
+    date = tr("Am {0} zwischen {1} und {2}", [
+      DateFormat("EEEE, dd.MM,", appLanguage.value).format(hw.firstSeen),
+      DateFormat("HH:mm", appLanguage.value).format(hw.lastNotSeen!),
+      DateFormat("HH:mm", appLanguage.value).format(hw.firstSeen)
+    ]);
   } else {
-    date =
-        "Zwischen ${DateFormat("EEEE, dd.MM, HH:mm,", "de").format(hw.lastNotSeen!)} "
-        "und ${DateFormat("EEEE, dd.MM, HH:mm,", "de").format(hw.firstSeen)}";
+    date = tr("Zwischen {0} und {1}", [
+      DateFormat("EEEE, dd.MM, HH:mm,", appLanguage.value)
+          .format(hw.lastNotSeen!),
+      DateFormat("EEEE, dd.MM, HH:mm,", appLanguage.value).format(hw.firstSeen)
+    ]);
   }
   if (hw.deleted) {
-    return "$date gelöscht.";
+    return tr("{0} gelöscht.", [date]);
   } else if (hw.previousVersion == null) {
-    return "$date eingetragen.";
+    return tr("{0} eingetragen.", [date]);
   } else if (hw.previousVersion!.deleted) {
-    return "$date wiederhergestellt.";
+    return tr("{0} wiederhergestellt.", [date]);
   } else {
-    return "$date geändert.";
+    return tr("{0} geändert.", [date]);
   }
 }
 
@@ -1215,7 +1232,7 @@ class AttachmentWidget extends StatelessWidget {
                 : () {
                     openCallback(ggs);
                   },
-            child: const Text("Öffnen"),
+            child: Text(tr("Öffnen")),
           )
         ],
       ),

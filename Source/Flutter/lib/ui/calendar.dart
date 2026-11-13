@@ -17,6 +17,7 @@
 
 import 'dart:io';
 
+import 'package:dr/app_language.dart';
 import 'package:dr/container/calendar_container.dart';
 import 'package:dr/container/calendar_detail_container.dart';
 import 'package:dr/container/calendar_week_container.dart';
@@ -184,11 +185,11 @@ class _CalendarState extends State<Calendar> with TickerProviderStateMixin {
                 children: [
                   Scaffold(
                     appBar: ResponsiveAppBar(
-                      title: const Text("Kalender"),
+                      title: Text(tr("Kalender")),
                       actions: <Widget>[
                         if (Platform.isIOS)
                           IconButton(
-                            tooltip: 'In Apple Kalender exportieren',
+                            tooltip: tr("In Apple Kalender exportieren"),
                             icon: const Icon(Icons.ios_share),
                             onPressed: _exporting
                                 ? null
@@ -224,7 +225,7 @@ class _CalendarState extends State<Calendar> with TickerProviderStateMixin {
                                 duration: _animatePageDuration,
                               );
                             },
-                            child: const Text("Aktuelle Woche"),
+                            child: Text(tr("Aktuelle Woche")),
                           ),
                       ],
                     ),
@@ -286,7 +287,7 @@ class _CalendarState extends State<Calendar> with TickerProviderStateMixin {
                                           "${_dateFormat.format(widget.vm.first!)} - ${_dateFormat.format(widget.vm.last!)}",
                                         )
                                       : widget.vm.noInternet
-                                          ? const Text("Wähle ein Datum")
+                                          ? Text(tr("Wähle ein Datum"))
                                           : const CircularProgressIndicator(),
                                 ),
                               ),
@@ -405,11 +406,11 @@ class EditNickBar extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 8),
                       child: TextButton(
                         onPressed: onShowEditNicks,
-                        child: const Row(
+                        child: Row(
                           children: [
                             Padding(
                               padding: EdgeInsets.symmetric(horizontal: 8),
-                              child: Text("Kürzel bearbeiten"),
+                              child: Text(tr("Kürzel bearbeiten")),
                             ),
                             Spacer(),
                           ],

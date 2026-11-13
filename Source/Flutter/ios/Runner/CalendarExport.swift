@@ -14,6 +14,10 @@ final class RegisterCalendarExporter: NSObject, EKCalendarChooserDelegate {
   private var drafts: [Draft] = []
   private var scope = ""
   private var skipExisting = true
+  private var language = Locale.current.languageCode ?? "en"
+  private func text(_ en: String, _ it: String, _ de: String) -> String {
+    RegisterWidgetStrings(language: language).text(en, it, de)
+  }
   private let ledgerKey = "register.calendar.exports.v1"
 
   init(registrar: FlutterPluginRegistrar) {
@@ -22,7 +26,7 @@ final class RegisterCalendarExporter: NSObject, EKCalendarChooserDelegate {
     super.init()
     channel.setMethodCallHandler { [weak self] call, result in
       guard let self = self else {
-        result(FlutterError(code: "calendar_unavailable", message: "Kalenderexport nicht verfügbar.", details: nil))
+        result(FlutterError(code: "calendar_unavailable", message: "Calendar export is unavailable.", details: nil))
         return
       }
       self.handle(call, result: result)
@@ -37,13 +41,15 @@ final class RegisterCalendarExporter: NSObject, EKCalendarChooserDelegate {
     }
     guard call.method == "export" else { result(FlutterMethodNotImplemented); return }
     guard pending == nil else {
-      result(FlutterError(code: "calendar_busy", message: "Ein Kalenderexport ist bereits geöffnet.", details: nil)); return
+      result(FlutterError(code: "calendar_busy", message: text("A calendar export is already open.", "È già aperta un’esportazione del calendario.", "Ein Kalenderexport ist bereits geöffnet."), details: nil)); return
     }
+    if let code = (call.arguments as? [String: Any])?["language"] as? String,
+       ["en", "it", "de"].contains(code) { language = code }
     guard let args = call.arguments as? [String: Any],
           let raw = args["events"] as? [[String: Any]], !raw.isEmpty, raw.count <= 1000,
           let accountScope = args["scope"] as? String, !accountScope.isEmpty,
           let decoded = try? raw.map({ try Draft($0) }) else {
-      result(FlutterError(code: "calendar_invalid", message: "Die Termine enthalten ungültige Daten.", details: nil)); return
+      result(FlutterError(code: "calendar_invalid", message: text("The events contain invalid data.", "Gli eventi contengono dati non validi.", "Die Termine enthalten ungültige Daten."), details: nil)); return
     }
     drafts = decoded
     scope = accountScope
@@ -54,7 +60,7 @@ final class RegisterCalendarExporter: NSObject, EKCalendarChooserDelegate {
         guard let self = self else { return }
         guard granted else {
           self.finish(FlutterError(code: "calendar_permission", message:
-            "Bitte erlaube Register in den iPhone-Einstellungen, Termine zum Kalender hinzuzufügen.", details: nil))
+            self.text("Allow Register to add calendar events in iPhone Settings.", "Consenti a Register di aggiungere eventi al calendario nelle Impostazioni dell’iPhone.", "Bitte erlaube Register in den iPhone-Einstellungen, Termine zum Kalender hinzuzufügen."), details: nil))
           return
         }
         self.presentCalendarChooser()
@@ -70,11 +76,11 @@ final class RegisterCalendarExporter: NSObject, EKCalendarChooserDelegate {
   private func presentCalendarChooser() {
     guard let presenter = registrar.viewController, presenter.viewIfLoaded?.window != nil,
           presenter.presentedViewController == nil else {
-      finish(FlutterError(code: "calendar_busy", message: "Bitte schließe den offenen Dialog und versuche es erneut.", details: nil)); return
+      finish(FlutterError(code: "calendar_busy", message: text("Close the open dialog and try again.", "Chiudi la finestra aperta e riprova.", "Bitte schließe den offenen Dialog und versuche es erneut."), details: nil)); return
     }
     let chooser = EKCalendarChooser(selectionStyle: .single, displayStyle: .writableCalendarsOnly,
                                      entityType: .event, eventStore: store)
-    chooser.title = "Kalender auswählen"
+    chooser.title = text("Choose calendar", "Scegli calendario", "Kalender auswählen")
     chooser.showsDoneButton = true
     chooser.showsCancelButton = true
     chooser.delegate = self
@@ -94,7 +100,7 @@ final class RegisterCalendarExporter: NSObject, EKCalendarChooserDelegate {
           calendar.allowsContentModifications else {
       calendarChooser.dismiss(animated: true) {
         self.finish(FlutterError(code: "calendar_missing", message:
-          "Kein beschreibbarer Kalender ausgewählt. Bitte richte einen Kalender in Apple Kalender ein.", details: nil))
+          self.text("No writable calendar selected. Set up a calendar in Apple Calendar.", "Nessun calendario modificabile selezionato. Configura un calendario in Calendario Apple.", "Kein beschreibbarer Kalender ausgewählt. Bitte richte einen Kalender in Apple Kalender ein."), details: nil))
       }
       return
     }
@@ -116,7 +122,7 @@ final class RegisterCalendarExporter: NSObject, EKCalendarChooserDelegate {
         event.calendar = calendar
         event.title = draft.title
         event.location = draft.location
-        event.notes = [draft.notes, "Aus Register exportiert. Keine automatische Synchronisierung."].filter { !$0.isEmpty }.joined(separator: "\n\n")
+        event.notes = [draft.notes, text("Exported from Register. No automatic synchronization.", "Esportato da Register. Nessuna sincronizzazione automatica.", "Aus Register exportiert. Keine automatische Synchronisierung.")].filter { !$0.isEmpty }.joined(separator: "\n\n")
         event.isAllDay = draft.allDay
         event.timeZone = draft.allDay ? nil : TimeZone(identifier: "Europe/Rome")
         event.startDate = draft.start
@@ -136,7 +142,7 @@ final class RegisterCalendarExporter: NSObject, EKCalendarChooserDelegate {
       // Do not mark any item as exported if the atomic batch did not commit.
       store.reset()
       finish(FlutterError(code: "calendar_save", message:
-        "Die Termine konnten nicht gespeichert werden. Bitte erneut versuchen.", details: nil))
+        text("Could not save the events. Please try again.", "Impossibile salvare gli eventi. Riprova.", "Die Termine konnten nicht gespeichert werden. Bitte erneut versuchen."), details: nil))
     }
   }
 

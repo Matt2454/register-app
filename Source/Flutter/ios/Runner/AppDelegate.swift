@@ -6,6 +6,7 @@ import workmanager_apple
 @main
 @objc class AppDelegate: FlutterAppDelegate, FlutterImplicitEngineDelegate {
   private var calendarExporter: RegisterCalendarExporter?
+  private var widgetBridge: RegisterWidgetBridge?
   override func application(
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
@@ -28,6 +29,9 @@ import workmanager_apple
     GeneratedPluginRegistrant.register(with: engineBridge.pluginRegistry)
     if let registrar = engineBridge.pluginRegistry.registrar(forPlugin: "RegisterCalendarExporter") {
       calendarExporter = RegisterCalendarExporter(registrar: registrar)
+    }
+    if let registrar = engineBridge.pluginRegistry.registrar(forPlugin: "RegisterWidgetBridge") {
+      widgetBridge = RegisterWidgetBridge(registrar: registrar)
     }
   }
 }

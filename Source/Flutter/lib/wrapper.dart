@@ -22,6 +22,7 @@ import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
+import 'package:dr/app_language.dart';
 import 'package:dr/app_state.dart';
 import 'package:dr/demo.dart';
 import 'package:dr/main.dart';
@@ -180,7 +181,7 @@ class Wrapper {
       if (e is TimeoutException || await refreshNoInternet()) {
         noInternet = true;
       }
-      error = "Unknown Error:\n$e";
+      error = tr("Unknown Error:\n{0}", [e]);
       return null;
     }
     if (getBool(response["loggedIn"]) ?? false) {
@@ -225,22 +226,23 @@ class Wrapper {
         final textInputController = TextEditingController();
         return StatefulBuilder(
           builder: (context, setState) => InfoDialog(
-            title: Text(
-                wasWrong ? "Ungültiger Code" : "Zweiter Faktor wird benötigt"),
+            title: Text(wasWrong
+                ? tr("Ungültiger Code")
+                : tr("Zweiter Faktor wird benötigt")),
             content: TextField(
               controller: textInputController,
             ),
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: const Text("Abbrechen"),
+                child: Text(tr("Abbrechen")),
               ),
               ElevatedButton(
                 onPressed: () => Navigator.pop(
                   context,
                   textInputController.value.text,
                 ),
-                child: const Text("Bestätigen"),
+                child: Text(tr("Bestätigen")),
               ),
             ],
           ),
@@ -267,7 +269,7 @@ class Wrapper {
     } catch (e) {
       _loggedIn = Future.value(false);
       log("Failed to change pass", error: e);
-      error = "Unknown Error:\n$e";
+      error = tr("Unknown Error:\n{0}", [e]);
       return null;
     }
     if (response["error"] != null) {
@@ -488,7 +490,7 @@ class Wrapper {
       noInternet = true;
       _loggedIn = Future.value(false);
       await actions.noInternet(true);
-      error = "Keine Internetverbindung";
+      error = tr("Keine Internetverbindung");
     } else {
       error = e.toString();
     }

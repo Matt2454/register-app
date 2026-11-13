@@ -15,9 +15,10 @@
 // You should have received a copy of the GNU General Public License
 // along with digitales_register.  If not, see <http://www.gnu.org/licenses/>.
 
+import 'package:built_collection/built_collection.dart';
+import 'package:dr/app_language.dart';
 import 'package:dr/app_state.dart';
 import 'package:dr/data.dart';
-import 'package:built_collection/built_collection.dart';
 import 'package:dr/teacher_photos.dart';
 import 'package:dr/ui/animated_linear_progress_indicator.dart';
 import 'package:dr/ui/holo.dart';
@@ -45,7 +46,7 @@ class CalendarCard extends StatelessWidget {
   });
 
   String formatTime(UtcDateTime dateTime) {
-    return DateFormat.Hm("de").format(dateTime);
+    return DateFormat.Hm(appLanguage.value).format(dateTime);
   }
 
   @override
@@ -78,8 +79,8 @@ class CalendarCard extends StatelessWidget {
           // Time (index and time)
           _ContentItem(
             title: hour.fromHour == hour.toHour
-                ? "${hour.fromHour}. Stunde"
-                : "${hour.fromHour}. – ${hour.toHour}. Stunde",
+                ? tr("{0}. Stunde", [hour.fromHour])
+                : tr("{0}. – {1}. Stunde", [hour.fromHour, hour.toHour]),
             content: hour.timeSpans
                 .map((span) =>
                     "${formatTime(span.from)} – ${formatTime(span.to)}")
@@ -91,7 +92,9 @@ class CalendarCard extends StatelessWidget {
           if (hour.teachers.isNotEmpty) _TeacherPhotos(teachers: hour.teachers),
           if (hour.teachers.isNotEmpty)
             _ContentItem(
-              title: hour.teachers.length == 1 ? "Lehrer*in" : "Lehrer*innen",
+              title: hour.teachers.length == 1
+                  ? tr("Lehrer*in")
+                  : tr("Lehrer*innen"),
               content: hour.teachers
                   .map((t) => "${t.firstName} ${t.lastName}")
                   .join(", "),
@@ -99,7 +102,7 @@ class CalendarCard extends StatelessWidget {
             ),
           if (hour.rooms.isNotEmpty)
             _ContentItem(
-              title: "Räume",
+              title: tr("Räume"),
               content: hour.rooms.join(", "),
               icon: Icons.meeting_room,
             ),
@@ -248,7 +251,7 @@ class _SubmissionWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const HudLabel("Anhang"),
+              HudLabel(tr("Anhang")),
               Text(
                 submission.originalName,
               ),
@@ -261,9 +264,9 @@ class _SubmissionWidget extends StatelessWidget {
                       : () {
                           onOpenFile(submission);
                         },
-                  child: const Align(
+                  child: Align(
                     alignment: Alignment.centerLeft,
-                    child: Text("Öffnen"),
+                    child: Text(tr("Öffnen")),
                   ),
                 ),
               ),
@@ -344,9 +347,9 @@ class _TeacherPhoto extends StatelessWidget {
                   } on Exception {
                     if (context.mounted) {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
+                        SnackBar(
                           content: Text(
-                            "Das Bild konnte nicht geladen werden. Prüfe, ob Register auf deine Fotos zugreifen darf.",
+                            tr("Das Bild konnte nicht geladen werden. Prüfe, ob Register auf deine Fotos zugreifen darf."),
                           ),
                         ),
                       );
@@ -354,11 +357,12 @@ class _TeacherPhoto extends StatelessWidget {
                   }
                 },
                 icon: const Icon(Icons.add_photo_alternate_outlined, size: 18),
-                label: Text(custom ? "Anderes Bild" : "Eigenes Bild hochladen"),
+                label: Text(
+                    custom ? tr("Anderes Bild") : tr("Eigenes Bild hochladen")),
               ),
               if (custom)
                 IconButton(
-                  tooltip: "Zurücksetzen",
+                  tooltip: tr("Zurücksetzen"),
                   visualDensity: VisualDensity.compact,
                   onPressed: () => removeCustomTeacherImage(teacher),
                   icon: const Icon(Icons.undo_rounded, size: 18),

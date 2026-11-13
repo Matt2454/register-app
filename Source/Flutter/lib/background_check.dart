@@ -33,11 +33,11 @@ import 'package:dio/dio.dart';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 import 'package:dr/actions/app_actions.dart';
 import 'package:dr/actions/dashboard_actions.dart';
+import 'package:dr/app_language.dart';
 import 'package:dr/app_state.dart';
 import 'package:dr/desktop.dart';
 import 'package:dr/desktop_notifications.dart';
-import 'package:dr/middleware/middleware.dart'
-    show escapeKey, getStorageKey;
+import 'package:dr/middleware/middleware.dart' show escapeKey, getStorageKey;
 import 'package:dr/reducer/reducer.dart';
 import 'package:dr/serializers.dart';
 import 'package:dr/utc_date_time.dart';
@@ -80,6 +80,7 @@ void backgroundDispatcher() {
     WidgetsFlutterBinding.ensureInitialized();
     DartPluginRegistrant.ensureInitialized();
     try {
+      await loadAppLanguage();
       await runBackgroundCheck();
     } on Object catch (e) {
       log("Background check failed", error: e);

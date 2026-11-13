@@ -23,7 +23,7 @@ import 'package:flutter/material.dart';
 
 typedef DrawerCallback = void Function(bool isOpened);
 
-class HomePageContent extends StatelessWidget {
+class HomePageContent extends StatefulWidget {
   final HomePageContentViewModel vm;
 
   const HomePageContent({
@@ -31,7 +31,20 @@ class HomePageContent extends StatelessWidget {
     required this.vm,
   });
   @override
+  State<HomePageContent> createState() => _HomePageContentState();
+}
+
+class _HomePageContentState extends State<HomePageContent> {
+  bool _initialPageShown = false;
+  @override
   Widget build(BuildContext context) {
+    if (widget.vm.splash) _initialPageShown = false;
+    if (!widget.vm.splash && !_initialPageShown) {
+      _initialPageShown = true;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted && !widget.vm.splash) showInitialAppPage();
+      });
+    }
     return WillPopScope(
       onWillPop: () {
         if (nestedNavKey.currentState!.canPop()) {
@@ -44,7 +57,7 @@ class HomePageContent extends StatelessWidget {
         return Future.value(true);
       },
       child: SplashScreen(
-        splash: vm.splash,
+        splash: widget.vm.splash,
         child: DaysContainer(),
       ),
     );

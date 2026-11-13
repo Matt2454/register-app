@@ -16,6 +16,7 @@
 // along with digitales_register.  If not, see <http://www.gnu.org/licenses/>.
 
 import 'package:dr/actions/absences_actions.dart';
+import 'package:dr/app_language.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -107,25 +108,26 @@ class _ReasonAndSignatureFields extends StatelessWidget {
           minLines: 2,
           maxLines: 4,
           textCapitalization: TextCapitalization.sentences,
-          decoration: const InputDecoration(
-            labelText: "Grund",
-            hintText: "z. B. Arzttermin, Krankheit, Familienfeier",
+          decoration: InputDecoration(
+            labelText: tr("Grund"),
+            hintText: tr("z. B. Arzttermin, Krankheit, Familienfeier"),
             alignLabelWithHint: true,
           ),
-          validator: (v) =>
-              v == null || v.trim().isEmpty ? "Bitte gib einen Grund an" : null,
+          validator: (v) => v == null || v.trim().isEmpty
+              ? tr("Bitte gib einen Grund an")
+              : null,
         ),
         const SizedBox(height: 12),
         TextFormField(
           controller: signature,
           textCapitalization: TextCapitalization.words,
-          decoration: const InputDecoration(
-            labelText: "Unterschrift",
-            helperText: "Vor- und Nachname der Person, die entschuldigt",
+          decoration: InputDecoration(
+            labelText: tr("Unterschrift"),
+            helperText: tr("Vor- und Nachname der Person, die entschuldigt"),
             prefixIcon: Icon(Icons.draw_outlined),
           ),
           validator: (v) => v == null || v.trim().isEmpty
-              ? "Bitte unterschreibe mit deinem Namen"
+              ? tr("Bitte unterschreibe mit deinem Namen")
               : null,
         ),
       ],
@@ -170,7 +172,7 @@ class _FutureAbsenceFormState extends State<_FutureAbsenceForm> {
       initialDate: start ? _start : _end,
       firstDate: start ? _today : _start,
       lastDate: _today.add(const Duration(days: 365)),
-      locale: const Locale("de"),
+      locale: Locale(appLanguage.value),
     );
     if (picked == null) return;
     setState(() {
@@ -187,8 +189,8 @@ class _FutureAbsenceFormState extends State<_FutureAbsenceForm> {
   void _submit() {
     final sameDay = _start == _end;
     if (sameDay && _endHour < _startHour) {
-      setState(() => _rangeError =
-          "Die letzte Stunde liegt vor der ersten. Bitte korrigiere die Stunden.");
+      setState(() => _rangeError = tr(
+          "Die letzte Stunde liegt vor der ersten. Bitte korrigiere die Stunden."));
       return;
     }
     if (!_formKey.currentState!.validate()) return;
@@ -214,7 +216,8 @@ class _FutureAbsenceFormState extends State<_FutureAbsenceForm> {
           labelText: label,
           prefixIcon: const Icon(Icons.event_outlined),
         ),
-        child: Text(DateFormat("EE, d. MMM yyyy", "de").format(value)),
+        child: Text(
+            DateFormat("EE, d. MMM yyyy", appLanguage.value).format(value)),
       ),
     );
   }
@@ -225,7 +228,7 @@ class _FutureAbsenceFormState extends State<_FutureAbsenceForm> {
       decoration: InputDecoration(labelText: label),
       items: [
         for (final h in _lessonHours)
-          DropdownMenuItem(value: h, child: Text("$h. Stunde")),
+          DropdownMenuItem(value: h, child: Text(tr("{0}. Stunde", [h]))),
       ],
       onChanged: (v) {
         if (v == null) return;
@@ -245,25 +248,27 @@ class _FutureAbsenceFormState extends State<_FutureAbsenceForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const _SheetHeader(
-            title: "Abwesenheit melden",
-            subtitle:
-                "Melde eine geplante Abwesenheit im Voraus. Die Schule sieht sie sofort im Register.",
+          _SheetHeader(
+            title: tr("Abwesenheit melden"),
+            subtitle: tr(
+                "Melde eine geplante Abwesenheit im Voraus. Die Schule sieht sie sofort im Register."),
           ),
           Row(
             children: [
-              Expanded(child: _dateField("Von", _start, start: true)),
+              Expanded(child: _dateField(tr("Von"), _start, start: true)),
               const SizedBox(width: 12),
               Expanded(
-                  child: _hourField("Ab", _startHour, (v) => _startHour = v)),
+                  child:
+                      _hourField(tr("Ab"), _startHour, (v) => _startHour = v)),
             ],
           ),
           const SizedBox(height: 12),
           Row(
             children: [
-              Expanded(child: _dateField("Bis", _end, start: false)),
+              Expanded(child: _dateField(tr("Bis"), _end, start: false)),
               const SizedBox(width: 12),
-              Expanded(child: _hourField("Bis", _endHour, (v) => _endHour = v)),
+              Expanded(
+                  child: _hourField(tr("Bis"), _endHour, (v) => _endHour = v)),
             ],
           ),
           if (_rangeError != null) ...[
@@ -280,7 +285,7 @@ class _FutureAbsenceFormState extends State<_FutureAbsenceForm> {
           FilledButton.icon(
             onPressed: _submit,
             icon: const Icon(Icons.send_rounded, size: 20),
-            label: const Text("Abwesenheit eintragen"),
+            label: Text(tr("Abwesenheit eintragen")),
           ),
         ],
       ),
@@ -317,7 +322,8 @@ class _JustifyFormState extends State<_JustifyForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          _SheetHeader(title: "Absenz entschuldigen", subtitle: widget.fromTo),
+          _SheetHeader(
+              title: tr("Absenz entschuldigen"), subtitle: widget.fromTo),
           _ReasonAndSignatureFields(reason: _reason, signature: _signature),
           const SizedBox(height: 24),
           FilledButton.icon(
@@ -329,7 +335,7 @@ class _JustifyFormState extends State<_JustifyForm> {
               );
             },
             icon: const Icon(Icons.check_rounded, size: 20),
-            label: const Text("Entschuldigung abschicken"),
+            label: Text(tr("Entschuldigung abschicken")),
           ),
         ],
       ),

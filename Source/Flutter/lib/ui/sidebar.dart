@@ -16,6 +16,7 @@
 // along with digitales_register.  If not, see <http://www.gnu.org/licenses/>.
 
 import 'package:collapsible_sidebar/collapsible_sidebar.dart';
+import 'package:dr/app_language.dart';
 import 'package:dr/main.dart';
 import 'package:dr/middleware/middleware.dart';
 import 'package:dr/ui/theme.dart';
@@ -90,8 +91,8 @@ class Sidebar extends StatelessWidget {
                       : index <= otherAccounts.length
                           ? otherAccounts[index - 1]
                           : passwordSavingEnabled
-                              ? "Account hinzufügen"
-                              : "Account wechseln",
+                              ? tr("Account hinzufügen")
+                              : tr("Account wechseln"),
                 ),
               ),
           ],
@@ -111,8 +112,8 @@ class Sidebar extends StatelessWidget {
         ),
       ),
       titleTooltip: username ?? "?",
-      toggleTooltipCollapsed: "Ausklappen",
-      toggleTooltipExpanded: "Einklappen",
+      toggleTooltipCollapsed: tr("Ausklappen"),
+      toggleTooltipExpanded: tr("Einklappen"),
       toggleTitle: const SizedBox(),
       backgroundColor: Theme.of(context).colorScheme.surfaceContainerLow,
       avatar:
@@ -127,7 +128,7 @@ class Sidebar extends StatelessWidget {
       selectedIconBox: Theme.of(context).colorScheme.primary.withAlpha(40),
       items: [
         CollapsibleItem(
-          text: br("Heute", "Heute 🗿", "Heute 🇮🇱 Yalla"),
+          text: br(tr("Heute"), tr("Heute 🗿"), tr("Heute 🇮🇱 Yalla")),
           icon: Icons.bolt_rounded,
           isSelected: currentSelected == Pages.today,
           onPressed: showToday,
@@ -136,50 +137,53 @@ class Sidebar extends StatelessWidget {
           CollapsibleItem(
             isSelected: currentSelected == Pages.homework,
             icon: Icons.assignment,
-            text: br(
-                "Hausaufgaben", "Hausaufgaben 😭", "Hausaufgaben 😩 Balagan"),
+            text: br(tr("Hausaufgaben"), tr("Hausaufgaben 😭"),
+                tr("Hausaufgaben 😩 Balagan")),
             onPressed: goHome,
           ),
         CollapsibleItem(
           onPressed: showGrades,
           isSelected: currentSelected == Pages.grades,
-          text: br("Noten", "Noten 📉", "Noten 📈 Tachles"),
+          text: br(tr("Noten"), tr("Noten 📉"), tr("Noten 📈 Tachles")),
           icon: Icons.grade,
         ),
         CollapsibleItem(
-            text: br("Absenzen", "Absenzen 🛌", "Absenzen 🏖️ Matkot-Pause"),
+            text: br(tr("Absenzen"), tr("Absenzen 🛌"),
+                tr("Absenzen 🏖️ Matkot-Pause")),
             icon: Icons.hotel,
             isSelected: currentSelected == Pages.absences,
             onPressed: showAbsences),
         CollapsibleItem(
-          text: br("Kalender", "Kalender 🗓️", "Kalender 🗓️ Ma nishma"),
+          text: br(
+              tr("Kalender"), tr("Kalender 🗓️"), tr("Kalender 🗓️ Ma nishma")),
           icon: Icons.calendar_today,
           isSelected: currentSelected == Pages.calendar,
           onPressed: showCalendar,
         ),
         CollapsibleItem(
-          text: br("Zeugnis", "Zeugnis 📜", "Zeugnis 📜 Kapara"),
+          text: br(tr("Zeugnis"), tr("Zeugnis 📜"), tr("Zeugnis 📜 Kapara")),
           icon: Icons.list,
           isSelected: currentSelected == Pages.certificate,
           onPressed: showCertificate,
         ),
         CollapsibleItem(
-          text: br("Mitteilungen", "Mitteilungen 📨", "Mitteilungen 📨 Achi?"),
+          text: br(tr("Mitteilungen"), tr("Mitteilungen 📨"),
+              tr("Mitteilungen 📨 Achi?")),
           icon: Icons.message,
           isSelected: currentSelected == Pages.messages,
           onPressed: showMessages,
         ),
         CollapsibleItem(
           hasDivider: true,
-          text: br(
-              "Einstellungen", "Einstellungen ⚙️", "Einstellungen ⚙️ Beseder"),
+          text: br(tr("Einstellungen"), tr("Einstellungen ⚙️"),
+              tr("Einstellungen ⚙️ Beseder")),
           icon: Icons.settings,
           isSelected: currentSelected == Pages.settings,
           onPressed: showSettings,
         ),
         CollapsibleItem(
           hasDivider: true,
-          text: br("Abmelden", "Abmelden ✌️", "Yalla bye ✌️🇮🇱"),
+          text: br(tr("Abmelden"), tr("Abmelden ✌️"), tr("Yalla bye ✌️🇮🇱")),
           icon: Icons.logout,
           onPressed: logout,
         ),

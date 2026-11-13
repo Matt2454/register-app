@@ -162,7 +162,7 @@ Future<void> _showToday(
       .selectContentWidget(const TodayContainer(), Pages.today);
   await next(action);
   // Everything the page summarizes.
-  unawaited(api.actions.calendarActions.load(toMonday(now)));
+  unawaited(api.actions.calendarActions.load(toMonday(wallClockToday())));
   unawaited(api.actions.absencesActions.load());
   unawaited(api.actions.gradesActions.load(api.state.gradesState.semester));
 }

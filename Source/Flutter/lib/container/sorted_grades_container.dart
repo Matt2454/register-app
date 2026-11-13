@@ -22,9 +22,9 @@ import 'package:dr/actions/grades_actions.dart';
 import 'package:dr/app_state.dart';
 import 'package:dr/data.dart';
 import 'package:dr/grade_forecast.dart';
+import 'package:dr/localized_store_connection.dart';
 import 'package:dr/ui/sorted_grades_widget.dart';
 import 'package:flutter/material.dart' hide Builder;
-import 'package:flutter_built_redux/flutter_built_redux.dart';
 
 part 'sorted_grades_container.g.dart';
 

@@ -20,16 +20,23 @@ import 'dart:async';
 import 'package:dr/data.dart';
 import 'package:dr/utc_date_time.dart';
 import 'package:flutter/foundation.dart';
+import 'package:timezone/data/latest.dart' as zone_data;
+import 'package:timezone/timezone.dart' as zones;
+
+final zones.Location _schoolZone = () {
+  zone_data.initializeTimeZones();
+  return zones.getLocation('Europe/Rome');
+}();
 
 /// The register stores wall-clock times as UTC values; this is "now" in the
 /// same form.
-UtcDateTime wallClockNow() {
-  final n = DateTime.now();
+UtcDateTime wallClockNow([DateTime? instant]) {
+  final n = zones.TZDateTime.from(instant ?? DateTime.now(), _schoolZone);
   return UtcDateTime(n.year, n.month, n.day, n.hour, n.minute, n.second);
 }
 
 UtcDateTime wallClockToday() {
-  final n = DateTime.now();
+  final n = wallClockNow();
   return UtcDateTime(n.year, n.month, n.day);
 }
 
@@ -39,22 +46,35 @@ bool isLessonNow(CalendarHour hour, [UtcDateTime? at]) {
 }
 
 /// Changes every minute, for widgets that show the current lesson.
-final ValueNotifier<DateTime> minuteTicker = _startTicker();
+final ValueNotifier<DateTime> minuteTicker = _MinuteTicker();
 
-ValueNotifier<DateTime> _startTicker() {
-  final notifier = ValueNotifier(DateTime.now());
-  // Wake up exactly once per minute, right after the minute changes, instead
-  // of polling: fewer wake-ups save battery.
-  void scheduleNext() {
+class _MinuteTicker extends ValueNotifier<DateTime> {
+  _MinuteTicker() : super(DateTime.now());
+  Timer? _timer;
+
+  @override
+  void addListener(VoidCallback listener) {
+    if (!hasListeners) value = DateTime.now();
+    super.addListener(listener);
+    if (_timer == null) _scheduleNext();
+  }
+
+  @override
+  void removeListener(VoidCallback listener) {
+    super.removeListener(listener);
+    if (!hasListeners) {
+      _timer?.cancel();
+      _timer = null;
+    }
+  }
+
+  void _scheduleNext() {
     final now = DateTime.now();
     final next = DateTime(now.year, now.month, now.day, now.hour, now.minute)
         .add(const Duration(minutes: 1, milliseconds: 50));
-    Timer(next.difference(now), () {
-      notifier.value = DateTime.now();
-      scheduleNext();
+    _timer = Timer(next.difference(now), () {
+      value = DateTime.now();
+      if (hasListeners) _scheduleNext();
     });
   }
-
-  scheduleNext();
-  return notifier;
 }

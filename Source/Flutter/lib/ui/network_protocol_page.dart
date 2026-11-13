@@ -15,6 +15,7 @@
 // You should have received a copy of the GNU General Public License
 // along with digitales_register.  If not, see <http://www.gnu.org/licenses/>.
 
+import 'package:dr/app_language.dart';
 import 'package:dr/container/network_protocol_container.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +24,7 @@ class NetworkProtocolPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Netzwerkprotokoll"),
+        title: Text(tr("Netzwerkprotokoll")),
       ),
       body: NetworkProtocolContainer(),
     );

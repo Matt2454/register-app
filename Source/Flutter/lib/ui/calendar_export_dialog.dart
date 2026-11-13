@@ -1,3 +1,4 @@
+import 'package:dr/app_language.dart';
 import 'package:dr/calendar_export.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -16,7 +17,7 @@ Future<void> showAppleCalendarExport(
     context: context,
     builder: (context) => StatefulBuilder(
       builder: (context, setState) => AlertDialog(
-        title: const Text('In Apple Kalender exportieren'),
+        title: Text(tr("In Apple Kalender exportieren")),
         content: SizedBox(
           width: 420,
           child: SingleChildScrollView(
@@ -34,9 +35,9 @@ Future<void> showAppleCalendarExport(
                     value: selected.contains(kind),
                     title: Text(
                       '${switch (kind) {
-                        CalendarExportKind.lesson => 'Unterricht',
-                        CalendarExportKind.test => 'Tests',
-                        CalendarExportKind.task => 'Aufgaben',
+                        CalendarExportKind.lesson => tr("Unterricht"),
+                        CalendarExportKind.test => tr("Tests"),
+                        CalendarExportKind.task => tr("Aufgaben"),
                       }} (${snapshot.events.where((e) => e.kind == kind).length})',
                     ),
                     onChanged: (value) => setState(() {
@@ -49,21 +50,22 @@ Future<void> showAppleCalendarExport(
                   ),
                 SwitchListTile(
                   contentPadding: EdgeInsets.zero,
-                  title: const Text('Doppelte vermeiden'),
-                  subtitle: const Text(
-                    'Bereits von dieser App exportierte Termine überspringen.',
+                  title: Text(tr("Doppelte vermeiden")),
+                  subtitle: Text(
+                    tr("Bereits von dieser App exportierte Termine überspringen."),
                   ),
                   value: skipExisting,
                   onChanged: (value) => setState(() => skipExisting = value),
                 ),
                 const SizedBox(height: 8),
-                const Text(
-                  'Einmalige Kopie der angezeigten Woche. Änderungen werden nicht automatisch übernommen. Tests und Aufgaben werden als ganztägige Fälligkeiten hinzugefügt.',
+                Text(
+                  tr("Einmalige Kopie der angezeigten Woche. Änderungen werden nicht automatisch übernommen. Tests und Aufgaben werden als ganztägige Fälligkeiten hinzugefügt."),
                 ),
                 if (snapshot.lessonsWithoutTime > 0) ...[
                   const SizedBox(height: 8),
                   Text(
-                    '${snapshot.lessonsWithoutTime} Unterrichtseinträge ohne Uhrzeit werden ausgelassen.',
+                    tr("{0} Unterrichtseinträge ohne Uhrzeit werden ausgelassen.",
+                        [snapshot.lessonsWithoutTime]),
                   ),
                 ],
               ],
@@ -73,13 +75,13 @@ Future<void> showAppleCalendarExport(
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text('Abbrechen'),
+            child: Text(tr("Abbrechen")),
           ),
           FilledButton(
             onPressed: snapshot.events.any((e) => selected.contains(e.kind))
                 ? () => Navigator.pop(context, true)
                 : null,
-            child: const Text('Kalender auswählen'),
+            child: Text(tr("Kalender auswählen")),
           ),
         ],
       ),
@@ -94,20 +96,22 @@ Future<void> showAppleCalendarExport(
           .map((e) => e.toMap())
           .toList(),
       'scope': snapshot.accountScope,
+      'language': appLanguage.value,
       'skipExisting': skipExisting,
     });
     if (!context.mounted || response?['cancelled'] == true) return;
     await showDialog<void>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Export abgeschlossen'),
+        title: Text(tr("Export abgeschlossen")),
         content: Text(
-          '${response?['added'] ?? 0} Termine exportiert · ${response?['skipped'] ?? 0} bereits vorhanden.',
+          tr("{0} Termine exportiert · {1} bereits vorhanden.",
+              [response?['added'] ?? 0, response?['skipped'] ?? 0]),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('OK'),
+            child: Text(tr("OK")),
           ),
         ],
       ),
@@ -117,9 +121,10 @@ Future<void> showAppleCalendarExport(
     await showDialog<void>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Kalenderexport'),
+        title: Text(tr("Kalenderexport")),
         content: Text(
-          e.message ?? 'Der Export ist fehlgeschlagen. Bitte erneut versuchen.',
+          e.message ??
+              tr("Der Export ist fehlgeschlagen. Bitte erneut versuchen."),
         ),
         actions: [
           if (e.code == 'calendar_permission')
@@ -128,11 +133,11 @@ Future<void> showAppleCalendarExport(
                 Navigator.pop(context);
                 appleCalendarChannel.invokeMethod<void>('openSettings');
               },
-              child: const Text('Einstellungen'),
+              child: Text(tr("Einstellungen")),
             ),
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('OK'),
+            child: Text(tr("OK")),
           ),
         ],
       ),
@@ -140,9 +145,9 @@ Future<void> showAppleCalendarExport(
   } on MissingPluginException {
     if (!context.mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
+      SnackBar(
         content: Text(
-          'Bitte die aktualisierte iOS-Version installieren, um Kalender zu exportieren.',
+          tr("Bitte die aktualisierte iOS-Version installieren, um Kalender zu exportieren."),
         ),
       ),
     );

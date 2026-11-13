@@ -1,3 +1,4 @@
+import 'package:dr/app_language.dart';
 import 'package:dr/utc_date_time.dart';
 import 'package:flutter/material.dart';
 
@@ -18,8 +19,8 @@ class LastFetchedOverlay extends StatelessWidget {
       return child;
     }
     return RawLastFetchedOverlay(
-      message:
-          "Offline-Modus aktiv. Zuletzt synchronisiert ${formatTimeAgo(lastFetched!)}.",
+      message: tr("Offline-Modus aktiv. Zuletzt synchronisiert {0}.",
+          [formatTimeAgo(lastFetched!)]),
       child: child,
     );
   }
@@ -67,12 +68,16 @@ class RawLastFetchedOverlay extends StatelessWidget {
 String formatTimeAgo(UtcDateTime dateTime) {
   final diff = UtcDateTime.now().difference(dateTime);
   if (diff.inDays >= 1) {
-    return "vor ${diff.inDays} ${diff.inDays == 1 ? "Tag" : "Tagen"}";
+    return tr("vor {0} {1}",
+        [diff.inDays, diff.inDays == 1 ? tr("Tag") : tr("Tagen")]);
   } else if (diff.inHours >= 1) {
-    return "vor ${diff.inHours} ${diff.inHours == 1 ? "Stunde" : "Stunden"}";
+    return tr("vor {0} {1}",
+        [diff.inHours, diff.inHours == 1 ? tr("Stunde") : tr("Stunden")]);
   } else if (diff.inMinutes >= 1) {
-    return "vor ${diff.inMinutes} ${diff.inMinutes == 1 ? "Minute" : "Minuten"}";
+    return tr("vor {0} {1}",
+        [diff.inMinutes, diff.inMinutes == 1 ? tr("Minute") : tr("Minuten")]);
   } else {
-    return "vor ${diff.inSeconds} ${diff.inSeconds == 1 ? "Sekunde" : "Sekunden"}";
+    return tr("vor {0} {1}",
+        [diff.inSeconds, diff.inSeconds == 1 ? tr("Sekunde") : tr("Sekunden")]);
   }
 }

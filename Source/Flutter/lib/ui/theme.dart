@@ -18,8 +18,8 @@
 import 'dart:io';
 import 'dart:math' as math;
 
+import 'package:dr/app_language.dart';
 import 'package:dr/custom_background.dart';
-
 import 'package:flutter/cupertino.dart' show CupertinoPageTransitionsBuilder;
 import 'package:flutter/foundation.dart' show defaultTargetPlatform;
 import 'package:flutter/material.dart';
@@ -701,19 +701,19 @@ class _AuroraPainter extends CustomPainter {
     }
 
     // Meme stickers with Israeli slang.
-    const memes = [
-      "YALLA BALAGAN 🤯",
-      "SABABA ACHI 😎",
-      "HUMMUS > ALLES 🥙",
-      "TACHLES. 6 REICHT.",
-      "MA NISHMA? 👀",
-      "KAPARA ALECHA 💙",
-      "BESEDER? BESEDER.",
-      "YALLA BYE ✌️",
-      "ACHI, LERN MAL 📚",
-      "SHAKSHUKA TIME 🍳",
-      "SHALOM, TEST 👋",
-      "OY VEY, MATHE 😵",
+    final memes = [
+      tr("YALLA BALAGAN 🤯"),
+      tr("SABABA ACHI 😎"),
+      tr("HUMMUS > ALLES 🥙"),
+      tr("TACHLES. 6 REICHT."),
+      tr("MA NISHMA? 👀"),
+      tr("KAPARA ALECHA 💙"),
+      tr("BESEDER? BESEDER."),
+      tr("YALLA BYE ✌️"),
+      tr("ACHI, LERN MAL 📚"),
+      tr("SHAKSHUKA TIME 🍳"),
+      tr("SHALOM, TEST 👋"),
+      tr("OY VEY, MATHE 😵"),
     ];
     final stickerFont =
         GoogleFonts.rubik(fontWeight: FontWeight.w900).fontFamily;

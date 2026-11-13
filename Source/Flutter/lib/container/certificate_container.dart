@@ -17,10 +17,10 @@
 
 import 'package:dr/actions/app_actions.dart';
 import 'package:dr/app_state.dart';
+import 'package:dr/localized_store_connection.dart';
 import 'package:dr/ui/certificate.dart';
 import 'package:dr/utc_date_time.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_built_redux/flutter_built_redux.dart';
 
 class CertificateContainer extends StatelessWidget {
   @override

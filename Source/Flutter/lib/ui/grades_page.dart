@@ -15,6 +15,7 @@
 // You should have received a copy of the GNU General Public License
 // along with digitales_register.  If not, see <http://www.gnu.org/licenses/>.
 
+import 'package:dr/app_language.dart';
 import 'package:dr/app_state.dart';
 import 'package:dr/container/grades_chart_container.dart';
 import 'package:dr/container/grades_page_container.dart';
@@ -43,7 +44,7 @@ class GradesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: ResponsiveAppBar(
-        title: const Text("Noten"),
+        title: Text(tr("Noten")),
         actions: <Widget>[
           DropdownButtonHideUnderline(
             child: DropdownButton<Semester>(
@@ -53,7 +54,7 @@ class GradesPage extends StatelessWidget {
                     (s) => DropdownMenuItem(
                       value: s,
                       child: Text(
-                        s.name,
+                        tr(s.name),
                       ),
                     ),
                   )
@@ -126,25 +127,25 @@ class _GradesOverview extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const HudLabel("Gesamtdurchschnitt"),
+                      HudLabel(tr("Gesamtdurchschnitt")),
                       const SizedBox(height: 4),
                       Text(
-                        vm.showSemester.name,
+                        tr(vm.showSemester.name),
                         style: theme.textTheme.titleLarge,
                       ),
                       const SizedBox(height: 4),
                       Text(
                         average == null
-                            ? "Noch keine Noten"
+                            ? tr("Noch keine Noten")
                             : average >= 6
                                 ? br(
-                                    "Alles im grünen Bereich",
-                                    "W Rizz, alles grün 🔥",
-                                    "Sababa, alles grün 🇮🇱")
+                                    tr("Alles im grünen Bereich"),
+                                    tr("W Rizz, alles grün 🔥"),
+                                    tr("Sababa, alles grün 🇮🇱"))
                                 : br(
-                                    "Unter der Genügend-Grenze",
-                                    "Kritisch, lock in 😭",
-                                    "Oy vey – yalla, lernen 😵"),
+                                    tr("Unter der Genügend-Grenze"),
+                                    tr("Kritisch, lock in 😭"),
+                                    tr("Oy vey – yalla, lernen 😵")),
                         style: theme.textTheme.bodySmall?.copyWith(
                           color: gradeColor(average),
                         ),
@@ -153,7 +154,7 @@ class _GradesOverview extends StatelessWidget {
                   ),
                 ),
                 IconButton(
-                  tooltip: "Durchschnitt einstellen",
+                  tooltip: tr("Durchschnitt einstellen"),
                   icon: const Icon(Icons.tune_rounded),
                   onPressed: showGradesSettings,
                 ),
@@ -161,7 +162,7 @@ class _GradesOverview extends StatelessWidget {
             ),
           if (vm.showGradesDiagram) ...[
             if (vm.showAllSubjectsAverage) const SizedBox(height: 16),
-            const HudLabel("Verlauf"),
+            HudLabel(tr("Verlauf")),
             const SizedBox(
               height: 160,
               child: GradesChartContainer(isFullscreen: false),

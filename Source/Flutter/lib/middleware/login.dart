@@ -66,7 +66,7 @@ Future<void> _login(MiddlewareApi<AppState, AppStateBuilder, AppActions> api,
     await api.actions.loginActions.loginFailed(
       LoginFailedPayload(
         (b) async => b
-          ..cause = "Bitte gib etwas ein"
+          ..cause = tr("Bitte gib etwas ein")
           ..username = action.payload.user,
       ),
     );
@@ -119,7 +119,7 @@ Future<void> _login(MiddlewareApi<AppState, AppStateBuilder, AppActions> api,
       wrapper.logout(hard: true);
       await api.actions.loginActions.loginFailed(
         LoginFailedPayload(
-          (b) => b..cause = "Dieser Benutzertyp wird nicht unterstützt.",
+          (b) => b..cause = tr("Dieser Benutzertyp wird nicht unterstützt."),
         ),
       );
       _showUserTypeNotSupported(url);
@@ -157,7 +157,7 @@ Future<void> _login(MiddlewareApi<AppState, AppStateBuilder, AppActions> api,
     await api.actions.loginActions.loginFailed(
       LoginFailedPayload(
         (b) => b
-          ..cause = wrapper.error ?? "Unknown error"
+          ..cause = wrapper.error ?? tr("Unknown error")
           ..username = action.payload.user,
       ),
     );
@@ -197,7 +197,7 @@ Future<void> _changePass(
       ),
     );
     navigatorKey?.currentState?.pop();
-    showSnackBar("Passwort erfolgreich geändert");
+    showSnackBar(tr("Passwort erfolgreich geändert"));
   }
 }
 
@@ -246,8 +246,8 @@ Future<void> _requestPassReset(
     }
   } catch (e) {
     if (await cannotConnectTo(api.state.url!)) {
-      await api.actions.loginActions
-          .passResetFailed("Keine Verbindung mit \"${api.state.url}\" möglich");
+      await api.actions.loginActions.passResetFailed(
+          tr("Keine Verbindung mit \"{0}\" möglich", [api.state.url]));
     } else {
       rethrow;
     }
@@ -350,7 +350,7 @@ void _showUserTypeNotSupported(String url) {
               Padding(
                 padding: const EdgeInsets.all(16),
                 child: Text(
-                  "Tut uns leid!",
+                  tr("Tut uns leid!"),
                   style: Theme.of(context).textTheme.headlineMedium,
                   textAlign: TextAlign.center,
                 ),
@@ -358,7 +358,7 @@ void _showUserTypeNotSupported(String url) {
               Padding(
                 padding: const EdgeInsets.all(16),
                 child: Text(
-                  "Diese App ist ausschließlich für Schüler*innen und Eltern geeignet.",
+                  tr("Diese App ist ausschließlich für Schüler*innen und Eltern geeignet."),
                   style: Theme.of(context).textTheme.headlineSmall,
                   textAlign: TextAlign.center,
                 ),
@@ -368,15 +368,15 @@ void _showUserTypeNotSupported(String url) {
                 children: [
                   TextButton(
                     onPressed: () => Navigator.pop(context),
-                    child: const Text(
-                      "Zurück",
+                    child: Text(
+                      tr("Zurück"),
                     ),
                   ),
                   const SizedBox(width: 16),
                   ElevatedButton(
                     onPressed: () => launchUrl(Uri.parse(url)),
-                    child: const Text(
-                      "Hier geht's zur Website",
+                    child: Text(
+                      tr("Hier geht's zur Website"),
                     ),
                   ),
                 ],

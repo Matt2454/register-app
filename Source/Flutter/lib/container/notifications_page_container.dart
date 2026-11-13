@@ -18,10 +18,10 @@
 import 'package:dr/actions/app_actions.dart';
 import 'package:dr/app_state.dart';
 import 'package:dr/data.dart';
+import 'package:dr/localized_store_connection.dart';
 import 'package:dr/ui/notifications_page.dart';
 import 'package:dr/utc_date_time.dart';
 import 'package:flutter/material.dart' hide Notification;
-import 'package:flutter_built_redux/flutter_built_redux.dart';
 import 'package:tuple/tuple.dart';
 
 class NotificationPageContainer extends StatelessWidget {

@@ -15,6 +15,7 @@
 // You should have received a copy of the GNU General Public License
 // along with digitales_register.  If not, see <http://www.gnu.org/licenses/>.
 
+import 'package:dr/app_language.dart';
 import 'package:dr/app_state.dart';
 import 'package:dr/container/grades_page_container.dart';
 import 'package:dr/container/sorted_grades_container.dart';
@@ -57,20 +58,21 @@ class SortedGradesWidget extends StatelessWidget {
             children: [
               FilterChip(
                 avatar: const Icon(Icons.category_outlined, size: 18),
-                label: const Text("Nach Art sortieren"),
+                label: Text(tr("Nach Art sortieren")),
                 selected: vm.sortByType,
                 onSelected: sortByTypeCallback,
               ),
               FilterChip(
                 avatar: const Icon(Icons.delete_sweep_outlined, size: 18),
-                label: const Text("Gelöschte anzeigen"),
+                label: Text(tr("Gelöschte anzeigen")),
                 selected: vm.showCancelled!,
                 onSelected: showCancelledCallback,
               ),
             ],
           ),
         ),
-        SectionLabel(br("Fächer", "Fächer 📚", "Fächer 📚 Tachles")),
+        SectionLabel(
+            br(tr("Fächer"), tr("Fächer 📚"), tr("Fächer 📚 Tachles"))),
         for (final s in vm.subjects)
           SubjectWidget(
             subject: s,
@@ -89,13 +91,13 @@ class SortedGradesWidget extends StatelessWidget {
             (element) => element.toLowerCase() == s.name.toLowerCase(),
           ),
         ))
-          const ListTile(
+          ListTile(
             title: Text(
-              "* Du hast dieses Fach aus dem Notendurchschnitt ausgeschlossen",
+              tr("* Du hast dieses Fach aus dem Notendurchschnitt ausgeschlossen"),
               style: TextStyle(color: Colors.grey),
             ),
           ),
-        const SectionLabel("Werkzeuge"),
+        SectionLabel(tr("Werkzeuge")),
         HoloPanel(
           onTap: showGradeCalculator,
           child: Row(
@@ -107,11 +109,11 @@ class SortedGradesWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Notenrechner",
+                      tr("Notenrechner"),
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
                     Text(
-                      "Berechne den Durchschnitt von beliebigen Noten",
+                      tr("Berechne den Durchschnitt von beliebigen Noten"),
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
                   ],
@@ -205,14 +207,17 @@ class _SubjectWidgetState extends State<SubjectWidget> {
               ),
               if (widget.nextTest != null)
                 StatusPill(
-                  label:
-                      "Test ${DateFormat("EE dd.MM.", "de").format(widget.nextTest!.date)}",
+                  label: tr("Test {0}", [
+                    DateFormat("EE dd.MM.", appLanguage.value)
+                        .format(widget.nextTest!.date)
+                  ]),
                   color: AppColors.cyan,
                   icon: Icons.bolt_rounded,
                 ),
               if (average != null && average / 100 < passMark)
                 StatusPill(
-                  label: br("unter 6", "Ohio 🌽", "Oy vey 🫠 unter 6"),
+                  label:
+                      br(tr("unter 6"), tr("Ohio 🌽"), tr("Oy vey 🫠 unter 6")),
                   color: AppColors.danger,
                   icon: Icons.warning_amber_rounded,
                 ),
@@ -500,17 +505,19 @@ class _ForecastPanelState extends State<_ForecastPanel> {
     final needed = roundUpToQuarter(forecast.required);
     final (headline, color) = switch (forecast.kind) {
       ForecastKind.safe => (
-          br("Schon sicher", "Schon safe, sigma 🗿",
-              "Sababa achi, schon sicher 😎"),
+          br(tr("Schon sicher"), tr("Schon safe, sigma 🗿"),
+              tr("Sababa achi, schon sicher 😎")),
           AppColors.success
         ),
       ForecastKind.impossible => (
-          br("Mit einem Test nicht erreichbar", "Unmöglich, L + ratio 💀",
-              "Oy vey – nicht mal mit 10 😵"),
+          br(
+              tr("Mit einem Test nicht erreichbar"),
+              tr("Unmöglich, L + ratio 💀"),
+              tr("Oy vey – nicht mal mit 10 😵")),
           AppColors.danger
         ),
       ForecastKind.reachable => (
-          "Mindestens ${formatGradeSteps(needed)}",
+          tr("Mindestens {0}", [formatGradeSteps(needed)]),
           gradeColor(needed),
         ),
     };
@@ -525,8 +532,8 @@ class _ForecastPanelState extends State<_ForecastPanel> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          HudLabel(br("Was brauche ich?", "Was brauche ich? 🤔",
-              "Tachles: was brauche ich? 🤔")),
+          HudLabel(br(tr("Was brauche ich?"), tr("Was brauche ich? 🤔"),
+              tr("Tachles: was brauche ich? 🤔"))),
           if (widget.nextTest != null) ...[
             const SizedBox(height: 8),
             Row(
@@ -535,8 +542,11 @@ class _ForecastPanelState extends State<_ForecastPanel> {
                 const SizedBox(width: 6),
                 Expanded(
                   child: Text(
-                    "Nächster Test: ${widget.nextTest!.homework.title} am "
-                    "${DateFormat("EEEE, d. MMMM", "de").format(widget.nextTest!.date)}",
+                    tr("Nächster Test: {0} am {1}", [
+                      widget.nextTest!.homework.title,
+                      DateFormat("EEEE, d. MMMM", appLanguage.value)
+                          .format(widget.nextTest!.date)
+                    ]),
                     style: theme.textTheme.bodyMedium
                         ?.copyWith(fontWeight: FontWeight.w600),
                   ),
@@ -574,9 +584,15 @@ class _ForecastPanelState extends State<_ForecastPanel> {
                     ),
                     const SizedBox(height: 2),
                     Text(
-                      "${widget.nextTest != null ? "in diesem Test" : "im nächsten Test"} "
-                      "($weight %), damit dein Durchschnitt auf "
-                      "${target.toStringAsFixed(0)} kommt.",
+                      tr(
+                          "{0} ({1} %), damit dein Durchschnitt auf {2} kommt.",
+                          [
+                            widget.nextTest != null
+                                ? tr("in diesem Test")
+                                : tr("im nächsten Test"),
+                            weight,
+                            target.toStringAsFixed(0)
+                          ]),
                       style: theme.textTheme.bodySmall,
                     ),
                   ],
@@ -590,7 +606,7 @@ class _ForecastPanelState extends State<_ForecastPanel> {
             runSpacing: 6,
             crossAxisAlignment: WrapCrossAlignment.center,
             children: [
-              const HudLabel("Ziel Ø"),
+              HudLabel(tr("Ziel Ø")),
               for (final t in const [6.0, 7.0, 8.0, 9.0])
                 ChoiceChip(
                   label: Text(t.toStringAsFixed(0)),
@@ -599,7 +615,7 @@ class _ForecastPanelState extends State<_ForecastPanel> {
                   visualDensity: VisualDensity.compact,
                 ),
               const SizedBox(width: 8),
-              const HudLabel("Gewicht"),
+              HudLabel(tr("Gewicht")),
               for (final w in const [50, 100])
                 ChoiceChip(
                   label: Text("$w %"),

@@ -1,3 +1,4 @@
+import 'package:dr/app_language.dart';
 import 'package:dr/app_state.dart';
 import 'package:dr/data.dart';
 import 'package:dr/utc_date_time.dart';
@@ -138,11 +139,14 @@ CalendarExportSnapshot calendarExportForWeek(
         due(
           id: 'gradeGroup:${entry.id}',
           title:
-              '${test ? 'Test' : 'Aufgabe'}: ${hour.subject} · ${calendarPlainText(entry.name)}',
+              '${test ? tr("Test") : tr("Aufgabe")}: ${hour.subject} · ${calendarPlainText(entry.name)}',
           notes: [
             entry.typeName,
             if (entry.deadline.hour != 0 || entry.deadline.minute != 0)
-              'Fällig um ${entry.deadline.hour.toString().padLeft(2, '0')}:${entry.deadline.minute.toString().padLeft(2, '0')} (Schulzeit)',
+              tr("Fällig um {0}:{1} (Schulzeit)", [
+                entry.deadline.hour.toString().padLeft(2, '0'),
+                entry.deadline.minute.toString().padLeft(2, '0')
+              ]),
           ].join('\n'),
           date: state.dashboardState.movedHomework['gradeGroup:${entry.id}'] ??
               entry.deadline,
@@ -164,7 +168,7 @@ CalendarExportSnapshot calendarExportForWeek(
       final test = isTestEntry(hw);
       due(
         id: homeworkMoveKey(hw),
-        title: '${test ? 'Test' : 'Aufgabe'}: ${[
+        title: '${test ? tr("Test") : tr("Aufgabe")}: ${[
           if (hw.label?.isNotEmpty == true) hw.label!,
           calendarPlainText(hw.title)
         ].join(' · ')}',

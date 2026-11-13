@@ -18,13 +18,14 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:dr/actions/app_actions.dart';
+import 'package:dr/app_language.dart';
 import 'package:dr/app_state.dart';
+import 'package:dr/localized_store_connection.dart';
 import 'package:dr/ui/grades_page.dart';
 import 'package:dr/ui/last_fetched_overlay.dart';
 import 'package:dr/utc_date_time.dart';
 import 'package:dr/util.dart';
 import 'package:flutter/material.dart' hide Builder;
-import 'package:flutter_built_redux/flutter_built_redux.dart';
 
 part 'grades_page_container.g.dart';
 
@@ -117,7 +118,7 @@ String? _lastFetchedMessage(AppState state) {
   if (timeAgoString == null) {
     return null;
   }
-  return "Offline-Modus aktiv. $timeAgoString.";
+  return tr("Offline-Modus aktiv. {0}.", [timeAgoString]);
 }
 
 String? formatTimeAgoPerSemester({
@@ -138,7 +139,8 @@ String? formatTimeAgoPerSemester({
     final firstFormatted = formatTimeAgo(first);
     final secondFormatted = formatTimeAgo(second);
     if (firstFormatted != secondFormatted) {
-      return "Zuletzt synchronisiert $firstFormatted (1. Semester) / $secondFormatted (2. Semester)";
+      return tr("Zuletzt synchronisiert {0} (1. Semester) / {1} (2. Semester)",
+          [firstFormatted, secondFormatted]);
     }
     lastFetchedFormatted = firstFormatted;
   } else {
@@ -148,5 +150,5 @@ String? formatTimeAgoPerSemester({
     }
     lastFetchedFormatted = formatTimeAgo(last);
   }
-  return "Zuletzt synchronisiert $lastFetchedFormatted";
+  return tr("Zuletzt synchronisiert {0}", [lastFetchedFormatted]);
 }

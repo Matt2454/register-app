@@ -18,6 +18,12 @@
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>en</string>
+		<string>it</string>
+		<string>de</string>
+	</array>
 	<key>CFBundleName</key>
 	<string>dr</string>
 	<key>CFBundlePackageType</key>
@@ -26,16 +32,31 @@
 	<string>$(FLUTTER_BUILD_NAME)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>app.register.widget</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>register9457</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
+	<key>FlutterDeepLinkingEnabled</key>
+	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCalendarsUsageDescription</key>
-	<string>Damit du Unterricht, Tests und Aufgaben in Apple Kalender exportieren kannst.</string>
+	<string>Export lessons, tests, and tasks to Apple Calendar.</string>
 	<key>NSCalendarsWriteOnlyAccessUsageDescription</key>
-	<string>Damit du Unterricht, Tests und Aufgaben in einen Kalender deiner Wahl exportieren kannst. Register liest keine vorhandenen Termine.</string>
+	<string>Add lessons, tests, and tasks to a calendar you choose. Register does not read existing calendar events.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Damit du im Brainrot-Stil eigene Bilder als Hintergrund für deine Lehrpersonen im Kalender wählen kannst.</string>
+	<string>Choose your own background image or teacher pictures for Register.</string>
+	<key>RegisterAppGroup</key>
+	<string>$(REGISTER_APP_GROUP)</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

@@ -18,9 +18,12 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:app_links/app_links.dart';
 import 'package:built_redux/built_redux.dart';
 import 'package:dr/actions/app_actions.dart';
+import 'package:dr/app_language.dart';
 import 'package:dr/app_state.dart';
+import 'package:dr/background_check.dart';
 import 'package:dr/bundled_fonts.dart';
 import 'package:dr/container/change_email_container.dart';
 import 'package:dr/container/home_page.dart';
@@ -30,16 +33,16 @@ import 'package:dr/container/pass_reset_container.dart';
 import 'package:dr/container/profile_container.dart';
 import 'package:dr/container/request_pass_reset_container.dart';
 import 'package:dr/container/settings_page.dart';
+import 'package:dr/custom_background.dart';
 import 'package:dr/desktop.dart';
 import 'package:dr/middleware/middleware.dart';
 import 'package:dr/reducer/reducer.dart';
+import 'package:dr/teacher_photos.dart';
 import 'package:dr/ui/grade_calculator.dart';
 import 'package:dr/ui/grades_chart_page.dart';
-import 'package:dr/util.dart';
-import 'package:dr/background_check.dart';
-import 'package:dr/custom_background.dart';
-import 'package:dr/teacher_photos.dart';
 import 'package:dr/ui/theme.dart';
+import 'package:dr/util.dart';
+import 'package:dr/widget_export.dart';
 import 'package:dr/window_title_bar.dart';
 import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:flutter/material.dart';
@@ -47,7 +50,6 @@ import 'package:flutter_built_redux/flutter_built_redux.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:responsive_scaffold/responsive_scaffold.dart';
-import 'package:app_links/app_links.dart';
 
 GlobalKey<NavigatorState>? navigatorKey;
 GlobalKey<NavigatorState> nestedNavKey = GlobalKey();
@@ -64,6 +66,10 @@ final AppActions actions = AppActions();
 Future<void> main() async {
   final binding = WidgetsFlutterBinding.ensureInitialized();
   configureBundledFonts();
+  await loadAppLanguage();
+  await loadWidgetPreference();
+  WidgetsBinding.instance.addObserver(_LanguageObserver());
+  appLanguage.addListener(() => unawaited(refreshWidgetLanguage()));
   binding.deferFirstFrame();
   try {
     packageInfo = await PackageInfo.fromPlatform();
@@ -86,6 +92,7 @@ Future<void> main() async {
     actions,
     middleware: middleware(),
   );
+  await exportWeekForWidget(store.state);
   // Teacher photos and icons need far less than Flutter's default 100 MB
   // image cache; a smaller cache helps devices with little memory.
   PaintingBinding.instance.imageCache.maximumSizeBytes = 40 << 20;
@@ -99,13 +106,14 @@ Future<void> main() async {
     (_) async {
       binding.allowFirstFrame();
       Uri? uri;
-      if (Platform.isAndroid) {
+      if (Platform.isAndroid || Platform.isIOS) {
         final appLinks = AppLinks();
         uri = await appLinks.getInitialLink();
         appLinks.uriLinkStream.listen((event) {
-          store.actions.start(event);
+          _handleIncomingLink(store, event);
         });
       }
+      if (uri != null && _queueWidgetLink(uri)) uri = null;
       unawaited(store.actions.start(uri));
       WidgetsBinding.instance.addObserver(
         LifecycleObserver(
@@ -121,6 +129,48 @@ Future<void> main() async {
 /// The theme revision the app was last built with, to rebuild everything
 /// only when the style or accent color changes.
 int? _lastRevision;
+String? _lastLanguage;
+String? _pendingWidgetDestination;
+
+bool _queueWidgetLink(Uri uri) {
+  if (uri.scheme != 'register9457' ||
+      !['today', 'tasks', 'calendar'].contains(uri.host)) return false;
+  _pendingWidgetDestination = uri.host;
+  return true;
+}
+
+void _handleIncomingLink(
+    Store<AppState, AppStateBuilder, AppActions> store, Uri uri) {
+  if (_queueWidgetLink(uri)) {
+    if (store.state.loginState.loggedIn) {
+      WidgetsBinding.instance.addPostFrameCallback((_) => showInitialAppPage());
+      WidgetsBinding.instance.ensureVisualUpdate();
+    }
+  } else {
+    unawaited(store.actions.start(uri));
+  }
+}
+
+void showInitialAppPage() {
+  final destination = _pendingWidgetDestination;
+  _pendingWidgetDestination = null;
+  navigatorKey?.currentState?.popUntil((route) => route.isFirst);
+  switch (destination) {
+    case 'tasks':
+      scaffoldKey?.currentState?.goHome();
+      break;
+    case 'calendar':
+      actions.routingActions.showCalendar();
+      break;
+    default:
+      actions.routingActions.showToday();
+  }
+}
+
+class _LanguageObserver extends WidgetsBindingObserver {
+  @override
+  void didChangeLocales(List<Locale>? locales) => updateSystemLanguage();
+}
 
 class RegisterApp extends StatelessWidget {
   const RegisterApp({
@@ -136,23 +186,28 @@ class RegisterApp extends StatelessWidget {
       store: store,
       child: Listener(
         onPointerDown: (_) => store.actions.loginActions.updateLogout(),
-        child: ValueListenableBuilder(
-          valueListenable: themeRevision,
-          builder: (context, revision, _) {
-            // Many widgets read the style's colors directly, so the whole
-            // tree is rebuilt when the style or accent color changes.
-            if (revision == _lastRevision) return _themedApp(context);
-            _lastRevision = revision;
-            WidgetsBinding.instance.addPostFrameCallback((_) {
-              void rebuild(Element element) {
-                element.markNeedsBuild();
-                element.visitChildren(rebuild);
-              }
+        child: ValueListenableBuilder<String>(
+          valueListenable: appLanguage,
+          builder: (context, language, _) => ValueListenableBuilder(
+            valueListenable: themeRevision,
+            builder: (context, revision, _) {
+              // Many widgets read the style's colors directly, so the whole
+              // tree is rebuilt when the style or accent color changes.
+              if (revision == _lastRevision && language == _lastLanguage)
+                return _themedApp(context);
+              _lastRevision = revision;
+              _lastLanguage = language;
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                void rebuild(Element element) {
+                  element.markNeedsBuild();
+                  element.visitChildren(rebuild);
+                }
 
-              WidgetsBinding.instance.rootElement?.visitChildren(rebuild);
-            });
-            return _themedApp(context);
-          },
+                WidgetsBinding.instance.rootElement?.visitChildren(rebuild);
+              });
+              return _themedApp(context);
+            },
+          ),
         ),
       ),
     );
@@ -172,12 +227,15 @@ class RegisterApp extends StatelessWidget {
       themedWidgetBuilder: (context, theme) {
         syncWindowTitleBar(theme);
         return MaterialApp(
+          locale: Locale(appLanguage.value),
           localizationsDelegates: const [
             GlobalCupertinoLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
           ],
           supportedLocales: const [
+            Locale("en"),
+            Locale("it"),
             Locale("de"),
           ],
           navigatorKey: navigatorKey,

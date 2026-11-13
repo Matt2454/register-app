@@ -1,0 +1,3 @@
+"NSCalendarsUsageDescription" = "Unterricht, Tests und Aufgaben in Apple Kalender exportieren.";
+"NSCalendarsWriteOnlyAccessUsageDescription" = "Unterricht, Tests und Aufgaben in einen Kalender deiner Wahl exportieren. Register liest keine vorhandenen Termine.";
+"NSPhotoLibraryUsageDescription" = "Wähle ein eigenes Hintergrundbild oder Bilder für Lehrpersonen in Register.";

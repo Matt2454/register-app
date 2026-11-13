@@ -19,12 +19,17 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:dr/agenda.dart';
+import 'package:dr/app_language.dart';
 import 'package:dr/app_state.dart';
+import 'package:dr/calendar_export.dart' show calendarPlainText;
 import 'package:dr/data.dart';
 import 'package:dr/utc_date_time.dart';
 import 'package:dr/util.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 /// Talks to the native side of the macOS app, which stores the data for the
 /// desktop widget and asks WidgetKit to redraw it.
@@ -42,7 +47,86 @@ const _palette = [
   0xFFF472B6,
 ];
 
-bool get widgetSupported => Platform.isMacOS;
+bool get widgetSupported => Platform.isMacOS || Platform.isIOS;
+
+final widgetsEnabled = ValueNotifier<bool>(true);
+AppState? _latestWidgetState;
+
+Future<void> loadWidgetPreference() async {
+  final prefs = await SharedPreferences.getInstance();
+  widgetsEnabled.value = prefs.getBool('widgets.enabled') ?? true;
+}
+
+Future<void> setWidgetsEnabled(bool enabled) async {
+  final prefs = await SharedPreferences.getInstance();
+  await prefs.setBool('widgets.enabled', enabled);
+  widgetsEnabled.value = enabled;
+  await refreshWidgetLanguage();
+}
+
+Future<void> refreshWidgetLanguage() async {
+  final state = _latestWidgetState;
+  if (state != null) await exportWeekForWidget(state);
+}
+
+String _schoolDate(DateTime date) => DateFormat('yyyy-MM-dd').format(date);
+String _schoolTime(DateTime date) =>
+    DateFormat("yyyy-MM-dd'T'HH:mm").format(date);
+
+/// No account identifiers, grades, passwords, or cookies enter the widget cache.
+Map<String, Object?> iosWidgetSnapshot(AppState state, {UtcDateTime? at}) {
+  final agenda = AgendaSnapshot.from(state, at: at);
+  return {
+    'version': 1,
+    'language': appLanguage.value,
+    'lastUpdated':
+        agenda.lastUpdated == null ? null : _schoolTime(agenda.lastUpdated!),
+    'tasksLoaded': agenda.tasksLoaded,
+    'days': [
+      for (var i = 0; i < 14; i++)
+        (() {
+          final date = agenda.today.add(Duration(days: i));
+          final day = state.calendarState.days[date];
+          return {
+            'date': _schoolDate(date),
+            'loaded': day != null,
+            'lessons': [
+              if (day != null)
+                for (final hour in day.hours)
+                  {
+                    'title': state.settingsState
+                            .subjectNicks[hour.subject.toLowerCase()] ??
+                        hour.subject,
+                    'room': hour.rooms.join(', '),
+                    'periods': [
+                      for (final span in hour.timeSpans)
+                        if (span.to.isAfter(span.from))
+                          {
+                            'start': _schoolTime(span.from),
+                            'end': _schoolTime(span.to)
+                          }
+                    ],
+                  }
+            ],
+          };
+        })()
+    ],
+    'tasks': [
+      for (final task in agenda.tasks
+          .where((t) =>
+              !t.date.isBefore(agenda.today) &&
+              t.date.difference(agenda.today).inDays <= 14)
+          .take(500))
+        {
+          'id': homeworkMoveKey(task.homework),
+          'date': _schoolDate(task.date),
+          'title': calendarPlainText(task.homework.title),
+          'subject': task.homework.label ?? '',
+          'isTest': isTestEntry(task.homework),
+        }
+    ],
+  };
+}
 
 String _hm(DateTime t) => DateFormat("HH:mm").format(t);
 
@@ -53,7 +137,25 @@ int _colorFor(SettingsState settings, String subject) =>
 /// Sends the current week, upcoming tasks and grade averages to the desktop
 /// widgets.
 Future<void> exportWeekForWidget(AppState state) async {
+  _latestWidgetState = state;
   if (!widgetSupported) return;
+  if (Platform.isIOS) {
+    try {
+      if (!state.loginState.loggedIn ||
+          state.settingsState.noDataSaving ||
+          !widgetsEnabled.value) {
+        await _channel.invokeMethod<void>('clearAgenda');
+      } else {
+        await _channel.invokeMethod<void>(
+            'saveAgenda', jsonEncode(iosWidgetSnapshot(state)));
+      }
+    } on PlatformException catch (error) {
+      log('Could not update the widget', error: error.code);
+    } on MissingPluginException {
+      // Native widgets are unavailable in Flutter unit tests.
+    }
+    return;
+  }
   final monday = toMonday(UtcDateTime.now());
   final today = UtcDateTime.now().stripTime();
   final settings = state.settingsState;

@@ -16,6 +16,7 @@
 // along with digitales_register.  If not, see <http://www.gnu.org/licenses/>.
 
 import 'package:built_collection/built_collection.dart';
+import 'package:dr/app_language.dart';
 import 'package:dr/app_state.dart';
 import 'package:dr/container/calendar_week_container.dart';
 import 'package:dr/data.dart';
@@ -219,11 +220,11 @@ class CalendarDayWidget extends StatelessWidget {
           child: Column(
             children: [
               HudLabel(
-                DateFormat("E", "de").format(calendarDay.date),
+                DateFormat("E", appLanguage.value).format(calendarDay.date),
                 color: isToday ? Colors.white : null,
               ),
               Text(
-                DateFormat("dd.MM", "de").format(calendarDay.date),
+                DateFormat("dd.MM", appLanguage.value).format(calendarDay.date),
                 style: mono(
                   theme.textTheme.bodySmall?.copyWith(
                     color: isToday ? Colors.white : theme.colorScheme.onSurface,
@@ -276,7 +277,7 @@ class CalendarDayWidget extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "Frei",
+                  tr("Frei"),
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
               ],
@@ -367,7 +368,7 @@ class HourWidget extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    if (isNow) HudLabel("Jetzt", color: AppColors.cyan),
+                    if (isNow) HudLabel(tr("Jetzt"), color: AppColors.cyan),
                     Text(
                       subjectNicks[hour.subject.toLowerCase()] ?? hour.subject,
                       maxLines: 1,

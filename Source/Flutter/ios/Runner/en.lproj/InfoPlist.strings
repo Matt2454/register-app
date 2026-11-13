@@ -1,0 +1,3 @@
+"NSCalendarsUsageDescription" = "Export lessons, tests, and tasks to Apple Calendar.";
+"NSCalendarsWriteOnlyAccessUsageDescription" = "Add lessons, tests, and tasks to a calendar you choose. Register does not read existing calendar events.";
+"NSPhotoLibraryUsageDescription" = "Choose your own background image or teacher pictures for Register.";

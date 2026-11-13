@@ -19,6 +19,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:dr/app_language.dart';
 import 'package:dr/utc_date_time.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -89,7 +90,7 @@ extension MapEntryToTuple<K, V> on MapEntry<K, V> {
   }
 }
 
-NumberFormat gradeAverageFormat = NumberFormat("#0.##", "de");
+NumberFormat get gradeAverageFormat => NumberFormat("#0.##", appLanguage.value);
 
 class ParseException implements Exception {
   final String payload;

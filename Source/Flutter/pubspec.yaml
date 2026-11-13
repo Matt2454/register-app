@@ -7,7 +7,7 @@ description: A new Flutter project.
 # Both the version and the builder number may be overridden in flutter
 # build by specifying --build-name and --build-number, respectively.
 # Read more about versioning at semver.org.
-version: 8.2.15+50
+version: 8.3.0+51
 
 publish_to: none
 
@@ -71,6 +71,7 @@ dependencies:
   scrollable_positioned_list: ^0.3.1
   shared_preferences: ^2.0.15
   tuple: ^2.0.0
+  timezone: ^0.11.1
   url_launcher: ^6.1.0
   workmanager: ^0.10.10
 
@@ -134,6 +135,7 @@ flutter:
     - assets/
     - assets/fonts/
     - assets/icon/
+    - assets/i18n/
   #  - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.

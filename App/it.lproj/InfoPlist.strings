@@ -1,0 +1,3 @@
+"NSCalendarsUsageDescription" = "Esporta lezioni, verifiche e compiti nel Calendario Apple.";
+"NSCalendarsWriteOnlyAccessUsageDescription" = "Aggiungi lezioni, verifiche e compiti a un calendario a tua scelta. Register non legge gli eventi già presenti.";
+"NSPhotoLibraryUsageDescription" = "Scegli uno sfondo personalizzato o le foto dei docenti per Register.";

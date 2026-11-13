@@ -18,9 +18,9 @@
 import 'package:dr/absence_projection.dart';
 import 'package:dr/actions/app_actions.dart';
 import 'package:dr/app_state.dart';
+import 'package:dr/localized_store_connection.dart';
 import 'package:dr/ui/absences_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_built_redux/flutter_built_redux.dart';
 import 'package:tuple/tuple.dart';
 
 class AbsencesPageContainer extends StatelessWidget {

@@ -18,9 +18,9 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:dr/actions/app_actions.dart';
 import 'package:dr/app_state.dart';
+import 'package:dr/localized_store_connection.dart';
 import 'package:dr/ui/grades_chart_legend.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_built_redux/flutter_built_redux.dart';
 
 class ChartLegendContainer extends StatelessWidget {
   @override

@@ -19,11 +19,12 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:dr/app_language.dart';
 import 'package:dr/app_state.dart';
 import 'package:dr/data.dart';
 import 'package:dr/utc_date_time.dart';
-import 'package:intl/intl.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// How often the dashboard is reloaded while the app is open, so that new
@@ -40,20 +41,20 @@ const _darwin = DarwinNotificationDetails(
   presentList: true,
   presentSound: true,
 );
-const _android = AndroidNotificationDetails(
-  "register_updates",
-  "Neuigkeiten aus dem Register",
-  channelDescription:
-      "Neue Noten, Aufgaben, Mitteilungen und Änderungen im Stundenplan",
-  importance: Importance.high,
-  priority: Priority.high,
-);
-const _details = NotificationDetails(
-  macOS: _darwin,
-  iOS: _darwin,
-  android: _android,
-  windows: WindowsNotificationDetails(),
-);
+AndroidNotificationDetails get _android => AndroidNotificationDetails(
+      "register_updates",
+      tr("Neuigkeiten aus dem Register"),
+      channelDescription: tr(
+          "Neue Noten, Aufgaben, Mitteilungen und Änderungen im Stundenplan"),
+      importance: Importance.high,
+      priority: Priority.high,
+    );
+NotificationDetails get _details => NotificationDetails(
+      macOS: _darwin,
+      iOS: _darwin,
+      android: _android,
+      windows: WindowsNotificationDetails(),
+    );
 
 Future<void> _show(int id, String title, String body) async {
   if (!await _ensureInitialized()) return;
@@ -71,7 +72,10 @@ final _plugin = FlutterLocalNotificationsPlugin();
 bool _initialized = false;
 
 bool get desktopNotificationsSupported =>
-    Platform.isMacOS || Platform.isIOS || Platform.isAndroid || Platform.isWindows;
+    Platform.isMacOS ||
+    Platform.isIOS ||
+    Platform.isAndroid ||
+    Platform.isWindows;
 
 Future<bool> _ensureInitialized() async {
   if (!desktopNotificationsSupported) return false;
@@ -79,12 +83,12 @@ Future<bool> _ensureInitialized() async {
   try {
     const darwin = DarwinInitializationSettings();
     await _plugin.initialize(
-      settings: const InitializationSettings(
+      settings: InitializationSettings(
         macOS: darwin,
         iOS: darwin,
         android: AndroidInitializationSettings("@mipmap/launcher_icon"),
         windows: WindowsInitializationSettings(
-          appName: "Register",
+          appName: tr("Register"),
           appUserModelId: "kererleon.Register",
           guid: "6f3c2a91-4d7e-4b8a-9c15-2e8f0d6a7b34",
         ),
@@ -123,19 +127,23 @@ String _entryKey(Homework hw) =>
     "${homeworkMoveKey(hw)}@${hw.firstSeen.millisecondsSinceEpoch}";
 
 String _describe(Homework hw) {
-  final kind = switch (hw.type) {
-    HomeworkType.grade => "Neue Note",
-    HomeworkType.gradeGroup => "Neuer Test",
-    HomeworkType.observation => "Neue Beobachtung",
-    _ => isTestEntry(hw) ? "Neuer Test" : "Neue Aufgabe",
-  };
   final changed = hw.isChanged && !hw.isNew;
+  final kind = switch (hw.type) {
+    HomeworkType.grade => changed ? tr("Geänderte Note") : tr("Neue Note"),
+    HomeworkType.gradeGroup =>
+      changed ? tr("Geänderter Test") : tr("Neuer Test"),
+    HomeworkType.observation =>
+      changed ? tr("Geänderte Beobachtung") : tr("Neue Beobachtung"),
+    _ => isTestEntry(hw)
+        ? changed
+            ? tr("Geänderter Test")
+            : tr("Neuer Test")
+        : changed
+            ? tr("Geänderte Aufgabe")
+            : tr("Neue Aufgabe"),
+  };
   return [
-    changed
-        ? kind
-            .replaceFirst("Neue", "Geänderte")
-            .replaceFirst("Neuer", "Geänderter")
-        : kind,
+    kind,
     if (hw.label != null) hw.label!,
   ].join(" · ");
 }
@@ -170,7 +178,7 @@ Future<void> notifyNewEntries(AppState state) async {
   if (!await _ensureInitialized()) return;
   if (stored == null || fresh.isEmpty) return;
 
-  const details = _details;
+  final details = _details;
   if (fresh.length <= 3) {
     for (final hw in fresh) {
       await _plugin.show(
@@ -188,7 +196,7 @@ Future<void> notifyNewEntries(AppState state) async {
   } else {
     await _plugin.show(
       id: 0,
-      title: "${fresh.length} neue Einträge im Register",
+      title: tr("{0} neue Einträge im Register", [fresh.length]),
       body: fresh.take(4).map(_describe).join("\n"),
       notificationDetails: details,
     );
@@ -217,12 +225,12 @@ Future<void> notifyServerNotifications(AppState state) async {
     await _show(
       "server-${n.id}".hashCode,
       n.title,
-      n.subTitle ?? "Neue Benachrichtigung im Register",
+      n.subTitle ?? tr("Neue Benachrichtigung im Register"),
     );
   }
   if (fresh.length > 3) {
-    await _show(1, "${fresh.length} neue Benachrichtigungen",
-        "Öffne Register, um sie zu sehen.");
+    await _show(1, tr("{0} neue Benachrichtigungen", [fresh.length]),
+        tr("Öffne Register, um sie zu sehen."));
   }
 }
 
@@ -242,7 +250,8 @@ Map<String, String> _readMap(SharedPreferences prefs, String key) {
 String? _usualTeacher(Map<String, dynamic> counts) {
   if (counts.isEmpty) return null;
   final total = counts.values.fold<int>(0, (a, b) => a + (b as int));
-  final top = counts.entries.reduce((a, b) => (a.value as int) >= (b.value as int) ? a : b);
+  final top = counts.entries
+      .reduce((a, b) => (a.value as int) >= (b.value as int) ? a : b);
   if (total < 3 || (top.value as int) / total < 0.6) return null;
   return top.key;
 }
@@ -272,7 +281,7 @@ Future<void> notifySubstitutions(
     final day = state.calendarState.days[date];
     if (day == null) continue;
     final dateKey = DateFormat("yyyy-MM-dd").format(date);
-    final dayLabel = DateFormat("EE dd.MM.", "de").format(date);
+    final dayLabel = DateFormat("EE dd.MM.", appLanguage.value).format(date);
     final upcoming = !date.isBefore(today);
     final present = <String>{};
     for (final hour in day.hours) {
@@ -283,7 +292,7 @@ Future<void> notifySubstitutions(
       final now = "${hour.subject}|$teachers|$rooms";
       final before = known[key];
       known[key] = now;
-      final where = "$dayLabel, ${hour.fromHour}. Stunde";
+      final where = tr("{0}, {1}. Stunde", [dayLabel, hour.fromHour]);
 
       if (before == null) {
         // Learn who usually teaches the subject.
@@ -299,8 +308,8 @@ Future<void> notifySubstitutions(
             !teachers.contains(regular)) {
           changes.add((
             "$key@sub@$teachers",
-            "Supplenz: ${hour.subject}",
-            "$where – $teachers statt $regular",
+            tr("Supplenz: {0}", [hour.subject]),
+            tr("{0} – {1} statt {2}", [where, teachers, regular]),
           ));
         }
         continue;
@@ -313,22 +322,30 @@ Future<void> notifySubstitutions(
       if (oldSubject != hour.subject) {
         changes.add((
           "$key@subject@$now",
-          "Stundenplan geändert",
-          "$where: ${hour.subject} statt $oldSubject"
-              "${teachers.isEmpty ? "" : " ($teachers)"}",
+          tr("Stundenplan geändert"),
+          tr("{0}: {1} statt {2}{3}", [
+            where,
+            hour.subject,
+            oldSubject,
+            teachers.isEmpty ? "" : " ($teachers)"
+          ]),
         ));
       } else if (oldTeachers != teachers) {
         changes.add((
           "$key@teacher@$now",
-          "Supplenz: ${hour.subject}",
-          "$where – ${teachers.isEmpty ? "ohne Lehrperson" : teachers}"
-              "${oldTeachers.isEmpty ? "" : " statt $oldTeachers"}",
+          tr("Supplenz: {0}", [hour.subject]),
+          "$where – ${teachers.isEmpty ? tr("ohne Lehrperson") : teachers}"
+              "${oldTeachers.isEmpty ? "" : tr(" statt {0}", [oldTeachers])}",
         ));
       } else if (oldRooms != rooms && rooms.isNotEmpty) {
         changes.add((
           "$key@room@$now",
-          "Raumänderung: ${hour.subject}",
-          "$where – jetzt in $rooms${oldRooms.isEmpty ? "" : " statt $oldRooms"}",
+          tr("Raumänderung: {0}", [hour.subject]),
+          tr("{0} – jetzt in {1}{2}", [
+            where,
+            rooms,
+            oldRooms.isEmpty ? "" : tr(" statt {0}", [oldRooms])
+          ]),
         ));
       }
     }
@@ -342,8 +359,12 @@ Future<void> notifySubstitutions(
       final hourNo = key.split("|")[1];
       changes.add((
         "$key@gone",
-        "Stunde entfällt: ${old[0]}",
-        "$dayLabel, $hourNo. Stunde${old.length > 1 && old[1].isNotEmpty ? " (${old[1]})" : ""}",
+        tr("Stunde entfällt: {0}", [old[0]]),
+        tr("{0}, {1}. Stunde{2}", [
+          dayLabel,
+          hourNo,
+          old.length > 1 && old[1].isNotEmpty ? " (${old[1]})" : ""
+        ]),
       ));
     }
   }
@@ -371,8 +392,8 @@ Future<void> notifySubstitutions(
   if (fresh.length > 4) {
     await _show(
       2,
-      "${fresh.length} Änderungen im Stundenplan",
-      "Öffne den Kalender in Register.",
+      tr("{0} Änderungen im Stundenplan", [fresh.length]),
+      tr("Öffne den Kalender in Register."),
     );
   }
 }
@@ -398,10 +419,11 @@ Future<void> notifyNewMessages(AppState state) async {
   );
   if (stored == null || fresh.isEmpty) return;
   for (final m in fresh.take(3)) {
-    await _show("message-${m.id}".hashCode, "Neue Mitteilung: ${m.subject}",
-        "Von ${m.fromName}");
+    await _show("message-${m.id}".hashCode,
+        tr("Neue Mitteilung: {0}", [m.subject]), tr("Von {0}", [m.fromName]));
   }
   if (fresh.length > 3) {
-    await _show(3, "${fresh.length} neue Mitteilungen", "Öffne Register, um sie zu lesen.");
+    await _show(3, tr("{0} neue Mitteilungen", [fresh.length]),
+        tr("Öffne Register, um sie zu lesen."));
   }
 }

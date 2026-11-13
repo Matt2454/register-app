@@ -15,6 +15,7 @@
 // You should have received a copy of the GNU General Public License
 // along with digitales_register.  If not, see <http://www.gnu.org/licenses/>.
 
+import 'package:dr/app_language.dart';
 import 'package:dr/app_state.dart';
 import 'package:dr/container/settings_page.dart';
 import 'package:dr/ui/holo.dart';
@@ -43,7 +44,7 @@ class Profile extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.transparent,
       appBar: AppBar(
-        title: const Text("Profil"),
+        title: Text(tr("Profil")),
       ),
       body: profileState.name == null
           ? Center(
@@ -61,7 +62,7 @@ class Profile extends StatelessWidget {
                         username: profileState.username!,
                         role: profileState.roleName!,
                       ),
-                      const SectionLabel("Benachrichtigungen"),
+                      SectionLabel(tr("Benachrichtigungen")),
                       HoloPanel(
                         padding: const EdgeInsets.symmetric(vertical: 4),
                         child: SwitchListTile.adaptive(
@@ -69,14 +70,14 @@ class Profile extends StatelessWidget {
                             Icons.mark_email_unread_outlined,
                             color: Theme.of(context).colorScheme.primary,
                           ),
-                          title: const Text(
-                              "Emails für Benachrichtigungen senden"),
+                          title:
+                              Text(tr("Emails für Benachrichtigungen senden")),
                           value: profileState.sendNotificationEmails!,
                           onChanged:
                               noInternet ? null : setSendNotificationEmails,
                         ),
                       ),
-                      const SectionLabel("Zugang"),
+                      SectionLabel(tr("Zugang")),
                       HoloPanel(
                         padding: const EdgeInsets.symmetric(vertical: 4),
                         child: Column(
@@ -86,7 +87,7 @@ class Profile extends StatelessWidget {
                                 Icons.alternate_email_rounded,
                                 color: Theme.of(context).colorScheme.primary,
                               ),
-                              title: const Text("Email-Adresse ändern"),
+                              title: Text(tr("Email-Adresse ändern")),
                               subtitle: Text(
                                 profileState.email!,
                                 style:
@@ -107,7 +108,7 @@ class Profile extends StatelessWidget {
                                 Icons.key_rounded,
                                 color: Theme.of(context).colorScheme.primary,
                               ),
-                              title: const Text("Passwort ändern"),
+                              title: Text(tr("Passwort ändern")),
                               trailing: const Icon(Icons.chevron_right_rounded),
                               onTap: changePass,
                               enabled: !noInternet,

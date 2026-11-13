@@ -217,5 +217,5 @@ Future<void> _updateWidgetGrades(
     ActionHandler next,
     Action<SubjectsLoadedPayload> action) async {
   await next(action);
-  await exportWeekForWidget(api.state);
+  if (Platform.isMacOS) await exportWeekForWidget(api.state);
 }

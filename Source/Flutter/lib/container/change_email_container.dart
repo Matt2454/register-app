@@ -18,9 +18,9 @@
 import 'package:dr/actions/app_actions.dart';
 import 'package:dr/actions/profile_actions.dart';
 import 'package:dr/app_state.dart';
+import 'package:dr/localized_store_connection.dart';
 import 'package:dr/ui/change_email.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_built_redux/flutter_built_redux.dart';
 
 class ChangeEmailContainer extends StatelessWidget {
   @override

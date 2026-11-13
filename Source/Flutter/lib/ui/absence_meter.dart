@@ -18,6 +18,7 @@
 import 'dart:math';
 
 import 'package:dr/absence_projection.dart';
+import 'package:dr/app_language.dart';
 import 'package:dr/ui/holo.dart';
 import 'package:dr/ui/theme.dart';
 import 'package:flutter/material.dart';
@@ -34,18 +35,21 @@ double? parseAbsencePercentage(String? value) =>
   if (percent < 10)
     return (
       AppColors.success,
-      br("Im grünen Bereich", "Chillig 😎", "Sababa 😎")
+      br(tr("Im grünen Bereich"), tr("Chillig 😎"), tr("Sababa 😎"))
     );
   if (percent < 18)
-    return (AppColors.warning, br("Aufpassen", "Sus 👀", "Achi, aufpassen 👀"));
+    return (
+      AppColors.warning,
+      br(tr("Aufpassen"), tr("Sus 👀"), tr("Achi, aufpassen 👀"))
+    );
   if (percent < absenceLimitPercent)
     return (
       AppColors.danger,
-      br("Kritisch", "Gefährlich 💀", "Oy vey! Balagan 😱")
+      br(tr("Kritisch"), tr("Gefährlich 💀"), tr("Oy vey! Balagan 😱"))
     );
   return (
     AppColors.danger,
-    br("Über der Grenze", "Game over 💀", "Balagan total 😱")
+    br(tr("Über der Grenze"), tr("Game over 💀"), tr("Balagan total 😱"))
   );
 }
 
@@ -68,8 +72,9 @@ class AbsenceMeter extends StatelessWidget {
             const Spacer(),
             HudLabel(
               percent >= absenceLimitPercent
-                  ? "Grenze 25 % überschritten"
-                  : "noch ${left.toStringAsFixed(1).replaceAll(".", ",")} % bis 25 %",
+                  ? tr("Grenze 25 % überschritten")
+                  : tr("noch {0} % bis 25 %",
+                      [left.toStringAsFixed(1).replaceAll(".", ",")]),
             ),
           ],
         ),
@@ -150,15 +155,17 @@ class AbsenceYearOutlook extends StatelessWidget {
                   children: [
                     TextSpan(
                       text: p.stillAllowed == 0
-                          ? br("Keine Fehlstunde mehr übrig",
-                              "0 Skips übrig 💀", "Keine Stunde mehr übrig 😱")
-                          : "${br("Noch", "Noch", "Noch")} ~${p.stillAllowed} "
-                              "${p.stillAllowed == 1 ? "Stunde" : "Stunden"} ",
+                          ? br(
+                              tr("Keine Fehlstunde mehr übrig"),
+                              tr("0 Skips übrig 💀"),
+                              tr("Keine Stunde mehr übrig 😱"))
+                          : "${br(tr("Noch"), tr("Noch"), tr("Noch"))} ~${p.stillAllowed} "
+                              "${p.stillAllowed == 1 ? tr("Stunde") : tr("Stunden")} ",
                       style: theme.textTheme.titleSmall?.copyWith(color: color),
                     ),
                     if (p.stillAllowed > 0)
                       TextSpan(
-                        text: "fehlen bis Schulende ($end) erlaubt",
+                        text: tr("fehlen bis Schulende ({0}) erlaubt", [end]),
                         style: theme.textTheme.bodyMedium,
                       ),
                   ],
@@ -171,8 +178,8 @@ class AbsenceYearOutlook extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(left: 26),
           child: Text(
-            "Aufs ganze Schuljahr: ${_decimal(p.yearPercent)} % "
-            "(~${_hours(p.missed)} von ~${p.totalLessons} Stunden)",
+            tr("Aufs ganze Schuljahr: {0} % (~{1} von ~{2} Stunden)",
+                [_decimal(p.yearPercent), _hours(p.missed), p.totalLessons]),
             style: muted,
           ),
         ),
@@ -181,17 +188,17 @@ class AbsenceYearOutlook extends StatelessWidget {
   }
 }
 
-const _months = [
-  "Jänner",
-  "Februar",
-  "März",
-  "April",
-  "Mai",
-  "Juni",
-  "Juli",
-  "August",
-  "September",
-  "Oktober",
-  "November",
-  "Dezember",
-];
+List<String> get _months => [
+      tr("Jänner"),
+      tr("Februar"),
+      tr("März"),
+      tr("April"),
+      tr("Mai"),
+      tr("Juni"),
+      tr("Juli"),
+      tr("August"),
+      tr("September"),
+      tr("Oktober"),
+      tr("November"),
+      tr("Dezember"),
+    ];

@@ -18,21 +18,24 @@
 import 'dart:io';
 
 import 'package:deleteable_tile/deleteable_tile.dart';
+import 'package:dr/app_language.dart';
 import 'package:dr/app_state.dart';
 import 'package:dr/container/settings_page.dart';
-import 'package:dr/ui/autocomplete_options.dart';
-import 'package:dr/ui/dialog.dart';
-import 'package:dr/ui/network_protocol_page.dart';
-import 'package:dr/util.dart';
-import 'package:dynamic_theme/dynamic_theme.dart';
-import 'package:flutter/gestures.dart';
 import 'package:dr/custom_background.dart';
 import 'package:dr/teacher_photos.dart';
+import 'package:dr/ui/autocomplete_options.dart';
+import 'package:dr/ui/dialog.dart';
 import 'package:dr/ui/holo.dart';
+import 'package:dr/ui/language_picker.dart';
+import 'package:dr/ui/network_protocol_page.dart';
 import 'package:dr/ui/theme.dart';
+import 'package:dr/util.dart';
+import 'package:dr/widget_export.dart';
+import 'package:dynamic_theme/dynamic_theme.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_scaffold/responsive_scaffold.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -160,8 +163,8 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
             ? _Theme.dark
             : _Theme.light;
     return Scaffold(
-      appBar: const ResponsiveAppBar(
-        title: Text("Einstellungen"),
+      appBar: ResponsiveAppBar(
+        title: Text(tr("Einstellungen")),
       ),
       body: ListView(
         // Readable width on wide windows.
@@ -170,6 +173,32 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
         ),
         controller: controller,
         children: <Widget>[
+          ListTile(
+            leading: const Icon(Icons.translate_rounded),
+            title: Text(tr('Sprache')),
+            subtitle: Text(tr('English, Italiano, Deutsch oder Gerätesprache')),
+            trailing: const LanguagePicker(),
+          ),
+          if (Platform.isIOS) ...[
+            ValueListenableBuilder<bool>(
+                valueListenable: widgetsEnabled,
+                builder: (context, enabled, _) => SwitchListTile.adaptive(
+                      title: Text(tr('Home-Bildschirm-Widgets')),
+                      subtitle: Text(widget.vm.noDataSaving
+                          ? tr(
+                              'Aktiviere das lokale Speichern, um Widgets zu verwenden.')
+                          : tr(
+                              'Stundenplan und Aufgaben aus gespeicherten Daten anzeigen.')),
+                      value: enabled && !widget.vm.noDataSaving,
+                      onChanged:
+                          widget.vm.noDataSaving ? null : setWidgetsEnabled,
+                    )),
+            ListTile(
+                leading: const Icon(Icons.widgets_outlined),
+                title: Text(tr('Widgets hinzufügen')),
+                subtitle: Text(tr(
+                    'Home-Bildschirm gedrückt halten → Bearbeiten → Widget hinzufügen → Register.'))),
+          ],
           if (!widget.vm.demoMode) ...[
             const SizedBox(height: 8),
             HoloPanel(
@@ -183,11 +212,11 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Profil",
+                          tr("Profil"),
                           style: Theme.of(context).textTheme.titleMedium,
                         ),
                         Text(
-                          "Email, Passwort und Benachrichtigungen",
+                          tr("Email, Passwort und Benachrichtigungen"),
                           style: Theme.of(context).textTheme.bodySmall,
                         ),
                       ],
@@ -202,27 +231,27 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
             controller: controller,
             index: 0,
             key: const ObjectKey(0),
-            child:
-                _SettingsHeader("Anmeldung", icon: Icons.lock_outline_rounded),
+            child: _SettingsHeader(tr("Anmeldung"),
+                icon: Icons.lock_outline_rounded),
           ),
           SwitchListTile.adaptive(
-            title: const Text("Angemeldet bleiben"),
-            subtitle: const Text("Deine Zugangsdaten werden lokal gespeichert"),
+            title: Text(tr("Angemeldet bleiben")),
+            subtitle: Text(tr("Deine Zugangsdaten werden lokal gespeichert")),
             onChanged: (bool value) {
               widget.onSetNoPassSaving(!value);
             },
             value: !widget.vm.noPassSaving,
           ),
           SwitchListTile.adaptive(
-            title: const Text("Daten lokal speichern"),
-            subtitle: const Text('Sehen, wann etwas eingetragen wurde'),
+            title: Text(tr("Daten lokal speichern")),
+            subtitle: Text(tr("Sehen, wann etwas eingetragen wurde")),
             onChanged: (bool value) {
               widget.onSetNoDataSaving(!value);
             },
             value: !widget.vm.noDataSaving,
           ),
           SwitchListTile.adaptive(
-            title: const Text("Daten beim Ausloggen löschen"),
+            title: Text(tr("Daten beim Ausloggen löschen")),
             onChanged: !widget.vm.noPassSaving && !widget.vm.noDataSaving
                 ? (bool value) {
                     widget.onSetDeleteDataOnLogout(value);
@@ -235,30 +264,31 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
             controller: controller,
             index: 1,
             key: const ObjectKey(1),
-            child: _SettingsHeader("Aussehen", icon: Icons.palette_outlined),
+            child:
+                _SettingsHeader(tr("Aussehen"), icon: Icons.palette_outlined),
           ),
           const _StylePicker(),
           RadioListTile(
             value: _Theme.followDevice,
             groupValue: currentTheme,
             onChanged: _selectTheme,
-            title: const Text("Geräte-Theme folgen"),
+            title: Text(tr("Geräte-Theme folgen")),
           ),
           RadioListTile(
             value: _Theme.light,
             groupValue: currentTheme,
             onChanged: _selectTheme,
-            title: const Text("Hell"),
+            title: Text(tr("Hell")),
           ),
           RadioListTile(
             value: _Theme.dark,
             groupValue: currentTheme,
             onChanged: _selectTheme,
-            title: const Text("Dunkel"),
+            title: Text(tr("Dunkel")),
           ),
           const SizedBox(height: 4),
           ExpansionTile(
-            title: const Text("Fächerfarben"),
+            title: Text(tr("Fächerfarben")),
             children: [
               for (final theme in widget.vm.subjectThemes.entries)
                 ListTile(
@@ -294,22 +324,22 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
             ],
           ),
           SwitchListTile.adaptive(
-            title: const Text(
-              "Hausaufgaben mit diesen Farben umrahmen",
+            title: Text(
+              tr("Hausaufgaben mit diesen Farben umrahmen"),
             ),
             value: widget.vm.dashboardColorBorders,
             onChanged: widget.onSetDashboardColorBorders,
           ),
           SwitchListTile.adaptive(
-            title: const Text(
-              "Stunden im Kalender mit diesen Farben färben",
+            title: Text(
+              tr("Stunden im Kalender mit diesen Farben färben"),
             ),
             value: widget.vm.calendarColorBackground,
             onChanged: widget.onSetCalenderColorBackground,
           ),
           SwitchListTile.adaptive(
-            title: const Text(
-              "Tests immer rot umrahmen",
+            title: Text(
+              tr("Tests immer rot umrahmen"),
             ),
             value: widget.vm.dashboardColorTestsInRed,
             onChanged: widget.onSetDashboardColorTestsInRed,
@@ -319,24 +349,25 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
             controller: controller,
             index: 2,
             key: const ObjectKey(2),
-            child: _SettingsHeader("Merkheft", icon: Icons.dashboard_outlined),
+            child:
+                _SettingsHeader(tr("Merkheft"), icon: Icons.dashboard_outlined),
           ),
           SwitchListTile.adaptive(
-            title: const Text("Neue oder geänderte Einträge markieren"),
+            title: Text(tr("Neue oder geänderte Einträge markieren")),
             onChanged: (bool value) {
               widget.onSetDashboardMarkNewOrChangedEntries(value);
             },
             value: widget.vm.dashboardMarkNewOrChangedEntries,
           ),
           SwitchListTile.adaptive(
-            title: const Text("Doppelte Einträge ignorieren"),
+            title: Text(tr("Doppelte Einträge ignorieren")),
             onChanged: (bool value) {
               widget.onSetDashboardDeduplicateEntries(value);
             },
             value: widget.vm.dashboardDeduplicateEntries,
           ),
           SwitchListTile.adaptive(
-            title: const Text("Beim Löschen von Erinnerungen fragen"),
+            title: Text(tr("Beim Löschen von Erinnerungen fragen")),
             onChanged: (bool value) {
               widget.onSetAskWhenDelete(value);
             },
@@ -347,24 +378,24 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
             controller: controller,
             index: 3,
             key: const ObjectKey(3),
-            child: _SettingsHeader("Noten", icon: Icons.insights_rounded),
+            child: _SettingsHeader(tr("Noten"), icon: Icons.insights_rounded),
           ),
           SwitchListTile.adaptive(
-            title: const Text("Noten in einem Diagramm darstellen"),
+            title: Text(tr("Noten in einem Diagramm darstellen")),
             onChanged: (bool value) {
               widget.onSetShowGradesDiagram(value);
             },
             value: widget.vm.showGradesDiagram,
           ),
           SwitchListTile.adaptive(
-            title: const Text('Durchschnitt aller Fächer anzeigen'),
+            title: Text(tr("Durchschnitt aller Fächer anzeigen")),
             onChanged: (bool value) {
               widget.onSetShowAllSubjectsAverage(value);
             },
             value: widget.vm.showAllSubjectsAverage,
           ),
           ListTile(
-            title: const Text("Fächer aus dem Notendurchschnitt ausschließen"),
+            title: Text(tr("Fächer aus dem Notendurchschnitt ausschließen")),
             trailing: IconButton(
               icon: const Icon(Icons.add),
               onPressed: () async {
@@ -386,11 +417,11 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
             crossFadeState: widget.vm.ignoreForGradesAverage.isEmpty
                 ? CrossFadeState.showFirst
                 : CrossFadeState.showSecond,
-            firstChild: const Padding(
+            firstChild: Padding(
               padding: EdgeInsets.only(left: 16),
               child: ListTile(
                 title: Text(
-                  "Kein Fach ausgeschlossen",
+                  tr("Kein Fach ausgeschlossen"),
                   style: TextStyle(color: Colors.grey),
                 ),
               ),
@@ -433,15 +464,15 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
             controller: controller,
             index: 4,
             key: const ObjectKey(4),
-            child: _SettingsHeader("Kalender",
+            child: _SettingsHeader(tr("Kalender"),
                 icon: Icons.calendar_month_outlined),
           ),
           ValueListenableBuilder(
             valueListenable: showTeacherPhotos,
             builder: (context, bool show, _) => SwitchListTile.adaptive(
-              title: const Text("Fotos der Lehrpersonen"),
-              subtitle: const Text(
-                "Profilbilder in der Stunden-Detailkarte (im Brainrot-Stil auch als Hintergrund), von der Webseite deiner Schule",
+              title: Text(tr("Fotos der Lehrpersonen")),
+              subtitle: Text(
+                tr("Profilbilder in der Stunden-Detailkarte (im Brainrot-Stil auch als Hintergrund), von der Webseite deiner Schule"),
               ),
               value: show,
               onChanged: setShowTeacherPhotos,
@@ -455,10 +486,10 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
                     valueListenable: staffPageInUse,
                     builder: (context, String? page, _) => ListTile(
                       leading: const Icon(Icons.travel_explore_outlined),
-                      title: const Text("Seite mit den Fotos"),
+                      title: Text(tr("Seite mit den Fotos")),
                       subtitle: Text(
                         page ??
-                            "Noch nicht gefunden – öffne den Kalender oder trag die Seite selbst ein",
+                            tr("Noch nicht gefunden – öffne den Kalender oder trag die Seite selbst ein"),
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -469,7 +500,7 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
           ),
           ExpansionTile(
             initiallyExpanded: widget.vm.showSubjectNicks,
-            title: const Text("Fächerkürzel"),
+            title: Text(tr("Fächerkürzel")),
             children: List.generate(
               widget.vm.subjectNicks.length + 1,
               (i) {
@@ -542,9 +573,9 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
             ),
           ),
           SwitchListTile.adaptive(
-            title: const Text("Hinweis zum Bearbeiten von Kürzeln"),
-            subtitle: const Text(
-                "Wird angezeigt, wenn für ein Fach kein Kürzel vorhanden ist"),
+            title: Text(tr("Hinweis zum Bearbeiten von Kürzeln")),
+            subtitle: Text(tr(
+                "Wird angezeigt, wenn für ein Fach kein Kürzel vorhanden ist")),
             onChanged: (bool value) {
               widget.onSetShowCalendarEditNicksBar(value);
             },
@@ -555,20 +586,20 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
             controller: controller,
             index: 5,
             key: const ObjectKey(5),
-            child: _SettingsHeader("Erweitert", icon: Icons.tune_rounded),
+            child: _SettingsHeader(tr("Erweitert"), icon: Icons.tune_rounded),
           ),
           if (Platform.isAndroid)
             SwitchListTile.adaptive(
-              title: const Text("iOS Mode"),
-              subtitle: const Text(
-                  "Imitiere das Aussehen einer iOS-App (ein bisschen)"),
+              title: Text(tr("iOS Mode")),
+              subtitle: Text(
+                  tr("Imitiere das Aussehen einer iOS-App (ein bisschen)")),
               onChanged: (bool value) {
                 widget.onSetPlatformOverride(value);
               },
               value: DynamicTheme.of(context)!.platformOverride,
             ),
           ListTile(
-            title: const Text("Netzwerkprotokoll"),
+            title: Text(tr("Netzwerkprotokoll")),
             onTap: () {
               Navigator.push(
                 context,
@@ -583,7 +614,7 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
           ListTile(
             leading: const Icon(Icons.code),
             trailing: const Icon(Icons.open_in_new),
-            title: const Text("Quellcode & Downloads"),
+            title: Text(tr("Quellcode & Downloads")),
             subtitle: const Text("github.com/kererleon/register-app"),
             onTap: () => launchUrl(
               Uri.parse("https://github.com/kererleon/register-app"),
@@ -601,16 +632,15 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
             ),
             applicationLegalese:
                 "Copyright Michael Debertol und Simon Wachtler 2019-2022",
-            applicationName: "Register",
+            applicationName: tr("Register"),
             applicationVersion: appVersion,
             aboutBoxChildren: [
-              const Text(
-                "Eine inoffizielle App für das Digitale Register. "
-                "Basiert auf digitales_register von Michael Debertol.",
+              Text(
+                tr("Eine inoffizielle App für das Digitale Register. Basiert auf digitales_register von Michael Debertol."),
               ),
               Text.rich(
                 TextSpan(children: [
-                  const TextSpan(text: "Entwickelt von "),
+                  TextSpan(text: tr("Entwickelt von ")),
                   TextSpan(
                     text: "Michael Debertol",
                     style: TextStyle(color: AppColors.cyan),
@@ -659,7 +689,7 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
                 ),
               )
             ],
-            child: const Text("Über diese App"),
+            child: Text(tr("Über diese App")),
           ),
         ],
       ),
@@ -723,17 +753,18 @@ class _EditSubjectsNicksState extends State<EditSubjectsNicks> {
   @override
   Widget build(BuildContext context) {
     return InfoDialog(
-      title: Text("Kürzel ${forNewNick ? "hinzufügen" : "bearbeiten"}"),
+      title: Text(
+          tr("Kürzel {0}", [forNewNick ? tr("hinzufügen") : "bearbeiten"])),
       content: Row(
         children: [
-          const Column(
+          Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text("Fach"),
+              Text(tr("Fach")),
               SizedBox(
                 height: 27,
               ),
-              Text("Kürzel"),
+              Text(tr("Kürzel")),
             ],
           ),
           const SizedBox(
@@ -806,7 +837,7 @@ class _EditSubjectsNicksState extends State<EditSubjectsNicks> {
           onPressed: () {
             Navigator.of(context).pop();
           },
-          child: const Text("Abbrechen"),
+          child: Text(tr("Abbrechen")),
         ),
         ElevatedButton(
           onPressed:
@@ -820,7 +851,7 @@ class _EditSubjectsNicksState extends State<EditSubjectsNicks> {
                       );
                     }
                   : null,
-          child: const Text("Fertig"),
+          child: Text(tr("Fertig")),
         ),
       ],
     );
@@ -861,7 +892,7 @@ class _AddSubjectState extends State<AddSubject> {
   @override
   Widget build(BuildContext context) {
     return InfoDialog(
-      title: const Text("Fach hinzufügen"),
+      title: Text(tr("Fach hinzufügen")),
       content: RawAutocomplete<String>(
         focusNode: focusNode,
         textEditingController: subjectNameController,
@@ -904,7 +935,7 @@ class _AddSubjectState extends State<AddSubject> {
           onPressed: () {
             Navigator.of(context).pop();
           },
-          child: const Text("Abbrechen"),
+          child: Text(tr("Abbrechen")),
         ),
         ElevatedButton(
           onPressed: subjectNameController.text != ""
@@ -912,7 +943,7 @@ class _AddSubjectState extends State<AddSubject> {
                   Navigator.of(context).pop(subjectNameController.text);
                 }
               : null,
-          child: const Text("Fertig"),
+          child: Text(tr("Fertig")),
         ),
       ],
     );
@@ -938,7 +969,7 @@ class _ColorPickerState extends State<_ColorPicker> {
   @override
   Widget build(BuildContext context) {
     return InfoDialog(
-      title: const Text("Farbe auswählen"),
+      title: Text(tr("Farbe auswählen")),
       content: SingleChildScrollView(
         child: MaterialPicker(
           pickerColor: color!,
@@ -954,7 +985,7 @@ class _ColorPickerState extends State<_ColorPicker> {
           onPressed: () {
             Navigator.pop(context);
           },
-          child: const Text("Abbrechen"),
+          child: Text(tr("Abbrechen")),
         ),
         ElevatedButton(
           onPressed: color != widget.initialColor
@@ -962,7 +993,7 @@ class _ColorPickerState extends State<_ColorPicker> {
                   Navigator.pop(context, color);
                 }
               : null,
-          child: const Text("Auswählen"),
+          child: Text(tr("Auswählen")),
         ),
       ],
     );
@@ -1030,7 +1061,7 @@ class _StylePicker extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const HudLabel("Stil der App"),
+          HudLabel(tr("Stil der App")),
           const SizedBox(height: 10),
           LayoutBuilder(
             builder: (context, constraints) {
@@ -1045,10 +1076,10 @@ class _StylePicker extends StatelessWidget {
                 children: [
                   SizedBox(
                     width: width,
-                    child: const _StyleCard(
+                    child: _StyleCard(
                       style: AppStyle.holo,
                       title: "Holo",
-                      subtitle: "Futuristisch, clean, leuchtend",
+                      subtitle: tr("Futuristisch, clean, leuchtend"),
                       colors: [
                         Color(0xFF0A0E1A),
                         Color(0xFF7C5CFF),
@@ -1087,10 +1118,10 @@ class _StylePicker extends StatelessWidget {
                   ),
                   SizedBox(
                     width: width,
-                    child: const _StyleCard(
+                    child: _StyleCard(
                       style: AppStyle.clean,
                       title: "Clean",
-                      subtitle: "Ruhig, modern, eine Akzentfarbe",
+                      subtitle: tr("Ruhig, modern, eine Akzentfarbe"),
                       colors: [
                         Color(0xFF18181B),
                         Color(0xFF2563EB),
@@ -1101,10 +1132,10 @@ class _StylePicker extends StatelessWidget {
                   ),
                   SizedBox(
                     width: width,
-                    child: const _StyleCard(
+                    child: _StyleCard(
                       style: AppStyle.glass,
                       title: "Liquid Glass",
-                      subtitle: "Glas, Licht und weiche Farben",
+                      subtitle: tr("Glas, Licht und weiche Farben"),
                       colors: [
                         Color(0xFF1C2A4A),
                         Color(0xFF0A84FF),
@@ -1119,12 +1150,12 @@ class _StylePicker extends StatelessWidget {
           ),
           if (isClean) ...[
             const SizedBox(height: 16),
-            const HudLabel("Akzentfarbe"),
+            HudLabel(tr("Akzentfarbe")),
             const SizedBox(height: 10),
             const _AccentPicker(),
           ],
           const SizedBox(height: 20),
-          const HudLabel("Eigenes Hintergrundbild"),
+          HudLabel(tr("Eigenes Hintergrundbild")),
           const SizedBox(height: 10),
           const _BackgroundPicker(),
         ],
@@ -1352,9 +1383,9 @@ class _BackgroundPicker extends StatelessWidget {
                     } on Exception {
                       if (context.mounted) {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
+                          SnackBar(
                             content: Text(
-                              "Das Bild konnte nicht geladen werden. Prüfe, ob Register auf deine Fotos zugreifen darf.",
+                              tr("Das Bild konnte nicht geladen werden. Prüfe, ob Register auf deine Fotos zugreifen darf."),
                             ),
                           ),
                         );
@@ -1362,13 +1393,14 @@ class _BackgroundPicker extends StatelessWidget {
                     }
                   },
                   icon: const Icon(Icons.wallpaper_rounded, size: 18),
-                  label: Text(path == null ? "Bild wählen" : "Anderes Bild"),
+                  label: Text(
+                      path == null ? tr("Bild wählen") : tr("Anderes Bild")),
                 ),
                 if (path != null) ...[
                   const SizedBox(width: 8),
                   TextButton(
                     onPressed: removeCustomBackground,
-                    child: const Text("Entfernen"),
+                    child: Text(tr("Entfernen")),
                   ),
                 ],
               ],
@@ -1377,7 +1409,7 @@ class _BackgroundPicker extends StatelessWidget {
               const SizedBox(height: 8),
               Row(
                 children: [
-                  Text("Abdunkeln", style: theme.textTheme.bodyMedium),
+                  Text(tr("Abdunkeln"), style: theme.textTheme.bodyMedium),
                   Expanded(
                     child: Slider(
                       value: customBackgroundDim.value,
@@ -1393,7 +1425,7 @@ class _BackgroundPicker extends StatelessWidget {
               ),
             ] else
               Text(
-                "Das Bild bleibt nur auf diesem Gerät.",
+                tr("Das Bild bleibt nur auf diesem Gerät."),
                 style: theme.textTheme.bodySmall,
               ),
           ],
@@ -1410,14 +1442,13 @@ Future<void> _editStaffPage(BuildContext context) async {
   final result = await showDialog<String?>(
     context: context,
     builder: (context) => AlertDialog(
-      title: const Text("Seite mit den Fotos"),
+      title: Text(tr("Seite mit den Fotos")),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            "Die Seite deiner Schule, auf der die Lehrpersonen mit Foto stehen. "
-            "Leer lassen, damit die App sie selbst sucht.",
+          Text(
+            tr("Die Seite deiner Schule, auf der die Lehrpersonen mit Foto stehen. Leer lassen, damit die App sie selbst sucht."),
           ),
           const SizedBox(height: 12),
           TextField(
@@ -1433,11 +1464,11 @@ Future<void> _editStaffPage(BuildContext context) async {
       actions: [
         TextButton(
           onPressed: () => Navigator.pop(context, ""),
-          child: const Text("Automatisch suchen"),
+          child: Text(tr("Automatisch suchen")),
         ),
         FilledButton(
           onPressed: () => Navigator.pop(context, controller.text),
-          child: const Text("Speichern"),
+          child: Text(tr("Speichern")),
         ),
       ],
     ),

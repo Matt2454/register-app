@@ -20,9 +20,9 @@ import 'package:dr/actions/login_actions.dart';
 import 'package:dr/app_state.dart';
 // ignore_for_file: avoid_escaping_inner_quotes
 import 'package:dr/config.dart';
+import 'package:dr/localized_store_connection.dart';
 import 'package:dr/ui/login_page_content.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_built_redux/flutter_built_redux.dart';
 
 class LoginPage extends StatelessWidget {
   @override

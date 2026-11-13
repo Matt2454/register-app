@@ -18,9 +18,9 @@
 import 'package:built_value/built_value.dart';
 import 'package:dr/actions/app_actions.dart';
 import 'package:dr/app_state.dart';
+import 'package:dr/localized_store_connection.dart';
 import 'package:dr/ui/grades_chart_legend_entry.dart';
 import 'package:flutter/material.dart' hide Builder;
-import 'package:flutter_built_redux/flutter_built_redux.dart';
 
 part 'chart_legend_entry_container.g.dart';
 

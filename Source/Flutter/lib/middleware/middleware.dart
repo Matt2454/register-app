@@ -35,6 +35,7 @@ import 'package:dr/actions/profile_actions.dart';
 import 'package:dr/actions/routing_actions.dart';
 import 'package:dr/actions/save_pass_actions.dart';
 import 'package:dr/actions/settings_actions.dart';
+import 'package:dr/app_language.dart';
 import 'package:dr/app_state.dart';
 import 'package:dr/container/absences_page_container.dart';
 import 'package:dr/container/calendar_container.dart';
@@ -45,6 +46,7 @@ import 'package:dr/container/settings_page.dart';
 import 'package:dr/container/today_container.dart';
 import 'package:dr/data.dart';
 import 'package:dr/desktop_notifications.dart';
+import 'package:dr/lesson_time.dart';
 import 'package:dr/main.dart';
 import 'package:dr/serializers.dart';
 import 'package:dr/teacher_photos.dart';
@@ -87,6 +89,7 @@ List<Middleware<AppState, AppStateBuilder, AppActions>> middleware({
     [
       if (includeErrorMiddleware) _errorMiddleware,
       _saveStateMiddleware,
+      _syncWidgetMiddleware,
       (MiddlewareBuilder<AppState, AppStateBuilder, AppActions>()
             ..add(LoginActionsNames.updateLogout, _tap)
             ..add(SettingsActionsNames.saveNoData, _saveNoData)
@@ -112,6 +115,29 @@ List<Middleware<AppState, AppStateBuilder, AppActions>> middleware({
             ..combine(_settingsMiddleware))
           .build(),
     ];
+
+NextActionHandler _syncWidgetMiddleware(
+        MiddlewareApi<AppState, AppStateBuilder, AppActions> api) =>
+    (next) => (action) async {
+          final before = api.state;
+          await next(action);
+          final after = api.state;
+          if (before.loginState.loggedIn != after.loginState.loggedIn ||
+              before.loginState.username != after.loginState.username ||
+              before.url != after.url ||
+              !identical(before.dashboardState.allDays,
+                  after.dashboardState.allDays) ||
+              !identical(before.dashboardState.movedHomework,
+                  after.dashboardState.movedHomework) ||
+              !identical(before.calendarState.days, after.calendarState.days) ||
+              !identical(before.settingsState.subjectNicks,
+                  after.settingsState.subjectNicks) ||
+              before.settingsState.noDataSaving !=
+                  after.settingsState.noDataSaving ||
+              action.name == AppActionsNames.deleteData.name) {
+            await exportWeekForWidget(after);
+          }
+        };
 
 NextActionHandler _errorMiddleware(
         MiddlewareApi<AppState, AppStateBuilder, AppActions> api) =>
@@ -139,7 +165,7 @@ NextActionHandler _errorMiddleware(
                   return Scaffold(
                     appBar: AppBar(
                       backgroundColor: Colors.red,
-                      title: const Text("Fehler!"),
+                      title: Text(tr("Fehler!")),
                     ),
                     body: ListView(
                       padding: const EdgeInsets.all(16),
@@ -153,31 +179,25 @@ NextActionHandler _errorMiddleware(
                                 ),
                               );
                             },
-                            child: const Text("Entwickler benachrichtigen"),
+                            child: Text(tr("Entwickler benachrichtigen")),
                           ),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
-                            """
-Ein Fehler ist aufgetreten.
-${e is UnexpectedLogoutException ? """
-
-Dieser Fehler kann auftreten, wenn zwei Geräte gleichzeitig auf dasselbe Konto zugreifen.
-In diesem Fall kannst du versuchen, die App zu schließen und erneut zu öffnen.
-
-Falls dies nicht zutrifft, bitte benachrichtige uns, damit wir diesen Fehler beheben können.""" : e is ParseException ? """
-
-Beim Einlesen der Daten ist ein Fehler aufgetreten.
-Bitte benachrichtige uns, damit wir diesen Fehler beheben können.
-Bitte beachte, dass das Fehlerprotokoll möglicherweise private Daten enthält.""" : """
-
-Eine Funktion wird eventuell noch nicht unterstützt.
-Bitte benachrichtige uns, damit wir diesen Fehler beheben können:"""}
-
- --  Fehlerprotokoll: --
-
-$error""",
+                            tr(
+                                "Ein Fehler ist aufgetreten.\n{0}\n\n --  Fehlerprotokoll: --\n\n{1}",
+                                [
+                                  e is UnexpectedLogoutException
+                                      ? tr(
+                                          "\nDieser Fehler kann auftreten, wenn zwei Geräte gleichzeitig auf dasselbe Konto zugreifen.\nIn diesem Fall kannst du versuchen, die App zu schließen und erneut zu öffnen.\n\nFalls dies nicht zutrifft, bitte benachrichtige uns, damit wir diesen Fehler beheben können.")
+                                      : e is ParseException
+                                          ? tr(
+                                              "\nBeim Einlesen der Daten ist ein Fehler aufgetreten.\nBitte benachrichtige uns, damit wir diesen Fehler beheben können.\nBitte beachte, dass das Fehlerprotokoll möglicherweise private Daten enthält.")
+                                          : tr(
+                                              "\nEine Funktion wird eventuell noch nicht unterstützt.\nBitte benachrichtige uns, damit wir diesen Fehler beheben können:"),
+                                  error
+                                ]),
                           ),
                         ),
                       ],
@@ -223,7 +243,7 @@ Future<void> _noInternet(
   final noInternet = api.state.noInternet;
   if (prevNoInternet != noInternet) {
     if (noInternet) {
-      showSnackBar("Keine Verbindung");
+      showSnackBar(tr("Keine Verbindung"));
 
       wrapper.logout(
         hard: false,
@@ -250,12 +270,12 @@ Future<void> _load(MiddlewareApi<AppState, AppStateBuilder, AppActions> api,
     login = json.decode(await secureStorage.read(key: "login") ?? "{}");
   } catch (e) {
     login = const <Never, Never>{};
-    showSnackBar("Fehler beim Laden der gespeicherten Daten");
+    showSnackBar(tr("Fehler beim Laden der gespeicherten Daten"));
     log("Failed to load login credentials", error: e);
     try {
       await secureStorage.deleteAll();
     } catch (e) {
-      showSnackBar("Bitte versuche, die App neu zu installieren.");
+      showSnackBar(tr("Bitte versuche, die App neu zu installieren."));
     }
   }
 
@@ -359,7 +379,7 @@ Future<void> _loggedIn(MiddlewareApi<AppState, AppStateBuilder, AppActions> api,
         await api.actions.settingsActions
             .saveNoPass(api.state.settingsState.noPasswordSaving);
       } catch (e) {
-        showSnackBar("Fehler beim Laden der gespeicherten Daten");
+        showSnackBar(tr("Fehler beim Laden der gespeicherten Daten"));
         log("Failed to load data", error: e);
         await next(action);
       }
@@ -469,7 +489,7 @@ Future<String?> _readFromStorage(String key) async {
     try {
       await secureStorage.deleteAll();
     } catch (e) {
-      showSnackBar("Fehler: Bitte versuche, die App neu zu installieren.");
+      showSnackBar(tr("Fehler: Bitte versuche, die App neu zu installieren."));
     }
     return null;
   }
@@ -559,7 +579,7 @@ Future<void> _start(
         }
         break;
       default:
-        showSnackBar("Dieser Link konnte nicht geöffnet werden");
+        showSnackBar(tr("Dieser Link konnte nicht geöffnet werden"));
     }
     await redirectAfterLogin(action.payload!.fragment, api);
   }
@@ -598,7 +618,7 @@ Future<void> redirectAfterLogin(String location,
       );
       break;
     default:
-      showSnackBar("Dieser Link konnte nicht geöffnet werden");
+      showSnackBar(tr("Dieser Link konnte nicht geöffnet werden"));
   }
 }
 
@@ -696,19 +716,19 @@ Future<bool?> askShouldOverwriteFile(String fileName) async {
     DialogRoute(
       builder: (context) {
         return InfoDialog(
-          title: const Text("Datei existiert bereits"),
+          title: Text(tr("Datei existiert bereits")),
           content: Text(
-            "Die Datei \"$fileName\" ist bereits im Downloads-Ordner vorhanden.\n\n"
-            "Wenn die Datei erneut heruntergeladen wird, wird die bestehende Datei ersetzt.",
+            tr("Die Datei \"{0}\" ist bereits im Downloads-Ordner vorhanden.\n\nWenn die Datei erneut heruntergeladen wird, wird die bestehende Datei ersetzt.",
+                [fileName]),
           ),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context, false),
-              child: const Text("Bestehende Datei verwenden"),
+              child: Text(tr("Bestehende Datei verwenden")),
             ),
             TextButton(
               onPressed: () => Navigator.pop(context, true),
-              child: const Text("Erneut herunterladen"),
+              child: Text(tr("Erneut herunterladen")),
             ),
           ],
         );

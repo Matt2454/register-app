@@ -15,6 +15,7 @@
 // You should have received a copy of the GNU General Public License
 // along with digitales_register.  If not, see <http://www.gnu.org/licenses/>.
 
+import 'package:dr/app_language.dart';
 import 'package:dr/app_state.dart';
 import 'package:dr/main.dart';
 import 'package:flutter/material.dart';
@@ -27,8 +28,8 @@ class NetworkProtocol extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return items.isEmpty
-        ? const Center(
-            child: Text("Nichts vorhanden"),
+        ? Center(
+            child: Text(tr("Nichts vorhanden")),
           )
         : ListView.builder(
             itemCount: items.length,
@@ -51,11 +52,11 @@ class _Item extends StatelessWidget {
       title: Text(item.address),
       children: <Widget>[
         _Detail(
-          type: "Parameter",
+          type: tr("Parameter"),
           content: item.parameters,
         ),
         _Detail(
-          type: "Antwort",
+          type: tr("Antwort"),
           content: item.response,
         ),
       ],
@@ -70,7 +71,7 @@ class _Detail extends StatelessWidget {
   const _Detail({required this.type, this.content});
   @override
   Widget build(BuildContext context) {
-    final content = this.content ?? "Keine $type";
+    final content = this.content ?? tr("Keine {0}", [type]);
     return Padding(
       padding: const EdgeInsets.only(left: 24, bottom: 8),
       child: Column(
@@ -83,7 +84,7 @@ class _Detail extends StatelessWidget {
                 icon: const Icon(Icons.assignment),
                 onPressed: () {
                   Clipboard.setData(ClipboardData(text: content));
-                  showSnackBar("In die Zwischenablage kopiert");
+                  showSnackBar(tr("In die Zwischenablage kopiert"));
                 },
               )
             ],

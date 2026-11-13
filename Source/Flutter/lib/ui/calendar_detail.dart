@@ -15,6 +15,7 @@
 // You should have received a copy of the GNU General Public License
 // along with digitales_register.  If not, see <http://www.gnu.org/licenses/>.
 
+import 'package:dr/app_language.dart';
 import 'package:dr/app_state.dart';
 import 'package:dr/container/calendar_card_container.dart';
 import 'package:dr/container/calendar_detail_container.dart';
@@ -207,8 +208,8 @@ class _CalendarDetailPageState extends State<CalendarDetailPage> {
             duration: const Duration(milliseconds: 250),
             child: Text(
               selectedDate != null
-                  ? DateFormat.MMMEd("de").format(selectedDate!)
-                  : "Detailansicht",
+                  ? DateFormat.MMMEd(appLanguage.value).format(selectedDate!)
+                  : tr("Detailansicht"),
               key: ValueKey(selectedDate),
             ),
           ),
@@ -379,7 +380,7 @@ class _NoSchool extends StatelessWidget {
           150,
         ),
         Text(
-          "Keine Schule",
+          tr("Keine Schule"),
           style: Theme.of(context).textTheme.headlineMedium,
         ),
       ],

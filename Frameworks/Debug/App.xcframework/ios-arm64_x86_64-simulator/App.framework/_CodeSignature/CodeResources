@@ -10,7 +10,7 @@
 		</data>
 		<key>flutter_assets/AssetManifest.bin</key>
 		<data>
-		xk2sjcAf6qO6Bg6bB5p7vxsVr3c=
+		Jkxiemo8nce2K9gs2gNsqEwRrfk=
 		</data>
 		<key>flutter_assets/FontManifest.json</key>
 		<data>
@@ -280,6 +280,18 @@
 		<data>
 		2HbcH/yQ9Z/vAStzKSL4Gzzp/Bs=
 		</data>
+		<key>flutter_assets/assets/i18n/de.json</key>
+		<data>
+		EXPzodAH1LhhwvpB/CugdXceRsU=
+		</data>
+		<key>flutter_assets/assets/i18n/en.json</key>
+		<data>
+		JnO1U63peMBXfxlTx6sdizxE1r4=
+		</data>
+		<key>flutter_assets/assets/i18n/it.json</key>
+		<data>
+		rSjGzl/EeCyZYWyiOXkLf7R+z3s=
+		</data>
 		<key>flutter_assets/assets/icon/register_icon.png</key>
 		<data>
 		fLSD9w8LFrquwB94VT+218j8XxI=
@@ -294,7 +306,7 @@
 		</data>
 		<key>flutter_assets/kernel_blob.bin</key>
 		<data>
-		Vai6i9R0/yQ4UrGcZa1AsdBzzWg=
+		U9IuwFqcHtBZCCqYCNavmPX7Zcw=
 		</data>
 		<key>flutter_assets/packages/flutter_local_notifications_web/web/notifications_service_worker.js</key>
 		<data>
@@ -319,7 +331,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			UzOS6JdbM1kAwfwTxLkf9WmrmG93FYoSnoWWIbTgizA=
+			4S6+wR4BIDGhk5zEs2L9Q68JL3NLtxiTH3uSxCaul/U=
 			</data>
 		</dict>
 		<key>flutter_assets/FontManifest.json</key>
@@ -791,6 +803,27 @@
 			Y146ux+yCSP0ksdmBOy7tWd8lNy3OUSv1vuBL6d4ly4=
 			</data>
 		</dict>
+		<key>flutter_assets/assets/i18n/de.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			/6opL3ilaNAbQf1eO3K+Pe6VTnLY2N2WDKoKDCZzfDI=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/i18n/en.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			BFI6W1clgJYvWQRKEwRaTQ2nTtZtKB6K6yd3AiV0tnE=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/i18n/it.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			4jstKsJHoGxGridhx6Ael5MR/wlFqLT1k9wLLKdvtVQ=
+			</data>
+		</dict>
 		<key>flutter_assets/assets/icon/register_icon.png</key>
 		<dict>
 			<key>hash2</key>
@@ -816,7 +849,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			HR8CRLu2RZxfGFqJ6wGDeXdHm2Hc5iC7wBB4pqBWE1U=
+			lfDmU89W3lX67qjX4PQciQOeFW7CVoVPwL5UgDAF0Mw=
 			</data>
 		</dict>
 		<key>flutter_assets/packages/flutter_local_notifications_web/web/notifications_service_worker.js</key>

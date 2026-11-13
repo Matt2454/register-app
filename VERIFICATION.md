@@ -1,61 +1,80 @@
-# Verification record
+# Verification record — Register 8.3.0 (51)
 
 Verified on 13 November 2026 with Xcode 27.2 (27B52), Flutter 3.47.5,
 Dart 3.13.4, and CocoaPods 1.16.2.
 
-## Standalone Xcode project
+## Today, languages, and widgets
 
-Open `Register.xcodeproj`, select Register and a simulator or your iPhone, and
-press Run. All runtime frameworks, plugins, fonts, and assets are included.
-Running the project requires Xcode only. Flutter and CocoaPods are needed only
-when changing and rebuilding the Dart application source.
+- All 89 Flutter unit/widget tests passed.
+- Today was tested in all five designs, all three languages, and phone/iPad sizes.
+- Larger text with long room names: passed without layout errors.
+- Tracked overdue tasks, completed/deleted entries, moved deadlines, teaching
+  breaks, missing data, duplicate source entries, and Rome summer/winter time:
+  passed.
+- All 549 catalog keys exist in English, Italian, and German, with argument
+  placeholders checked and singular/plural count cases tested.
+- Changing language retains form input and derived display values. Selected
+  language persists across restart.
+- All four installed-app Xcode UI checks passed: language switching/persistence,
+  widget URLs, standalone launch, Calendar export/duplicate prevention, and
+  adding the real Home Screen widget and opening Today after terminating the app.
+- The Home Screen screenshot was inspected: the widget displayed the actual
+  saved subject, teaching period, and room, rather than preview sample data.
+- Simulator shared App Group verified: real snapshot contained 14 day records,
+  loaded lessons, language choice, and no account identifiers or credentials.
+- Native Swift widget checks passed: lesson boundaries, breaks, midnight,
+  deadlines, stale data, Rome time zone, translations, atomic validation, and
+  clearing the cache.
 
-- Signed iPhone Release build with the selected development team: passed.
-- Embedded app/framework signature verification: passed.
-- Simulator Debug build and both native Xcode UI tests: passed, zero failures.
-- Run uses Release without a debugger, allowing an installed app to launch from
-  the home screen independently of Xcode.
-- Unique bundle identifier: `app.register.personal.r9457c4543606d986`.
-- Targets iPhone and iPad on iOS 15 or later; app version 8.2.15 (50).
-- Debug and Release each include App, Flutter, and 11 production plugin
-  XCFrameworks. Optional large engine symbols are ZIP-compressed separately.
-- Frameworks are regular Git files, with no Git LFS requirement.
+Widgets use cached lessons and deadlines refreshed by the app. Their timelines
+include known lesson boundaries and midnight changes. WidgetKit controls reload
+and rendering timing; the extension does not log into the school service.
 
-## Apple Calendar export
+## Xcode and signing
 
-The native simulator test logged into the bundled demo, opened Calendar,
-cancelled and reopened export, chose a destination in Apple's calendar chooser,
-and exported 31 events. Repeating the same export added zero events and skipped
-all 31 duplicates. The successful export screenshot was inspected.
+`Register.xcodeproj` runs with Xcode alone. All Flutter runtime frameworks, native
+plugins, fonts, and assets are included locally; Flutter and CocoaPods are only
+needed when rebuilding Dart source changes.
 
-Export uses write-only Calendar permission on iOS 17+, with the legacy permission
-API on iOS 15–16. Only the newer API was exercised in the simulator. It exports
-the selected week as a one-time copy. Lessons retain Europe/Rome wall-clock times
-and teaching breaks; tasks and tests use all-day due dates. Duplicate tracking is
-local to this installation, account, and destination calendar.
+- Simulator Debug app and both widget kinds compiled successfully.
+- Physical-device Release app and embedded widget extension built and signed
+  with the selected development team and shared App Group. Deep/strict signature
+  verification passed for the final app and its embedded code.
+- Xcode Run remains Release without a debugger on a physical device.
+- Default Release configuration simulator build was installed and cold-launched
+  without a debugger; the running Today screen was visually inspected.
+- Simulator framework selection is automatic; device Release uses the AOT runtime.
+- Bundle ID: `app.register.personal.r9457c4543606d986`.
+- Widget bundle ID: `app.register.personal.r9457c4543606d986.widgets`.
+- App Group: `group.app.register.personal.r9457c4543606d986`.
+- Targets iPhone and iPad, iOS 15 or later.
+- Runtime frameworks are ordinary Git files below GitHub’s file-size limit.
 
-## Application checks
+## Calendar and earlier checks
 
-- All 47 unit/widget tests passed, including seven Calendar export tests.
-- Login layouts passed in all five designs at 375×667 and 1024×1366.
-- Calendar tests cover teaching breaks, missing times, moved/completed tasks,
-  HTML cleanup, duplicate source entries, wall-clock serialization, cancellation,
-  and denied-permission handling.
-- Scoped analysis: no errors; four existing warnings and 87 informational
-  findings. Vendored packages retain their original analysis findings.
-- Earlier native demo tests verified authentication, iOS Keychain write/read/
-  delete, saved credentials, and navigation through the main screens.
-- All 54 original font files were verified by hash and length; their six OFL
-  licenses are included. Runtime font downloads are disabled.
+Calendar export remains a one-time copy of the selected week. Lessons preserve
+Europe/Rome school times and breaks; tests/tasks use all-day deadlines. iOS 17+
+uses write-only Calendar access, with the legacy API on iOS 15–16. Duplicate
+prevention remembers this installation, school account, and destination calendar.
+The installed simulator export and repeat-export checks passed after this update.
+
+The earlier native demo checks verified authentication, Keychain write/read/
+delete, persisted credentials, and navigation through the application’s screens.
+The 54 original fonts and six OFL licenses remain bundled; runtime font downloads
+are disabled.
 
 ## Source and limits
 
 Based on [kererleon/register-app](https://github.com/kererleon/register-app),
-commit `706186888cd68c9652c0cecc6c457cf9eb9024a8`, under GPL-3.0. The complete
-application source is under `Source/Flutter`; optional rebuild instructions are
-in README.md.
+commit `706186888cd68c9652c0cecc6c457cf9eb9024a8`, under GPL-3.0. Full application
+source, native widget code, and rebuild instructions are included. The optional
+Flutter iOS project mirrors the native widget and language integration.
 
-The physical phone was not connected for this final build. Device installation,
-home-screen cold launch, real school authentication, notification delivery,
-background refresh, and Calendar export on a physical phone remain unverified.
-No signing certificates, private keys, or provisioning profiles are included.
+The physical phone was not connected for final installation. Physical-phone
+installation, home-screen cold launch, real school authentication, background
+notification delivery, and physical-device Calendar/widget behavior remain
+unverified. Legacy iOS 15–16 Calendar permission fallback was compiled but not
+exercised on an older runtime. No signing credentials are included.
+
+Scoped analysis reports no errors and four existing warnings. Informational
+legacy/style findings remain; vendored packages were not broadly rewritten.

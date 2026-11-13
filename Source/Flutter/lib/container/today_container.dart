@@ -17,10 +17,16 @@
 
 import 'package:dr/actions/app_actions.dart';
 import 'package:dr/actions/dashboard_actions.dart';
+import 'package:dr/app_language.dart';
 import 'package:dr/app_state.dart';
+import 'package:dr/container/sidebar_container.dart';
+import 'package:dr/lesson_time.dart';
+import 'package:dr/localized_store_connection.dart';
+import 'package:dr/main.dart' show scaffoldKey;
+import 'package:dr/middleware/middleware.dart' show Pages;
+import 'package:dr/ui/theme.dart' show isWideLayout;
 import 'package:dr/ui/today_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_built_redux/flutter_built_redux.dart';
 import 'package:intl/intl.dart';
 
 class TodayContainer extends StatelessWidget {
@@ -30,44 +36,63 @@ class TodayContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     // Only the parts of the state the page shows: built_value objects
     // compare by identity first, so unrelated actions skip the rebuild.
-    return StoreConnection<AppState, AppActions, _TodayInputs>(
-      connect: (state) => _TodayInputs(state),
-      builder: (context, inputs, actions) {
-        final state = inputs.state;
-        return TodayPage(
-          data: TodayData.from(state),
-          noInternet: state.noInternet,
-          onShowGrades: actions.routingActions.showGrades.call,
-          onShowAbsences: actions.routingActions.showAbsences.call,
-          onShowCalendar: actions.routingActions.showCalendar.call,
-          onCreateStudyPlan: (test, days) async {
-            final what = [
-              if (test.homework.label != null) test.homework.label!,
-              test.homework.title,
-            ].join(" – ");
-            final testDay = DateFormat("EE dd.MM.", "de").format(test.date);
-            for (var i = 0; i < days.length; i++) {
-              await actions.dashboardActions.addReminder(
-                AddReminderPayload(
-                  (b) => b
-                    ..date = days[i]
-                    ..msg = "Lernen ${i + 1}/${days.length}: $what "
-                        "(Test am $testDay)",
-                ),
-              );
-            }
-            if (context.mounted) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(
-                    "Lernplan mit ${days.length} Erinnerungen eingetragen",
+    return ValueListenableBuilder(
+      valueListenable: minuteTicker,
+      builder: (context, _, __) =>
+          StoreConnection<AppState, AppActions, _TodayInputs>(
+        connect: (state) => _TodayInputs(state),
+        builder: (context, inputs, actions) {
+          final state = inputs.state;
+          return TodayPage(
+            navigationDrawer: isWideLayout(context)
+                ? null
+                : SidebarContainer(
+                    tabletMode: false,
+                    currentSelected: Pages.today,
+                    goHome: () => scaffoldKey?.currentState?.goHome(),
+                    onNavigate: () => Navigator.of(context).pop(),
                   ),
-                ),
-              );
-            }
-          },
-        );
-      },
+            data: TodayData.from(state),
+            noInternet: state.noInternet,
+            onShowGrades: actions.routingActions.showGrades.call,
+            onShowAbsences: actions.routingActions.showAbsences.call,
+            onShowCalendar: actions.routingActions.showCalendar.call,
+            onShowTasks: () => scaffoldKey?.currentState?.goHome(),
+            onRefresh: () async {
+              await actions.refreshNoInternet();
+              await actions.dashboardActions.refresh();
+            },
+            onCreateStudyPlan: (test, days) async {
+              final what = [
+                if (test.homework.label != null) test.homework.label!,
+                test.homework.title,
+              ].join(" – ");
+              final testDay =
+                  DateFormat("EE dd.MM.", appLanguage.value).format(test.date);
+              for (var i = 0; i < days.length; i++) {
+                await actions.dashboardActions.addReminder(
+                  AddReminderPayload(
+                    (b) => b
+                      ..date = days[i]
+                      ..msg = tr("Lernen {0}/{1}: {2} (Test am {3})",
+                          [i + 1, days.length, what, testDay]),
+                  ),
+                );
+              }
+              if (context.mounted) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(
+                      tr("Lernplan mit {0} Erinnerungen eingetragen",
+                          [days.length]),
+                    ),
+                  ),
+                );
+              }
+            },
+          );
+        },
+      ),
     );
   }
 }
@@ -83,6 +108,7 @@ class _TodayInputs {
         state.gradesState.subjects,
         state.gradesState.semester,
         state.settingsState.subjectNicks,
+        state.dashboardState.movedHomework,
         state.noInternet,
       ];
 

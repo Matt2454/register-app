@@ -15,6 +15,7 @@
 // You should have received a copy of the GNU General Public License
 // along with digitales_register.  If not, see <http://www.gnu.org/licenses/>.
 
+import 'package:dr/app_language.dart';
 import 'package:flutter/material.dart';
 
 class ChangeEmail extends StatefulWidget {
@@ -34,7 +35,7 @@ class _ChangeEmailState extends State<ChangeEmail> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Email-Adresse ändern"),
+        title: Text(tr("Email-Adresse ändern")),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -46,13 +47,13 @@ class _ChangeEmailState extends State<ChangeEmail> {
                 obscureText: true,
                 controller: _passController,
                 decoration:
-                    const InputDecoration(labelText: 'Aktuelles Passwort'),
+                    InputDecoration(labelText: tr("Aktuelles Passwort")),
               ),
               TextField(
                 keyboardType: TextInputType.emailAddress,
                 controller: _emailController,
                 decoration:
-                    const InputDecoration(labelText: 'Neue Email-Adresse'),
+                    InputDecoration(labelText: tr("Neue Email-Adresse")),
               ),
               const SizedBox(height: 16),
               ElevatedButton(
@@ -60,7 +61,7 @@ class _ChangeEmailState extends State<ChangeEmail> {
                   _passController.text,
                   _emailController.text,
                 ),
-                child: const Text("Speichern"),
+                child: Text(tr("Speichern")),
               ),
             ],
           ),

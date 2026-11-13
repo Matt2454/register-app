@@ -17,6 +17,7 @@
 
 import 'dart:convert';
 
+import 'package:dr/app_language.dart';
 import 'package:dr/app_state.dart';
 import 'package:dr/data.dart';
 import 'package:dr/ui/animated_linear_progress_indicator.dart';
@@ -46,8 +47,8 @@ class MessagesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const ResponsiveAppBar(
-        title: Text("Mitteilungen"),
+      appBar: ResponsiveAppBar(
+        title: Text(tr("Mitteilungen")),
       ),
       body: state == null
           ? noInternet
@@ -74,7 +75,7 @@ class MessagesPage extends StatelessWidget {
                           ),
                           const SizedBox(height: 12),
                           Text(
-                            "Noch keine Mitteilungen",
+                            tr("Noch keine Mitteilungen"),
                             style: Theme.of(context).textTheme.titleLarge,
                             textAlign: TextAlign.center,
                           ),
@@ -179,7 +180,7 @@ class _MessageWidgetState extends State<MessageWidget> {
             ),
             if (isNew) ...[
               const SizedBox(width: 8),
-              StatusPill(label: "neu", color: AppColors.cyan),
+              StatusPill(label: tr("neu"), color: AppColors.cyan),
             ],
           ],
         ),
@@ -192,11 +193,11 @@ class _MessageWidgetState extends State<MessageWidget> {
         children: [
           Divider(color: theme.colorScheme.outlineVariant),
           const SizedBox(height: 8),
-          meta("Von", widget.message.fromName),
-          meta("An", widget.message.recipientString),
+          meta(tr("Von"), widget.message.fromName),
+          meta(tr("An"), widget.message.recipientString),
           meta(
-            "Gesendet",
-            DateFormat("EEEE, d. MMMM yyyy, HH:mm", "de")
+            tr("Gesendet"),
+            DateFormat("EEEE, d. MMMM yyyy, HH:mm", appLanguage.value)
                 .format(widget.message.timeSent),
           ),
           const SizedBox(height: 8),
@@ -204,7 +205,9 @@ class _MessageWidgetState extends State<MessageWidget> {
           if (widget.message.attachments.isNotEmpty) ...[
             const SizedBox(height: 16),
             HudLabel(
-              widget.message.attachments.length > 1 ? "Anhänge" : "Anhang",
+              widget.message.attachments.length > 1
+                  ? tr("Anhänge")
+                  : tr("Anhang"),
             ),
             const SizedBox(height: 8),
             for (final attachment in widget.message.attachments)
@@ -235,7 +238,7 @@ class _MessageWidgetState extends State<MessageWidget> {
                                     widget.onOpenFile(attachment);
                                   },
                         icon: const Icon(Icons.open_in_new_rounded, size: 18),
-                        label: const Text("Öffnen"),
+                        label: Text(tr("Öffnen")),
                       ),
                     ),
                     AnimatedLinearProgressIndicator(

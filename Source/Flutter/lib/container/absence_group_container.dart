@@ -17,11 +17,12 @@
 
 import 'package:dr/actions/absences_actions.dart';
 import 'package:dr/actions/app_actions.dart';
+import 'package:dr/app_language.dart';
 import 'package:dr/app_state.dart';
 import 'package:dr/data.dart';
+import 'package:dr/localized_store_connection.dart';
 import 'package:dr/ui/absence.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_built_redux/flutter_built_redux.dart';
 import 'package:intl/intl.dart';
 
 class AbsenceGroupContainer extends StatelessWidget {
@@ -52,7 +53,8 @@ class AbsenceGroupContainer extends StatelessWidget {
         final last = absenceGroup.absences.first; //<---
         var fromTo = "";
         if (first.date == last.date) {
-          fromTo += "${DateFormat("EE d.M.yyyy", "de").format(first.date)}, ";
+          fromTo +=
+              "${DateFormat("EE d.M.yyyy", appLanguage.value).format(first.date)}, ";
           if (first == last) {
             fromTo += "${first.hour}. h";
           } else {
@@ -60,32 +62,36 @@ class AbsenceGroupContainer extends StatelessWidget {
           }
         } else {
           fromTo +=
-              "${DateFormat("EE d.M.yyyy", "de").format(first.date)} ${first.hour}. h - ${DateFormat("EE d.M.yyyy", "de").format(last.date)} ${last.hour}. h ";
+              "${DateFormat("EE d.M.yyyy", appLanguage.value).format(first.date)} ${first.hour}. h - ${DateFormat("EE d.M.yyyy", appLanguage.value).format(last.date)} ${last.hour}. h ";
         }
         var duration = "";
         if (absenceGroup.hours != 0) {
-          duration += "${absenceGroup.hours} Schulstunden";
+          duration += tr("{0} Schulstunden", [absenceGroup.hours]);
         }
         if (absenceGroup.minutes != 0) {
           if (duration != "") duration += ", ";
-          duration += "${absenceGroup.minutes} Minuten";
+          duration += tr("{0} Minuten", [absenceGroup.minutes]);
         }
         String justifiedString;
         switch (absenceGroup.justified) {
           case AbsenceJustified.justified:
             justifiedString = absenceGroup.reasonSignature != null &&
                     absenceGroup.reasonTimestamp != null
-                ? "${DateFormat("EE d.M.yyyy 'um' HH:mm", "de").format(absenceGroup.reasonTimestamp!)} als „${absenceGroup.reasonSignature}“ entschuldigt"
+                ? tr("{0} als „{1}“ entschuldigt", [
+                    DateFormat(tr("EE d.M.yyyy 'um' HH:mm"), appLanguage.value)
+                        .format(absenceGroup.reasonTimestamp!),
+                    absenceGroup.reasonSignature
+                  ])
                 : "entschuldigt";
             break;
           case AbsenceJustified.forSchool:
-            justifiedString = "Im Auftrag der Schule (entschuldigt)";
+            justifiedString = tr("Im Auftrag der Schule (entschuldigt)");
             break;
           case AbsenceJustified.notJustified:
-            justifiedString = "Nicht entschuldigt";
+            justifiedString = tr("Nicht entschuldigt");
             break;
           default:
-            justifiedString = "Noch nicht entschuldigt";
+            justifiedString = tr("Noch nicht entschuldigt");
             break;
         }
         return AbsencesViewModel(
@@ -99,7 +105,7 @@ class AbsenceGroupContainer extends StatelessWidget {
               absenceGroup.justified == AbsenceJustified.notYetJustified,
           signatureInfo: absenceGroup.reasonSignature != null &&
                   absenceGroup.reasonTimestamp != null
-              ? "${DateFormat("d.M.yyyy, HH:mm", "de").format(absenceGroup.reasonTimestamp!)} · ${absenceGroup.reasonSignature}"
+              ? "${DateFormat("d.M.yyyy, HH:mm", appLanguage.value).format(absenceGroup.reasonTimestamp!)} · ${absenceGroup.reasonSignature}"
               : null,
           defaultSignature: state.config?.fullName,
         );
