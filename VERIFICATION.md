@@ -1,5 +1,14 @@
 # Verification record — Register 8.3.0 (51)
 
+## Android release — 16 November 2026
+
+The signed standalone Android APK supports Android 7.0+, ARMv7, ARM64 and
+x86-64. Its v2/v3 signatures and 16 KB native alignment passed verification.
+The release installed/launched in an Android 15 emulator, switched all three
+languages, and retained German across a cold launch. See
+[Android verification](Android/VERIFICATION.md) for exact scope, hashes, CI runs
+and physical-device/background-delivery limits.
+
 ## macOS release — 16 November 2026
 
 - Standalone `Mac/Register-Mac.xcodeproj` Release build succeeded with Xcode
