@@ -74,5 +74,7 @@ void main() {
     final count = notified.length;
     await notifySubstitutions(await _load(changed), dates);
     expect(prefs.getStringList("notifiedLessonChanges")!.length, count);
-  });
+  }, skip: desktopNotificationsSupported
+      ? false
+      : 'System notifications are unavailable on this host platform.');
 }

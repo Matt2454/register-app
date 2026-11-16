@@ -57,21 +57,40 @@ def tap(label):
     x1, y1, x2, y2 = map(int, bounds)
     run('adb', 'shell', 'input', 'tap', str((x1+x2)//2), str((y1+y2)//2))
 
+def open_language():
+    # Android API 28+ exposes tooltips through getTooltipText(), which the
+    # standard uiautomator XML dump omits. Find the toolbar control by bounds.
+    root = tree()
+    candidates = []
+    width = max(int(re.findall(r'\d+', n.get('bounds', '[0,0][0,0]'))[2])
+                for n in root.iter('node'))
+    for node in root.iter('node'):
+        b = list(map(int, re.findall(r'\d+', node.get('bounds', ''))))
+        if len(b) == 4 and node.get('clickable') == 'true':
+            x1,y1,x2,y2 = b
+            if (x1+x2)/2 > width*.8 and y2-y1 < width*.25:
+                candidates.append((y1,(x1+x2)//2,(y1+y2)//2))
+    if not candidates:
+        raise RuntimeError('Language toolbar control is missing')
+    _, x, y = min(candidates)
+    run('adb','shell','input','tap',str(x),str(y))
+    wait_label('Italiano')
+
 def screenshot(name):
     (out/name).write_bytes(run('adb', 'exec-out', 'screencap', '-p'))
 
 try:
     launch()
-    wait_label('Language')
+    wait_label('Sign in')
     screenshot('Android-English.png')
-    tap('Language'); tap('Italiano'); wait_label('Lingua')
+    open_language(); tap('Italiano'); wait_label('Accedi')
     screenshot('Android-Italian.png')
-    tap('Lingua'); tap('Deutsch'); wait_label('Sprache')
+    open_language(); tap('Deutsch'); wait_label('Login')
     screenshot('Android-German.png')
     run('adb', 'shell', 'am', 'force-stop', package)
-    launch(); wait_label('Sprache')
+    launch(); wait_label('Login')
     screenshot('Android-Cold-Launch.png')
-    tap('Sprache'); tap('English'); wait_label('Language')
+    open_language(); tap('English'); wait_label('Sign in')
     print('Android release launch, three languages and persistence passed.')
 finally:
     (out/'logcat.txt').write_bytes(run('adb', 'logcat', '-d', '-t', '1500'))
