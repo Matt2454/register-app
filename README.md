@@ -1,4 +1,7 @@
-# Register — iPhone, iPad and Mac
+# Register — iPhone, iPad, Mac and Android
+
+For Android, see [Android builds and signing](Android/README.md). The editable
+Flutter project is in `Source/Flutter`; the release APK runs on its own.
 
 For the Mac app, open **Mac/Register-Mac.xcodeproj**, choose **Register-Mac → My Mac**,
 and press **⌘R**. It uses bundled universal Release frameworks and needs no Flutter

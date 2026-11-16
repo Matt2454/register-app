@@ -7,9 +7,9 @@ plugins {
     id("dev.flutter.flutter-gradle-plugin")
 }
 
-// The release key is never part of the repository. Locally it is described
-// in android/key.properties, on GitHub it comes from encrypted secrets
-// (see .github/workflows/release.yml). Release builds never use a debug key.
+// The private release key is configured through android/key.properties.
+// CI may explicitly produce an unsigned APK for local signing. Ordinary
+// release builds require a private key and never use a debug certificate.
 val keystoreProperties = Properties()
 val keystorePropertiesFile = rootProject.file("key.properties")
 if (keystorePropertiesFile.exists()) {

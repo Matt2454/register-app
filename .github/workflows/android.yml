@@ -41,7 +41,8 @@ jobs:
       - name: Run Flutter tests
         run: flutter test --no-pub
       - name: Build standalone release APK
-        run: flutter build apk --release --no-pub
+        # This also regenerates the production native-plugin registrant after tests.
+        run: flutter build apk --release
       - name: Prepare unsigned artifact for local signing
         run: |
           mkdir -p "$GITHUB_WORKSPACE/android-delivery"

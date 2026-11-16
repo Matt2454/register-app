@@ -1,0 +1,5 @@
+# Copy to key.properties, fill in private values, and keep it out of Git.
+storeFile=/absolute/path/to/register-release.p12
+storePassword=YOUR_PRIVATE_KEYSTORE_PASSWORD
+keyPassword=YOUR_PRIVATE_KEYSTORE_PASSWORD
+keyAlias=register
