@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:built_collection/built_collection.dart';
 import 'package:dr/app_state.dart';
 import 'package:dr/calendar_export.dart';
@@ -228,8 +229,8 @@ void main() {
     );
     await tester.tap(find.text('Export'));
     await tester.pumpAndSettle();
-    await tester.ensureVisible(find.text('Kalender auswählen'));
-    await tester.tap(find.text('Kalender auswählen'));
+    await tester.ensureVisible(find.text(Platform.isMacOS ? 'Weiter zum Export' : 'Kalender auswählen'));
+    await tester.tap(find.text(Platform.isMacOS ? 'Weiter zum Export' : 'Kalender auswählen'));
     await tester.pumpAndSettle();
     expect(find.text('Bitte erlauben'), findsOneWidget);
     expect(find.text('Einstellungen'), findsOneWidget);

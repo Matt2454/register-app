@@ -1,5 +1,31 @@
 # Verification record — Register 8.3.0 (51)
 
+## macOS release — 16 November 2026
+
+- Standalone `Mac/Register-Mac.xcodeproj` Release build succeeded with Xcode
+  27.2; it uses bundled frameworks without Flutter or CocoaPods build steps.
+- The application, engine, all 11 native plugins, and widget extension contain
+  Apple silicon and Intel code. Minimum macOS version: 14.
+- `codesign --verify --deep --strict` passed for the delivered app. It remains
+  sandboxed, uses the selected Apple Development certificate, and includes no
+  provisioning profile or keychain-sharing entitlement. Credential storage uses
+  the existing macOS Keychain implementation and encrypted Hive database.
+- Actual standalone launch, Today, the Calendar export preview, English/Italian/
+  German switching, and the native Settings shortcut were checked on this Mac.
+  The final fresh launch and Settings → Today navigation were checked again
+  after the startup fix. No calendar events were written during Mac testing.
+- All 93 Flutter tests passed, including new checks for desktop widget cache
+  clearing and requesting grades before account configuration is ready.
+- Native Mac Calendar date checks passed: Rome teaching times, all-day dates,
+  reversed/invalid dates and the daylight-saving gap.
+- Desktop widget extension built successfully; adding it to the real desktop
+  was not tested. Calendar permissions/saving and execution on an Intel Mac
+  were not tested. The universal Intel slices were verified in the binaries.
+- This local development-signed app has not been notarized for public
+  distribution. No screenshots of personal school data are published.
+
+## iPhone/iPad verification — 13 November 2026
+
 Verified on 13 November 2026 with Xcode 27.2 (27B52), Flutter 3.47.5,
 Dart 3.13.4, and CocoaPods 1.16.2.
 

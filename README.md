@@ -1,4 +1,10 @@
-# Register — open and run in Xcode
+# Register — iPhone, iPad and Mac
+
+For the Mac app, open **Mac/Register-Mac.xcodeproj**, choose **Register-Mac → My Mac**,
+and press **⌘R**. It uses bundled universal Release frameworks and needs no Flutter
+or CocoaPods installation. See [Mac setup and features](Mac/README.md).
+
+## iPhone and iPad
 
 1. Open **Register.xcodeproj**.
 2. Select the **Register** scheme and your **iPhone, iPad, or simulator**.

@@ -586,5 +586,9 @@
   "Geänderte Beobachtung": "Geänderte Beobachtung",
   "Geänderte Aufgabe": "Geänderte Aufgabe",
   "Keine offenen Aufgaben für heute oder morgen.": "Keine offenen Aufgaben für heute oder morgen.",
-  "EE d.M.yyyy 'um' HH:mm": "EE d.M.yyyy 'um' HH:mm"
+  "EE d.M.yyyy 'um' HH:mm": "EE d.M.yyyy 'um' HH:mm",
+  "Desktop-Widgets": "Desktop-Widgets",
+  "Stundenplan, Aufgaben und Notendurchschnitte aus gespeicherten Daten anzeigen.": "Stundenplan, Aufgaben und Notendurchschnitte aus gespeicherten Daten anzeigen.",
+  "Desktop rechtsklicken → Widgets bearbeiten → Register.": "Desktop rechtsklicken → Widgets bearbeiten → Register.",
+  "Weiter zum Export": "Weiter zum Export"
 }

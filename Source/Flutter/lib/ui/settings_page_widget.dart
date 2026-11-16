@@ -179,25 +179,43 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
             subtitle: Text(tr('English, Italiano, Deutsch oder Gerätesprache')),
             trailing: const LanguagePicker(),
           ),
-          if (Platform.isIOS) ...[
+          if (Platform.isIOS || Platform.isMacOS) ...[
             ValueListenableBuilder<bool>(
-                valueListenable: widgetsEnabled,
-                builder: (context, enabled, _) => SwitchListTile.adaptive(
-                      title: Text(tr('Home-Bildschirm-Widgets')),
-                      subtitle: Text(widget.vm.noDataSaving
-                          ? tr(
-                              'Aktiviere das lokale Speichern, um Widgets zu verwenden.')
-                          : tr(
-                              'Stundenplan und Aufgaben aus gespeicherten Daten anzeigen.')),
-                      value: enabled && !widget.vm.noDataSaving,
-                      onChanged:
-                          widget.vm.noDataSaving ? null : setWidgetsEnabled,
-                    )),
+              valueListenable: widgetsEnabled,
+              builder: (context, enabled, _) => SwitchListTile.adaptive(
+                title: Text(
+                  tr(
+                    Platform.isMacOS
+                        ? 'Desktop-Widgets'
+                        : 'Home-Bildschirm-Widgets',
+                  ),
+                ),
+                subtitle: Text(
+                  widget.vm.noDataSaving
+                      ? tr(
+                          'Aktiviere das lokale Speichern, um Widgets zu verwenden.',
+                        )
+                      : tr(
+                          Platform.isMacOS
+                              ? 'Stundenplan, Aufgaben und Notendurchschnitte aus gespeicherten Daten anzeigen.'
+                              : 'Stundenplan und Aufgaben aus gespeicherten Daten anzeigen.',
+                        ),
+                ),
+                value: enabled && !widget.vm.noDataSaving,
+                onChanged: widget.vm.noDataSaving ? null : setWidgetsEnabled,
+              ),
+            ),
             ListTile(
-                leading: const Icon(Icons.widgets_outlined),
-                title: Text(tr('Widgets hinzufügen')),
-                subtitle: Text(tr(
-                    'Home-Bildschirm gedrückt halten → Bearbeiten → Widget hinzufügen → Register.'))),
+              leading: const Icon(Icons.widgets_outlined),
+              title: Text(tr('Widgets hinzufügen')),
+              subtitle: Text(
+                tr(
+                  Platform.isMacOS
+                      ? 'Desktop rechtsklicken → Widgets bearbeiten → Register.'
+                      : 'Home-Bildschirm gedrückt halten → Bearbeiten → Widget hinzufügen → Register.',
+                ),
+              ),
+            ),
           ],
           if (!widget.vm.demoMode) ...[
             const SizedBox(height: 8),

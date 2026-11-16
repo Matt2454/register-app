@@ -187,7 +187,7 @@ class _CalendarState extends State<Calendar> with TickerProviderStateMixin {
                     appBar: ResponsiveAppBar(
                       title: Text(tr("Kalender")),
                       actions: <Widget>[
-                        if (Platform.isIOS)
+                        if (Platform.isIOS || Platform.isMacOS)
                           IconButton(
                             tooltip: tr("In Apple Kalender exportieren"),
                             icon: const Icon(Icons.ios_share),

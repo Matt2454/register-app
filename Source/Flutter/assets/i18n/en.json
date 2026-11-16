@@ -586,5 +586,9 @@
   "Geänderte Beobachtung": "Updated observation",
   "Geänderte Aufgabe": "Updated task",
   "Keine offenen Aufgaben für heute oder morgen.": "No pending tasks for today or tomorrow.",
-  "EE d.M.yyyy 'um' HH:mm": "EEE d MMM yyyy 'at' HH:mm"
+  "EE d.M.yyyy 'um' HH:mm": "EEE d MMM yyyy 'at' HH:mm",
+  "Desktop-Widgets": "Desktop widgets",
+  "Stundenplan, Aufgaben und Notendurchschnitte aus gespeicherten Daten anzeigen.": "Show your timetable, tasks and grade averages from saved data.",
+  "Desktop rechtsklicken → Widgets bearbeiten → Register.": "Right-click the desktop → Edit Widgets → Register.",
+  "Weiter zum Export": "Continue to export"
 }

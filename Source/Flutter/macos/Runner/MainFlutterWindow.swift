@@ -3,6 +3,13 @@ import FlutterMacOS
 import WidgetKit
 
 class MainFlutterWindow: NSWindow {
+  private var calendarExporter: RegisterCalendarExporter?
+  private var windowChannel: FlutterMethodChannel?
+
+  func showSettings() {
+    makeKeyAndOrderFront(nil)
+    windowChannel?.invokeMethod("openSettings", arguments: nil)
+  }
   override func awakeFromNib() {
     let flutterViewController = FlutterViewController.init()
     let windowFrame = self.frame
@@ -12,6 +19,12 @@ class MainFlutterWindow: NSWindow {
     RegisterGeneratedPlugins(registry: flutterViewController)
     registerWidgetChannel(messenger: flutterViewController.engine.binaryMessenger)
 
+    calendarExporter = RegisterCalendarExporter(messenger: flutterViewController.engine.binaryMessenger, window: self)
+    windowChannel = FlutterMethodChannel(name: "register/window", binaryMessenger: flutterViewController.engine.binaryMessenger)
+    title = "Register"
+    minSize = NSSize(width: 560, height: 640)
+    setContentSize(NSSize(width: 1180, height: 820))
+    center()
     super.awakeFromNib()
   }
 
@@ -20,7 +33,7 @@ class MainFlutterWindow: NSWindow {
   private func registerWidgetChannel(messenger: FlutterBinaryMessenger) {
     let channel = FlutterMethodChannel(name: "register/widget", binaryMessenger: messenger)
     channel.setMethodCallHandler { call, result in
-      guard call.method == "saveWeek", let json = call.arguments as? String else {
+      guard ["saveWeek", "clearWeek"].contains(call.method) else {
         result(FlutterMethodNotImplemented)
         return
       }
@@ -33,8 +46,16 @@ class MainFlutterWindow: NSWindow {
         return
       }
       do {
-        try json.write(
-          to: container.appendingPathComponent("week.json"), atomically: true, encoding: .utf8)
+        let file = container.appendingPathComponent("week.json")
+        if call.method == "clearWeek" {
+          if FileManager.default.fileExists(atPath: file.path) { try FileManager.default.removeItem(at: file) }
+        } else {
+          guard let json = call.arguments as? String, let data = json.data(using: .utf8), data.count <= 1_000_000,
+                (try? JSONSerialization.jsonObject(with: data)) is [String: Any] else {
+            result(FlutterError(code: "widget_data", message: "Invalid widget data", details: nil)); return
+          }
+          try data.write(to: file, options: .atomic)
+        }
         WidgetCenter.shared.reloadAllTimelines()
         result(nil)
       } catch {

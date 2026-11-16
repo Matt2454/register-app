@@ -1,0 +1,225 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "flutter_secure_storage_macos",
+    "printedName": "flutter_secure_storage_macos",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "flutter_secure_storage_macos",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "FlutterMacOS",
+        "printedName": "FlutterMacOS",
+        "declKind": "Import",
+        "moduleName": "flutter_secure_storage_macos",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "FlutterSecureStoragePlugin",
+        "printedName": "FlutterSecureStoragePlugin",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "register",
+            "printedName": "register(with:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "FlutterPluginRegistrar",
+                "printedName": "any FlutterMacOS.FlutterPluginRegistrar",
+                "usr": "c:objc(pl)FlutterPluginRegistrar"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@flutter_secure_storage_macos@objc(cs)FlutterSecureStoragePlugin(cm)registerWithRegistrar:",
+            "mangledName": "$s28flutter_secure_storage_macos26FlutterSecureStoragePluginC8register4withySo0eH9Registrar_p_tFZ",
+            "moduleName": "flutter_secure_storage_macos",
+            "static": true,
+            "objc_name": "registerWithRegistrar:",
+            "declAttributes": [
+              "Final",
+              "ObjC",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "handle",
+            "printedName": "handle(_:result:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "FlutterMethodCall",
+                "printedName": "FlutterMacOS.FlutterMethodCall",
+                "usr": "c:objc(cs)FlutterMethodCall"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Any?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Any?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@flutter_secure_storage_macos@objc(cs)FlutterSecureStoragePlugin(im)handleMethodCall:result:",
+            "mangledName": "$s28flutter_secure_storage_macos26FlutterSecureStoragePluginC6handle_6resultySo0E10MethodCallC_yypSgctF",
+            "moduleName": "flutter_secure_storage_macos",
+            "objc_name": "handleMethodCall:result:",
+            "declAttributes": [
+              "ObjC",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "FlutterSecureStoragePlugin",
+                "printedName": "flutter_secure_storage_macos.FlutterSecureStoragePlugin",
+                "usr": "c:@M@flutter_secure_storage_macos@objc(cs)FlutterSecureStoragePlugin"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@flutter_secure_storage_macos@objc(cs)FlutterSecureStoragePlugin(im)init",
+            "mangledName": "$s28flutter_secure_storage_macos26FlutterSecureStoragePluginCACycfc",
+            "moduleName": "flutter_secure_storage_macos",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@flutter_secure_storage_macos@objc(cs)FlutterSecureStoragePlugin",
+        "mangledName": "$s28flutter_secure_storage_macos26FlutterSecureStoragePluginC",
+        "moduleName": "flutter_secure_storage_macos",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          }
+        ]
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": []
+}

@@ -3,6 +3,10 @@ import FlutterMacOS
 
 @main
 class AppDelegate: FlutterAppDelegate {
+  @IBAction func openSettings(_ sender: Any?) {
+    (mainFlutterWindow as? MainFlutterWindow)?.showSettings()
+  }
+
   // Keep running when the window is closed, so new grades, messages and
   // substitutions are still announced. Quit with Cmd+Q.
   override func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {

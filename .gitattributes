@@ -2,3 +2,4 @@
 Frameworks/** -text -diff
 *.zip -text -diff
 *.ttf -text -diff
+Mac/Frameworks/** -text -diff

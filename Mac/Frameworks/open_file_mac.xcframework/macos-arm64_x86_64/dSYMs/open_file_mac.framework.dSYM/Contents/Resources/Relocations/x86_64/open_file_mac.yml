@@ -1,0 +1,38 @@
+---
+triple:          'x86_64-apple-darwin'
+binary-path:     '/private/tmp/register-mac-frameworks/Release/macos/Release/open_file_mac/open_file_mac.framework/Versions/A/open_file_mac'
+relocations:
+  - { offset: 0xB3AC3, size: 0x8, addend: 0x0, symName: _open_file_macVersionString, symObjAddr: 0x0, symBinAddr: 0x4D90, symSize: 0x0 }
+  - { offset: 0xB3AFA, size: 0x8, addend: 0x0, symName: _open_file_macVersionNumber, symObjAddr: 0x30, symBinAddr: 0x4DC0, symSize: 0x0 }
+  - { offset: 0xB3D4B, size: 0x8, addend: 0x0, symName: '_$s13open_file_mac14OpenFilePluginCMa', symObjAddr: 0x100, symBinAddr: 0x1410, symSize: 0x20 }
+  - { offset: 0xB3D96, size: 0x8, addend: 0x0, symName: '_$sSo8NSObjectCMa', symObjAddr: 0x770, symBinAddr: 0x1A80, symSize: 0x40 }
+  - { offset: 0xB3DAA, size: 0x8, addend: 0x0, symName: '_$sypSgWOh', symObjAddr: 0x7B0, symBinAddr: 0x1AC0, symSize: 0x40 }
+  - { offset: 0xB3DBE, size: 0x8, addend: 0x0, symName: ___swift_instantiateConcreteTypeFromMangledNameV2, symObjAddr: 0x7F0, symBinAddr: 0x1B00, symSize: 0x40 }
+  - { offset: 0xB3DD2, size: 0x8, addend: 0x0, symName: '_$syXlSgIeyBy_ypSgIegn_TR', symObjAddr: 0x8A0, symBinAddr: 0x1BB0, symSize: 0x50 }
+  - { offset: 0xB3E07, size: 0x8, addend: 0x0, symName: '_$sSo15NSModalResponseaIegy_ABIeyBy_TR', symObjAddr: 0x1060, symBinAddr: 0x2370, symSize: 0x40 }
+  - { offset: 0xB3E2A, size: 0x8, addend: 0x0, symName: '_$ss22__RawDictionaryStorageC4findys10_HashTableV6BucketV6bucket_Sb5foundtxSHRzlFSS_Tg5', symObjAddr: 0x1130, symBinAddr: 0x2440, symSize: 0x60 }
+  - { offset: 0xB3E62, size: 0x8, addend: 0x0, symName: '_$ss22__RawDictionaryStorageC4find_9hashValues10_HashTableV6BucketV6bucket_Sb5foundtx_SitSHRzlFSS_Tg5', symObjAddr: 0x1190, symBinAddr: 0x24A0, symSize: 0xC0 }
+  - { offset: 0xB3F53, size: 0x8, addend: 0x0, symName: '_$sypWOc', symObjAddr: 0x1610, symBinAddr: 0x2920, symSize: 0x30 }
+  - { offset: 0xB3F72, size: 0x8, addend: 0x0, symName: ___swift_closure_destructor, symObjAddr: 0x1F60, symBinAddr: 0x3270, symSize: 0x20 }
+  - { offset: 0xB3F86, size: 0x8, addend: 0x0, symName: '_$syXlSgIeyBy_ypSgIegn_TRTA', symObjAddr: 0x1F80, symBinAddr: 0x3290, symSize: 0x10 }
+  - { offset: 0xB3F9A, size: 0x8, addend: 0x0, symName: '_$s10Foundation4DataV15_RepresentationOWOe', symObjAddr: 0x1F90, symBinAddr: 0x32A0, symSize: 0x40 }
+  - { offset: 0xB3FAE, size: 0x8, addend: 0x0, symName: ___swift_project_boxed_opaque_existential_0, symObjAddr: 0x1FD0, symBinAddr: 0x32E0, symSize: 0x30 }
+  - { offset: 0xB3FC2, size: 0x8, addend: 0x0, symName: ___swift_closure_destructor.3, symObjAddr: 0x2000, symBinAddr: 0x3310, symSize: 0xA0 }
+  - { offset: 0xB3FD6, size: 0x8, addend: 0x0, symName: '_$s13open_file_mac14OpenFilePluginC0A11SelectPanel33_154C386C27ED4E74B4FD3744A975738CLL0B4Path0B4Type6resultySS_SSyypSgctFySo15NSModalResponseacfU_TA', symObjAddr: 0x20A0, symBinAddr: 0x33B0, symSize: 0x50 }
+  - { offset: 0xB3FEA, size: 0x8, addend: 0x0, symName: _block_copy_helper, symObjAddr: 0x20F0, symBinAddr: 0x3400, symSize: 0x20 }
+  - { offset: 0xB3FFE, size: 0x8, addend: 0x0, symName: _block_destroy_helper, symObjAddr: 0x2110, symBinAddr: 0x3420, symSize: 0x10 }
+  - { offset: 0xB42D1, size: 0x8, addend: 0x0, symName: '_$s13open_file_mac14OpenFilePluginC8register4withySo07FlutterF9Registrar_p_tFZ', symObjAddr: 0x0, symBinAddr: 0x1310, symSize: 0xE0 }
+  - { offset: 0xB435B, size: 0x8, addend: 0x0, symName: '_$s13open_file_mac14OpenFilePluginCACycfC', symObjAddr: 0xE0, symBinAddr: 0x13F0, symSize: 0x20 }
+  - { offset: 0xB4381, size: 0x8, addend: 0x0, symName: '_$s13open_file_mac14OpenFilePluginC8register4withySo07FlutterF9Registrar_p_tFZTo', symObjAddr: 0x120, symBinAddr: 0x1430, symSize: 0xF0 }
+  - { offset: 0xB4526, size: 0x8, addend: 0x0, symName: '_$s13open_file_mac14OpenFilePluginC6handle_6resultySo17FlutterMethodCallC_yypSgctF', symObjAddr: 0x210, symBinAddr: 0x1520, symSize: 0x560 }
+  - { offset: 0xB4716, size: 0x8, addend: 0x0, symName: '_$s13open_file_mac14OpenFilePluginC6handle_6resultySo17FlutterMethodCallC_yypSgctFTo', symObjAddr: 0x830, symBinAddr: 0x1B40, symSize: 0x70 }
+  - { offset: 0xB47DF, size: 0x8, addend: 0x0, symName: '_$s13open_file_mac14OpenFilePluginC0A11SelectPanel33_154C386C27ED4E74B4FD3744A975738CLL0B4Path0B4Type6resultySS_SSyypSgctF', symObjAddr: 0x8F0, symBinAddr: 0x1C00, symSize: 0x460 }
+  - { offset: 0xB4926, size: 0x8, addend: 0x0, symName: '_$s13open_file_mac14OpenFilePluginC0A11SelectPanel33_154C386C27ED4E74B4FD3744A975738CLL0B4Path0B4Type6resultySS_SSyypSgctFySo15NSModalResponseacfU_', symObjAddr: 0xD50, symBinAddr: 0x2060, symSize: 0x310 }
+  - { offset: 0xB4AAA, size: 0x8, addend: 0x0, symName: '_$s13open_file_mac14OpenFilePluginCACycfc', symObjAddr: 0x10A0, symBinAddr: 0x23B0, symSize: 0x30 }
+  - { offset: 0xB4ADD, size: 0x8, addend: 0x0, symName: '_$s13open_file_mac14OpenFilePluginCACycfcTo', symObjAddr: 0x10D0, symBinAddr: 0x23E0, symSize: 0x30 }
+  - { offset: 0xB4B12, size: 0x8, addend: 0x0, symName: '_$s13open_file_mac14OpenFilePluginCfD', symObjAddr: 0x1100, symBinAddr: 0x2410, symSize: 0x30 }
+  - { offset: 0xB4B4E, size: 0x8, addend: 0x0, symName: '_$sSD17dictionaryLiteralSDyxq_Gx_q_td_tcfCSS_ypTt0g5Tf4g_n', symObjAddr: 0x1250, symBinAddr: 0x2560, symSize: 0x100 }
+  - { offset: 0xB4C26, size: 0x8, addend: 0x0, symName: '_$s13open_file_mac14OpenFilePluginC25convertDictionaryToString33_154C386C27ED4E74B4FD3744A975738CLL4dictSSSDySSypG_tFTf4nd_n', symObjAddr: 0x1350, symBinAddr: 0x2660, symSize: 0x170 }
+  - { offset: 0xB4C99, size: 0x8, addend: 0x0, symName: '_$s13open_file_mac14OpenFilePluginC6result33_154C386C27ED4E74B4FD3744A975738CLLAD7message4typeyyypSgXE_SSSitFTf4nnnd_n', symObjAddr: 0x14C0, symBinAddr: 0x27D0, symSize: 0x150 }
+  - { offset: 0xB4E1B, size: 0x8, addend: 0x0, symName: '_$s13open_file_mac14OpenFilePluginC6handle_6resultySo17FlutterMethodCallC_yypSgctF015$syXlSgIeyBy_ypN7Iegn_TRyXlSgIeyBy_Tf1nEn_nTf4nng_n', symObjAddr: 0x1680, symBinAddr: 0x2990, symSize: 0x8E0 }
+...

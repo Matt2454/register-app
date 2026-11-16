@@ -45,7 +45,10 @@ Future<void> _loadGrades(
     MiddlewareApi<AppState, AppStateBuilder, AppActions> api,
     ActionHandler next,
     Action<Semester> action) async {
-  if (api.state.noInternet) return;
+  // Saved data is mounted before the online account configuration arrives.
+  // A desktop widget preload (or opening Grades quickly) must wait for it.
+  final config = api.state.config;
+  if (api.state.noInternet || config == null) return;
 
   await next(action);
   _doForSemester(
@@ -55,7 +58,7 @@ Future<void> _loadGrades(
     (s) async {
       final dynamic data = await wrapper.send(
         _subjects,
-        args: {"studentId": api.state.config!.userId},
+        args: {"studentId": config.userId},
       );
       if (data == null) {
         await api.actions.gradesActions.loadFailed();
@@ -76,7 +79,10 @@ Future<void> _loadGradesDetails(
     MiddlewareApi<AppState, AppStateBuilder, AppActions> api,
     ActionHandler next,
     Action<LoadSubjectDetailsPayload> action) async {
-  if (api.state.noInternet) return;
+  // Saved data is mounted before the online account configuration arrives.
+  // A desktop widget preload (or opening Grades quickly) must wait for it.
+  final config = api.state.config;
+  if (api.state.noInternet || config == null) return;
 
   await next(action);
 
@@ -88,7 +94,7 @@ Future<void> _loadGradesDetails(
       dynamic data = await wrapper.send(
         _subjectsDetail,
         args: {
-          "studentId": api.state.config!.userId,
+          "studentId": config.userId,
           "subjectId": action.payload.subject.id
         },
       );

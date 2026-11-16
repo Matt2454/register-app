@@ -46,6 +46,7 @@ import 'package:dr/widget_export.dart';
 import 'package:dr/window_title_bar.dart';
 import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_built_redux/flutter_built_redux.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -100,6 +101,13 @@ Future<void> main() async {
   await loadTeacherPhotoSetting();
   await loadCustomBackground();
   runApp(RegisterApp(store: store));
+  if (Platform.isMacOS) {
+    const MethodChannel('register/window').setMethodCallHandler((call) async {
+      if (call.method == 'openSettings') {
+        navigatorKey?.currentState?.pushNamed('/settings');
+      }
+    });
+  }
   // Look for news while the app is closed (Android, iPhone).
   unawaited(registerBackgroundChecks());
   WidgetsBinding.instance.addPostFrameCallback(

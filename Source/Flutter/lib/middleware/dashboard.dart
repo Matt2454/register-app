@@ -42,7 +42,7 @@ Future<void> _loadDays(MiddlewareApi<AppState, AppStateBuilder, AppActions> api,
   unawaited(
     api.actions.calendarActions.load(thisWeek.add(const Duration(days: 7))),
   );
-  if (Platform.isMacOS) {
+  if (Platform.isMacOS && api.state.config != null) {
     if (!_gradesLoadedForWidget) {
       _gradesLoadedForWidget = true;
       unawaited(api.actions.gradesActions.load(api.state.gradesState.semester));

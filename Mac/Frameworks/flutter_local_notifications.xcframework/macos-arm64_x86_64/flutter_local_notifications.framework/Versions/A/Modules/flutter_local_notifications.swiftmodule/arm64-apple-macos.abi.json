@@ -1,0 +1,913 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "flutter_local_notifications",
+    "printedName": "flutter_local_notifications",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "UserNotifications",
+        "printedName": "UserNotifications",
+        "declKind": "Import",
+        "moduleName": "flutter_local_notifications"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "FlutterLocalNotificationsConverters",
+        "printedName": "FlutterLocalNotificationsConverters",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "parseNotificationCategoryOptions",
+            "printedName": "parseNotificationCategoryOptions(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UNNotificationCategoryOptions",
+                "printedName": "UserNotifications.UNNotificationCategoryOptions",
+                "usr": "c:@E@UNNotificationCategoryOptions"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[Any]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Any]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:27flutter_local_notifications35FlutterLocalNotificationsConvertersC32parseNotificationCategoryOptionsySo014UNNotificationjK0VSayypGSgFZ",
+            "mangledName": "$s27flutter_local_notifications35FlutterLocalNotificationsConvertersC32parseNotificationCategoryOptionsySo014UNNotificationjK0VSayypGSgFZ",
+            "moduleName": "flutter_local_notifications",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "parseNotificationActionOptions",
+            "printedName": "parseNotificationActionOptions(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UNNotificationActionOptions",
+                "printedName": "UserNotifications.UNNotificationActionOptions",
+                "usr": "c:@E@UNNotificationActionOptions"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[Any]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Any]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:27flutter_local_notifications35FlutterLocalNotificationsConvertersC30parseNotificationActionOptionsySo014UNNotificationjK0VSayypGSgFZ",
+            "mangledName": "$s27flutter_local_notifications35FlutterLocalNotificationsConvertersC30parseNotificationActionOptionsySo014UNNotificationjK0VSayypGSgFZ",
+            "moduleName": "flutter_local_notifications",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:27flutter_local_notifications35FlutterLocalNotificationsConvertersC",
+        "mangledName": "$s27flutter_local_notifications35FlutterLocalNotificationsConvertersC",
+        "moduleName": "flutter_local_notifications",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "hasMissingDesignatedInitializers": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Cocoa",
+        "printedName": "Cocoa",
+        "declKind": "Import",
+        "moduleName": "flutter_local_notifications"
+      },
+      {
+        "kind": "Import",
+        "name": "FlutterMacOS",
+        "printedName": "FlutterMacOS",
+        "declKind": "Import",
+        "moduleName": "flutter_local_notifications"
+      },
+      {
+        "kind": "Import",
+        "name": "UserNotifications",
+        "printedName": "UserNotifications",
+        "declKind": "Import",
+        "moduleName": "flutter_local_notifications"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "FlutterLocalNotificationsPlugin",
+        "printedName": "FlutterLocalNotificationsPlugin",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "register",
+            "printedName": "register(with:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "FlutterPluginRegistrar",
+                "printedName": "any FlutterMacOS.FlutterPluginRegistrar",
+                "usr": "c:objc(pl)FlutterPluginRegistrar"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@flutter_local_notifications@objc(cs)FlutterLocalNotificationsPlugin(cm)registerWithRegistrar:",
+            "mangledName": "$s27flutter_local_notifications31FlutterLocalNotificationsPluginC8register4withySo0dG9Registrar_p_tFZ",
+            "moduleName": "flutter_local_notifications",
+            "static": true,
+            "objc_name": "registerWithRegistrar:",
+            "declAttributes": [
+              "Final",
+              "ObjC",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "userNotificationCenter",
+            "printedName": "userNotificationCenter(_:willPresent:withCompletionHandler:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UNUserNotificationCenter",
+                "printedName": "UserNotifications.UNUserNotificationCenter",
+                "usr": "c:objc(cs)UNUserNotificationCenter"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UNNotification",
+                "printedName": "UserNotifications.UNNotification",
+                "usr": "c:objc(cs)UNNotification"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(UserNotifications.UNNotificationPresentationOptions) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UNNotificationPresentationOptions",
+                    "printedName": "UserNotifications.UNNotificationPresentationOptions",
+                    "usr": "c:@E@UNNotificationPresentationOptions"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@flutter_local_notifications@objc(cs)FlutterLocalNotificationsPlugin(im)userNotificationCenter:willPresentNotification:withCompletionHandler:",
+            "mangledName": "$s27flutter_local_notifications31FlutterLocalNotificationsPluginC22userNotificationCenter_11willPresent21withCompletionHandlerySo06UNUseriJ0C_So14UNNotificationCySo0Q19PresentationOptionsVctF",
+            "moduleName": "flutter_local_notifications",
+            "objc_name": "userNotificationCenter:willPresentNotification:withCompletionHandler:",
+            "declAttributes": [
+              "ObjC",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "userNotificationCenter",
+            "printedName": "userNotificationCenter(_:didReceive:withCompletionHandler:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UNUserNotificationCenter",
+                "printedName": "UserNotifications.UNUserNotificationCenter",
+                "usr": "c:objc(cs)UNUserNotificationCenter"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UNNotificationResponse",
+                "printedName": "UserNotifications.UNNotificationResponse",
+                "usr": "c:objc(cs)UNNotificationResponse"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "() -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@flutter_local_notifications@objc(cs)FlutterLocalNotificationsPlugin(im)userNotificationCenter:didReceiveNotificationResponse:withCompletionHandler:",
+            "mangledName": "$s27flutter_local_notifications31FlutterLocalNotificationsPluginC22userNotificationCenter_10didReceive21withCompletionHandlerySo06UNUseriJ0C_So22UNNotificationResponseCyyctF",
+            "moduleName": "flutter_local_notifications",
+            "objc_name": "userNotificationCenter:didReceiveNotificationResponse:withCompletionHandler:",
+            "declAttributes": [
+              "ObjC",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "handle",
+            "printedName": "handle(_:result:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "FlutterMethodCall",
+                "printedName": "FlutterMacOS.FlutterMethodCall",
+                "usr": "c:objc(cs)FlutterMethodCall"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Any?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Any?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@flutter_local_notifications@objc(cs)FlutterLocalNotificationsPlugin(im)handleMethodCall:result:",
+            "mangledName": "$s27flutter_local_notifications31FlutterLocalNotificationsPluginC6handle_6resultySo0D10MethodCallC_yypSgctF",
+            "moduleName": "flutter_local_notifications",
+            "objc_name": "handleMethodCall:result:",
+            "declAttributes": [
+              "ObjC",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "FlutterLocalNotificationsPlugin",
+                "printedName": "flutter_local_notifications.FlutterLocalNotificationsPlugin",
+                "usr": "c:@M@flutter_local_notifications@objc(cs)FlutterLocalNotificationsPlugin"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@flutter_local_notifications@objc(cs)FlutterLocalNotificationsPlugin(im)init",
+            "mangledName": "$s27flutter_local_notifications31FlutterLocalNotificationsPluginCACycfc",
+            "moduleName": "flutter_local_notifications",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@flutter_local_notifications@objc(cs)FlutterLocalNotificationsPlugin",
+        "mangledName": "$s27flutter_local_notifications31FlutterLocalNotificationsPluginC",
+        "moduleName": "flutter_local_notifications",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "hasMissingDesignatedInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          }
+        ]
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 233,
+      "length": 14,
+      "value": "\"presentAlert\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 282,
+      "length": 14,
+      "value": "\"presentSound\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 331,
+      "length": 14,
+      "value": "\"presentBadge\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 381,
+      "length": 15,
+      "value": "\"presentBanner\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 430,
+      "length": 13,
+      "value": "\"presentList\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 473,
+      "length": 9,
+      "value": "\"payload\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 527,
+      "length": 24,
+      "value": "\"requestAlertPermission\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 596,
+      "length": 24,
+      "value": "\"requestSoundPermission\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 665,
+      "length": 24,
+      "value": "\"requestBadgePermission\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 740,
+      "length": 30,
+      "value": "\"requestProvisionalPermission\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 818,
+      "length": 27,
+      "value": "\"requestCriticalPermission\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 906,
+      "length": 40,
+      "value": "\"requestProvidesAppNotificationSettings\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 988,
+      "length": 21,
+      "value": "\"defaultPresentAlert\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 1051,
+      "length": 21,
+      "value": "\"defaultPresentSound\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 1114,
+      "length": 21,
+      "value": "\"defaultPresentBadge\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 1178,
+      "length": 22,
+      "value": "\"defaultPresentBanner\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 1241,
+      "length": 20,
+      "value": "\"defaultPresentList\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 1289,
+      "length": 7,
+      "value": "\"alert\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 1324,
+      "length": 7,
+      "value": "\"sound\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 1359,
+      "length": 7,
+      "value": "\"badge\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 1400,
+      "length": 13,
+      "value": "\"provisional\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 1444,
+      "length": 10,
+      "value": "\"critical\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 1508,
+      "length": 33,
+      "value": "\"providesAppNotificationSettings\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 1587,
+      "length": 25,
+      "value": "\"notificationLaunchedApp\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 1637,
+      "length": 4,
+      "value": "\"id\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 1669,
+      "length": 7,
+      "value": "\"title\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 1707,
+      "length": 10,
+      "value": "\"subtitle\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 1758,
+      "length": 20,
+      "value": "\"categoryIdentifier\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 1815,
+      "length": 16,
+      "value": "\"dismissIsolate\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 1858,
+      "length": 6,
+      "value": "\"body\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 1904,
+      "length": 26,
+      "value": "\"scheduledDateTimeISO8601\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 1965,
+      "length": 14,
+      "value": "\"timeZoneName\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 2025,
+      "length": 25,
+      "value": "\"matchDateTimeComponents\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 2090,
+      "length": 19,
+      "value": "\"platformSpecifics\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 2143,
+      "length": 13,
+      "value": "\"badgeNumber\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 2193,
+      "length": 16,
+      "value": "\"repeatInterval\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 2258,
+      "length": 28,
+      "value": "\"repeatIntervalMilliseconds\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 2320,
+      "length": 13,
+      "value": "\"attachments\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 2366,
+      "length": 12,
+      "value": "\"identifier\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 2409,
+      "length": 10,
+      "value": "\"filePath\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 2455,
+      "length": 15,
+      "value": "\"hideThumbnail\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 2524,
+      "length": 23,
+      "value": "\"thumbnailClippingRect\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 2586,
+      "length": 18,
+      "value": "\"threadIdentifier\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 2644,
+      "length": 19,
+      "value": "\"interruptionLevel\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 2694,
+      "length": 10,
+      "value": "\"actionId\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 2751,
+      "length": 26,
+      "value": "\"notificationResponseType\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 2822,
+      "length": 11,
+      "value": "\"isEnabled\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 2870,
+      "length": 16,
+      "value": "\"isSoundEnabled\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 2923,
+      "length": 16,
+      "value": "\"isAlertEnabled\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 2976,
+      "length": 16,
+      "value": "\"isBadgeEnabled\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 3035,
+      "length": 22,
+      "value": "\"isProvisionalEnabled\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 3097,
+      "length": 19,
+      "value": "\"isCriticalEnabled\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 3179,
+      "length": 42,
+      "value": "\"isProvidesAppNotificationSettingsEnabled\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 3263,
+      "length": 21,
+      "value": "\"criticalSoundVolume\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 3354,
+      "length": 23,
+      "value": "\"yyyy-MM-dd'T'HH:mm:ss\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3470,
+      "length": 6,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3550,
+      "length": 16,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3580,
+      "length": 17,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3611,
+      "length": 11,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3699,
+      "length": 6,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3719,
+      "length": 5,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3738,
+      "length": 6,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3812,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3913,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/flutter_local_notifications-22.3.1\/macos\/flutter_local_notifications\/Sources\/flutter_local_notifications\/FlutterLocalNotificationsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 3961,
+      "length": 50,
+      "value": "\"flutter_local_notifications_presentation_options\""
+    }
+  ]
+}

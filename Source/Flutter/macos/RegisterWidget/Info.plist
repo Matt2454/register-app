@@ -21,7 +21,7 @@
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>RegisterAppGroup</key>
-	<string>$(DEVELOPMENT_TEAM).com.webandgrow.register</string>
+	<string>$(DEVELOPMENT_TEAM).app.register.personal.r9457c4543606d986.mac</string>
 	<key>NSExtension</key>
 	<dict>
 		<key>NSExtensionPointIdentifier</key>

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dr/app_language.dart';
 import 'package:dr/calendar_export.dart';
 import 'package:flutter/material.dart';
@@ -81,7 +83,7 @@ Future<void> showAppleCalendarExport(
             onPressed: snapshot.events.any((e) => selected.contains(e.kind))
                 ? () => Navigator.pop(context, true)
                 : null,
-            child: Text(tr("Kalender auswählen")),
+            child: Text(tr(Platform.isMacOS ? "Weiter zum Export" : "Kalender auswählen")),
           ),
         ],
       ),

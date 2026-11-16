@@ -1,0 +1,52 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.4.2 effective-5.10 (swiftlang-6.4.2.1.9 clang-2100.4.1.1)
+// swift-module-flags: -target x86_64-apple-macos12.0 -enable-objc-interop -enable-library-evolution -language-mode 5 -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name workmanager_apple
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.4.2
+import FlutterMacOS
+import Foundation
+import Swift
+import UserNotifications
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+import os
+@_exported import workmanager_apple
+@_inheritsConvenienceInitializers @available(macOS 11.0, *)
+public class LoggingDebugHandler : workmanager_apple::WorkmanagerDebug {
+  public init()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class NotificationDebugHandler : workmanager_apple::WorkmanagerDebug {
+  public init(categoryIdentifier: Swift::String? = nil, threadIdentifier: Swift::String? = nil)
+  @objc deinit
+}
+public struct TaskDebugInfo {
+  public let taskName: Swift::String
+  public let uniqueName: Swift::String?
+  public let inputData: [Swift::String : Any]?
+  public let startTime: Foundation::TimeInterval
+  public let callbackHandle: Swift::Int64?
+  public let callbackInfo: Swift::String?
+  public let isPeriodic: Swift::Bool?
+  public init(taskName: Swift::String, uniqueName: Swift::String? = nil, inputData: [Swift::String : Any]? = nil, startTime: Foundation::TimeInterval, callbackHandle: Swift::Int64? = nil, callbackInfo: Swift::String? = nil, isPeriodic: Swift::Bool? = nil)
+}
+public struct TaskResult {
+  public let success: Swift::Bool
+  public let duration: Swift::Int64
+  public let error: Swift::String?
+  public init(success: Swift::Bool, duration: Swift::Int64, error: Swift::String? = nil)
+}
+@_hasMissingDesignatedInitializers public class WorkmanagerDebug {
+  public static func setCurrent(_ handler: workmanager_apple::WorkmanagerDebug)
+  public static func getCurrent() -> workmanager_apple::WorkmanagerDebug
+  @objc deinit
+}
+public typealias WorkmanagerPluginBase = ObjectiveC::NSObject
+@objc @_inheritsConvenienceInitializers public class WorkmanagerPlugin : workmanager_apple::WorkmanagerPluginBase, FlutterMacOS::FlutterPlugin {
+  public static func setPluginRegistrantCallback(_ callback: @escaping (any FlutterMacOS::FlutterPluginRegistry) -> Swift::Void)
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension workmanager_apple::WorkmanagerPlugin {
+  @objc public static func register(with registrar: any FlutterMacOS::FlutterPluginRegistrar)
+}

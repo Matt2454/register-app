@@ -586,5 +586,9 @@
   "Geänderte Beobachtung": "Osservazione modificata",
   "Geänderte Aufgabe": "Compito modificato",
   "Keine offenen Aufgaben für heute oder morgen.": "Nessun compito in sospeso per oggi o domani.",
-  "EE d.M.yyyy 'um' HH:mm": "EEE d MMM yyyy 'alle' HH:mm"
+  "EE d.M.yyyy 'um' HH:mm": "EEE d MMM yyyy 'alle' HH:mm",
+  "Desktop-Widgets": "Widget desktop",
+  "Stundenplan, Aufgaben und Notendurchschnitte aus gespeicherten Daten anzeigen.": "Mostra orario, compiti e medie dei voti dai dati salvati.",
+  "Desktop rechtsklicken → Widgets bearbeiten → Register.": "Clic destro sulla scrivania → Modifica widget → Register.",
+  "Weiter zum Export": "Continua con l’esportazione"
 }

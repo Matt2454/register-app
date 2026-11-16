@@ -1,0 +1,14 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/private/tmp/register-mac-frameworks/Release/macos/Release/package_info_plus/package_info_plus.framework/Versions/A/package_info_plus'
+relocations:
+  - { offset: 0xCEFC8, size: 0x8, addend: 0x0, symName: _package_info_plusVersionString, symObjAddr: 0x0, symBinAddr: 0x1988, symSize: 0x0 }
+  - { offset: 0xCEFFD, size: 0x8, addend: 0x0, symName: _package_info_plusVersionNumber, symObjAddr: 0x30, symBinAddr: 0x19B8, symSize: 0x0 }
+  - { offset: 0xCF03A, size: 0x8, addend: 0x0, symName: '+[FPPPackageInfoPlusPlugin registerWithRegistrar:]', symObjAddr: 0x0, symBinAddr: 0xB48, symSize: 0xA0 }
+  - { offset: 0xCF061, size: 0x8, addend: 0x0, symName: '+[FPPPackageInfoPlusPlugin registerWithRegistrar:]', symObjAddr: 0x0, symBinAddr: 0xB48, symSize: 0xA0 }
+  - { offset: 0xCF0C0, size: 0x8, addend: 0x0, symName: '-[FPPPackageInfoPlusPlugin handleMethodCall:result:]', symObjAddr: 0xA0, symBinAddr: 0xBE8, symSize: 0x4AC }
+  - { offset: 0xCF169, size: 0x8, addend: 0x0, symName: '-[FPPPackageInfoPlusPlugin getInstallDate]', symObjAddr: 0x54C, symBinAddr: 0x1094, symSize: 0x120 }
+  - { offset: 0xCF1D0, size: 0x8, addend: 0x0, symName: '-[FPPPackageInfoPlusPlugin getUpdateDate]', symObjAddr: 0x66C, symBinAddr: 0x11B4, symSize: 0xE0 }
+  - { offset: 0xCF233, size: 0x8, addend: 0x0, symName: '-[FPPPackageInfoPlusPlugin getTimeMillisStringFromDate:]', symObjAddr: 0x74C, symBinAddr: 0x1294, symSize: 0x74 }
+  - { offset: 0xCF286, size: 0x8, addend: 0x0, symName: '-[FPPPackageInfoPlusPlugin isRunningInSandbox]', symObjAddr: 0x7C0, symBinAddr: 0x1308, symSize: 0x84 }
+...

@@ -1,0 +1,22 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.4.2 effective-5.10 (swiftlang-6.4.2.1.9 clang-2100.4.1.1)
+// swift-module-flags: -target arm64-apple-macos12.0 -enable-objc-interop -enable-library-evolution -language-mode 5 -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name url_launcher_macos
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.4.2
+import FlutterMacOS
+import Foundation
+import Swift
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+@_exported import url_launcher_macos
+public protocol SystemURLHandler {
+  func open(_ url: Foundation::URL) -> Swift::Bool
+  func urlForApplication(toOpen: Foundation::URL) -> Foundation::URL?
+}
+extension AppKit::NSWorkspace : url_launcher_macos::SystemURLHandler {
+}
+@objc public class UrlLauncherPlugin : ObjectiveC::NSObject, FlutterMacOS::FlutterPlugin {
+  public init(_ workspace: any url_launcher_macos::SystemURLHandler = NSWorkspace.shared)
+  @objc public static func register(with registrar: any FlutterMacOS::FlutterPluginRegistrar)
+  @objc deinit
+}

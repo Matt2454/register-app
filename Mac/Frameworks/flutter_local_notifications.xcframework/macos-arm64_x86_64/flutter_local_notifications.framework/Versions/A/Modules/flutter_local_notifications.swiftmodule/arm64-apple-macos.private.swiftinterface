@@ -1,0 +1,24 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.4.2 effective-5.10 (swiftlang-6.4.2.1.9 clang-2100.4.1.1)
+// swift-module-flags: -target arm64-apple-macos12.0 -enable-objc-interop -enable-library-evolution -language-mode 5 -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name flutter_local_notifications
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.4.2
+import Cocoa
+import FlutterMacOS
+import Swift
+import UserNotifications
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+@_exported import flutter_local_notifications
+@_hasMissingDesignatedInitializers public class FlutterLocalNotificationsConverters {
+  public static func parseNotificationCategoryOptions(_ options: [Any]?) -> UserNotifications::UNNotificationCategoryOptions
+  public static func parseNotificationActionOptions(_ options: [Any]?) -> UserNotifications::UNNotificationActionOptions
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers public class FlutterLocalNotificationsPlugin : ObjectiveC::NSObject, FlutterMacOS::FlutterPlugin, UserNotifications::UNUserNotificationCenterDelegate {
+  @objc public static func register(with registrar: any FlutterMacOS::FlutterPluginRegistrar)
+  @objc public func userNotificationCenter(_ center: UserNotifications::UNUserNotificationCenter, willPresent notification: UserNotifications::UNNotification, withCompletionHandler completionHandler: @escaping (UserNotifications::UNNotificationPresentationOptions) -> Swift::Void)
+  @objc public func userNotificationCenter(_ center: UserNotifications::UNUserNotificationCenter, didReceive response: UserNotifications::UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift::Void)
+  @objc public func handle(_ call: FlutterMacOS::FlutterMethodCall, result: @escaping FlutterMacOS::FlutterResult)
+  @objc deinit
+}

@@ -156,6 +156,18 @@ Future<void> exportWeekForWidget(AppState state) async {
     }
     return;
   }
+  if (!state.loginState.loggedIn ||
+      state.settingsState.noDataSaving ||
+      !widgetsEnabled.value) {
+    try {
+      await _channel.invokeMethod<void>('clearWeek');
+    } on PlatformException catch (error) {
+      log('Could not clear the desktop widget', error: error.code);
+    } on MissingPluginException {
+      // Native widgets are unavailable in unit tests.
+    }
+    return;
+  }
   final monday = toMonday(UtcDateTime.now());
   final today = UtcDateTime.now().stripTime();
   final settings = state.settingsState;
@@ -165,7 +177,7 @@ Future<void> exportWeekForWidget(AppState state) async {
     final day = state.calendarState.days[date];
     days.add({
       "date": DateFormat("yyyy-MM-dd").format(date),
-      "weekday": DateFormat("E", "de").format(date),
+      "weekday": DateFormat("E", appLanguage.value).format(date),
       "loaded": day != null,
       "lessons": [
         if (day != null)
@@ -227,13 +239,14 @@ Future<void> exportWeekForWidget(AppState state) async {
           counted.length;
 
   final json = jsonEncode({
+    "language": appLanguage.value,
     "updated": DateTime.now().toIso8601String(),
     "monday": DateFormat("yyyy-MM-dd").format(monday),
     "days": days,
     "tasks": tasks,
     "grades": grades,
     "overall": overall,
-    "semester": semester.name,
+    "semester": tr(semester.name),
   });
   try {
     await _channel.invokeMethod<void>("saveWeek", json);

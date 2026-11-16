@@ -5,6 +5,23 @@
 import SwiftUI
 import WidgetKit
 
+private var schoolCalendar: Calendar {
+  var calendar = Calendar(identifier: .gregorian)
+  calendar.timeZone = TimeZone(identifier: "Europe/Rome")!
+  return calendar
+}
+
+enum WidgetLanguage {
+  static var current = Locale.current.language.languageCode?.identifier ?? "en"
+  static func text(_ key: String) -> String {
+    let bundle = Bundle.main.path(forResource: current, ofType: "lproj").flatMap(Bundle.init(path:)) ?? .main
+    return bundle.localizedString(forKey: key, value: key, table: nil)
+  }
+  static func format(_ key: String, _ value: Int) -> String {
+    String(format: text(key), locale: Locale(identifier: current), value)
+  }
+}
+
 // MARK: - Data
 
 struct Lesson: Codable, Hashable {
@@ -27,6 +44,7 @@ struct Lesson: Codable, Hashable {
 
   static let clock: DateFormatter = {
     let f = DateFormatter()
+    f.timeZone = TimeZone(identifier: "Europe/Rome")
     f.dateFormat = "HH:mm"
     return f
   }()
@@ -78,8 +96,9 @@ struct SchoolDay: Codable, Hashable {
 
   static let formatter: DateFormatter = {
     let f = DateFormatter()
+    f.timeZone = TimeZone(identifier: "Europe/Rome")
     f.dateFormat = "yyyy-MM-dd"
-    f.locale = Locale(identifier: "de_DE")
+    f.locale = Locale(identifier: WidgetLanguage.current)
     return f
   }()
 }
@@ -108,6 +127,7 @@ struct GradeItem: Codable, Hashable {
 }
 
 struct Week: Codable {
+  var language: String? = nil
   let updated: String
   let monday: String
   let days: [SchoolDay]
@@ -134,7 +154,9 @@ enum WeekStore {
         forSecurityApplicationGroupIdentifier: group)?.appendingPathComponent("week.json"),
       let data = try? Data(contentsOf: url)
     else { return nil }
-    return try? JSONDecoder().decode(Week.self, from: data)
+    let week = try? JSONDecoder().decode(Week.self, from: data)
+    WidgetLanguage.current = week?.language ?? Locale.current.language.languageCode?.identifier ?? "en"
+    return week
   }
 
   static let sample = Week(
@@ -185,7 +207,7 @@ struct Provider: TimelineProvider {
   }
 
   func getSnapshot(in context: Context, completion: @escaping (WeekEntry) -> Void) {
-    completion(WeekEntry(date: .now, week: WeekStore.load() ?? WeekStore.sample))
+    completion(WeekEntry(date: .now, week: context.isPreview ? WeekStore.sample : WeekStore.load()))
   }
 
   func getTimeline(in context: Context, completion: @escaping (Timeline<WeekEntry>) -> Void) {
@@ -194,7 +216,7 @@ struct Provider: TimelineProvider {
     // running lesson is marked; afterwards redraw after midnight.
     var dates: [Date] = [.now]
     if let today = week?.days.first(where: isToday) {
-      let calendar = Calendar.current
+      let calendar = schoolCalendar
       for lesson in today.lessons {
         for time in [lesson.start, lesson.end].compactMap({ $0 }) {
           let parts = time.split(separator: ":").compactMap { Int($0) }
@@ -209,8 +231,8 @@ struct Provider: TimelineProvider {
       }
     }
     let entries = Set(dates).sorted().map { WeekEntry(date: $0, week: week) }
-    let tomorrow = Calendar.current.startOfDay(
-      for: Calendar.current.date(byAdding: .day, value: 1, to: .now)!)
+    let tomorrow = schoolCalendar.startOfDay(
+      for: schoolCalendar.date(byAdding: .day, value: 1, to: .now)!)
     completion(Timeline(entries: entries, policy: .after(tomorrow)))
   }
 }
@@ -252,11 +274,11 @@ struct Header: View {
 
   var body: some View {
     HStack(alignment: .firstTextBaseline) {
-      Text(title)
+      Text(WidgetLanguage.text(title))
         .font(.system(size: size, weight: .bold))
         .foregroundStyle(Holo.accent)
       Spacer()
-      Text(subtitle.uppercased())
+      Text(WidgetLanguage.text(subtitle).uppercased())
         .font(Holo.mono(size * 0.72))
         .tracking(1.2)
         .foregroundStyle(Holo.muted)
@@ -353,7 +375,7 @@ struct EmptyHint: View {
       Image(systemName: "calendar.badge.clock")
         .font(.system(size: 22))
         .foregroundStyle(Holo.accent)
-      Text("Öffne Register, um deinen Stundenplan zu laden.")
+      Text(WidgetLanguage.text("Öffne Register, um deinen Stundenplan zu laden."))
         .font(.system(size: 11, weight: .medium))
         .multilineTextAlignment(.center)
         .foregroundStyle(Holo.muted)
@@ -364,12 +386,12 @@ struct EmptyHint: View {
 
 func isToday(_ day: SchoolDay) -> Bool {
   guard let date = day.parsedDate else { return false }
-  return Calendar.current.isDateInToday(date)
+  return schoolCalendar.isDateInToday(date)
 }
 
 /// Today, or the next school day of the week when today is over or free.
 private func focusDay(in week: Week) -> SchoolDay? {
-  let today = Calendar.current.startOfDay(for: .now)
+  let today = schoolCalendar.startOfDay(for: .now)
   return week.days.first { day in
     guard let date = day.parsedDate else { return false }
     return date >= today && !day.lessons.isEmpty
@@ -394,7 +416,7 @@ struct SmallView: View {
     if let day = focusDay(in: week) {
       VStack(alignment: .leading, spacing: 6) {
         Header(
-          title: isToday(day) ? "Heute" : day.weekday, subtitle: "\(day.lessons.count) Std",
+          title: isToday(day) ? "Heute" : day.weekday, subtitle: WidgetLanguage.format("%d Std", day.lessons.count),
           size: 15)
         VStack(spacing: 3) {
           ForEach(day.lessons.prefix(7), id: \.self) { lesson in
@@ -444,7 +466,7 @@ struct DayColumn: View {
     VStack(spacing: 3) {
       WeekdayLabel(day: day, size: 10.5)
       if day.lessons.isEmpty {
-        Text(day.loaded ? "frei" : "–")
+        Text(day.loaded ? WidgetLanguage.text("frei") : "–")
           .font(Holo.mono(9))
           .foregroundStyle(Holo.muted)
           .padding(.top, 4)
@@ -561,21 +583,21 @@ struct RegisterWidget: Widget {
 
 private func countdown(to date: Date?, from now: Date = .now) -> (Int, String) {
   guard let date else { return (0, "") }
-  let calendar = Calendar.current
+  let calendar = schoolCalendar
   let days = calendar.dateComponents(
     [.day], from: calendar.startOfDay(for: now), to: calendar.startOfDay(for: date)
   ).day ?? 0
   switch days {
-  case ..<1: return (0, "Heute")
-  case 1: return (1, "Morgen")
-  default: return (days, "in \(days) Tagen")
+  case ..<1: return (0, WidgetLanguage.text("Heute"))
+  case 1: return (1, WidgetLanguage.text("Morgen"))
+  default: return (days, WidgetLanguage.format("in %d Tagen", days))
   }
 }
 
 private func dayLabel(_ date: Date?) -> String {
   guard let date else { return "" }
   let f = DateFormatter()
-  f.locale = Locale(identifier: "de_DE")
+  f.locale = Locale(identifier: WidgetLanguage.current)
   f.dateFormat = "EE dd.MM."
   return f.string(from: date).uppercased()
 }
@@ -635,7 +657,7 @@ struct TasksView: View {
           Text(days <= 1 ? "!" : "\(days)")
             .font(Holo.mono(46, .heavy))
             .foregroundStyle(Holo.accent)
-          Text(days <= 1 ? text : "Tage")
+          Text(days <= 1 ? text : WidgetLanguage.text("Tage"))
             .font(Holo.mono(11, .bold))
             .foregroundStyle(Holo.muted)
           Text(test.subjectShort ?? test.title)
@@ -648,7 +670,7 @@ struct TasksView: View {
             .lineLimit(1)
         } else {
           Spacer()
-          Text("Keine Tests in Sicht")
+          Text(WidgetLanguage.text("Keine Tests in Sicht"))
             .font(.system(size: 13, weight: .semibold))
             .foregroundStyle(Holo.muted)
           Spacer()
@@ -659,7 +681,7 @@ struct TasksView: View {
       VStack(alignment: .leading, spacing: 5) {
         Header(
           title: "Register · Tests & Aufgaben",
-          subtitle: "\(open.count) offen", size: 14)
+          subtitle: WidgetLanguage.format("%d offen", open.count), size: 14)
         if open.isEmpty {
           EmptyHint()
         }
@@ -743,7 +765,7 @@ struct GradesView: View {
           GradeRing(value: week.overall ?? 0, label: gradeText(week.overall ?? 0), size: 86, stroke: 8)
           Spacer(minLength: 0)
           if let worst = grades.first, worst.average < 6 {
-            Text("\(worst.abbreviation) unter 6")
+            Text("\(worst.abbreviation) \(WidgetLanguage.text("unter 6"))")
               .font(.system(size: 11, weight: .bold))
               .foregroundStyle(Holo.danger)
           }
@@ -752,7 +774,7 @@ struct GradesView: View {
         HStack(spacing: 14) {
           VStack(spacing: 4) {
             GradeRing(value: week.overall ?? 0, label: gradeText(week.overall ?? 0), size: 84, stroke: 8)
-            Text("GESAMT").font(Holo.mono(9, .bold)).foregroundStyle(Holo.muted)
+            Text(WidgetLanguage.text("GESAMT")).font(Holo.mono(9, .bold)).foregroundStyle(Holo.muted)
           }
           VStack(alignment: .leading, spacing: 5) {
             Header(title: "Schwächste Fächer", subtitle: week.semester ?? "", size: 12)
@@ -769,7 +791,7 @@ struct GradesView: View {
           }
           HStack(spacing: 12) {
             GradeRing(value: week.overall ?? 0, label: gradeText(week.overall ?? 0), size: 70, stroke: 7)
-            Text("Gesamtdurchschnitt")
+            Text(WidgetLanguage.text("Gesamtdurchschnitt"))
               .font(.system(size: 14, weight: .semibold))
               .foregroundStyle(.white)
           }

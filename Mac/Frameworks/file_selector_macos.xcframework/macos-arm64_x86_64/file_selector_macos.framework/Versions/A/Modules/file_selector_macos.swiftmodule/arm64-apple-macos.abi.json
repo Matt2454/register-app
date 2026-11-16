@@ -1,0 +1,229 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "file_selector_macos",
+    "printedName": "file_selector_macos",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "Cocoa",
+        "printedName": "Cocoa",
+        "declKind": "Import",
+        "moduleName": "file_selector_macos",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "FlutterMacOS",
+        "printedName": "FlutterMacOS",
+        "declKind": "Import",
+        "moduleName": "file_selector_macos"
+      },
+      {
+        "kind": "Import",
+        "name": "UniformTypeIdentifiers",
+        "printedName": "UniformTypeIdentifiers",
+        "declKind": "Import",
+        "moduleName": "file_selector_macos"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "FileSelectorPlugin",
+        "printedName": "FileSelectorPlugin",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "register",
+            "printedName": "register(with:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "FlutterPluginRegistrar",
+                "printedName": "any FlutterMacOS.FlutterPluginRegistrar",
+                "usr": "c:objc(pl)FlutterPluginRegistrar"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@file_selector_macos@objc(cs)FileSelectorPlugin(cm)registerWithRegistrar:",
+            "mangledName": "$s19file_selector_macos18FileSelectorPluginC8register4withySo07FlutterF9Registrar_p_tFZ",
+            "moduleName": "file_selector_macos",
+            "static": true,
+            "objc_name": "registerWithRegistrar:",
+            "declAttributes": [
+              "Final",
+              "ObjC",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "FileSelectorPlugin",
+                "printedName": "file_selector_macos.FileSelectorPlugin",
+                "usr": "c:@M@file_selector_macos@objc(cs)FileSelectorPlugin"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@file_selector_macos@objc(cs)FileSelectorPlugin(im)init",
+            "mangledName": "$s19file_selector_macos18FileSelectorPluginCACycfc",
+            "moduleName": "file_selector_macos",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@file_selector_macos@objc(cs)FileSelectorPlugin",
+        "mangledName": "$s19file_selector_macos18FileSelectorPluginC",
+        "moduleName": "file_selector_macos",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "hasMissingDesignatedInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "file_selector_macos",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "FlutterMacOS",
+        "printedName": "FlutterMacOS",
+        "declKind": "Import",
+        "moduleName": "file_selector_macos"
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/file_selector_macos-0.9.5+1\/macos\/file_selector_macos\/Sources\/file_selector_macos\/FileSelectorPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 1806,
+      "length": 10,
+      "value": "\"openFile\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/file_selector_macos-0.9.5+1\/macos\/file_selector_macos\/Sources\/file_selector_macos\/FileSelectorPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 1853,
+      "length": 18,
+      "value": "\"getDirectoryPath\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/file_selector_macos-0.9.5+1\/macos\/file_selector_macos\/Sources\/file_selector_macos\/FileSelectorPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 1899,
+      "length": 13,
+      "value": "\"getSavePath\""
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/file_selector_macos-0.9.5+1\/macos\/file_selector_macos\/Sources\/file_selector_macos\/FileSelectorPlugin.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1939,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/user\/Documents\/Codex\/2026-11-12\/https-github-com-kererleon-register-app\/work\/pub-cache\/hosted\/pub.dev\/file_selector_macos-0.9.5+1\/macos\/file_selector_macos\/Sources\/file_selector_macos\/messages.g.swift",
+      "kind": "StringLiteral",
+      "offset": 14331,
+      "length": 2,
+      "value": "\"\""
+    }
+  ]
+}
