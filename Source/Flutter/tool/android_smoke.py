@@ -41,7 +41,18 @@ def wait_label(label, timeout=60):
     while time.monotonic() < until:
         if not run('adb', 'shell', 'pidof', package).strip():
             raise RuntimeError('Android app process exited')
-        nodes = [n for n in tree().iter('node') if any(
+        root = tree()
+        # A fresh Google APIs image can show a Launcher ANR during boot.
+        # Dismiss only that unrelated system dialog; app ANRs still fail.
+        if any("Pixel Launcher isn't responding" in n.get('text', '')
+               for n in root.iter('node')):
+            close = next((n for n in root.iter('node') if n.get('text') == 'Close app'), None)
+            if close is not None:
+                x1,y1,x2,y2 = map(int, re.findall(r'\d+', close.get('bounds', '')))
+                run('adb','shell','input','tap',str((x1+x2)//2),str((y1+y2)//2))
+                launch()
+                continue
+        nodes = [n for n in root.iter('node') if any(
             n.get(a, '').strip() == label for a in ['text', 'content-desc'])]
         if nodes:
             return nodes
@@ -84,4 +95,5 @@ try:
     open_language(); tap('English'); wait_label('Language')
     print('Android release launch, three languages and persistence passed.')
 finally:
-    (out/'logcat.txt').write_bytes(run('adb', 'logcat', '-d', '-t', '1500'))
+    screenshot('Android-Final-State.png')
+    (out/'logcat.txt').write_bytes(run('adb', 'logcat', '-d', '-t', '3000'))
