@@ -3,16 +3,23 @@ import java.util.Properties
 
 plugins {
     id("com.android.application")
+    id("org.jetbrains.kotlin.android")
     id("dev.flutter.flutter-gradle-plugin")
 }
 
 // The release key is never part of the repository. Locally it is described
 // in android/key.properties, on GitHub it comes from encrypted secrets
-// (see .github/workflows/release.yml). Without it, the debug key is used.
+// (see .github/workflows/release.yml). Release builds never use a debug key.
 val keystoreProperties = Properties()
 val keystorePropertiesFile = rootProject.file("key.properties")
 if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(FileInputStream(keystorePropertiesFile))
+}
+
+val allowUnsignedRelease = providers.environmentVariable("REGISTER_ALLOW_UNSIGNED_RELEASE").orNull == "1"
+if (!keystorePropertiesFile.exists() && !allowUnsignedRelease &&
+    gradle.startParameter.taskNames.any { it.contains("release", ignoreCase = true) }) {
+    throw GradleException("Release signing is missing. Configure android/key.properties with your private keystore.")
 }
 
 android {
@@ -34,7 +41,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.webandgrow.register"
+        applicationId = "app.register.personal.r9457c4543606d986"
         minSdk = maxOf(flutter.minSdkVersion, 23)
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
@@ -57,7 +64,7 @@ android {
             signingConfig = if (keystorePropertiesFile.exists()) {
                 signingConfigs.getByName("release")
             } else {
-                signingConfigs.getByName("debug")
+                null
             }
             resValue("string", "app_name", "Register")
             proguardFiles(

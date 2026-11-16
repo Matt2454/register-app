@@ -1,0 +1,73 @@
+name: Android release build
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  android:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      FLUTTER_VERSION: '3.47.5'
+      REGISTER_ALLOW_UNSIGNED_RELEASE: '1'
+    defaults:
+      run:
+        working-directory: Source/Flutter
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: Source/Flutter
+          persist-credentials: false
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+      - name: Resolve dependencies and generate models
+        run: |
+          flutter pub get
+          dart run build_runner build --delete-conflicting-outputs
+      - name: Run Flutter tests
+        run: flutter test --no-pub
+      - name: Build standalone release APK
+        run: flutter build apk --release --no-pub
+      - name: Prepare unsigned artifact for local signing
+        run: |
+          mkdir -p "$GITHUB_WORKSPACE/android-delivery"
+          cp build/app/outputs/flutter-apk/app-release.apk "$GITHUB_WORKSPACE/android-delivery/Register-unsigned.apk"
+          TOOLS="$ANDROID_HOME/build-tools/36.0.0"
+          cp "$TOOLS/lib/apksigner.jar" "$GITHUB_WORKSPACE/android-delivery/apksigner.jar"
+          "$TOOLS/zipalign" -c -P 16 -v 4 build/app/outputs/flutter-apk/app-release.apk > "$GITHUB_WORKSPACE/android-delivery/alignment.txt"
+          "$TOOLS/aapt" dump badging build/app/outputs/flutter-apk/app-release.apk > "$GITHUB_WORKSPACE/android-delivery/apk-info.txt"
+          git rev-parse HEAD > "$GITHUB_WORKSPACE/android-delivery/source-commit.txt"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: register-android-unsigned
+          path: android-delivery/
+          retention-days: 7
+          if-no-files-found: error
+      - name: Enable emulator acceleration
+        run: sudo chown "$USER" /dev/kvm
+      - name: Verify Android launch and languages
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          arch: x86_64
+          target: google_apis
+          profile: pixel_6
+          disable-animations: true
+          emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim -camera-back none
+          script: python3 Source/Flutter/tool/android_smoke.py android-delivery/Register-unsigned.apk android-delivery/smoke
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: register-android-smoke
+          path: android-delivery/smoke/
+          retention-days: 7
