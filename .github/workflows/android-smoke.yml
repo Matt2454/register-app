@@ -1,0 +1,46 @@
+name: Android emulator check
+on:
+  workflow_dispatch:
+    inputs:
+      build_run:
+        description: Android release run containing the unsigned APK
+        required: true
+        type: string
+permissions:
+  contents: read
+  actions: read
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: Source/Flutter
+          persist-credentials: false
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Download the existing release artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BUILD_RUN: ${{ inputs.build_run }}
+        run: gh run download "$BUILD_RUN" --repo "$GITHUB_REPOSITORY" --name register-android-unsigned --dir android-delivery
+      - name: Enable emulator acceleration
+        run: sudo chown "$USER" /dev/kvm
+      - uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          arch: x86_64
+          target: google_apis
+          profile: pixel_6
+          disable-animations: true
+          emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim -camera-back none
+          script: python3 Source/Flutter/tool/android_smoke.py android-delivery/Register-unsigned.apk android-delivery/smoke
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: register-android-smoke
+          path: android-delivery/smoke/
+          retention-days: 7
